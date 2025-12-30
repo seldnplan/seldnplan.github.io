@@ -119,3 +119,63 @@ nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; borde
         margin: 0 auto; /* Center horizontally */
     }
 }
+
+/* --- Contact Section --- */
+.contact-section {
+    margin-top: 5rem;
+    padding: 3rem 0;
+    border-top: 2px solid var(--border);
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-info p {
+    margin-bottom: 1.5rem;
+}
+
+/* --- Profile Buttons --- */
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.profile-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    text-decoration: none;
+}
+
+/* --- Footer --- */
+.site-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+/* --- Mobile Tweak --- */
+@media (max-width: 600px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
