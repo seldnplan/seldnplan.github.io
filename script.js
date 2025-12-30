@@ -46,3 +46,14 @@ themeBtn.addEventListener('click', () => {
     themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
+
+// Automatically update the "Last Updated" text in the footer
+const footer = document.querySelector('.site-footer p');
+if (footer) {
+    const lastMod = new Date(document.lastModified).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    footer.innerHTML += ` • Last updated: ${lastMod}`;
+}
