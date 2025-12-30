@@ -21,9 +21,19 @@
 </head>
 <body>
 
-<div class="breadcrumb">
-    <a href="index.html">← Back to Home</a>
-</div>
+<nav id="main-nav">
+    <button class="menu-toggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="advising.html">Advising</a>
+        <a href="notes.html">Notes</a>
+    </div>
+</nav>
 
 <header>
     <h1>Notes & Seminars</h1>
@@ -59,6 +69,18 @@
         </div>
     </div>
 </section>
+
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('show');
+    
+    // Toggle the icon between 'bars' and 'xmark'
+    const icon = this.querySelector('i');
+    if (icon.classList.contains('fa-bars')) {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+    } else {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+    }
+});
 
 </body>
 </html>

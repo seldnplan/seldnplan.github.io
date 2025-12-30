@@ -27,9 +27,80 @@ h1, h2, h3 { color: var(--text-heading); font-family: 'Georgia', serif; font-wei
 a { color: var(--primary); text-decoration: none; transition: opacity 0.2s; }
 a:hover { text-decoration: underline; }
 
-/* --- Navigation --- */
-nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
-.breadcrumb { font-size: 0.9rem; margin-bottom: 1.5rem; }
+/* --- Navigation (Sticky) --- */
+nav {
+    display: flex;
+    gap: 25px;
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* Modern "Glass" Effect */
+    background-color: rgba(248, 250, 252, 0.9); /* 90% opacity */
+    backdrop-filter: blur(10px); /* Blurs content behind the nav */
+    -webkit-backdrop-filter: blur(10px);
+    
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+/* Optional: Add a subtle shadow when scrolling if you want it to "pop" */
+nav.scrolled {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Active Navigation Link --- */
+nav a.active {
+    color: var(--primary);
+    font-weight: 700;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 5px; /* Adds space for the underline */
+}
+
+/* --- Desktop Nav (Default) --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+}
+
+/* --- Mobile Nav Styles --- */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        padding-top: 10px;
+    }
+
+    /* When the 'active' class is added via JS, show the links */
+    .nav-links.show {
+        display: flex;
+    }
+
+    nav a.active {
+        border-bottom: none;
+        border-left: 3px solid var(--primary);
+        padding-left: 10px;
+        padding-bottom: 0;
+    }
+}
 
 /* --- Publication Cards & Tags --- */
 .pub-card , .project-card{
