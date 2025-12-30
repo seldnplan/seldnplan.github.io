@@ -27,7 +27,7 @@
     </button>
 
     <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html">Home</a>
         <a href="research.html">Research</a>
         <a href="teaching.html" class="active">Teaching</a>
         <a href="advising.html">Advising</a>
@@ -75,6 +75,18 @@
         </table>
     </div>
 </section>
+
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('show');
+    
+    // Toggle the icon between 'bars' and 'xmark'
+    const icon = this.querySelector('i');
+    if (icon.classList.contains('fa-bars')) {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+    } else {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+    }
+});
 
 </body>
 </html>
