@@ -81,13 +81,35 @@ nav a.active {
         margin-bottom: 10px;
     }
 
+   /* --- Navigation Links Container --- */
+.nav-links {
+    display: flex;
+    /* Significant gap for a spacious, professional look */
+    gap: 60px; 
+    align-items: center;
+    /* Pushes the links to the right side of the nav bar */
+    margin-left: auto; 
+}
+
+/* Individual Link Polish */
+.nav-links a {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em; /* Subtle spacing between letters */
+    color: var(--text-main);
+    padding: 5px 0;
+    position: relative;
+    white-space: nowrap; /* Prevents links from wrapping to a second line */
+}
+
+/* --- Mobile Adjustment (Crucial) --- */
+@media (max-width: 600px) {
     .nav-links {
-        display: none; /* Hidden by default on mobile */
-        flex-direction: column;
+        gap: 20px; /* Reduces gap on phones so they fit in the dropdown */
+        margin-left: 0;
         width: 100%;
-        gap: 40px;
-        padding-top: 10px;
     }
+}
 
     /* When the 'active' class is added via JS, show the links */
     .nav-links.show {
