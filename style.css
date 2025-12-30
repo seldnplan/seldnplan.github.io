@@ -449,3 +449,60 @@ body.dark-mode .wip {
     transform: scale(1.1);
 }
 
+/* --- Links Grid Layout --- */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 1.5rem;
+}
+
+.link-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    text-decoration: none !important; /* Prevents underline on the whole card */
+}
+
+.link-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.link-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.link-content strong {
+    color: var(--text-heading);
+    font-size: 1.05rem;
+}
+
+.link-content span {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.link-card i {
+    font-size: 0.8rem;
+    color: var(--border);
+    transition: color 0.2s;
+}
+
+.link-card:hover i {
+    color: var(--primary);
+}
+
+/* Dark Mode adjustment for Link Spans */
+body.dark-mode .link-content span {
+    color: #94a3b8;
+}
+
