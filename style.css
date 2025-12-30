@@ -26,6 +26,7 @@ body {
 h1, h2, h3 { color: var(--text-heading); font-family: 'Georgia', serif; font-weight: 700; }
 a { color: var(--primary); text-decoration: none; transition: opacity 0.2s; }
 a:hover { text-decoration: underline; }
+
 /* --- Navigation (Global/Sticky) --- */
 nav {
     display: flex;
@@ -392,6 +393,35 @@ body.dark-mode .site-notice {
 
 body.dark-mode nav {
     background-color: rgba(15, 23, 42, 0.9); /* Dark sticky nav */
+}
+
+/* --- Dark Mode Specific Button Fixes --- */
+body.dark-mode .copy-btn {
+    background-color: #334155; /* Mid-tone slate for contrast */
+    color: #f8fafc;            /* Near white text */
+    border-color: #475569;
+}
+
+body.dark-mode .copy-btn:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+/* Fix for BibTeX text block visibility */
+body.dark-mode .bibtex-text {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid var(--border);
+}
+
+body.dark-mode .wip-label {
+    color: #94a3b8; /* Lighter grey for the 'Draft in progress' text */
+}
+
+body.dark-mode .wip {
+    border-color: #475569 !important; /* Slightly brighter dashed line */
+    background-color: #111827;
 }
 
 /* --- Floating Theme Toggle Button --- */
