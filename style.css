@@ -233,3 +233,36 @@ nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; borde
         gap: 10px;
     }
 }
+
+/* --- Disclaimer Notice at Top --- */
+.site-notice {
+    background-color: #fefce8; /* Light yellow alert */
+    border: 1px solid #fef08a;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #854d0e;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-notice i {
+    color: #eab308;
+}
+
+/* --- Card Footer & Date --- */
+.card-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dotted var(--border);
+    text-align: right;
+}
+
+.update-date {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+}
