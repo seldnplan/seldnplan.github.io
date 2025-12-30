@@ -25,3 +25,24 @@ function copyBibtex(id, btn) {
         setTimeout(() => btn.innerHTML = original, 2000);
     });
 }
+
+/* --- Dark Mode Logic --- */
+const themeBtn = document.createElement('button');
+themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+themeBtn.classList.add('theme-toggle');
+document.body.appendChild(themeBtn);
+
+// Check for saved preference
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+}
+
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    
+    // Update Icon and Save preference
+    themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
