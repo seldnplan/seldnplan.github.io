@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keerthi Madapusi</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="notes.html">Notes</a>
+</nav>
+
+<header>
+    <h1>Keerthi Madapusi</h1>
+    <p>Professional Mathematician specializing in Arithmetic Geometry and Number Theory.</p>
+    <a href="assets/cv.pdf" class="copy-btn" style="display:inline-block; text-decoration:none;"><i class="fa-solid fa-file-arrow-down"></i> Download CV</a>
+</header>
+
+<section id="publications" style="margin-top: 3rem;">
+    <h2>Selected Publications</h2>
+
+    <div class="pub-card published">
+        <span class="status-tag">Published</span>
+        <a href="#" class="pub-title" style="font-weight:bold; font-size:1.1rem; display:block;">On the Integral Models of Shimura Varieties</a>
+        <div class="pub-meta"><em>Journal of the American Mathematical Society</em>, 2024.</div>
+        
+        <button class="copy-btn" onclick="copyBibtex('bib1', this)"><i class="fa-regular fa-copy"></i> Copy BibTeX</button>
+        <pre id="bib1" class="bibtex-text">@article{madapusi2024, title={On the Integral Models...}, author={Madapusi, K.}, year={2024}}</pre>
+    </div>
+
+    <div class="pub-card preprint">
+        <span class="status-tag">Preprint</span>
+        <a href="https://arxiv.org/abs/2412.10226" class="pub-title" style="font-weight:bold; font-size:1.1rem; display:block;">An Algebraicity Conjecture of Drinfeld</a>
+        <div class="pub-meta">Submitted, 2025. arXiv:2412.10226 [math.AG]</div>
+    </div>
+</section>
+
+<script>
+function copyBibtex(id, btn) {
+    const bibtex = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(bibtex).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        setTimeout(() => btn.innerHTML = original, 2000);
+    });
+}
+</script>
+
+</body>
+</html>
