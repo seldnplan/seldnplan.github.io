@@ -268,14 +268,15 @@ nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; borde
 }
 
 /* --- WIP Card Styling --- */
-.wip {
-    border: 2px dashed #cbd5e1; /* Dashed border to signify "In Progress" */
+.project-card.wip {
+    border: 2px dashed #cbd5e1 !important; /* Forces the dashed border on all sides */
     background-color: #fcfcfd;
+    border-left: 2px dashed #cbd5e1 !important; /* Ensures the left side matches the rest */
 }
 
 .wip .status-tag {
-    background: #e0f2fe; /* Light Blue */
-    color: #0369a1;
+    background: #e0f2fe; /* Light Blue background */
+    color: #0369a1;      /* Dark Blue text */
 }
 
 .wip-label {
@@ -287,8 +288,9 @@ nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; borde
     gap: 8px;
 }
 
-/* Add a subtle "pulse" to the WIP tag if you want it to be more dynamic */
-.wip:hover {
-    border-color: #3b82f6;
+/* Subtle change on hover to indicate interactivity */
+.project-card.wip:hover {
+    border-color: var(--primary) !important;
     background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
