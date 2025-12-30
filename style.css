@@ -179,3 +179,11 @@ nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; borde
         text-align: center;
     }
 }
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
