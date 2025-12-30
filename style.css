@@ -266,3 +266,29 @@ nav { display: flex; gap: 25px; margin-bottom: 3rem; padding-bottom: 1rem; borde
     font-style: italic;
     font-family: 'Inter', sans-serif;
 }
+
+/* --- WIP Card Styling --- */
+.wip {
+    border: 2px dashed #cbd5e1; /* Dashed border to signify "In Progress" */
+    background-color: #fcfcfd;
+}
+
+.wip .status-tag {
+    background: #e0f2fe; /* Light Blue */
+    color: #0369a1;
+}
+
+.wip-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Add a subtle "pulse" to the WIP tag if you want it to be more dynamic */
+.wip:hover {
+    border-color: #3b82f6;
+    background-color: #ffffff;
+}
