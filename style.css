@@ -375,6 +375,25 @@ body.dark-mode .thesis-card .status-tag {
     border: 1px solid #d4af37;
 }
 
+/* --- Dark Mode for New & Updated Badges --- */
+body.dark-mode .new-badge {
+    background-color: #f97316; /* Keep the orange, but ensure text is white */
+    color: #ffffff !important;
+    border: 1px solid #fb923c;
+}
+
+body.dark-mode .updated-badge {
+    background-color: #3b82f6; /* A slightly brighter blue for dark mode */
+    color: #ffffff !important;
+    border: 1px solid #60a5fa;
+}
+
+/* Ensure icons inside these badges are also bright */
+body.dark-mode .status-badge i, 
+body.dark-mode .new-badge i {
+    color: #ffffff;
+}
+
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
    ========================================================================== */
