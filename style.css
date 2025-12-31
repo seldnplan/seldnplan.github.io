@@ -147,33 +147,36 @@ body.dark-mode .update-date {
     color: #64748b;
 }
 
-/* --- Corrected Badge Alignment --- */
+/* --- Final Badge Alignment Fix --- */
 .badge-container {
-    display: flex;             /* Use flexbox for perfect alignment */
-    align-items: center;       /* Vertically centers all children */
-    gap: 10px;                 /* Consistent horizontal spacing */
+    display: flex;
+    align-items: center;      /* Perfectly centers items vertically */
+    gap: 8px;                 /* Standard gap between tags */
     margin-bottom: 12px;
-    height: 24px;              /* Standardizes the height of the tag row */
+    line-height: 1;           /* Prevents line-height from pushing boxes down */
 }
 
 .status-tag, .new-badge {
-    display: inline-flex;      /* Use inline-flex for internal icon centering */
+    display: inline-flex;     /* Internal flex for icon/text centering */
     align-items: center;
     justify-content: center;
-    height: 100%;              /* Forces both to be 24px tall */
-    padding: 0 8px;            /* Consistent padding */
-    margin-bottom: 0;          /* Removes any bottom margin interference */
-    line-height: 1;            /* Prevents font-descenders from pushing tags down */
+    padding: 4px 10px;        /* Unified padding creates unified height */
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    white-space: nowrap;      /* Prevents text wrapping */
 }
 
 .new-badge {
-    background-color: #f97316; 
+    background-color: #f97316;
     color: white;
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    border-radius: 4px;
+    font-size: 0.65rem;       /* Slightly smaller for visual balance */
     animation: pulse-soft 2s infinite;
+}
+
+.new-badge i {
+    margin-right: 4px;        /* Spacing for the sparkles icon */
 }
 
 @keyframes pulse-soft {
