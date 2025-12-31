@@ -62,6 +62,8 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
     nav a.active { border-bottom: none; border-left: 3px solid var(--primary); padding-left: 10px; }
 }
 
+
+
 /* ==========================================================================
    3. TABLE OF CONTENTS (TOC)
    ========================================================================== */
@@ -239,6 +241,15 @@ body.dark-mode {
 body.dark-mode .action-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
 body.dark-mode .toc-container, body.dark-mode .toc-content { background-color: var(--bg-light); }
 body.dark-mode .lecture-archive { background: #1e293b; }
+
+/* --- Dark Mode Hamburger Visibility --- */
+body.dark-mode .menu-toggle {
+    color: var(--text-heading); /* Sets it to near-white/light grey in dark mode */
+}
+
+body.dark-mode .menu-toggle:hover {
+    color: var(--primary); /* Optional: changes to blue when tapped/hovered */
+}
 
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
