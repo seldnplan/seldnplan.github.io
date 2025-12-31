@@ -945,5 +945,8 @@ body.dark-mode .lecture-archive.archive-primary summary i {
 body.dark-mode .lecture-archive.archive-primary[open] summary {
     background-color: #334155; /* Slightly lighter than the card bg */
 }
+body.dark-mode .lecture-archive.archive-primary summary i {
+    color: var(--text-heading); /* Ensure this variable is set to a light color in dark mode */
+}
 
 
