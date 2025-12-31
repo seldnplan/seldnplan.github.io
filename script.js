@@ -57,3 +57,23 @@ if (footer) {
     });
     footer.innerHTML += ` • Last updated: ${lastMod}`;
 }
+
+// Smooth Scrolling for TOC anchors
+document.querySelectorAll('.toc-content a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 120, // Offsets for the sticky navs
+                behavior: 'smooth'
+            });
+            // Close dropdown after click on mobile
+            document.querySelector('.toc-content').style.display = 'none';
+            setTimeout(() => { document.querySelector('.toc-content').style.removeProperty('display'); }, 500);
+        }
+    });
+});
