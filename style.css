@@ -972,4 +972,49 @@ body.dark-mode .lecture-archive.archive-primary summary i {
     color: var(--text-heading); /* Ensure this variable is set to a light color in dark mode */
 }
 
+/* --- Journal Link Styling --- */
+.journal-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--white);
+    color: #475569; /* Slate Grey/Blue */
+    padding: 6px 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.journal-link:hover {
+    background-color: #f1f5f9;
+    border-color: var(--primary);
+    color: var(--primary);
+    text-decoration: none;
+}
+
+/* Ensure buttons in card-actions sit nicely together */
+.card-actions {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on very small phones */
+    align-items: center;
+    gap: 12px; 
+    margin-top: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+}
+
+/* Dark Mode adjustment for Journal Link */
+body.dark-mode .journal-link {
+    color: #cbd5e1;
+    border-color: #475569;
+    background-color: #1e293b;
+}
+
+body.dark-mode .journal-link:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
 
