@@ -147,36 +147,42 @@ body.dark-mode .update-date {
     color: #64748b;
 }
 
-/* --- Final Badge Alignment Fix --- */
+//* --- High-Precision Badge Alignment --- */
 .badge-container {
     display: flex;
-    align-items: center;      /* Perfectly centers items vertically */
-    gap: 8px;                 /* Standard gap between tags */
+    flex-direction: row;
+    align-items: center;      /* Centers tags vertically relative to each other */
+    justify-content: flex-start;
+    gap: 8px;                 /* Precise horizontal spacing */
     margin-bottom: 12px;
-    line-height: 1;           /* Prevents line-height from pushing boxes down */
+    line-height: 1;           /* Essential: strips away extra text-box spacing */
 }
 
-.status-tag, .new-badge {
-    display: inline-flex;     /* Internal flex for icon/text centering */
-    align-items: center;
+.status-tag, .status-badge {
+    display: inline-flex;
+    align-items: center;      /* Centers icon and text vertically within the tag */
     justify-content: center;
-    padding: 4px 10px;        /* Unified padding creates unified height */
-    font-size: 0.7rem;
-    font-weight: 700;
+    height: 22px;             /* Fixed height for absolute uniformity */
+    padding: 0 10px;          /* Horizontal padding only */
+    font-size: 0.65rem;
+    font-weight: 800;
     text-transform: uppercase;
     border-radius: 4px;
-    white-space: nowrap;      /* Prevents text wrapping */
+    white-space: nowrap;
+    margin: 0;                /* Resets any rogue margins */
+    box-sizing: border-box;   /* Includes border in the 22px height */
 }
 
-.new-badge {
-    background-color: #f97316;
-    color: white;
-    font-size: 0.65rem;       /* Slightly smaller for visual balance */
-    animation: pulse-soft 2s infinite;
-}
+/* Specific Badge Colors */
+.new-badge { background-color: #f97316; color: white; }
+.updated-badge { background-color: #0d9488; color: white; }
 
-.new-badge i {
-    margin-right: 4px;        /* Spacing for the sparkles icon */
+/* Icon Spacing inside tags */
+.status-badge i {
+    margin-right: 4px;
+    font-size: 0.7rem;
+    display: inline-block;
+    line-height: 0;           /* Prevents icon from pushing tag height */
 }
 
 @keyframes pulse-soft {
