@@ -121,14 +121,14 @@ cards.forEach(card => {
         if (container && !container.querySelector('.status-badge')) {
             const badge = document.createElement('span');
             
-            // Logic to determine if it's 'New' or 'Updated'
-            if (statusType === 'updated') {
-                badge.className = 'status-badge updated-badge';
-                badge.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Updated';
-            } else {
-                badge.className = 'status-badge new-badge';
-                badge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
-            }
+            /* --- Corrected Badge Injection --- */
+if (statusType === 'updated') {
+    badge.className = 'status-badge updated-badge'; // Inherits 22px height
+    badge.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Updated';
+} else {
+    badge.className = 'status-badge new-badge';     // Now also 22px height
+    badge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
+}
             
             container.appendChild(badge);
         }
