@@ -742,3 +742,57 @@ body.dark-mode .link-card:hover {
     background-color: #1e293b;
 }
 
+/* ==========================================================================
+   13. NEWS TICKER
+   ========================================================================== */
+
+.news-ticker {
+    display: flex;
+    align-items: center;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 2rem;
+    overflow: hidden; /* Hide overflow for the animation */
+    white-space: nowrap;
+}
+
+.ticker-label {
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 2px solid var(--border);
+}
+
+.ticker-content {
+    display: flex;
+    gap: 40px;
+    animation: ticker-scroll 25s linear infinite;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Scrolls half-way if content is duplicated */
+}
+
+/* Pause on hover so colleagues can read the titles */
+.news-ticker:hover .ticker-content {
+    animation-play-state: paused;
+}
+
+/* Dark Mode Support */
+body.dark-mode .news-ticker {
+    background: #1e293b;
+}
