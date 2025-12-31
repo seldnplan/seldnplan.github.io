@@ -107,3 +107,21 @@ function copyBibtex(id, btn) {
         console.error('Failed to copy BibTeX: ', err);
     });
 }
+
+/* --- Automatic 'New' Badge Logic --- */
+const cards = document.querySelectorAll('.project-card[data-date]');
+const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
+const today = new Date();
+
+cards.forEach(card => {
+    const updateDate = new Date(card.getAttribute('data-date'));
+    if (today - updateDate < thirtyDaysInMs) {
+        const container = card.querySelector('.badge-container');
+        if (container) {
+            const newBadge = document.createElement('span');
+            newBadge.className = 'new-badge';
+            newBadge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
+            container.appendChild(newBadge);
+        }
+    }
+});
