@@ -307,6 +307,21 @@ body.dark-mode .nav-links a {
     color: var(--text-main); /* Now maps to #cbd5e1 in dark mode */
 }
 
+/* --- Dark Mode Thesis Card Fix --- */
+body.dark-mode .thesis-card {
+    background-color: #1e293b !important; /* Matches other card backgrounds */
+    border-left-color: var(--thesis-gold) !important;
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+body.dark-mode .thesis-card .status-tag {
+    background-color: #78350f !important; /* Deep amber/gold for dark mode */
+    color: #fef3c7 !important;            /* Light cream text */
+    border: 1px solid #d4af37;
+}
+
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
    ========================================================================== */
