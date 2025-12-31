@@ -207,7 +207,7 @@ body.dark-mode .new-badge {
 
 .action-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); background: var(--white); }
 .action-btn.pdf i { color: #ef4444; }
-.action-btn.journal i, .action-btn.abstract i { color: var(--primary); }
+.action-btn.journal i , .action-btn.abstract i { color: var(--primary); }
 
 /* Abstract Toggle specifically as a button */
 .abstract-details { display: inline-block; }
@@ -279,6 +279,36 @@ body.dark-mode .action-btn.copied {
     background-color: #064e3b !important;
     color: #4ade80 !important;
     border-color: #4ade80 !important;
+}
+
+/* --- Site Notice Alert Card --- */
+.site-notice {
+    background-color: #fefce8; /* Soft yellow warning background */
+    border: 1px solid #fef08a;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #854d0e;            /* Darker gold/brown for contrast */
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-notice i {
+    color: #eab308;            /* Bright yellow icon */
+    font-size: 1.1rem;
+}
+
+/* --- Dark Mode Support for Site Notice --- */
+body.dark-mode .site-notice {
+    background-color: #1e1b4b; /* Deep indigo for Dark Mode alert */
+    border-color: #312e81;
+    color: #e0e7ff;            /* Bright white/blue text */
+}
+
+body.dark-mode .site-notice i {
+    color: #818cf8;            /* Lighter icon for dark background */
 }
 
 /* ==========================================================================
