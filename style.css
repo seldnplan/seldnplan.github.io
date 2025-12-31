@@ -147,42 +147,40 @@ body.dark-mode .update-date {
     color: #64748b;
 }
 
-//* --- High-Precision Badge Alignment --- */
+/* --- High-Precision Alignment for All Tags --- */
 .badge-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;      /* Centers tags vertically relative to each other */
-    justify-content: flex-start;
-    gap: 8px;                 /* Precise horizontal spacing */
+    align-items: center;      /* Essential for aligning the centers of both boxes */
+    gap: 8px;
     margin-bottom: 12px;
-    line-height: 1;           /* Essential: strips away extra text-box spacing */
 }
 
 .status-tag, .status-badge {
-    display: inline-flex;
-    align-items: center;      /* Centers icon and text vertically within the tag */
+    display: inline-flex;     /* Use inline-flex for internal icon/text centering */
+    align-items: center;
     justify-content: center;
-    height: 22px;             /* Fixed height for absolute uniformity */
+    height: 22px;             /* Fixed height ensures perfect matching */
     padding: 0 10px;          /* Horizontal padding only */
     font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
     border-radius: 4px;
     white-space: nowrap;
-    margin: 0;                /* Resets any rogue margins */
-    box-sizing: border-box;   /* Includes border in the 22px height */
+    line-height: 1;           /* Prevents internal 'ghost' spacing */
 }
 
-/* Specific Badge Colors */
-.new-badge { background-color: #f97316; color: white; }
-.updated-badge { background-color: #0d9488; color: white; }
+/* Specific styling for the 'New' badge to match the 'Updated' look */
+.new-badge {
+    background-color: #f97316;
+    color: white;
+}
 
-/* Icon Spacing inside tags */
+/* Specific icon centering */
 .status-badge i {
+    font-size: 0.75rem;
     margin-right: 4px;
-    font-size: 0.7rem;
     display: inline-block;
-    line-height: 0;           /* Prevents icon from pushing tag height */
+    vertical-align: middle;   /* Ensures the icon doesn't pull the text up or down */
 }
 
 @keyframes pulse-soft {
