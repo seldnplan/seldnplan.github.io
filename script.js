@@ -122,13 +122,13 @@ cards.forEach(card => {
             const badge = document.createElement('span');
             
             /* --- Corrected Badge Injection --- */
-if (statusType === 'updated') {
-    badge.className = 'status-badge updated-badge'; // Inherits 22px height
-    badge.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Updated';
-} else {
-    badge.className = 'status-badge new-badge';     // Now also 22px height
-    badge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
-}
+            if (statusType === 'updated') {
+                badge.className = 'status-badge updated-badge'; // Inherits 22px height
+                badge.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Updated';
+            } else {
+                badge.className = 'status-badge new-badge';     // Now also 22px height
+                badge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
+            }
             
             container.appendChild(badge);
         }
