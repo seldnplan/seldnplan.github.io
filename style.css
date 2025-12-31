@@ -195,6 +195,40 @@ body.dark-mode .lecture-archive { background: #1e293b; }
 .theme-toggle { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; z-index: 2000; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: transform 0.2s ease; }
 .theme-toggle:hover { transform: scale(1.1); }
 
+/* --- BibTeX Hidden Data Block --- */
+.bibtex-text { 
+    display: none; /* Keeps the raw text hidden from the page */
+    background: #f1f5f9; 
+    padding: 15px; 
+    font-size: 0.8rem; 
+    font-family: 'Courier New', monospace; 
+    border-radius: 6px; 
+    margin-top: 10px; 
+    white-space: pre-wrap; 
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+/* --- BibTeX Button "Copied" State --- */
+.action-btn.copied {
+    border-color: var(--published-green) !important;
+    color: var(--published-green) !important;
+    background-color: #f0fdf4 !important; /* Soft green success background */
+}
+
+/* --- Dark Mode for BibTeX --- */
+body.dark-mode .bibtex-text {
+    background-color: #0f172a;
+    color: #cbd5e1;
+    border-color: var(--border);
+}
+
+body.dark-mode .action-btn.copied {
+    background-color: #064e3b !important;
+    color: #4ade80 !important;
+    border-color: #4ade80 !important;
+}
+
 /* ==========================================================================
    9. PROFILE HEADER & PHOTO (HOME PAGE)
    ========================================================================== */
