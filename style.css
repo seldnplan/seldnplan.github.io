@@ -294,6 +294,19 @@ body.dark-mode .menu-toggle:hover {
     color: var(--primary); /* Optional: changes to blue when tapped/hovered */
 }
 
+/* --- Dark Mode Sticky Nav Fix --- */
+body.dark-mode nav {
+    background-color: rgba(15, 23, 42, 0.85) !important; /* Semi-transparent Dark Navy */
+    border-bottom-color: var(--border); /* Uses the dark border color */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Ensure the links inside change to light text */
+body.dark-mode .nav-links a {
+    color: var(--text-main); /* Now maps to #cbd5e1 in dark mode */
+}
+
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
    ========================================================================== */
