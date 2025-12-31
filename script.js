@@ -58,22 +58,44 @@ if (footer) {
     footer.innerHTML += ` • Last updated: ${lastMod}`;
 }
 
-// Smooth Scrolling for TOC anchors
-document.querySelectorAll('.toc-content a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 120, // Offsets for the sticky navs
-                behavior: 'smooth'
-            });
-            // Close dropdown after click on mobile
-            document.querySelector('.toc-content').style.display = 'none';
-            setTimeout(() => { document.querySelector('.toc-content').style.removeProperty('display'); }, 500);
-        }
+/* --- Teaching Page: TOC Dropdown & Smooth Scroll --- */
+const tocBtn = document.querySelector('.toc-btn');
+const tocContent = document.querySelector('.toc-content');
+
+if (tocBtn && tocContent) {
+    // 1. Toggle dropdown on click (for mobile/tablet)
+    tocBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tocContent.classList.toggle('show');
     });
-});
+
+    // 2. Close dropdown if clicking elsewhere
+    window.addEventListener('click', () => {
+        tocContent.classList.remove('show');
+    });
+
+    // 3. Smooth Scroll with Offset
+    document.querySelectorAll('.toc-content a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Calculate position: Element position - Height of sticky navs
+                const offset = 160; 
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Hide dropdown after selection
+                tocContent.classList.remove('show');
+            }
+        });
+    });
+}
