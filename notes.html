@@ -42,8 +42,20 @@
     <p>Expository write-ups and slides from various seminars and conferences.</p>
 </header>
 
-<section>
-    <h2 style="border-left: 4px solid var(--primary); padding-left: 15px;">Seminar Notes</h2>
+<nav class="toc-container">
+    <div class="toc-dropdown">
+        <button class="toc-btn">
+            Browse by Type <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="toc-content">
+            <a href="#notes-talks">Slides and notes for some talks</a>
+            <a href="#old-notes">Old notes from graduate school</a>
+        </div>
+    </div>
+</nav>
+
+<section id = "notes-talks">
+    <h2>Slides and notes for some talks</h2>
     
     <div class="pub-card">
         <span class="status-tag" style="background: #e0f2fe; color: #0369a1;">Notes</span>
@@ -70,6 +82,23 @@
             <a href="assets/talk_slides.pdf"><i class="fa-regular fa-file-pdf"></i> View Slides</a>
         </div>
     </div>
+</section>
+
+<section id = "old-notes">
+  <h2>Old notes from graduate school</h2>
+  <div class="pub-card">
+        <span class="status-tag" style="background: #e0f2fe; color: #0369a1;">Notes</span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <h3 style="margin: 0;">A Quick Guide to $p$-divisible Groups</h3>
+            <span style="font-size: 0.85rem; color: #94a3b8;">Sept 2024</span>
+        </div>
+        <p>Expository notes focusing on Dieudonné module theory and deformation theory.</p>
+        <div style="margin-top: 10px;">
+            <a href="assets/p-div-notes.pdf"><i class="fa-regular fa-file-pdf"></i> Download PDF</a>
+        </div>
+    </div>
+
+
 </section>
 
 <script src="script.js"></script>
