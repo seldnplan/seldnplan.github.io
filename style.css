@@ -357,3 +357,72 @@ body.dark-mode .profile-photo {
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
+/* ==========================================================================
+   10. CONTACT SECTION & PROFILE LINKS
+   ========================================================================== */
+
+.contact-section {
+    margin-top: 5rem;
+    padding: 3rem 0;
+    border-top: 2px solid var(--border);
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Split view: Info on left, Links on right */
+    gap: 40px;
+}
+
+.contact-info p {
+    margin-bottom: 1.5rem;
+}
+
+/* --- Profile Links (Right Column) --- */
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Uses the same base logic as our action buttons for consistency */
+.profile-btn {
+    display: inline-block;
+    padding: 12px 15px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: all 0.2s;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.profile-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- Mobile Responsive Tweak --- */
+@media (max-width: 600px) {
+    .contact-container {
+        grid-template-columns: 1fr; /* Stacks info and links on phones */
+        text-align: center;
+    }
+}
+
+/* --- Dark Mode Support --- */
+body.dark-mode .profile-btn {
+    background: #1e293b;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+body.dark-mode .profile-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
