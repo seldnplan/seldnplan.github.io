@@ -124,6 +124,58 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
 .preprint { border-left: 4px solid var(--preprint-yellow); }
 .thesis-card { border-left: 5px solid var(--thesis-gold) !important; background-color: #fffdf5; }
 
+/* Fix for the manual date on specific cards */
+.card-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dotted var(--border);
+    display: block; /* Ensures it stays on its own line below the buttons */
+    width: 100%;
+    text-align: right;
+}
+
+.update-date {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* Dark Mode adjustment */
+body.dark-mode .update-date {
+    color: #64748b;
+}
+
+/* --- Automatic 'New' Badge --- */
+.badge-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.new-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: #f97316; /* Vibrant Orange */
+    color: white;
+    animation: pulse-soft 2s infinite;
+}
+
+@keyframes pulse-soft {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Dark Mode adjustment */
+body.dark-mode .new-badge {
+    background-color: #fb923c;
+}
+
 /* ==========================================================================
    5. UNIFIED ACTION BAR & BUTTONS
    ========================================================================== */
