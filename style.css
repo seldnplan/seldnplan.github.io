@@ -228,6 +228,7 @@ body.dark-mode .new-badge {
     border: 1px solid #fde047;
 }
 
+
 /* --- Teaching Page Specific Tags --- */
 
 /* Ensures tags in teaching sections have a professional blue/slate theme */
@@ -246,6 +247,18 @@ body.dark-mode .new-badge {
     border-color: #bfdbfe;
 }
 
+/* --- Student Work Card Styling --- */
+.student-work {
+    border-left: 5px solid #6366f1 !important; /* Indigo border */
+    background-color: #f5f3ff;                 /* Very light purple tint */
+}
+
+.student-tag {
+    background-color: #ede9fe !important;      /* Light purple background */
+    color: #4338ca !important;                 /* Dark indigo text */
+    border: 1px solid #ddd6fe;
+}
+
 
 /* --- Dark Mode Support for Tags --- */
 body.dark-mode .published .status-tag { background: #064e3b !important; color: #4ade80 !important; }
@@ -261,6 +274,18 @@ body.dark-mode #archive .status-tag {
     background-color: #334155 !important;
     color: #cbd5e1 !important;
 }
+
+body.dark-mode .student-work {
+    background-color: #1e1b4b !important;      /* Deep indigo/navy card */
+    border-left-color: #818cf8 !important;     /* Brighter indigo border */
+}
+
+body.dark-mode .student-tag {
+    background-color: #312e81 !important;      /* Dark indigo tag */
+    color: #e0e7ff !important;                 /* Light lavender text */
+    border-color: #4338ca;
+}
+
 
 /* ==========================================================================
    5. UNIFIED ACTION BAR & BUTTONS

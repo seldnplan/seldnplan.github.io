@@ -46,29 +46,34 @@
 <section>
     <h2>Current Graduate Students</h2>
 
-    <div class="pub-card">
-        <h3>Student Name</h3>
-        <p class="subtitle">Ph.D. Candidate (Expected 202X)</p>
-        <p><strong>Project:</strong> <em>On the geometry of...</em></p>
-         <details class="abstract-toggle">
-            <summary>Project Description</summary>
-            <div class="abstract-content">
-               
+    <div class="pub-card student-work" data-date="2025-11-20">
+        <div class="badge-container">
+            <span class="status-tag student-tag">PhD Thesis</span>
             </div>
-        </details>
+        <h3>Title of the Student's Dissertation or Paper</h3>
+        <p class="subtitle">Student Name • Degree Path • Year</p>
+        
+        <p>A brief description of the student's research focus, such as their work on $p$-divisible groups or specific Newton strata.</p>
+        
+        <div class="card-actions">
+            <a href="assets/student_thesis.pdf" class="action-btn pdf">
+                <i class="fa-solid fa-file-pdf"></i> View Work
+            </a>
+            <button class="action-btn bibtex" onclick="copyBibtex('student1', this)">
+                <i class="fa-solid fa-copy"></i> Copy Citation
+            </button>
+        </div>
+        
+        <div id="student1" class="bibtex-text">
+            @phdthesis{student2025thesis,
+              title={Title of the work},
+              author={Student Name},
+              school={University of Chicago},
+              year={2025}
+            }
+        </div>
     </div>
 
-    <div class="pub-card">
-        <h3>Another Student</h3>
-        <p class="subtitle">Ph.D. Student</p>
-        <p><strong>Project:</strong> <em>Formal groups and...</em></p>
-       <details class="abstract-toggle">
-            <summary>Project Description</summary>
-            <div class="abstract-content">
-               
-            </div>
-        </details>
-    </div>
 </section>
 
 <section style="margin-top: 4rem;">
