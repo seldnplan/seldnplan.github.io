@@ -914,5 +914,36 @@ body.dark-mode .description-content {
     color: #cbd5e1;
 }
 
+/* --- Primary Toggle (Course Description) Visual Distinction --- */
+
+/* 1. Make the text bolder and slightly larger */
+.lecture-archive.archive-primary summary {
+    font-weight: 700;       /* Bolder than the standard 600 */
+    font-size: 0.95rem;     /* Slightly larger than standard 0.9rem */
+    color: var(--text-heading); /* Use dark text instead of blue link color */
+}
+
+/* 2. Target the icon specifically to change its color and size */
+.lecture-archive.archive-primary summary i {
+    color: var(--text-heading); /* Matches the header text color */
+    font-size: 1.1rem;          /* Slightly larger icon for emphasis */
+    margin-right: 12px;         /* A bit more space between icon and text */
+}
+
+/* Optional: A subtle background change when the primary toggle is open */
+.lecture-archive.archive-primary[open] summary {
+    background-color: #f8fafc; /* A very subtle offset from pure white */
+    border-bottom-color: var(--primary); /* Adds a blue line under the header when open */
+}
+
+/* --- Dark Mode Adjustments --- */
+body.dark-mode .lecture-archive.archive-primary summary,
+body.dark-mode .lecture-archive.archive-primary summary i {
+    color: var(--white); /* Bright white in dark mode for contrast */
+}
+
+body.dark-mode .lecture-archive.archive-primary[open] summary {
+    background-color: #334155; /* Slightly lighter than the card bg */
+}
 
 
