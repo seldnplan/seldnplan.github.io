@@ -147,64 +147,54 @@ body.dark-mode .update-date {
     color: #64748b;
 }
 
-/* --- High-Precision Alignment for All Tags --- */
+/* --- Consolidated High-Precision Alignment for All Tags --- */
 .badge-container {
     display: flex;
-    align-items: center;      /* Essential for aligning the centers of both boxes */
+    align-items: center;      
     gap: 8px;
     margin-bottom: 12px;
 }
 
-.status-tag, .status-badge {
-    display: inline-flex;     /* Use inline-flex for internal icon/text centering */
+/* Unified class for both tags (Preprint/Published) and badges (New/Updated) */
+.status-tag, .status-badge, .new-badge {
+    display: inline-flex;     
     align-items: center;
     justify-content: center;
-    height: 22px;             /* Fixed height ensures perfect matching */
-    padding: 0 10px;          /* Horizontal padding only */
+    height: 24px;             /* Slightly increased for better optical centering */
+    padding: 0 10px;          
     font-size: 0.65rem;
     font-weight: 800;
     text-transform: uppercase;
     border-radius: 4px;
     white-space: nowrap;
-    line-height: 1;           /* Prevents internal 'ghost' spacing */
+    line-height: 1;           
+    margin-bottom: 0;         /* Reset margin so flexbox handles spacing */
 }
 
-/* Specific styling for the 'New' badge to match the 'Updated' look */
+/* --- Status Specific Colors --- */
+
+/* Preprint - Yellow/Orange */
+.preprint { border-left: 4px solid var(--preprint-yellow); }
+.preprint .status-tag { 
+    background: #fef9c3 !important; 
+    color: #854d0e !important; 
+}
+
+/* New Badge - Orange */
 .new-badge {
     background-color: #f97316;
     color: white;
 }
 
-/* Specific icon centering */
-.status-badge i {
-    font-size: 0.75rem;
-    margin-right: 4px;
-    display: inline-block;
-    vertical-align: middle;   /* Ensures the icon doesn't pull the text up or down */
+/* Styling for the dynamically added 'Updated' badge */
+.updated-badge {
+    background-color: var(--primary); /* Uses your brand blue */
+    color: white;
 }
 
-@keyframes pulse-soft {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
-
-/* Dark Mode adjustment */
-body.dark-mode .new-badge {
-    background-color: #fb923c;
-}
-
-/* --- Status Tag Backgrounds & Colors --- */
-
-/* Base style for all tags */
-.status-tag { 
-    display: inline-block; 
-    font-size: 0.7rem; 
-    font-weight: 700; 
-    text-transform: uppercase; 
-    padding: 2px 8px; 
-    border-radius: 4px; 
-    margin-bottom: 10px; 
+/* Ensure the FontAwesome sparkle/pen-nib icons align with text */
+.status-badge i, .new-badge i {
+    margin-right: 5px;
 }
 
 /* Published - Green */
@@ -212,13 +202,6 @@ body.dark-mode .new-badge {
 .published .status-tag { 
     background: #dcfce7 !important; 
     color: #166534 !important; 
-}
-
-/* Preprint - Yellow/Orange */
-.preprint { border-left: 4px solid var(--preprint-yellow); }
-.preprint .status-tag { 
-    background: #fef9c3 !important; 
-    color: #854d0e !important; 
 }
 
 /* Thesis - Gold */

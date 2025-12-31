@@ -108,25 +108,31 @@ function copyBibtex(id, btn) {
     });
 }
 /* --- Automatic 'New' vs 'Updated' Badge Logic --- */
-const cards = document.querySelectorAll('.project-card[data-date]');
+// Updated selector to catch BOTH pub-cards and project-cards
+const cards = document.querySelectorAll('.pub-card[data-date], .project-card[data-date]');
 const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
-const today = new Date(); // Current date: Dec 31, 2025
+const today = new Date(); // December 31, 2025
 
 cards.forEach(card => {
-    const updateDate = new Date(card.getAttribute('data-date'));
-    const statusType = card.getAttribute('data-status'); // Check for the switch
+    const dateValue = card.getAttribute('data-date');
+    if (!dateValue) return;
+
+    const updateDate = new Date(dateValue);
+    const statusType = card.getAttribute('data-status'); 
 
     if (today - updateDate < thirtyDaysInMs) {
         const container = card.querySelector('.badge-container');
-        if (container && !container.querySelector('.status-badge')) {
+        // Ensure we don't duplicate the badge if it's already there
+        if (container && !container.querySelector('.new-badge') && !container.querySelector('.updated-badge')) {
             const badge = document.createElement('span');
             
-            /* --- Corrected Badge Injection --- */
             if (statusType === 'updated') {
-                badge.className = 'status-badge updated-badge'; // Inherits 22px height
+                // Using 'status-badge' as the base for alignment
+                badge.className = 'status-badge updated-badge'; 
                 badge.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Updated';
             } else {
-                badge.className = 'status-badge new-badge';     // Now also 22px height
+                // Matches the .new-badge class in your CSS
+                badge.className = 'new-badge';     
                 badge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
             }
             
