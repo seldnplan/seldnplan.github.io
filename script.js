@@ -4,48 +4,52 @@ document.addEventListener("DOMContentLoaded", function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
-    if (menuToggle) {
+    if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('show');
             const icon = this.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
         });
     }
 
     /* --- 2. Dark Mode Logic --- */
-    const themeBtn = document.createElement('button');
-    themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-    themeBtn.classList.add('theme-toggle');
-    document.body.appendChild(themeBtn);
+    // Creates the button if it doesn't exist in HTML
+    if (!document.querySelector('.theme-toggle')) {
+        const themeBtn = document.createElement('button');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        themeBtn.classList.add('theme-toggle');
+        themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
+        document.body.appendChild(themeBtn);
 
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
     }
-
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
 
     /* --- 3. TOC & Smooth Scroll Logic --- */
     const tocBtn = document.querySelector('.toc-btn');
     const tocContent = document.querySelector('.toc-content');
 
     if (tocBtn && tocContent) {
-        // Toggle dropdown on click
         tocBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             tocContent.classList.toggle('show');
         });
 
-        // Close dropdown when clicking away
         window.addEventListener('click', () => tocContent.classList.remove('show'));
 
-        // Smooth Scroll for all anchor links
         document.querySelectorAll('.toc-content a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    const offset = 120; // Adjust based on your nav height
+                    const offset = 140; // Nav + TOC height offset
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -73,16 +77,33 @@ document.addEventListener("DOMContentLoaded", function() {
         const lastMod = new Date(document.lastModified).toLocaleDateString('en-US', {
             year: 'numeric', month: 'long', day: 'numeric'
         });
-        footerText.innerHTML += ` <span class="footer-divider">|</span> Site last updated: ${lastMod}`;
+        // Check if the text already contains the update string to avoid duplicates
+        if (!footerText.innerHTML.includes('Site last updated')) {
+            footerText.innerHTML += ` <span class="footer-divider">|</span> Site last updated: ${lastMod}`;
+        }
     }
 });
 
-/* --- 5. BibTeX Copy Logic (Global Function) --- */
+/* --- 5. Unified BibTeX Copy Logic --- */
+// This remains a global function so it can be called by 'onclick' in the HTML
 function copyBibtex(id, btn) {
-    const bibtex = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(bibtex).then(() => {
-        const original = btn.innerHTML;
+    const bibtexElement = document.getElementById(id);
+    if (!bibtexElement) return;
+
+    const bibtexText = bibtexElement.innerText;
+    
+    navigator.clipboard.writeText(bibtexText).then(() => {
+        const originalContent = btn.innerHTML;
+        
+        // Temporarily change button state while maintaining dimensions
+        btn.classList.add('copied');
         btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
-        setTimeout(() => btn.innerHTML = original, 2000);
+        
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = originalContent;
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy BibTeX: ', err);
     });
 }

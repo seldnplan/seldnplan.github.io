@@ -1,13 +1,16 @@
-/* --- Variables & Reset --- */
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
 :root {
-    --primary: #2563eb;       /* Professional Blue */
-    --text-main: #334155;     /* Dark Slate */
-    --text-heading: #0f172a;  /* Near Black */
-    --bg-light: #f8fafc;      /* Soft Background */
-    --border: #e2e8f0;        /* Divider Color */
+    --primary: #2563eb;       
+    --text-main: #334155;     
+    --text-heading: #0f172a;  
+    --bg-light: #f8fafc;      
+    --border: #e2e8f0;        
     --white: #ffffff;
     --published-green: #22c55e;
     --preprint-yellow: #facc15;
+    --thesis-gold: #d4af37;
 }
 
 * { box-sizing: border-box; }
@@ -27,10 +30,12 @@ h1, h2, h3 { color: var(--text-heading); font-family: 'Georgia', serif; font-wei
 a { color: var(--primary); text-decoration: none; transition: opacity 0.2s; }
 a:hover { text-decoration: underline; }
 
-/* --- Navigation (Global/Sticky) --- */
+/* ==========================================================================
+   2. NAVIGATION & STICKY HEADERS
+   ========================================================================== */
 nav {
     display: flex;
-    justify-content: space-between; /* Pushes toggle to left, links to right */
+    justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
     position: sticky;
@@ -43,70 +48,67 @@ nav {
     margin-bottom: 2rem;
 }
 
-/* --- Navigation Links (Desktop Default) --- */
-.nav-links {
-    display: flex;
-    gap: 60px; /* Spacious gap for professional look */
-    align-items: center;
-}
+.nav-links { display: flex; gap: 60px; align-items: center; }
+.nav-links a { font-size: 1.1rem; font-weight: 500; color: var(--text-main); white-space: nowrap; }
+nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid var(--primary); }
 
-.nav-links a {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-main);
-    padding: 5px 0;
-    white-space: nowrap;
-}
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
 
-/* --- Active & Toggle --- */
-nav a.active {
-    color: var(--primary);
-    font-weight: 700;
-    border-bottom: 2px solid var(--primary);
-}
-
-.menu-toggle {
-    display: none; /* ALWAYS HIDDEN ON DESKTOP */
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--primary);
-    cursor: pointer;
-}
-
-/* --- MOBILE STYLES (Only applies below 600px) --- */
 @media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu-toggle {
-        display: block; /* SHOW ONLY ON MOBILE */
-    }
-
-    .nav-links {
-        display: none; /* HIDE LINKS ON MOBILE UNTIL TOGGLED */
-        flex-direction: column;
-        width: 100%;
-        gap: 20px;
-        padding-top: 15px;
-        margin-left: 0;
-    }
-
-    .nav-links.show {
-        display: flex; /* SHOW WHEN BUTTON IS CLICKED */
-    }
-
-    nav a.active {
-        border-bottom: none;
-        border-left: 3px solid var(--primary);
-        padding-left: 10px;
-    }
+    nav { flex-direction: column; align-items: flex-start; }
+    .menu-toggle { display: block; }
+    .nav-links { display: none; flex-direction: column; width: 100%; gap: 20px; padding-top: 15px; }
+    .nav-links.show { display: flex; }
+    nav a.active { border-bottom: none; border-left: 3px solid var(--primary); padding-left: 10px; }
 }
 
-/* --- Publication Cards & Tags --- */
-.pub-card , .project-card{
+/* ==========================================================================
+   3. TABLE OF CONTENTS (TOC)
+   ========================================================================== */
+.toc-container {
+    position: sticky;
+    top: 80px;
+    z-index: 1100;
+    margin-bottom: 3rem;
+    padding: 10px 0;
+    background-color: var(--bg-light);
+}
+
+.toc-dropdown { position: relative; display: inline-block; }
+.toc-btn {
+    background-color: var(--white);
+    color: var(--primary);
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toc-content {
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    min-width: 220px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-top: 5px;
+    z-index: 1200;
+}
+
+.toc-content.show, .toc-dropdown:hover .toc-content { display: block; }
+.toc-content a { color: var(--text-main); padding: 12px 16px; display: block; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+.toc-content a:hover { background-color: var(--bg-light); color: var(--primary); }
+
+/* ==========================================================================
+   4. CARDS (RESEARCH & PROJECTS)
+   ========================================================================== */
+.pub-card, .project-card {
     background: var(--white);
     padding: 1.5rem;
     border-radius: 12px;
@@ -117,904 +119,78 @@ nav a.active {
 }
 .pub-card:hover, .project-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-.status-tag {
-    display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-    padding: 2px 8px; border-radius: 4px; margin-bottom: 10px;
-}
+.status-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
 .published { border-left: 4px solid var(--published-green); }
-.published .status-tag { background: #dcfce7; color: #166534; }
 .preprint { border-left: 4px solid var(--preprint-yellow); }
-.preprint .status-tag { background: #fef9c3; color: #854d0e; }
-
-/* --- Thesis Card Styling --- */
-.thesis-card {
-    border-left: 5px solid #d4af37 !important; /* Academic Gold */
-    background-color: #fffdf5; /* Subtle cream tint */
-}
-
-.thesis-tag {
-    background: #fef9c3 !important;
-    color: #854d0e !important;
-    border: 1px solid #fde047;
-}
-
-/* Dark Mode Adjustments for Thesis */
-body.dark-mode .thesis-card {
-    background-color: #1e293b;
-    border-left-color: #d4af37 !important;
-}
-
-body.dark-mode .thesis-tag {
-    background: #78350f !important;
-    color: #fef3c7 !important;
-}
-
-/* --- Abstract & BibTeX --- */
-.abstract-toggle { margin-top: 15px; border-top: 1px solid var(--border); padding-top: 10px; }
-.abstract-toggle summary { font-size: 0.9rem; font-weight: 600; color: var(--primary); cursor: pointer; }
-.abstract-content { font-size: 0.9rem; font-style: italic; background: #fcfcfd; padding: 15px; margin-top: 10px; border-left: 3px solid var(--primary); }
-
-.bibtex-text { display: none; background: #f1f5f9; padding: 10px; font-size: 0.8rem; font-family: monospace; border-radius: 6px; margin-top: 10px; white-space: pre-wrap; }
-.copy-btn { font-size: 0.75rem; padding: 5px 10px; background: var(--bg-light); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; margin-top: 10px; }
-
-/* --- Tables --- */
-.schedule-table { width: 100%; border-collapse: collapse; background: var(--white); margin-top: 20px; }
-.schedule-table th, .schedule-table td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
-
-/* --- Responsive Video --- */
-.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px; }
-.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-@media (max-width: 600px) {
-    body { padding: 1rem; }
-    nav { gap: 10px; font-size: 0.9rem; }
-}
-
-/* --- Profile Header Container --- */
-.profile-header {
-    display: flex;
-    /* 'row-reverse' puts the first item in HTML (the image) on the right */
-    flex-direction: row-reverse;
-    /* This centers the text vertically next to the photo */
-    align-items: center; 
-    /* Controls space between photo and text */
-    gap: 30px; 
-    margin-bottom: 3rem;
-}
-
-/* --- The Photo Itself --- */
-.profile-photo {
-    /* CHANGE THESE TWO NUMBERS TO ADJUST SIZE */
-    width: 150px;  /* Try 120px if still too big, or 180px if too small */
-    height: 150px; /* Keep height the same as width for a perfect circle */
-    
-    /* Crucial for keeping the image from stretching */
-    object-fit: cover; 
-    
-    /* Styling */
-    border-radius: 50%; /* Makes it circular. remove for a square */
-    border: 3px solid var(--white);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    flex-shrink: 0; /* Ensures the image doesn't get squished on small screens */
-}
-
-.header-text {
-    flex: 1; /* Takes up remaining space on the left */
-}
-
-/* --- Mobile Tweak --- */
-@media (max-width: 600px) {
-    .profile-header {
-        flex-direction: column; /* Stack vertically on phones */
-        text-align: center;
-        gap: 15px;
-    }
-    .profile-photo {
-        /* Slightly smaller on phones */
-        width: 120px;
-        height: 120px;
-        margin: 0 auto; /* Center horizontally */
-    }
-}
-
-/* --- Contact Section --- */
-.contact-section {
-    margin-top: 5rem;
-    padding: 3rem 0;
-    border-top: 2px solid var(--border);
-}
-
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.contact-info p {
-    margin-bottom: 1.5rem;
-}
-
-/* --- Profile Buttons --- */
-.profile-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.profile-btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-main);
-    font-weight: 500;
-    transition: all 0.2s;
-    text-align: center;
-}
-
-.profile-btn:hover {
-    background: var(--primary);
-    color: var(--white);
-    border-color: var(--primary);
-    text-decoration: none;
-}
-
-/* --- Footer --- */
-.site-footer {
-    text-align: center;
-    margin-top: 4rem;
-    padding: 2rem 0;
-    color: #94a3b8;
-    font-size: 0.85rem;
-}
-
-/* --- Mobile Tweak --- */
-@media (max-width: 600px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-}
-
-.subtitle {
-    font-size: 0.95rem;
-    color: var(--primary);
-    font-weight: 600;
-    margin-top: -10px;
-    margin-bottom: 15px;
-}
-
-/* --- Card Actions (PDF + Abstract) --- */
-.card-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-    border-top: 1px solid var(--border);
-    padding-top: 15px;
-}
-
-.pdf-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: var(--white);
-    color: #dc2626; /* Professional Red for PDF */
-    padding: 6px 12px;
-    border: 1px solid #fca5a5;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: all 0.2s;
-}
-
-.pdf-link:hover {
-    background-color: #fef2f2;
-    border-color: #dc2626;
-    text-decoration: none;
-}
-
-/* Ensure the abstract toggle doesn't add extra top margin when inside card-actions */
-.card-actions .abstract-toggle {
-    margin-top: 0;
-    border-top: none;
-    padding-top: 0;
-}
-
-/* Mobile Tweak */
-@media (max-width: 600px) {
-    .card-actions {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-}
-
-/* --- Disclaimer Notice at Top --- */
-.site-notice {
-    background-color: #fefce8; /* Light yellow alert */
-    border: 1px solid #fef08a;
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    color: #854d0e;
-    margin-bottom: 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.site-notice i {
-    color: #eab308;
-}
-
-/* --- Card Footer & Date --- */
-.card-footer {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px dotted var(--border);
-    text-align: right;
-}
-
-.update-date {
-    font-size: 0.75rem;
-    color: #94a3b8;
-    font-style: italic;
-    font-family: 'Inter', sans-serif;
-}
-
-/* --- WIP Card Styling --- */
-.project-card.wip {
-    border: 2px dashed #cbd5e1 !important; /* Forces the dashed border on all sides */
-    background-color: #fcfcfd;
-    border-left: 2px dashed #cbd5e1 !important; /* Ensures the left side matches the rest */
-}
-
-.wip .status-tag {
-    background: #e0f2fe; /* Light Blue background */
-    color: #0369a1;      /* Dark Blue text */
-}
-
-
-.wip-label {
-    font-size: 0.85rem;
-    color: #64748b;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Subtle change on hover to indicate interactivity */
-.project-card.wip:hover {
-    border-color: var(--primary) !important;
-    background-color: #ffffff;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-/* --- Dark Mode Colors --- */
-body.dark-mode {
-    --bg-light: #0f172a;      /* Dark Navy Background */
-    --text-main: #cbd5e1;     /* Light Grey Text */
-    --text-heading: #f8fafc;  /* White Headings */
-    --white: #1e293b;         /* Darker Card Background */
-    --border: #334155;        /* Subtle Dark Border */
-}
-
-/* Specific Dark Mode Adjustments */
-body.dark-mode .pub-card, 
-body.dark-mode .project-card {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .site-notice {
-    background-color: #1e1b4b;
-    border-color: #312e81;
-    color: #e0e7ff;
-}
-
-body.dark-mode nav {
-    background-color: rgba(15, 23, 42, 0.9); /* Dark sticky nav */
-}
-
-/* --- Dark Mode Specific Button Fixes --- */
-body.dark-mode .copy-btn {
-    background-color: #334155; /* Mid-tone slate for contrast */
-    color: #f8fafc;            /* Near white text */
-    border-color: #475569;
-}
-
-body.dark-mode .copy-btn:hover {
-    background-color: var(--primary);
-    border-color: var(--primary);
-    color: var(--white);
-}
-
-/* Fix for BibTeX text block visibility */
-body.dark-mode .bibtex-text {
-    background-color: #1e293b;
-    color: #e2e8f0;
-    border: 1px solid var(--border);
-}
-
-body.dark-mode .wip-label {
-    color: #94a3b8; /* Lighter grey for the 'Draft in progress' text */
-}
-
-body.dark-mode .wip {
-    border-color: #475569 !important; /* Slightly brighter dashed line */
-    background-color: #111827;
-}
-
-/* --- Floating Theme Toggle Button --- */
-.theme-toggle {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: white;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    transition: transform 0.2s ease;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-
-/* --- Links Grid Layout --- */
-.links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 1.5rem;
-}
-
-.link-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    text-decoration: none !important; /* Prevents underline on the whole card */
-}
-
-.link-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.link-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.link-content strong {
-    color: var(--text-heading);
-    font-size: 1.05rem;
-}
-
-.link-content span {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-top: 4px;
-}
-
-.link-card i {
-    font-size: 0.8rem;
-    color: var(--border);
-    transition: color 0.2s;
-}
-
-.link-card:hover i {
-    color: var(--primary);
-}
-
-/* Dark Mode adjustment for Link Spans */
-body.dark-mode .link-content span {
-    color: #94a3b8;
-}
-
-/* --- Event Cards --- */
-.event-card {
-    display: flex;
-    gap: 25px;
-    background: var(--white);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    margin-bottom: 1.5rem;
-    transition: transform 0.2s;
-}
-
-.event-card:hover {
-    transform: translateX(5px);
-    border-color: var(--primary);
-}
-
-/* Date Block */
-.event-date {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    height: 80px;
-    background: var(--bg-light);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-
-.event-date .month {
-    font-weight: 800;
-    color: var(--primary);
-    font-size: 1.1rem;
-}
-
-.event-date .year {
-    font-size: 0.85rem;
-    color: var(--text-main);
-}
-
-/* Info Section */
-.event-info h3 {
-    margin: 5px 0;
-    font-size: 1.25rem;
-}
-
-.event-meta {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 10px;
-}
-
-.role-tag {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    background: #f1f5f9;
-    color: #475569;
-    padding: 2px 8px;
-    border-radius: 4px;
-}
-
-.upcoming .role-tag {
-    background: #e0f2fe;
-    color: #0369a1;
-}
-
-.event-link {
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-/* Mobile Tweaks */
-@media (max-width: 600px) {
-    .event-card {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .event-date {
-        flex-direction: row;
-        width: 100%;
-        height: auto;
-        padding: 5px;
-        gap: 10px;
-    }
-}
-
-/* Dark Mode Overrides */
-body.dark-mode .event-date {
-    background: #1e293b;
-}
-body.dark-mode .role-tag {
-    background: #334155;
-    color: #cbd5e1;
-}
-
-/* --- Recurring/Live Seminar Styling --- */
-.event-card.recurring {
-    border-left: 4px solid var(--primary);
-    background-color: #f0f9ff; /* Very light blue tint */
-}
-
-.live-tag {
-    background: #dcfce7 !important; /* Light green */
-    color: #166534 !important;    /* Dark green */
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.live-tag i {
-    font-size: 0.5rem;
-    color: #22c55e; /* Bright green pulse */
-}
-
-/* Dark Mode Overrides for Recurring Cards */
-body.dark-mode .event-card.recurring {
-    background-color: #1e293b;
-    border-left-color: var(--primary);
-}
-
-body.dark-mode .live-tag {
-    background: #064e3b !important;
-    color: #4ade80 !important;
-}
-
-/* --- Teaching TOC Styling --- */
-.toc-container {
-    position: sticky;
-    top: 80px; /* Sits just below the main sticky nav */
-    z-index: 900;
-    margin-bottom: 3rem;
-    border-bottom: none; /* Removes the nav divider if present */
-}
-
-.toc-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.toc-btn {
-    background-color: var(--white);
-    color: var(--primary);
-    padding: 10px 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.2s;
-}
-
-.toc-btn:hover {
-    background-color: var(--primary);
-    color: white;
-}
-
-.toc-content {
-    display: none; /* Hidden by default */
-    position: absolute;
-    background-color: var(--white);
-    min-width: 200px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    margin-top: 5px;
-    overflow: hidden;
-}
-
-.toc-content a {
-    color: var(--text-main);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.9rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.toc-content a:last-child { border-bottom: none; }
-
-.toc-content a:hover {
-    background-color: var(--bg-light);
-    color: var(--primary);
-}
-
-/* Show the dropdown when hovering (Desktop) */
-.toc-dropdown:hover .toc-content {
-    display: block;
-}
-
-/* --- Dark Mode Support --- */
-body.dark-mode .toc-btn {
-    background-color: var(--white);
-    border-color: var(--primary);
-}
-
-body.dark-mode .toc-content {
-    background-color: #1e293b;
-}
-
-/* --- Lecture Archive Toggle --- */
-.lecture-archive {
-    margin-top: 20px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-light);
-    overflow: hidden;
-}
-
-.lecture-archive summary {
-    padding: 12px 15px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary);
-    cursor: pointer;
-    list-style: none; /* Removes default arrow */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.lecture-archive summary::-webkit-details-marker {
-    display: none; /* Hides arrow in Safari */
-}
-
-.lecture-archive[open] summary {
-    border-bottom: 1px solid var(--border);
-    background: var(--white);
-}
-
-.lecture-list-container {
-    padding: 10px;
-    background: var(--white);
-}
-
-/* Adjust the schedule table for within a card */
-.lecture-list-container .schedule-table {
-    margin-top: 0;
-    font-size: 0.85rem;
-}
-
-.lecture-list-container .schedule-table th {
-    background: var(--bg-light);
-    color: var(--text-heading);
-}
-
-/* Dark Mode Support */
-body.dark-mode .lecture-archive {
-    background: #1e293b;
-}
-body.dark-mode .lecture-list-container {
-    background: #0f172a;
-}
-
-/* --- Video Link Styling --- */
-.video-link {
-    color: #ef4444; /* A professional red for video play buttons */
-    font-size: 1.1rem;
-    transition: transform 0.2s, color 0.2s;
-    display: inline-block;
-}
-
-.video-link:hover {
-    color: #b91c1c;
-    transform: scale(1.2);
-    text-decoration: none;
-}
-
-/* Ensure table cells align icons nicely */
-.schedule-table td:nth-child(3),
-.schedule-table td:nth-child(4) {
-    text-align: center;
-    width: 60px;
-}
-
-/* Dark Mode adjustment */
-body.dark-mode .video-link {
-    color: #f87171;
-}
+.thesis-card { border-left: 5px solid var(--thesis-gold) !important; background-color: #fffdf5; }
 
 /* ==========================================================================
-   TEACHING PAGE: TABLE OF CONTENTS (TOC) 
+   5. UNIFIED ACTION BAR & BUTTONS
    ========================================================================== */
-
-.toc-container {
-    position: sticky;
-    top: 80px;         /* Positioned just below your main sticky nav */
-    z-index: 1100;     /* Ensures it stays above the course cards */
-    margin-bottom: 3rem;
-    padding: 10px 0;
-    background-color: var(--bg-light); /* Matches page background */
-}
-
-.toc-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.toc-btn {
-    background-color: var(--white);
-    color: var(--primary);
-    padding: 10px 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    cursor: pointer;
+.card-actions {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
 }
 
-.toc-content {
-    display: none;      /* Hidden by default */
-    position: absolute;
-    background-color: var(--white);
-    min-width: 220px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    margin-top: 5px;
-    z-index: 1200;      /* Highest layer */
-}
-
-/* Logic for JS Toggle and Hover */
-.toc-content.show, 
-.toc-dropdown:hover .toc-content {
-    display: block;
-}
-
-.toc-content a {
-    color: var(--text-main);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.9rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.toc-content a:hover {
-    background-color: var(--bg-light);
-    color: var(--primary);
-}
-
-/* Dark Mode Fixes */
-body.dark-mode .toc-container { background-color: var(--bg-light); }
-body.dark-mode .toc-btn { background-color: var(--white); }
-body.dark-mode .toc-content { background-color: var(--white); }
-
-
-/* --- Reference List Styling --- */
-.reference-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.reference-list li {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    padding-left: 20px;
-    text-indent: -20px; /* Hanging indent for academic style */
-}
-
-.reference-list strong {
-    color: var(--primary);
-    font-family: monospace;
-    margin-right: 5px;
-}
-
-/* Dark mode tweak */
-body.dark-mode .reference-list li {
-    color: #cbd5e1;
-}
-
-/* --- Course Description Styling --- */
-.description-content {
-    padding: 5px 10px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-main);
-}
-
-.description-content p {
-    margin-bottom: 1rem;
-}
-
-.description-content ul {
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.description-content li {
-    margin-bottom: 0.5rem;
-}
-
-/* Dark mode adjustment */
-body.dark-mode .description-content {
-    color: #cbd5e1;
-}
-
-/* --- Primary Toggle (Course Description) Visual Distinction --- */
-
-/* 1. Make the text bolder and slightly larger */
-.lecture-archive.archive-primary summary {
-    font-weight: 700;       /* Bolder than the standard 600 */
-    font-size: 0.95rem;     /* Slightly larger than standard 0.9rem */
-    color: var(--text-heading); /* Use dark text instead of blue link color */
-}
-
-/* 2. Target the icon specifically to change its color and size */
-.lecture-archive.archive-primary summary i {
-    color: var(--text-heading); /* Matches the header text color */
-    font-size: 1.1rem;          /* Slightly larger icon for emphasis */
-    margin-right: 12px;         /* A bit more space between icon and text */
-}
-
-/* Optional: A subtle background change when the primary toggle is open */
-.lecture-archive.archive-primary[open] summary {
-    background-color: #f8fafc; /* A very subtle offset from pure white */
-    border-bottom-color: var(--primary); /* Adds a blue line under the header when open */
-}
-
-/* --- Dark Mode Adjustments --- */
-body.dark-mode .lecture-archive.archive-primary summary,
-body.dark-mode .lecture-archive.archive-primary summary i {
-    color: var(--white); /* Bright white in dark mode for contrast */
-}
-
-body.dark-mode .lecture-archive.archive-primary[open] summary {
-    background-color: #334155; /* Slightly lighter than the card bg */
-}
-body.dark-mode .lecture-archive.archive-primary summary i {
-    color: var(--text-heading); /* Ensure this variable is set to a light color in dark mode */
-}
-
-/* --- Journal Link Styling --- */
-.journal-link {
+.action-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--white);
-    color: #475569; /* Slate Grey/Blue */
-    padding: 6px 12px;
-    border: 1px solid #94a3b8;
-    border-radius: 6px;
+    padding: 8px 14px;
     font-size: 0.85rem;
     font-weight: 600;
-    transition: all 0.2s;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-light);
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    text-decoration: none !important;
+    height: 38px;
 }
 
-.journal-link:hover {
-    background-color: #f1f5f9;
-    border-color: var(--primary);
-    color: var(--primary);
-    text-decoration: none;
+.action-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); background: var(--white); }
+.action-btn.pdf i { color: #ef4444; }
+.action-btn.journal i, .action-btn.abstract i { color: var(--primary); }
+
+/* Abstract Toggle specifically as a button */
+.abstract-details { display: inline-block; }
+.abstract-details summary { list-style: none; }
+.abstract-details summary::-webkit-details-marker { display: none; }
+.abstract-details[open] summary { background: var(--primary); color: white; border-color: var(--primary); }
+.abstract-details[open] summary i { color: white; transform: rotate(90deg); }
+.abstract-content { font-size: 0.9rem; font-style: italic; background: #fcfcfd; padding: 15px; margin-top: 10px; border-left: 3px solid var(--primary); }
+
+/* ==========================================================================
+   6. TABLES & TEACHING
+   ========================================================================== */
+.schedule-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.schedule-table th, .schedule-table td { padding: 12px; border-bottom: 1px solid var(--border); text-align: left; }
+.lecture-archive { margin-top: 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-light); overflow: hidden; }
+.lecture-archive summary { padding: 12px 15px; font-size: 0.9rem; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 10px; }
+
+/* ==========================================================================
+   7. DARK MODE OVERRIDES
+   ========================================================================== */
+body.dark-mode {
+    --bg-light: #0f172a;      
+    --text-main: #cbd5e1;     
+    --text-heading: #f8fafc;  
+    --white: #1e293b;         
+    --border: #334155;        
 }
 
-/* Ensure buttons in card-actions sit nicely together */
-.card-actions {
-    display: flex;
-    flex-wrap: wrap; /* Allows wrapping on very small phones */
-    align-items: center;
-    gap: 12px; 
-    margin-top: 20px;
-    border-top: 1px solid var(--border);
-    padding-top: 15px;
-}
+body.dark-mode .action-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+body.dark-mode .toc-container, body.dark-mode .toc-content { background-color: var(--bg-light); }
+body.dark-mode .lecture-archive { background: #1e293b; }
 
-/* Dark Mode adjustment for Journal Link */
-body.dark-mode .journal-link {
-    color: #cbd5e1;
-    border-color: #475569;
-    background-color: #1e293b;
-}
-
-body.dark-mode .journal-link:hover {
-    color: var(--primary);
-    border-color: var(--primary);
-}
-
-
+/* ==========================================================================
+   8. MISC (FOOTER, TOGGLES, UTILS)
+   ========================================================================== */
+.site-footer { text-align: center; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); color: #94a3b8; font-size: 0.85rem; }
+.theme-toggle { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; z-index: 2000; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: transform 0.2s ease; }
+.theme-toggle:hover { transform: scale(1.1); }
