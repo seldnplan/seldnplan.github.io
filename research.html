@@ -37,11 +37,23 @@
     </div>
 </nav>
 
-<header>
-    <h1>In progress</h1>
-</header>
+<nav class="toc-container">
+    <div class="toc-dropdown">
+        <button class="toc-btn">
+            Browse Sections <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="toc-content">
+            <a href="#in-progress">In Progress</a>
+            <a href="#preprints">Preprints</a>
+            <a href="#published">Published Papers</a>
+        </div>
+    </div>
+</nav>
 
-<div class="project-card wip">
+<section id="in-progress">
+    <h2>In Progress</h2>
+    </section>
+    <div class="project-card wip">
     <span class="status-tag">Work in Progress</span>
     <h3>$p$-isogenies with $\mathcal{G}$-structure and their applications (joint with Si Ying Lee) </h3>
     <p>A new approach to isogenies in mixed characteristic via apertures and the Vinberg monoid.</p>
@@ -76,16 +88,14 @@
 </div>
 
 
-<header>
-    <h1>Preprints</h1>
+<section id="preprints" style="margin-top: 4rem;">
+    <h2>Preprints</h2>
     <div class="site-notice">
         <i class="fa-solid fa-circle-info"></i> 
         Note: The PDF files hosted here are maintained regularly and are usually more up-to-date than the corresponding versions on the arXiv.
     </div>
-</header>
-
-<section>
-    <div class="project-card preprint">
+    
+ <div class="project-card preprint">
         <span class="status-tag">Preprint</span>
         <h3>An algebraicity conjecture of Drinfeld and the moduli of $p$-divisible groups (joint with Zachary Gardner)</h3>
         
@@ -108,11 +118,11 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
             <span class="update-date">Last updated: December 30, 2025</span>
         </div>
     </div>
-</section>
+    </section>
 
-<header>
-    <h1>Published papers</h1>
-</header>
+<section id="published" style="margin-top: 4rem;">
+    <h2>Published Papers</h2>
+    </section>
 
 <script src="script.js"></script>
 
