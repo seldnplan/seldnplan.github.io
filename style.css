@@ -861,3 +861,31 @@ body.dark-mode .toc-container { background-color: var(--bg-light); }
 body.dark-mode .toc-btn { background-color: var(--white); }
 body.dark-mode .toc-content { background-color: var(--white); }
 
+
+/* --- Reference List Styling --- */
+.reference-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.reference-list li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding-left: 20px;
+    text-indent: -20px; /* Hanging indent for academic style */
+}
+
+.reference-list strong {
+    color: var(--primary);
+    font-family: monospace;
+    margin-right: 5px;
+}
+
+/* Dark mode tweak */
+body.dark-mode .reference-list li {
+    color: #cbd5e1;
+}
+
+
