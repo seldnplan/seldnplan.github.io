@@ -120,7 +120,7 @@ cards.forEach(card => {
         if (container) {
             const newBadge = document.createElement('span');
             newBadge.className = 'new-badge';
-            newBadge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
+            newBadge.innerHTML = '<i class="fa-solid fa-sparkles"></i> Updated';
             container.appendChild(newBadge);
         }
     }
