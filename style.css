@@ -888,4 +888,31 @@ body.dark-mode .reference-list li {
     color: #cbd5e1;
 }
 
+/* --- Course Description Styling --- */
+.description-content {
+    padding: 5px 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+.description-content p {
+    margin-bottom: 1rem;
+}
+
+.description-content ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.description-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Dark mode adjustment */
+body.dark-mode .description-content {
+    color: #cbd5e1;
+}
+
+
 
