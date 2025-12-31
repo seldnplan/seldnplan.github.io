@@ -107,21 +107,30 @@ function copyBibtex(id, btn) {
         console.error('Failed to copy BibTeX: ', err);
     });
 }
-
-/* --- Automatic 'New' Badge Logic --- */
+/* --- Automatic 'New' vs 'Updated' Badge Logic --- */
 const cards = document.querySelectorAll('.project-card[data-date]');
 const thirtyDaysInMs = 30 * 24 * 60 * 60 * 1000;
-const today = new Date();
+const today = new Date(); // Current date: Dec 31, 2025
 
 cards.forEach(card => {
     const updateDate = new Date(card.getAttribute('data-date'));
+    const statusType = card.getAttribute('data-status'); // Check for the switch
+
     if (today - updateDate < thirtyDaysInMs) {
         const container = card.querySelector('.badge-container');
-        if (container) {
-            const newBadge = document.createElement('span');
-            newBadge.className = 'new-badge';
-            newBadge.innerHTML = '<i class="fa-solid fa-sparkles"></i> Updated';
-            container.appendChild(newBadge);
+        if (container && !container.querySelector('.status-badge')) {
+            const badge = document.createElement('span');
+            
+            // Logic to determine if it's 'New' or 'Updated'
+            if (statusType === 'updated') {
+                badge.className = 'status-badge updated-badge';
+                badge.innerHTML = '<i class="fa-solid fa-pen-nib"></i> Updated';
+            } else {
+                badge.className = 'status-badge new-badge';
+                badge.innerHTML = '<i class="fa-solid fa-sparkles"></i> New';
+            }
+            
+            container.appendChild(badge);
         }
     }
 });
