@@ -712,3 +712,83 @@ body.dark-mode .toc-content {
     background-color: #1e293b;
 }
 
+/* --- Lecture Archive Toggle --- */
+.lecture-archive {
+    margin-top: 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-light);
+    overflow: hidden;
+}
+
+.lecture-archive summary {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none; /* Removes default arrow */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lecture-archive summary::-webkit-details-marker {
+    display: none; /* Hides arrow in Safari */
+}
+
+.lecture-archive[open] summary {
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+}
+
+.lecture-list-container {
+    padding: 10px;
+    background: var(--white);
+}
+
+/* Adjust the schedule table for within a card */
+.lecture-list-container .schedule-table {
+    margin-top: 0;
+    font-size: 0.85rem;
+}
+
+.lecture-list-container .schedule-table th {
+    background: var(--bg-light);
+    color: var(--text-heading);
+}
+
+/* Dark Mode Support */
+body.dark-mode .lecture-archive {
+    background: #1e293b;
+}
+body.dark-mode .lecture-list-container {
+    background: #0f172a;
+}
+
+/* --- Video Link Styling --- */
+.video-link {
+    color: #ef4444; /* A professional red for video play buttons */
+    font-size: 1.1rem;
+    transition: transform 0.2s, color 0.2s;
+    display: inline-block;
+}
+
+.video-link:hover {
+    color: #b91c1c;
+    transform: scale(1.2);
+    text-decoration: none;
+}
+
+/* Ensure table cells align icons nicely */
+.schedule-table td:nth-child(3),
+.schedule-table td:nth-child(4) {
+    text-align: center;
+    width: 60px;
+}
+
+/* Dark Mode adjustment */
+body.dark-mode .video-link {
+    color: #f87171;
+}
+
