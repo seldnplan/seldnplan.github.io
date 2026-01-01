@@ -9,60 +9,42 @@
 </head>
 <body>
 
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="research.html">Research</a>
-            <a href="teaching.html">Teaching</a>
-            <a href="contact.html" class="active">Contact</a>
+    <main class="contact-form-container">
+    <div class="pub-card"> <div class="badge-container">
+            <span class="status-tag" style="background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe;">
+                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> Inquiry Form
+            </span>
         </div>
-        <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
-    </nav>
 
-    <main>
-        <div class="pub-card" style="max-width: 650px; margin: 0 auto;">
-            <div class="badge-container">
-                <span class="status-tag" style="background: var(--bg-light); color: var(--primary); border: 1px solid var(--border);">Get in Touch</span>
+        <div class="form-header">
+            <h2>Let's Connect</h2>
+            <p>I am available for research discussions, academic collaboration, or inquiries regarding my work at Boston College.</p>
+        </div>
+
+        <form action="YOUR_GOOGLE_URL/formResponse" method="POST">
+            <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Full Name</label>
+                <input type="text" name="entry.12345" class="form-input" placeholder="e.g. Jean-Pierre Serre" required>
             </div>
-            
-            <h2 style="margin-bottom: 1rem;">Contact & Inquiries</h2>
-            <p style="margin-bottom: 2rem; font-size: 0.95rem; color: var(--text-main);">
-                Please use the form below for academic inquiries, research collaborations, or student-related questions.
-            </p>
 
-            <form action="https://docs.google.com/forms/u/0/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_self">
-                
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="entry.1111111" class="form-input" placeholder="Your Name" required>
-                </div>
+            <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Email Address</label>
+                <input type="email" name="entry.67890" class="form-input" placeholder="email@university.edu" required>
+            </div>
 
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" name="entry.2222222" class="form-input" placeholder="email@example.edu" required>
-                </div>
+            <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Message</label>
+                <textarea name="entry.11223" class="form-input" rows="6" placeholder="Your message here..." required></textarea>
+            </div>
 
-                <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" name="entry.3333333" class="form-input" placeholder="Research Inquiry / Advising">
-                </div>
-
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea name="entry.4444444" class="form-input" rows="5" placeholder="Your message here..." required></textarea>
-                </div>
-
-                <div class="card-actions">
-                    <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary);">
-                        <i class="fa-solid fa-paper-plane"></i> Send Message
-                    </button>
-                    <button type="reset" class="action-btn">
-                        <i class="fa-solid fa-rotate-left"></i> Clear
-                    </button>
-                </div>
-            </form>
-        </div>
-    </main>
+            <div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 1.5rem;">
+                <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0 25px;">
+                    <i class="fa-solid fa-paper-plane"></i> Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
 
     <footer class="site-footer">
         <p>© 2025 Keerthi Madapusi</p>
