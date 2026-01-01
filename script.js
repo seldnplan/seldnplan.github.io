@@ -140,3 +140,28 @@ cards.forEach(card => {
         }
     }
 });
+
+/* --- Live Page Search Logic --- */
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById('pageSearch');
+    
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+            const query = searchInput.value.toLowerCase();
+            // Selects both publication and project cards
+            const cards = document.querySelectorAll('.pub-card, .project-card');
+
+            cards.forEach(card => {
+                // Gets all text inside the card to search through titles, abstracts, and tags
+                const text = card.innerText.toLowerCase();
+                
+                if (text.includes(query)) {
+                    card.style.display = ""; // Shows card
+                } else {
+                    card.style.display = "none"; // Hides card
+                }
+            });
+        });
+    }
+});
+

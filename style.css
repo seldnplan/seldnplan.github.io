@@ -900,3 +900,15 @@ body.dark-mode .form-input {
     border-color: #334155;
     color: #cbd5e1;
 }
+
+
+/* Page search styling */
+.search-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns search to the right for a cleaner look */
+}
+
+/* Optional: Subtle animation when cards disappear */
+.pub-card, .project-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
