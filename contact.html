@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Keerthi Madapusi</title>
+    <title>Registration | The Australian Direction</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,34 +12,54 @@
     <main class="contact-form-container">
     <div class="pub-card"> <div class="badge-container">
             <span class="status-tag" style="background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe;">
-                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> Inquiry Form
+                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> Registration Form
             </span>
         </div>
 
         <div class="form-header">
-            <h2>Let's Connect</h2>
-            <p>I am available for research discussions, academic collaboration, or inquiries regarding my work at Boston College.</p>
+            <h2>Register for the Australian Direction</h2>
+            <p>Please fill in the following information by *date*.</p>
         </div>
 
         <form action="YOUR_GOOGLE_URL/formResponse" method="POST">
             <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Full Name</label>
-                <input type="text" name="entry.12345" class="form-input" placeholder="e.g. Jean-Pierre Serre" required>
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Email address</label>
+                <input type="email" name="email" class="form-input" placeholder="e.g. kisin@math.harvard.edu" required>
             </div>
 
             <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Email Address</label>
-                <input type="email" name="entry.67890" class="form-input" placeholder="email@university.edu" required>
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">First or given name(s)</label>
+                <input type="text" name="first_name" class="form-input" placeholder="e.g. Matthew" required>
             </div>
 
             <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Message</label>
-                <textarea name="entry.11223" class="form-input" rows="6" placeholder="Your message here..." required></textarea>
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Last or family name(s)</label>
+                <input type="text" name="last_name" class="form-input" placeholder="e.g. Farb" required>
+            </div>
+
+             <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Badge name (as it should appear on the badge) </label>
+                <input type="text" name="badge_name" class="form-input" placeholder="e.g. Mickey Mouse" required>
+            </div>
+
+            <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Affiliation (as it should appear on the badge) </label>
+                <input type="text" name="affiliation" class="form-input" placeholder="e.g. University of Utah" required>
+            </div>
+
+            <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Arrival date</label>
+                <input type="date" name="arrival_date" class="form-input" placeholder="e.g. Aug 9, 2026" required>
+            </div>
+
+            <div class="form-group">
+                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Departure date</label>
+                <input type="date" name="departure_date" class="form-input" placeholder="e.g. Aug 15, 2026" required>
             </div>
 
             <div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 1.5rem;">
                 <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0 25px;">
-                    <i class="fa-solid fa-paper-plane"></i> Send Message
+                    <i class="fa-solid fa-paper-plane"></i> Submit
                 </button>
             </div>
         </form>
