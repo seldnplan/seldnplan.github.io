@@ -79,9 +79,9 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
     background-color: var(--bg-light);
 }
 
-/* Fixes the "Floating Icon" from Screenshot 2 */
+/* Fixes Floating Icon */
 .search-bar {
-    position: relative; /* Anchor point for the icon */
+    position: relative;
     width: 100%;
     max-width: 350px;
 }
@@ -96,12 +96,12 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
 }
 
 .search-bar .form-input {
-    padding: 10px 15px 10px 40px !important; /* Clears the icon */
+    padding: 10px 15px 10px 40px !important;
     height: 42px;
     margin-bottom: 0;
 }
 
-/* Fixes the Dropdown from Screenshot 3 */
+/* Fixes Wonky Dropdown Overlap */
 .toc-dropdown { position: relative; }
 
 .toc-btn {
@@ -116,13 +116,12 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
     color: var(--primary);
     border-radius: 8px;
     font-weight: 600;
-    cursor: pointer;
 }
 
 .toc-content {
     display: none;
     position: absolute;
-    top: 100%; /* Fixes the vertical alignment issue in Screenshot 3 */
+    top: 100%;
     left: 0;
     background-color: var(--white);
     min-width: 220px;
@@ -135,6 +134,18 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
 
 .toc-content.show { display: block; }
 
+/* CRITICAL: Fixes the links stacking horizontally */
+.toc-content a {
+    display: block !important; 
+    padding: 12px 16px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+.toc-content a:last-child { border-bottom: none; }
 
 /* ==========================================================================
    4. CARDS (RESEARCH & PROJECTS)
@@ -494,41 +505,32 @@ body.dark-mode .abstract-content {
     border-left-color: #60a5fa;  /* Brighter blue for the accent border */
 }
 
-/* --- Dark Mode for Page Controls & Search --- */
-body.dark-mode .page-controls {
-    background-color: var(--bg-light); /* Shifts to #0f172a */
-    border-bottom-color: var(--border);
-}
-
-body.dark-mode .search-bar i {
-    color: #94a3b8; /* Lighter grey for visibility on dark navy */
-}
-
-body.dark-mode .search-bar .form-input {
-    background-color: #0f172a; /* Matches deep navy background */
-    border-color: #334155;
-    color: #cbd5e1;
-}
-
-body.dark-mode .search-bar .form-input:focus {
-    background-color: #1e293b; /* Slightly lighter on focus */
-    border-color: var(--primary);
-}
-
-/* --- Dark Mode for Table of contents --- */
+/* --- Dark Mode Page Controls --- */
+body.dark-mode .page-controls { background-color: var(--bg-light); }
 
 body.dark-mode .toc-btn {
-    background-color: var(--white); /* Shifts to #1e293b */
-    border-color: var(--primary);
+    background-color: var(--white);
+    color: #60a5fa; /* Brighter blue for visibility */
+    border-color: #3b82f6;
 }
 
-/* Ensure the dropdown content matches the card theme in dark mode */
 body.dark-mode .toc-content {
-    background-color: #1e293b; 
-    border-color: var(--border);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4); /* Deeper shadow for dark mode */
+    background-color: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
+body.dark-mode .toc-content a {
+    color: #cbd5e1 !important; /* Ensure text isn't black */
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .toc-content a:hover {
+    background-color: #334155;
+    color: white !important;
+}
+
+body.dark-mode .search-bar i { color: #94a3b8; }
 
 
 /* ==========================================================================
