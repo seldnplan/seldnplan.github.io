@@ -141,27 +141,28 @@ cards.forEach(card => {
     }
 });
 
-/* --- Live Page Search Logic --- */
+
+/* --- Animated Live Page Search Logic --- */
 document.addEventListener("DOMContentLoaded", function() {
     const searchInput = document.getElementById('pageSearch');
     
     if (searchInput) {
-        searchInput.addEventListener('keyup', function() {
+        // Changed 'keyup' to 'input' for a more responsive feel across all devices
+        searchInput.addEventListener('input', function() {
             const query = searchInput.value.toLowerCase();
-            // Selects both publication and project cards
             const cards = document.querySelectorAll('.pub-card, .project-card');
 
             cards.forEach(card => {
-                // Gets all text inside the card to search through titles, abstracts, and tags
                 const text = card.innerText.toLowerCase();
                 
                 if (text.includes(query)) {
-                    card.style.display = ""; // Shows card
+                    // Removes the hidden state to trigger the fade-in animation
+                    card.classList.remove('card-hidden');
                 } else {
-                    card.style.display = "none"; // Hides card
+                    // Adds the hidden state to trigger the fade-out/shrink animation
+                    card.classList.add('card-hidden');
                 }
             });
         });
     }
 });
-
