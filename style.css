@@ -171,6 +171,43 @@ body.dark-mode .update-date {
     margin-bottom: 0;         /* Reset margin so flexbox handles spacing */
 }
 
+/* --- Erratum Link Styling --- */
+.erratum-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fffbeb; /* Light amber background */
+    color: #92400e;            /* Dark amber text */
+    padding: 6px 12px;
+    border: 1px solid #fcd34d;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.erratum-link:hover {
+    background-color: #fef3c7;
+    border-color: #92400e;
+    text-decoration: none;
+}
+
+/* Dark Mode adjustment for Erratum */
+body.dark-mode .erratum-link {
+    background-color: #451a03;
+    color: #fbbf24;
+    border-color: #78350f;
+}
+
+/* Mobile Tweak: Ensure the warning stands out on small screens */
+@media (max-width: 600px) {
+    .erratum-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
 /* --- Status Specific Colors --- */
 
 /* Preprint - Yellow/Orange */
