@@ -141,26 +141,23 @@ cards.forEach(card => {
     }
 });
 
-
-/* --- Animated Live Page Search Logic --- */
+/* --- Deep Search Logic (Parsing Titles + Hidden Abstracts) --- */
 document.addEventListener("DOMContentLoaded", function() {
     const searchInput = document.getElementById('pageSearch');
     
     if (searchInput) {
-        // Changed 'keyup' to 'input' for a more responsive feel across all devices
         searchInput.addEventListener('input', function() {
             const query = searchInput.value.toLowerCase();
             const cards = document.querySelectorAll('.pub-card, .project-card');
 
             cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
+                // 'textContent' grabs text from hidden abstracts/bibtex blocks
+                const text = card.textContent.toLowerCase();
                 
                 if (text.includes(query)) {
-                    // Removes the hidden state to trigger the fade-in animation
-                    card.classList.remove('card-hidden');
+                    card.classList.remove('card-hidden'); //
                 } else {
-                    // Adds the hidden state to trigger the fade-out/shrink animation
-                    card.classList.add('card-hidden');
+                    card.classList.add('card-hidden'); //
                 }
             });
         });
