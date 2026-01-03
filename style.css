@@ -1122,4 +1122,25 @@ body.dark-mode .form-input[type="date"] {
     border-color: #334155;
 }
 
+/* --- Tighten Top Spacing --- */
+.contact-form-container .pub-card {
+    padding-top: 1rem; /* Reduced from 1.5rem to pull content up */
+}
+
+.form-header {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center; /* Centers the title for a formal look */
+}
+
+.form-header h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+/* Ensure the badge container doesn't create phantom height */
+.contact-form-container .badge-container {
+    margin-bottom: 0.5rem;
+}
+
 
