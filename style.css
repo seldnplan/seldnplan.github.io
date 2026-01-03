@@ -1082,4 +1082,26 @@ body.dark-mode .tooltip-icon[title]:hover::after {
     border: 1px solid #475569;
 }
 
+/* --- Conference Link Styling --- */
+.conference-link {
+    background: var(--white);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.conference-link:hover {
+    background: var(--bg-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Dark Mode Alignment */
+body.dark-mode .conference-link {
+    background: #1e293b;
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
 
