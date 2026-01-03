@@ -1143,4 +1143,14 @@ body.dark-mode .form-input[type="date"] {
     margin-bottom: 0.5rem;
 }
 
+/* Align labels to the left for better legibility */
+.form-group label.status-tag {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: #94a3b8; /* Slate grey for a high-end feel */
+}
+
 
