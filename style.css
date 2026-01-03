@@ -1104,4 +1104,22 @@ body.dark-mode .conference-link {
     color: #cbd5e1;
 }
 
+/* --- Dark Mode Date Picker Fix --- */
+body.dark-mode input[type="date"] {
+    color-scheme: dark; /* Standard way to tell the browser to use dark UI elements */
+    color: #cbd5e1;     /* Ensures the text is light grey */
+}
+
+/* Specifically targeting the calendar icon for Chrome/Safari/Edge */
+body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) brightness(1.2); /* Flips the black icon to a light grey */
+    cursor: pointer;
+}
+
+/* Ensuring the input background matches your form theme */
+body.dark-mode .form-input[type="date"] {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
 
