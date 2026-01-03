@@ -1032,4 +1032,54 @@ input[type="radio"] {
 body.dark-mode .form-question { color: var(--text-heading); }
 body.dark-mode .radio-label { color: var(--text-main); }
 
+/* --- Tooltip Styling --- */
+.tooltip-icon {
+    color: #94a3b8;
+    cursor: help;
+    margin-left: 6px;
+    font-size: 0.85rem;
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-icon:hover {
+    color: var(--primary);
+}
+
+/* Tooltip text (using the 'title' attribute) */
+.tooltip-icon[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 125%; /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    white-space: normal;
+    width: 200px; /* Limits width so it doesn't stretch off screen */
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Small arrow for the tooltip */
+.tooltip-icon[title]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1e293b;
+}
+
+/* Dark Mode adjustment */
+body.dark-mode .tooltip-icon[title]:hover::after {
+    background: #334155;
+    border: 1px solid #475569;
+}
+
 
