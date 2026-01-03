@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  
+
 <div class="pub-card"> 
     <div class="badge-container" style="justify-content: space-between;">
         <div style="display: flex; gap: 8px;">
@@ -27,7 +29,15 @@
         <p>Please fill in the following information by July 1, 2026.</p>
     </div>
 
-        <form action="https://docs.google.com/forms/u/0/d/e/1JWw0LvCdiNS31rULy9zEghLY_tSBNmbv6pnkpSWmMLw/formResponse" method="POST">
+         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+        onload="if(submitted) { window.location='thank-you.html'; }"></iframe>
+
+<script>var submitted=false;</script>
+
+<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfJWw0LvCdiNS31rULy9zEghLY_tSBNmbv6pnkpSWmMLw/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="submitted=true;">
 
 
             <div class="form-group">
