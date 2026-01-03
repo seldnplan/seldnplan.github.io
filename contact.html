@@ -1,124 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration | The Australian Direction</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
 <body>
-
-
-
-<div class="pub-card"> 
-    <div class="badge-container" style="justify-content: space-between;">
-        <div style="display: flex; gap: 8px;">
-            <span class="status-tag" style="background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe;">
-                <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> Registration Form
-            </span>
-        </div>
+    <main class="contact-form-container">
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+                onload="if(submitted) { window.location='thank-you.html'; }"></iframe>
         
-        <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank" rel="noopener">
-            <i class="fa-solid" style="margin-right: 6px;"></i> Conference Website
-        </a>
-    </div>
+        <script>var submitted=false;</script>
 
-    <div class="form-header">
-        <h2>Register for the Australian Direction (Aug 10-14, 2026) </h2>
-        <p>Please fill in the following information by Feb 1, 2026.</p>
-    </div>
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfJWw0LvCdiNS31rULy9zEghLY_tSBNmbv6pnkpSWmMLw/formResponse" 
+              method="POST" 
+              target="hidden_iframe" 
+              onsubmit="submitted=true;">
 
-<main class="contact-form-container">
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-            onload="if(submitted) { window.location='thank-you.html'; }"></iframe>
+            <div class="pub-card"> 
+                <div class="badge-container" style="justify-content: space-between; margin-bottom: 0.5rem;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="status-tag" style="background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe;">
+                            <i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> Registration Form
+                        </span>
+                    </div>
+                    
+                    <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-arrow-left" style="margin-right: 6px;"></i> Conference Website
+                    </a>
+                </div>
 
-    <script>var submitted=false;</script>
+                <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="margin-top: 0;">Register for the Australian Direction</h2>
+                    <p style="color: #64748b;">Aug 10–14, 2026 | Please fill in by Feb 1, 2026.</p>
+                </div>
 
-    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfJWw0LvCdiNS31rULy9zEghLY_tSBNmbv6pnkpSWmMLw/formResponse" 
-          method="POST" 
-          target="hidden_iframe" 
-          onsubmit="submitted=true;">
-          
-          </form>
-</main>
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">Email address</label>
+                    <input type="email" name="entry.2102380033" class="form-input" placeholder="e.g. kisin@math.harvard.edu" required>
+                </div>
 
-         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-        onload="if(submitted) { window.location='thank-you.html'; }"></iframe>
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">First or given name(s)</label>
+                    <input type="text" name="entry.778700411" class="form-input" placeholder="e.g. Matthew" required>
+                </div>
 
-<script>var submitted=false;</script>
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">Last or family name(s)</label>
+                    <input type="text" name="entry.1135239843" class="form-input" placeholder="e.g. Farb" required>
+                </div>
 
-<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfJWw0LvCdiNS31rULy9zEghLY_tSBNmbv6pnkpSWmMLw/formResponse" 
-      method="POST" 
-      target="hidden_iframe" 
-      onsubmit="submitted=true;">
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">Badge name</label>
+                    <input type="text" name="entry.162795321" class="form-input" placeholder="e.g. Mickey Mouse" required>
+                </div>
 
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">Affiliation</label>
+                    <input type="text" name="entry.1336667020" class="form-input" placeholder="e.g. University of Utah" required>
+                </div>
 
-            <div class="form-group">
-    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Email address</label>
-    <input type="email" name="entry.2102380033" class="form-input" placeholder="e.g. kisin@math.harvard.edu" required>
-</div>
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">Arrival date</label>
+                    <input type="date" name="entry.1153079022" class="form-input" required>
+                </div>
 
-           <div class="form-group">
-    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">First or given name(s)</label>
-    <input type="text" name="entry.778700411" class="form-input" placeholder="e.g. Matthew" required>
-</div>
+                <div class="form-group">
+                    <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto; text-align: left; display: block;">Departure date</label>
+                    <input type="date" name="entry.581695216" class="form-input" required>
+                </div>
 
-            <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Last or family name(s)</label>
-                <input type="text" name="entry.1135239843" class="form-input" placeholder="e.g. Farb" required>
-            </div>
+                <div class="form-group">
+                    <p class="form-question">Do you require a letter for a visa application? 
+                        <span class="tooltip-icon" title="Official invitation letter for visa interviews."><i class="fa-solid fa-circle-info"></i></span>
+                    </p>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="entry.1779643017" value="Yes" required> Yes</label>
+                        <label class="radio-label"><input type="radio" name="entry.1779643017" value="No"> No</label>
+                    </div>
+                </div>
 
-             <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Badge name (as it should appear on the badge) </label>
-                <input type="text" name="entry.162795321" class="form-input" placeholder="e.g. Mickey Mouse" required>
-            </div>
+                <div class="form-group">
+                    <p class="form-question">Would you like to be considered for travel funding? 
+                        <span class="tooltip-icon" title="Reserved for PhD students and early-career postdocs."><i class="fa-solid fa-circle-info"></i></span>
+                    </p>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="entry.1193871952" value="Yes" required> Yes</label>
+                        <label class="radio-label"><input type="radio" name="entry.1193871952" value="No"> No</label>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Affiliation (as it should appear on the badge) </label>
-                <input type="text" name="entry.1336667020" class="form-input" placeholder="e.g. University of Utah" required>
-            </div>
-
-            <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Arrival date</label>
-                <input type="date" name="entry.1153079022" class="form-input" placeholder="e.g. Aug 9, 2026" required>
-            </div>
-
-            <div class="form-group">
-                <label class="status-tag" style="background: none; padding: 0; border: none; color: var(--text-heading); height: auto;">Departure date</label>
-                <input type="date" name="entry.581695216" class="form-input" placeholder="e.g. Aug 15, 2026" required>
-            </div>
-
-
-    <div class="form-group">
-    <p class="form-question">
-        Do you require a letter for a visa application?
-        <span class="tooltip-icon" title="Select 'Yes' if you need an official invitation letter from the organizers for your visa interview."><i class="fa-solid fa-circle-info"></i></span>
-    </p>
-    <div class="radio-group">
-        <label class="radio-label"><input type="radio" name="entry.1779643017" value="Yes" required> Yes</label>
-        <label class="radio-label"><input type="radio" name="entry.1779643017" value="No"> No</label>
-    </div>
-</div>
-
-<div class="form-group">
-    <p class="form-question">
-        We hope to obtain some travel funding for junior participants. If funds become available to support graduate students and postdocs, would you like to be considered for travel funding?
-        <span class="tooltip-icon" title="Funding will be primarily reserved for PhD students and early-career postdocs."><i class="fa-solid fa-circle-info"></i></span>
-    </p>
-    <div class="radio-group">
-        <label class="radio-label"><input type="radio" name="entry.1193871952" value="Yes" required> Yes</label>
-        <label class="radio-label"><input type="radio" name="entry.1193871952" value="No"> No</label>
-    </div>
-</div>
-
-<div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem;">
-    <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0 30px; height: 46px; font-weight: 600;">
-        <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Complete Registration
-    </button>
-</div>
-
+                <div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem;">
+                    <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0 30px; height: 46px; font-weight: 600;">
+                        <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Complete Registration
+                    </button>
+                </div>
+            </div> </form>
+    </main>
 
     <script src="script.js"></script>
 </body>
-</html>
