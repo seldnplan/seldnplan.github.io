@@ -167,6 +167,11 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
     overflow: hidden; /* Necessary for height collapse during search */
 }
 
+/* Add this to Section 4: CARDS */
+.pub-card, .project-card {
+    scroll-margin-top: 150px; /* Adjust this number to match the height of your nav bar */
+}
+
 /* Hover effect inherits the smoother 0.4s transition */
 .pub-card:hover, .project-card:hover { 
     transform: translateY(-3px); 
@@ -460,6 +465,8 @@ body.dark-mode .project-card:target {
 .card-anchor:hover::after {
     display: block;
 }
+
+
 
 /* ==========================================================================
    5. UNIFIED ACTION BAR & BUTTONS
