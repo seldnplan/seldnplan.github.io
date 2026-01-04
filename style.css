@@ -403,6 +403,63 @@ body.dark-mode .student-tag {
     border-color: #4338ca;
 }
 
+/* --- Deep links --- */
+
+/* --- Direct Link (Target) Styling --- */
+.pub-card:target, .project-card:target {
+    border: 2px solid var(--primary); /* Highlight with brand blue */
+    background-color: #f8fafc;        /* Subtle background shift */
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+    transform: scale(1.01);           /* Slight pop effect */
+}
+
+/* Dark Mode Adjustment */
+body.dark-mode .pub-card:target, 
+body.dark-mode .project-card:target {
+    background-color: #1e293b;
+    border-color: #60a5fa;
+}
+
+/* --- Card Anchor Link Styling --- */
+.card-anchor {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-left: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: all 0.2s ease;
+    vertical-align: middle;
+}
+
+.pub-card:hover .card-anchor,
+.project-card:hover .card-anchor {
+    opacity: 1; /* Revealed on hover */
+}
+
+.card-anchor:hover {
+    color: var(--primary);
+}
+
+/* Tooltip for visual feedback */
+.card-anchor::after {
+    content: "Copy Link";
+    position: absolute;
+    background: #1e293b;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    display: none;
+    white-space: nowrap;
+}
+
+.card-anchor:hover::after {
+    display: block;
+}
 
 /* ==========================================================================
    5. UNIFIED ACTION BAR & BUTTONS

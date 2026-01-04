@@ -163,3 +163,27 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+/* --- Copy to Clipboard for Individual Cards --- */
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.card-anchor')) {
+        e.preventDefault();
+        
+        // Construct the full URL
+        const anchor = e.target.closest('.card-anchor');
+        const cardId = anchor.getAttribute('href');
+        const fullUrl = window.location.origin + window.location.pathname + cardId;
+        
+        // Use the Clipboard API
+        navigator.clipboard.writeText(fullUrl).then(() => {
+            // Provide visual feedback
+            const icon = anchor.querySelector('i');
+            const originalClass = icon.className;
+            
+            icon.className = 'fa-solid fa-check'; // Temporary success icon
+            setTimeout(() => {
+                icon.className = originalClass; // Revert back
+            }, 2000);
+        });
+    }
+});
