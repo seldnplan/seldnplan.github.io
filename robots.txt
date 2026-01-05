@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+# Prevent indexing of technical code folders
+Disallow: /css/
+Disallow: /js/
+
+# Point crawlers to your sitemap
+Sitemap: https://keerthimadapusi.com/sitemap.xml
