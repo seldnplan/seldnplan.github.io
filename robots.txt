@@ -1,9 +1,8 @@
 User-agent: *
-Allow: /sitemap.xml
-Allow: /
-# Prevent indexing of technical code folders
+
+# Standard folders to ignore
 Disallow: /css/
 Disallow: /js/
 
-# Point crawlers to your sitemap
+# This is the most important part - it must match your GSC property exactly
 Sitemap: https://keerthimadapusi.com/sitemap.xml
