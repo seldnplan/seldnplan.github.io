@@ -523,16 +523,56 @@ body.dark-mode .project-card:target {
 .lecture-archive { margin-top: 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-light); overflow: hidden; }
 .lecture-archive summary { padding: 12px 15px; font-size: 0.9rem; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 10px; }
 
+/* Container acts as the 'window' */
+.lecture-list-container {
+    width: 100%;
+    overflow-x: auto; /* Enable horizontal scroll if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling for iOS */
+    margin-top: 10px;
+}
+
+/* Adds a subtle fade on the right when scrolling is available */
+.lecture-list-container {
+    background: linear-gradient(to right, white 30%, rgba(255, 255, 255, 0)),
+                linear-gradient(to right, rgba(255, 255, 255, 0), white 70%) 100% 0,
+                radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+                radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
+}
+
+/* Dark Mode adjustment for the scroll hint */
+body.dark-mode .lecture-list-container {
+    background: none; /* Simplest to disable the complex gradient in dark mode */
+    border: 1px solid var(--border);
+}
+
+/* Ensure the table stays readable while scrolling */
+.schedule-table {
+    width: 100%;
+    min-width: 450px; /* Forces scrolling on small screens instead of squishing text */
+    border-collapse: collapse;
+}
+
+/* Prevent headers from wrapping into multiple awkward lines */
+.schedule-table th {
+    white-space: nowrap;
+    background-color: var(--bg-light);
+}
+
 /* ==========================================================================
    7. DARK MODE OVERRIDES
    ========================================================================== */
-body.dark-mode {
+
+html.dark-mode body, body.dark-mode {
     --bg-light: #0f172a;      
     --text-main: #cbd5e1;     
     --text-heading: #f8fafc;  
     --white: #1e293b;         
     --border: #334155;        
 }
+
 
 body.dark-mode .action-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
 body.dark-mode .toc-container, body.dark-mode .toc-content { background-color: var(--bg-light); }

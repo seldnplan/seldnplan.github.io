@@ -16,25 +16,39 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    /* --- 2. Dark Mode Logic --- */
-    // Creates the button if it doesn't exist in HTML
+   /* --- 2. Automated Dark Mode Logic --- */
     if (!document.querySelector('.theme-toggle')) {
         const themeBtn = document.createElement('button');
-        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
         themeBtn.classList.add('theme-toggle');
         themeBtn.setAttribute('aria-label', 'Toggle Dark Mode');
         document.body.appendChild(themeBtn);
 
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-        }
-
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
+        // Helper to set theme
+        const setTheme = (isDark) => {
+            document.body.classList.toggle('dark-mode', isDark);
             themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+
+        // 1. Check for saved preference OR system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        // 2. Manual Toggle listener
+        themeBtn.addEventListener('click', () => {
+            const willBeDark = !document.body.classList.contains('dark-mode');
+            setTheme(willBeDark);
+        });
+
+        // 3. Listen for System changes (Auto-switch if user hasn't set a manual preference)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) setTheme(e.matches);
         });
     }
 
@@ -107,6 +121,28 @@ function copyBibtex(id, btn) {
         console.error('Failed to copy BibTeX: ', err);
     });
 }
+
+/* --- 6. Active Section Highlighting --- */
+    const observerOptions = { rootMargin: '-20% 0px -70% 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                // Update Nav links
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+                });
+                // Update TOC links
+                document.querySelectorAll('.toc-content a').forEach(a => {
+                    a.style.fontWeight = a.getAttribute('href') === `#${id}` ? '800' : '500';
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Track every card and section with an ID
+    document.querySelectorAll('section[id], .pub-card[id]').forEach(el => observer.observe(el));
+
 /* --- Automatic 'New' vs 'Updated' Badge Logic --- */
 // Updated selector to catch BOTH pub-cards and project-cards
 const cards = document.querySelectorAll('.pub-card[data-date], .project-card[data-date]');
