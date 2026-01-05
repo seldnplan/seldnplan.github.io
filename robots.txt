@@ -1,8 +1,4 @@
 User-agent: *
+Allow: /
 
-# Standard folders to ignore
-Disallow: /css/
-Disallow: /js/
-
-# This is the most important part - it must match your GSC property exactly
 Sitemap: https://keerthimadapusi.com/sitemap.xml
