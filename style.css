@@ -565,7 +565,11 @@ body.dark-mode .lecture-list-container {
    7. DARK MODE OVERRIDES
    ========================================================================== */
 
-html.dark-mode body, body.dark-mode {
+/* We target '.dark-mode' directly. 
+   This ensures it works whether the class is on <html> (from your head script) 
+   or <body> (from your toggle logic).
+*/
+.dark-mode {
     --bg-light: #0f172a;      
     --text-main: #cbd5e1;     
     --text-heading: #f8fafc;  
@@ -573,6 +577,11 @@ html.dark-mode body, body.dark-mode {
     --border: #334155;        
 }
 
+/* --- Dark Mode Specific Element Adjustments --- */
+.dark-mode body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+}
 
 body.dark-mode .action-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
 body.dark-mode .toc-container, body.dark-mode .toc-content { background-color: var(--bg-light); }
@@ -668,20 +677,24 @@ body.dark-mode .toc-content a:hover {
 
 body.dark-mode .search-bar i { color: #94a3b8; }
 
-/* Dark Mode visibility for the Lecture Archive icon */
-.dark-mode .lecture-archive summary i.fa-person-chalkboard {
-    color: #ffcc00; /* Bright gold color */
-    filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.4)); /* Subtle glow */
-    margin-right: 10px; /* Ensures spacing from text */
-    font-size: 1.1em; /* Makes it slightly larger */
+/* --- Chalkboard Icon Visibility Fix --- */
+/* Base state (Light Mode) */
+.lecture-archive summary i.fa-person-chalkboard {
+    color: var(--primary); 
+    transition: all 0.3s ease;
 }
 
-/* Optional: Add a hover effect to make it feel interactive */
+/* Enhanced state (Dark Mode) */
+.dark-mode .lecture-archive summary i.fa-person-chalkboard {
+    color: #ffcc00 !important; /* Bright gold for visibility */
+    filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.4)); /* Subtle glow */
+    font-size: 1.1em;
+}
+
 .dark-mode .lecture-archive summary:hover i.fa-person-chalkboard {
-    color: #ffffff;
+    color: #ffffff !important;
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
 }
-
 
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
