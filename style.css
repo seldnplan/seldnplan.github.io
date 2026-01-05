@@ -668,6 +668,20 @@ body.dark-mode .toc-content a:hover {
 
 body.dark-mode .search-bar i { color: #94a3b8; }
 
+/* Dark Mode visibility for the Lecture Archive icon */
+.dark-mode .lecture-archive summary i.fa-person-chalkboard {
+    color: #ffcc00; /* Bright gold color */
+    filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.4)); /* Subtle glow */
+    margin-right: 10px; /* Ensures spacing from text */
+    font-size: 1.1em; /* Makes it slightly larger */
+}
+
+/* Optional: Add a hover effect to make it feel interactive */
+.dark-mode .lecture-archive summary:hover i.fa-person-chalkboard {
+    color: #ffffff;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
 
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
