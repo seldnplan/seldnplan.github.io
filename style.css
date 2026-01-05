@@ -677,25 +677,6 @@ body.dark-mode .toc-content a:hover {
 
 body.dark-mode .search-bar i { color: #94a3b8; }
 
-/* --- Chalkboard Icon Visibility Fix --- */
-/* Base state (Light Mode) */
-.lecture-archive summary i.fa-person-chalkboard {
-    color: var(--primary); 
-    transition: all 0.3s ease;
-}
-
-/* Enhanced state (Dark Mode) */
-.dark-mode .lecture-archive summary i.fa-person-chalkboard {
-    color: #ffcc00 !important; /* Bright gold for visibility */
-    filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.4)); /* Subtle glow */
-    font-size: 1.1em;
-}
-
-.dark-mode .lecture-archive summary:hover i.fa-person-chalkboard {
-    color: #ffffff !important;
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
-}
-
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
    ========================================================================== */
