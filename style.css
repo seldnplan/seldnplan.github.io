@@ -221,7 +221,7 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
 }
 
 /* Dark Mode adjustment */
-body.dark-mode .update-date {
+.dark-mode .update-date {
     color: #64748b;
 }
 
@@ -271,7 +271,7 @@ body.dark-mode .update-date {
 }
 
 /* Dark Mode adjustment for Erratum */
-body.dark-mode .erratum-link {
+.dark-mode .erratum-link {
     background-color: #451a03;
     color: #fbbf24;
     border-color: #78350f;
@@ -300,13 +300,13 @@ body.dark-mode .erratum-link {
 }
 
 /* Dark Mode Adjustment */
-body.dark-mode .video-link {
+.dark-mode .video-link {
     background-color: #1e293b;
     color: #60a5fa;
     border-color: #3b82f6;
 }
 
-body.dark-mode .video-link:hover {
+.dark-mode .video-link:hover {
     background-color: #334155;
     color: #93c5fd;
 }
@@ -389,26 +389,26 @@ body.dark-mode .video-link:hover {
 
 
 /* --- Dark Mode Support for Tags --- */
-body.dark-mode .published .status-tag { background: #064e3b !important; color: #4ade80 !important; }
-body.dark-mode .preprint .status-tag { background: #78350f !important; color: #fef3c7 !important; }
-body.dark-mode .thesis-card .status-tag { background: #78350f !important; color: #fef3c7 !important; }
-body.dark-mode #year-2025 .status-tag {
+.dark-mode .published .status-tag { background: #064e3b !important; color: #4ade80 !important; }
+.dark-mode .preprint .status-tag { background: #78350f !important; color: #fef3c7 !important; }
+.dark-mode .thesis-card .status-tag { background: #78350f !important; color: #fef3c7 !important; }
+.dark-mode #year-2025 .status-tag {
     background-color: #1e3a8a !important; 
     color: #bfdbfe !important;
 }
 
-body.dark-mode #year-2024 .status-tag,
-body.dark-mode #archive .status-tag {
+.dark-mode #year-2024 .status-tag,
+.dark-mode #archive .status-tag {
     background-color: #334155 !important;
     color: #cbd5e1 !important;
 }
 
-body.dark-mode .student-work {
+.dark-mode .student-work {
     background-color: #1e1b4b !important;      /* Deep indigo/navy card */
     border-left-color: #818cf8 !important;     /* Brighter indigo border */
 }
 
-body.dark-mode .student-tag {
+.dark-mode .student-tag {
     background-color: #312e81 !important;      /* Dark indigo tag */
     color: #e0e7ff !important;                 /* Light lavender text */
     border-color: #4338ca;
@@ -425,8 +425,8 @@ body.dark-mode .student-tag {
 }
 
 /* Dark Mode Adjustment */
-body.dark-mode .pub-card:target, 
-body.dark-mode .project-card:target {
+.dark-mode .pub-card:target, 
+.dark-mode .project-card:target {
     background-color: #1e293b;
     border-color: #60a5fa;
 }
@@ -543,7 +543,7 @@ body.dark-mode .project-card:target {
 }
 
 /* Dark Mode adjustment for the scroll hint */
-body.dark-mode .lecture-list-container {
+.dark-mode .lecture-list-container {
     background: none; /* Simplest to disable the complex gradient in dark mode */
     border: 1px solid var(--border);
 }
@@ -605,21 +605,21 @@ body.dark-mode .lecture-list-container {
     color: var(--text-main);
 }
 
-body.dark-mode .action-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
-body.dark-mode .toc-container, body.dark-mode .toc-content { background-color: var(--bg-light); }
-body.dark-mode .lecture-archive { background: #1e293b; }
+.dark-mode .action-btn { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+.dark-mode .toc-container, .dark-mode .toc-content { background-color: var(--bg-light); }
+.dark-mode .lecture-archive { background: #1e293b; }
 
 /* --- Dark Mode Hamburger Visibility --- */
-body.dark-mode .menu-toggle {
+.dark-mode .menu-toggle {
     color: var(--text-heading); /* Sets it to near-white/light grey in dark mode */
 }
 
-body.dark-mode .menu-toggle:hover {
+.dark-mode .menu-toggle:hover {
     color: var(--primary); /* Optional: changes to blue when tapped/hovered */
 }
 
 /* --- Dark Mode Sticky Nav Fix --- */
-body.dark-mode nav {
+.dark-mode nav {
     background-color: rgba(15, 23, 42, 0.85) !important; /* Semi-transparent Dark Navy */
     border-bottom-color: var(--border); /* Uses the dark border color */
     backdrop-filter: blur(10px);
@@ -627,12 +627,12 @@ body.dark-mode nav {
 }
 
 /* Ensure the links inside change to light text */
-body.dark-mode .nav-links a {
+.dark-mode .nav-links a {
     color: var(--text-main); /* Now maps to #cbd5e1 in dark mode */
 }
 
 /* --- Dark Mode Thesis Card Fix --- */
-body.dark-mode .thesis-card {
+.dark-mode .thesis-card {
     background-color: #1e293b !important; /* Matches other card backgrounds */
     border-left-color: var(--thesis-gold) !important;
     border-right: 1px solid var(--border);
@@ -640,64 +640,64 @@ body.dark-mode .thesis-card {
     border-bottom: 1px solid var(--border);
 }
 
-body.dark-mode .thesis-card .status-tag {
+.dark-mode .thesis-card .status-tag {
     background-color: #78350f !important; /* Deep amber/gold for dark mode */
     color: #fef3c7 !important;            /* Light cream text */
     border: 1px solid #d4af37;
 }
 
 /* --- Dark Mode for New & Updated Badges --- */
-body.dark-mode .new-badge {
+.dark-mode .new-badge {
     background-color: #f97316; /* Keep the orange, but ensure text is white */
     color: #ffffff !important;
     border: 1px solid #fb923c;
 }
 
-body.dark-mode .updated-badge {
+.dark-mode .updated-badge {
     background-color: #3b82f6; /* A slightly brighter blue for dark mode */
     color: #ffffff !important;
     border: 1px solid #60a5fa;
 }
 
 /* Ensure icons inside these badges are also bright */
-body.dark-mode .status-badge i, 
-body.dark-mode .new-badge i {
+.dark-mode .status-badge i, 
+.dark-mode .new-badge i {
     color: #ffffff;
 }
 
 /* --- Dark Mode for Abstract Content --- */
-body.dark-mode .abstract-content {
+.dark-mode .abstract-content {
     background: #1e293b;         /* Matches card background */
     color: #cbd5e1;              /* Light slate text */
     border-left-color: #60a5fa;  /* Brighter blue for the accent border */
 }
 
 /* --- Dark Mode Page Controls --- */
-body.dark-mode .page-controls { background-color: var(--bg-light); }
+.dark-mode .page-controls { background-color: var(--bg-light); }
 
-body.dark-mode .toc-btn {
+.dark-mode .toc-btn {
     background-color: var(--white);
     color: #60a5fa; /* Brighter blue for visibility */
     border-color: #3b82f6;
 }
 
-body.dark-mode .toc-content {
+.dark-mode .toc-content {
     background-color: #1e293b;
     border-color: #334155;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-body.dark-mode .toc-content a {
+.dark-mode .toc-content a {
     color: #cbd5e1 !important; /* Ensure text isn't black */
     border-bottom-color: #334155;
 }
 
-body.dark-mode .toc-content a:hover {
+.dark-mode .toc-content a:hover {
     background-color: #334155;
     color: white !important;
 }
 
-body.dark-mode .search-bar i { color: #94a3b8; }
+.dark-mode .search-bar i { color: #94a3b8; }
 
 /* ==========================================================================
    8. MISC (FOOTER, TOGGLES, UTILS)
@@ -728,13 +728,13 @@ body.dark-mode .search-bar i { color: #94a3b8; }
 }
 
 /* --- Dark Mode for BibTeX --- */
-body.dark-mode .bibtex-text {
+.dark-mode .bibtex-text {
     background-color: #0f172a;
     color: #cbd5e1;
     border-color: var(--border);
 }
 
-body.dark-mode .action-btn.copied {
+.dark-mode .action-btn.copied {
     background-color: #064e3b !important;
     color: #4ade80 !important;
     border-color: #4ade80 !important;
@@ -760,13 +760,13 @@ body.dark-mode .action-btn.copied {
 }
 
 /* --- Dark Mode Support for Site Notice --- */
-body.dark-mode .site-notice {
+.dark-mode .site-notice {
     background-color: #1e1b4b; /* Deep indigo for Dark Mode alert */
     border-color: #312e81;
     color: #e0e7ff;            /* Bright white/blue text */
 }
 
-body.dark-mode .site-notice i {
+.dark-mode .site-notice i {
     color: #818cf8;            /* Lighter icon for dark background */
 }
 
@@ -811,7 +811,7 @@ body.dark-mode .site-notice i {
 }
 
 /* --- Dark Mode adjustment for Photo Border --- */
-body.dark-mode .profile-photo {
+.dark-mode .profile-photo {
     border-color: var(--border);
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
@@ -874,13 +874,13 @@ body.dark-mode .profile-photo {
 }
 
 /* --- Dark Mode Support --- */
-body.dark-mode .profile-btn {
+.dark-mode .profile-btn {
     background: #1e293b;
     border-color: #334155;
     color: #cbd5e1;
 }
 
-body.dark-mode .profile-btn:hover {
+.dark-mode .profile-btn:hover {
     background: var(--primary);
     color: white;
 }
@@ -970,12 +970,42 @@ body.dark-mode .profile-btn:hover {
 }
 
 /* --- Dark Mode Support --- */
-body.dark-mode .event-card { background: var(--white); }
-body.dark-mode .event-date { background: #0f172a; }
-body.dark-mode .event-card.recurring { background-color: #1e293b; }
-body.dark-mode .role-tag { background: #334155; color: #cbd5e1; }
-body.dark-mode .live-tag { background: #064e3b !important; color: #4ade80 !important; }
+/* --- Consolidated Dark Mode Support for Events --- */
 
+/* Base Event Card */
+.dark-mode .event-card { 
+    background: var(--white); 
+    border-color: var(--border);
+}
+
+/* Date Block */
+.dark-mode .event-date { 
+    background: #0f172a; 
+    border-color: var(--border);
+}
+
+.dark-mode .event-date .year {
+    color: var(--text-main);
+}
+
+/* Recurring/Seminar Styling */
+.dark-mode .event-card.recurring { 
+    background-color: #1e293b; 
+    border-left-color: var(--primary);
+}
+
+/* Role Tags */
+.dark-mode .role-tag { 
+    background: #334155; 
+    color: #cbd5e1; 
+}
+
+/* THE FIX: Live Tag */
+.dark-mode .live-tag { 
+    background-color: #064e3b !important; 
+    color: #4ade80 !important; 
+    border: 1px solid #059669;
+}
 /* --- Mobile Responsive Tweak --- */
 @media (max-width: 600px) {
     .event-card { flex-direction: column; gap: 15px; }
@@ -1039,11 +1069,11 @@ body.dark-mode .live-tag { background: #064e3b !important; color: #4ade80 !impor
 }
 
 /* --- Dark Mode Support --- */
-body.dark-mode .link-content span {
+.dark-mode .link-content span {
     color: #94a3b8;
 }
 
-body.dark-mode .link-card:hover {
+.dark-mode .link-card:hover {
     background-color: #1e293b;
 }
 
@@ -1098,7 +1128,7 @@ body.dark-mode .link-card:hover {
 }
 
 /* Dark Mode Support */
-body.dark-mode .news-ticker {
+.dark-mode .news-ticker {
     background: #1e293b;
 }
 
@@ -1156,7 +1186,7 @@ body.dark-mode .news-ticker {
 }
 
 /* Dark Mode Alignment */
-body.dark-mode .form-input {
+.dark-mode .form-input {
     background: #0f172a;
     border-color: #334155;
     color: #cbd5e1;
@@ -1195,8 +1225,8 @@ input[type="radio"] {
 }
 
 /* Dark Mode Alignment */
-body.dark-mode .form-question { color: var(--text-heading); }
-body.dark-mode .radio-label { color: var(--text-main); }
+.dark-mode .form-question { color: var(--text-heading); }
+.dark-mode .radio-label { color: var(--text-main); }
 
 /* --- Tooltip Styling --- */
 .tooltip-icon {
@@ -1243,7 +1273,7 @@ body.dark-mode .radio-label { color: var(--text-main); }
 }
 
 /* Dark Mode adjustment */
-body.dark-mode .tooltip-icon[title]:hover::after {
+.dark-mode .tooltip-icon[title]:hover::after {
     background: #334155;
     border: 1px solid #475569;
 }
@@ -1264,26 +1294,26 @@ body.dark-mode .tooltip-icon[title]:hover::after {
 }
 
 /* Dark Mode Alignment */
-body.dark-mode .conference-link {
+.dark-mode .conference-link {
     background: #1e293b;
     border-color: #334155;
     color: #cbd5e1;
 }
 
 /* --- Dark Mode Date Picker Fix --- */
-body.dark-mode input[type="date"] {
+.dark-mode input[type="date"] {
     color-scheme: dark; /* Standard way to tell the browser to use dark UI elements */
     color: #cbd5e1;     /* Ensures the text is light grey */
 }
 
 /* Specifically targeting the calendar icon for Chrome/Safari/Edge */
-body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(0.8) brightness(1.2); /* Flips the black icon to a light grey */
     cursor: pointer;
 }
 
 /* Ensuring the input background matches your form theme */
-body.dark-mode .form-input[type="date"] {
+.dark-mode .form-input[type="date"] {
     background-color: #0f172a;
     border-color: #334155;
 }
