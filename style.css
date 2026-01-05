@@ -565,19 +565,41 @@ body.dark-mode .lecture-list-container {
    7. DARK MODE OVERRIDES
    ========================================================================== */
 
-/* We target '.dark-mode' directly. 
-   This ensures it works whether the class is on <html> (from your head script) 
-   or <body> (from your toggle logic).
-*/
+/* 1. Root Variable Overrides */
 .dark-mode {
     --bg-light: #0f172a;      
     --text-main: #cbd5e1;     
     --text-heading: #f8fafc;  
     --white: #1e293b;         
-    --border: #334155;        
+    --border: #334155;
+    /* Specific nav background for higher contrast */
+    --nav-bg: rgba(15, 23, 42, 0.95); 
 }
 
-/* --- Dark Mode Specific Element Adjustments --- */
+/* 2. Navigation Specifics */
+.dark-mode nav {
+    background-color: var(--nav-bg) !important;
+    border-bottom-color: var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.dark-mode .nav-links a {
+    color: var(--text-main) !important;
+}
+
+/* Active link contrast boost */
+.dark-mode .nav-links a.active {
+    color: #60a5fa !important; /* Brighter blue for Dark Mode */
+    border-bottom-color: #60a5fa;
+}
+
+/* Hamburger toggle visibility */
+.dark-mode .menu-toggle {
+    color: var(--text-heading) !important;
+}
+
+/* 3. Component Overrides */
 .dark-mode body {
     background-color: var(--bg-light);
     color: var(--text-main);
