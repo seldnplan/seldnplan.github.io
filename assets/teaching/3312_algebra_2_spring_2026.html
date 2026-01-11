@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching | Keerthi Madapusi</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode');
+        // Note: use documentElement or body. Use whatever matches your CSS selector.
+    }
+</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<header class="course-header">
+    <h1>MATH 3312: Algebra II (Spring 2026)</h1>
+    <p>Boston College • Department of Mathematics</p>
+
+    <div class="card-actions" style="border-top: none; margin-top: 10px;">
+        <a href="assets/syllabus_spring2026.pdf" class="action-btn pdf">
+            <i class="fa-solid fa-file-pdf"></i> Syllabus
+        </a>
+        <a href="https://zoom.us/j/your-link" class="action-btn journal">
+            <i class="fa-solid fa-video"></i> Zoom Link
+        </a>
+        <a href="https://youtube.com/playlist?your-list" class="action-btn video-link">
+            <i class="fa-solid fa-play"></i> YouTube Playlist
+        </a>
+        <a href="https://www.gradescope.com/" class="action-btn journal">
+            <i class="fa-solid fa-check-to-slot"></i> Gradescope
+        </a>
+        <a href="https://www.overleaf.com/" class="action-btn journal">
+            <i class="fa-solid fa-leaf"></i> Overleaf
+        </a>
+    </div>
+</header>
+
+<main>
+    <div class="pub-card" id="lecture-archive">
+        <span class="status-tag">Spring 2026</span>
+        <h3>Lectures & Course Materials</h3>
+        <p>Notes and videos will be posted shortly after each class meeting.</p>
+
+        <div class="lecture-list-container">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Lec</th>
+                        <th>Date</th>
+                        <th>Topic</th>
+                        <th>Notes</th>
+                        <th>Video</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jan 12</td>
+                        <td>Introduction and Review of Ring Theory</td>
+                        <td><a href="assets/lecture/s26_3312/lec01.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="#" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Keerthi Madapusi • Site last updated: January 11, 2026</p>
+</footer>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
