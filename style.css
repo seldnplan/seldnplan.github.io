@@ -473,6 +473,19 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
 }
 
 
+/* Course header */
+
+.course-header {
+    margin-bottom: 3.5rem; /* Creates breathing room before the first card */
+    padding-bottom: 1rem;
+}
+
+/* Optional: Add a subtle divider if the gap feels too empty */
+.course-header .card-actions {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
 
 /* ==========================================================================
    5. UNIFIED ACTION BAR & BUTTONS
