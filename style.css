@@ -574,6 +574,17 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
     background-color: var(--bg-light);
 }
 
+/* This rule only hits pages with the 'course-page' class */
+.course-page .page-controls {
+    top: 0; /* Sticks to the very top since there is no nav */
+    z-index: 1000;
+}
+
+/* Ensure the header on these pages doesn't get hidden under the sticky bar */
+.course-page .course-header {
+    margin-top: 20px;
+}
+
 /* ==========================================================================
    7. DARK MODE OVERRIDES
    ========================================================================== */
