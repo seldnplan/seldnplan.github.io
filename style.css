@@ -574,16 +574,6 @@ nav a.active { color: var(--primary); font-weight: 700; border-bottom: 2px solid
     background-color: var(--bg-light);
 }
 
-/* This rule only hits pages with the 'course-page' class */
-.course-page .page-controls {
-    top: 0; /* Sticks to the very top since there is no nav */
-    z-index: 1000;
-}
-
-/* Ensure the header on these pages doesn't get hidden under the sticky bar */
-.course-page .course-header {
-    margin-top: 20px;
-}
 
 /* ==========================================================================
    7. DARK MODE OVERRIDES
@@ -1371,6 +1361,33 @@ input[type="radio"] {
     font-size: 0.7rem;
     letter-spacing: 0.05em;
     color: #94a3b8; /* Slate grey for a high-end feel */
+}
+
+/* ==========================================================================
+   15. STANDALONE PAGE OVERRIDES (No Navigation)
+   ========================================================================== */
+
+/* 1. Reset the sticky position to the very top */
+.course-page .page-controls {
+    top: 0; 
+    margin-top: -2rem; /* Pulls it up into the body padding area */
+    padding-top: 2rem; /* Adds padding back so text isn't cut off */
+    padding-bottom: 1.5rem;
+    
+    /* 2. Replicate the Nav Bar's background style */
+    background-color: rgba(248, 250, 252, 0.95); /* Nearly opaque */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    
+    /* 3. Ensure it sits on top of everything */
+    z-index: 1000;
+}
+
+/* Dark Mode Support */
+.dark-mode .course-page .page-controls {
+    background-color: rgba(15, 23, 42, 0.95); /* Dark Navy */
+    border-bottom: 1px solid var(--border);
 }
 
 
