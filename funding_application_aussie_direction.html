@@ -1,107 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funding Application | The Australian Direction</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <main class="contact-form-container">
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-                onload="if(submitted) { window.location='thank-you-funding.html'; }"></iframe>
-        
-        <script>var submitted=false;</script>
+<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeVuymbt0yDyTokYPPiOM3oht7jiJt8E606z2IwG1DJpYPDaQ/formResponse" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="submitted=true;">
 
-        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeVuymbt0yDyTokYPPiOM3oht7jiJt8E606z2IwG1DJpYPDaQ/formResponse" 
-              method="POST" 
-              target="hidden_iframe" 
-              onsubmit="submitted=true;">
+    <div class="pub-card"> 
+        <div class="badge-container" style="justify-content: space-between; margin-bottom: 0.5rem;">
+            <span class="status-tag" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">
+                <i class="fa-solid fa-hand-holding-dollar" style="margin-right: 6px;"></i> Funding Application
+            </span>
+            <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank">
+                Conference website
+            </a>
+        </div>
 
-            <div class="pub-card"> 
-                <div class="badge-container" style="justify-content: space-between; margin-bottom: 0.5rem;">
-                    <div style="display: flex; gap: 8px;">
-                        <span class="status-tag" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">
-                            <i class="fa-solid fa-hand-holding-dollar" style="margin-right: 6px;"></i> Funding Application
-                        </span>
-                    </div>
-                    <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank">
-                        <i class="fa-solid fa-arrow-left" style="margin-right: 6px;"></i> Conference Website
-                    </a>
-                </div>
+        <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="margin-top: 0;">Graduate Student Funding Application</h2>
+            <p style="color: #64748b;">The Australian Direction • Aug 10–14, 2026</p>
+        </div>
 
-                <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
-                    <h2 style="margin-top: 0;">Graduate Student Funding Application</h2>
-                    <p style="color: #64748b;">The Australian Direction • Aug 10–14, 2026</p>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Full Name</label>
+            <input type="text" name="entry.1550881910" class="form-input" required>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Full Name</label>
-                    <input type="text" name="entry.1842525652" class="form-input" required>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Primary Email Address</label>
+            <input type="email" name="entry.1538814900" class="form-input" required>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Primary Email Address</label>
-                    <input type="email" name="entry.1013513314" class="form-input" required>
-                </div>
+        <div class="form-group">
+            <p class="form-question">Current Academic Status</p>
+            <div class="radio-group" style="flex-direction: column; gap: 10px;">
+                <label class="radio-label">
+                    <input type="radio" name="entry.952701144" value="Graduate Student" required> Graduate Student
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="entry.952701144" value="Postdoctoral Researcher"> Postdoctoral Researcher
+                </label>
+            </div>
+        </div>
 
-                <div class="form-group">
-                    <p class="form-question">Current Academic Status</p>
-                    <div class="radio-group" style="flex-direction: column; gap: 10px;">
-                        <label class="radio-label"><input type="radio" name="entry.279838883" value="Graduate Student" required> Graduate student</label>
-                        <label class="radio-label"><input type="radio" name="entry.279838883" value="Postdoctoral Researcher"> Postdoctoral researcher</label>
-                    </div>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Academic Institution</label>
+            <input type="text" name="entry.8540304" class="form-input" required>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Academic Institution</label>
-                    <input type="text" name="entry.1378595385" class="form-input" required>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Advisor's Full Name</label>
+            <p style="font-size: 0.85rem; color: #64748b; margin: -4px 0 12px 0;">
+                Please ask your advisor to send a brief email to <a href="mailto:madapusi@bc.edu">madapusi@bc.edu</a>.
+            </p>
+            <input type="text" name="entry.36790820" class="form-input" required>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Advisor's Full Name</label>
-                    <p style="font-size: 0.85rem; color: #64748b; margin: -4px 0 12px 0; line-height: 1.4;">
-                        Please ask your advisor to send a brief email in support of your application to 
-                        <a href="mailto:madapusi@bc.edu" style="color: var(--primary); font-weight: 600;">madapusi@bc.edu</a>.
-                    </p>
-                    <input type="text" name="entry.806213662" class="form-input" required>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Advisor's Email Address</label>
+            <input type="email" name="entry.338881573" class="form-input" required>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Advisor's Email Address</label>
-                    <input type="email" name="entry.2140589953" class="form-input" required>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Why do you want to attend? (Max 150 words)</label>
+            <textarea name="entry.346866871" class="form-input" style="height: 120px;" required></textarea>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Why do you want to attend the conference? (Max 150 words)</label>
-                    <textarea name="entry.730147742" class="form-input" style="height: 120px; padding-top: 12px;" required></textarea>
-                </div>
+        <div class="form-group">
+            <label class="status-tag label-style">Link to CV/Website</label>
+            <input type="url" name="entry.1582499447" class="form-input" placeholder="https://" required>
+        </div>
 
-                <div class="form-group">
-                    <label class="status-tag label-style">Link to CV/Resume or Personal Website</label>
-                    <input type="url" name="entry.2144020432" class="form-input" placeholder="https://" required>
-                </div>
+        <div class="form-group">
+            <p class="form-question">What would you like to be funded?</p>
+            <div class="checkbox-group" style="display: flex; flex-direction: column; gap: 8px;">
+                <label class="radio-label">
+                    <input type="checkbox" name="entry.1954911402" value="Travel Expenses"> Travel Expenses
+                </label>
+                <label class="radio-label">
+                    <input type="checkbox" name="entry.1954911402" value="Accommodation"> Accommodation
+                </label>
+            </div>
+        </div>
 
-                <div class="form-group">
-                    <p class="form-question">What would you like to be funded?</p>
-                    <div class="checkbox-group" style="display: flex; flex-direction: column; gap: 8px;">
-                        <label class="radio-label"><input type="checkbox" name="entry.1923699330" value="Travel Expenses"> Travel Expenses</label>
-                        <label class="radio-label"><input type="checkbox" name="entry.1923699330" value="Accommodation"> Accommodation</label>
-                    </div>
-                </div>
-
-                <div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 2.5rem; padding-top: 1.5rem;">
-                    <button type="submit" class="action-btn" style="background: #dc2626; color: white; border-color: #dc2626; padding: 0 30px; height: 46px; font-weight: 600;">
-                        <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit Funding Application
-                    </button>
-                </div>
-            </div> 
-        </form>
-    </main>
-
-    <style>
-        .label-style { background: none !important; padding: 0 !important; border: none !important; color: var(--text-heading) !important; height: auto !important; text-align: left !important; display: block !important; margin-bottom: 8px !important; }
-    </style>
-</body>
-</html>
+        <div class="card-actions">
+            <button type="submit" class="action-btn" style="background: #dc2626; color: white; padding: 0 40px;">
+                <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit Application
+            </button>
+        </div>
+    </div> 
+</form>
