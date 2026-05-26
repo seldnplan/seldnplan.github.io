@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster Session | The Australian Direction</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <main class="contact-form-container">
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+                onload="if(submitted) { window.location='thank-you-poster.html'; }"></iframe>
+        
+        <script>var submitted=false;</script>
+
+     <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSf17kH4j9oxsTbh06Nf19q23Wzpv12S-O5DRytYQgg_FaeXgw/formResponse"" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="submitted=true;">
+
+    <div class="pub-card"> 
+        <div class="badge-container" style="justify-content: space-between; margin-bottom: 0.5rem;">
+            <span class="status-tag" style="background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;">
+                <i class="fa-solid fa-hand-holding-dollar" style="margin-right: 6px;"></i> Poster session
+            </span>
+            <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank">
+                Conference website
+            </a>
+        </div>
+
+        <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
+            <h2 style="margin-top: 0;">The Australian Direction</h2>
+            <p style="color: #64748b;">Aug 10–14, 2026</p>
+        </div>
+
+        <div class="form-group">
+            <label class="status-tag label-style">Full Name</label>
+            <input type="text" name="entry.1149389952" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+            <label class="status-tag label-style">Email Address</label>
+            <input type="email" name="entry.1642875375" class="form-input" required>
+        </div>
+
+
+        <div class="form-group">
+            <label class="status-tag label-style">Academic Institution</label>
+            <input type="text" name="entry.813797506" class="form-input" required>
+        </div>
+
+
+        <div class="form-group">
+            <label class="status-tag label-style">Title</label>
+            <textarea name="entry.997155690" class="form-input" style="height: 120px;" required></textarea>
+        </div>
+
+         <div class="form-group">
+            <label class="status-tag label-style">Abstract</label>
+            <textarea name="entry.298162633" class="form-input" style="height: 120px;" required></textarea>
+        </div>
+
+        <div class="card-actions">
+            <button type="submit" class="action-btn" style="background: #dc2626; color: white; padding: 0 40px;">
+                <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit Application
+            </button>
+        </div>
+    </div> 
+</form>
+    </main>
+
+    <style>
+        .label-style { background: none !important; padding: 0 !important; border: none !important; color: var(--text-heading) !important; height: auto !important; text-align: left !important; display: block !important; margin-bottom: 8px !important; }
+    </style>
+</body>
+</html>
