@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BC Number Theory & Representation Theory Seminar</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Theme Detection Script -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<nav id="main-nav">
+    <button class="menu-toggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="events.html" class="active">Conferences/Workshops/Seminars</a>
+        <a href="advising.html">Advising</a>
+        <a href="notes.html">Notes</a>
+        <a href="links.html">Links</a>
+    </div>
+</nav>
+
+<header class="course-header">
+    <h1>BC Number Theory & Representation Theory Seminar</h1>
+    <p>Boston College • Department of Mathematics • Spring 2026</p>
+
+    <!-- Logistics / Information Card -->
+    <div class="pub-card" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+        <div class="badge-container">
+            <span class="status-tag published"><i class="fa-solid fa-calendar-days" style="margin-right: 5px;"></i> Thursdays, 3:00 – 4:00 PM</span>
+            <span class="status-tag" style="background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd;">
+                <i class="fa-solid fa-location-dot" style="margin-right: 5px;"></i> Maloney Hall 560
+            </span>
+        </div>
+        <p style="margin-bottom: 0.5rem;">
+            <strong>Organizers:</strong> 
+            <a href="https://spencerleslie.com/" target="_blank">Spencer Leslie</a> and 
+            <a href="index.html">Keerthi Madapusi</a>
+        </p>
+        <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 0;">
+            Pre-talk tea & coffee are held at 2:30 PM in the Maloney Hall 5th Floor Lounge.
+        </p>
+    </div>
+
+    <!-- Quick Links Bar -->
+    <div class="card-actions" style="border-top: none; margin-top: 10px;">
+        <a href="#upcoming" class="action-btn">
+            <i class="fa-solid fa-clock"></i> Upcoming Talks
+        </a>
+        <a href="#past" class="action-btn">
+            <i class="fa-solid fa-box-archive"></i> Past Talks
+        </a>
+        <a href="https://www.bc.edu/bc-web/schools/mcas/departments/math.html" target="_blank" class="action-btn journal">
+            <i class="fa-solid fa-building-columns"></i> BC Math Dept
+        </a>
+    </div>
+</header>
+
+<div class="page-controls">
+    <div class="toc-dropdown">
+        <button class="toc-btn">
+            Jump to Section <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="toc-content">
+            <a href="#upcoming">Upcoming Talks</a>
+            <a href="#past">Past Talks</a>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="pageSearch" class="form-input" placeholder="Search speakers, titles, abstracts...">
+    </div>
+</div>
+
+<main>
+    <!-- ======================================================================
+         UPCOMING TALKS
+         ====================================================================== -->
+    <section id="upcoming">
+        <h2>Upcoming Talks</h2>
+
+        <!-- Talk Card 1 -->
+        <div class="event-card recurring pub-card" id="talk-2026-03-05" data-date="2026-03-05">
+            <div class="event-date">
+                <span class="month">Mar 5</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="role-tag">3:00 PM • Maloney 560</span>
+                        <span class="live-tag"><i class="fa-solid fa-circle-dot"></i> Upcoming</span>
+                    </div>
+                    <a href="#talk-2026-03-05" class="card-anchor" title="Copy direct link">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+
+                <h3>Speaker Name <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(Institution)</span></h3>
+                <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">
+                    Title of the Upcoming Number Theory Talk
+                </p>
+
+                <details class="abstract-details">
+                    <summary class="action-btn abstract">
+                        <i class="fa-solid fa-angle-right"></i> Abstract
+                    </summary>
+                    <div class="abstract-content">
+                        Let $F$ be a non-archimedean local field and $G$ a reductive group over $F$. We discuss recent developments in the local Langlands correspondence and spectral decompositions for automorphic forms on $G(\mathbb{A})$.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Talk Card 2 -->
+        <div class="event-card recurring pub-card" id="talk-2026-03-12" data-date="2026-03-12">
+            <div class="event-date">
+                <span class="month">Mar 12</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <div style="display: flex; gap: 8px;">
+                        <span class="role-tag">3:00 PM • Maloney 560</span>
+                    </div>
+                    <a href="#talk-2026-03-12" class="card-anchor" title="Copy direct link">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+
+                <h3>Speaker Name <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(Institution)</span></h3>
+                <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">
+                    Arithmetic Geometry of Shimura Varieties
+                </p>
+
+                <details class="abstract-details">
+                    <summary class="action-btn abstract">
+                        <i class="fa-solid fa-angle-right"></i> Abstract
+                    </summary>
+                    <div class="abstract-content">
+                        We explore integral models of Shimura varieties at unramified primes and applications of $p$-adic Hodge theory to special cycle classes.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================================
+         PAST TALKS
+         ====================================================================== -->
+    <section id="past" style="margin-top: 4rem;">
+        <h2>Past Talks</h2>
+
+        <!-- Past Talk 1 -->
+        <div class="event-card pub-card" id="talk-2026-01-22">
+            <div class="event-date">
+                <span class="month">Jan 22</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">Maloney 560</span>
+                    <a href="#talk-2026-01-22" class="card-anchor" title="Copy direct link">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+
+                <h3>Speaker Name <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(Institution)</span></h3>
+                <p style="font-weight: 600; color: var(--text-heading); margin: 0.25rem 0 0.75rem 0;">
+                    Relative Trace Formulas and Period Integrals
+                </p>
+
+                <details class="abstract-details">
+                    <summary class="action-btn abstract">
+                        <i class="fa-solid fa-angle-right"></i> Abstract
+                    </summary>
+                    <div class="abstract-content">
+                        An overview of the Gan-Gross-Prasad conjectures and relative trace formulas comparing spherical varieties and distinguishing automorphic representations.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Boston College Department of Mathematics</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
