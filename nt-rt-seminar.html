@@ -28,44 +28,36 @@
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body>
 
-<!-- <nav id="main-nav">
-    <button class="menu-toggle" aria-label="Toggle Menu">
-        <i class="fa-solid fa-bars"></i>
-    </button>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="research.html">Research</a>
-        <a href="teaching.html">Teaching</a>
-        <a href="events.html" class="active">Conferences/Workshops/Seminars</a>
-        <a href="advising.html">Advising</a>
-        <a href="notes.html">Notes</a>
-        <a href="links.html">Links</a>
-    </div>
-</nav> -->
+    <style>
+        /* Pin control bar flush to top edge without navigation */
+        .page-controls {
+            top: 0 !important;
+            margin-top: 0 !important;
+            padding: 1rem 0 !important;
+            background-color: var(--bg-light) !important;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .course-header {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="course-page">
 
 <header class="course-header">
     <h1>BC Number Theory & Representation Theory Seminar, Fall 2026</h1>
-    <!-- <p>Boston College • Department of Mathematics • Spring 2026</p> -->
 
     <!-- Logistics / Information Card -->
     <div class="pub-card" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
         <div class="badge-container">
-            <span class="status-tag published"><i class="fa-solid fa-calendar-days" style="margin-right: 5px;"></i> Thursdays, 1:30 – 1:30 PM</span>
+            <span class="status-tag published"><i class="fa-solid fa-calendar-days" style="margin-right: 5px;"></i> Thursdays, 1:30 – 2:30 PM</span>
             <span class="status-tag" style="background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd;">
                 <i class="fa-solid fa-location-dot" style="margin-right: 5px;"></i> Maloney Hall 560
             </span>
         </div>
-        <!-- <p style="margin-bottom: 0.5rem;">
-            <strong>Organizers:</strong> 
-            <a href="https://spencerleslie.com/" target="_blank">Spencer Leslie</a> and 
-            <a href="index.html">Keerthi Madapusi</a>
-        </p>
-        <p style="font-size: 0.95rem; color: #64748b; margin-bottom: 0;">
-            Pre-talk tea & coffee are held at 2:30 PM in the Maloney Hall 5th Floor Lounge.
-        </p> -->
     </div>
 
     <!-- Quick Links Bar -->
@@ -106,193 +98,207 @@
     <section id="upcoming">
         <h2>Upcoming Talks</h2>
 
-        <!-- Talk Card 1 -->
-        
-    <!-- Sept 10 -->
-    <div class="event-card recurring pub-card" id="talk-2026-09-10"">
-        <div class="event-date">
-            <span class="month">Sep 10</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-09-10" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+        <!-- Sept 3 -->
+        <div class="event-card recurring pub-card" id="talk-2026-09-03">
+            <div class="event-date">
+                <span class="month">Sep 3</span>
+                <span class="year">2026</span>
             </div>
-            <h3>TBA</h3>
-            <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
-        </div>
-    </div>
-
-    <!-- Sept 17: Naomi Sweeting -->
-    <div class="event-card recurring pub-card" id="talk-2026-09-17"">
-        <div class="event-date">
-            <span class="month">Sep 17</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-09-17" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
-            </div>
-            <h3>Naomi Sweeting <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(MIT)</span></h3>
-            <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">New bounds on adjoint Selmer groups for Hilbert modular forms</p>
-            <details class="abstract-details">
-                <summary class="action-btn abstract">
-                    <i class="fa-solid fa-angle-right"></i> Abstract
-                </summary>
-                <div class="abstract-content">
-                    Let $f$ be a cuspidal Hilbert modular eigenform of parallel weight 2, without CM. The Selmer groups for the adjoint $p$-adic Galois representations attached to $f$ have a rich history, including (to name just a few) works of Flach, Wiles, Taylor-Wiles, Kisin, and more recently Newton and Thorne. In particular, these Selmer groups are now all known to be finite. However, it is still not known in general that their lengths are given by appropriate $L$-values or congruence numbers, as predicted by the Tamagawa number conjecture. In this talk, I will report on joint work in progress with Chris Skinner, in which we bound the adjoint Selmer group for $f$ in terms of the congruence number in new cases. Most notably, we are able to get a near-sharp bound even when the level of $f$ is arbitrarily bad at $p$. The proof uses a system of auxiliary Galois cohomology classes, constructed by combining an idea of Skinner and Venkatesh with level-raising techniques inspired by bipartite Euler systems.
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-09-03" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
                 </div>
-            </details>
-        </div>
-    </div>
-
-    <!-- Sept 24: Tony Zhou -->
-    <div class="event-card recurring pub-card" id="talk-2026-09-24"">
-        <div class="event-date">
-            <span class="month">Sep 24</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-09-24" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
             </div>
-            <h3>Tony Zhou <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(MIT)</span></h3>
-            <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">Title: TBA</p>
-            <details class="abstract-details">
-                <summary class="action-btn abstract">
-                    <i class="fa-solid fa-angle-right"></i> Abstract
-                </summary>
-                <div class="abstract-content">
-                    Abstract TBA.
+        </div>
+
+        <!-- Sept 10 -->
+        <div class="event-card recurring pub-card" id="talk-2026-09-10">
+            <div class="event-date">
+                <span class="month">Sep 10</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-09-10" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
                 </div>
-            </details>
-        </div>
-    </div>
-
-    <!-- Oct 1 -->
-    <div class="event-card recurring pub-card" id="talk-2026-10-01"">
-        <div class="event-date">
-            <span class="month">Oct 1</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-10-01" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
             </div>
-            <h3>TBA</h3>
-            <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
         </div>
-    </div>
 
-    <!-- Oct 8: No Seminar -->
-    <div class="site-notice" style="margin-bottom: 1.5rem;">
-        <i class="fa-solid fa-calendar-xmark"></i>
-        <div><strong>October 8, 2026:</strong> No Seminar (BC/MIT Number Theory Seminar)</div>
-    </div>
-
-    <!-- Oct 15: No Seminar -->
-    <div class="site-notice" style="margin-bottom: 1.5rem;">
-        <i class="fa-solid fa-calendar-xmark"></i>
-        <div><strong>October 15, 2026:</strong> No Seminar (Distinguished Lecture Series)</div>
-    </div>
-
-    <!-- Oct 22: Guy Shtotland -->
-    <div class="event-card recurring pub-card" id="talk-2026-10-22"">
-        <div class="event-date">
-            <span class="month">Oct 22</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-10-22" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+        <!-- Sept 17: Naomi Sweeting -->
+        <div class="event-card recurring pub-card" id="talk-2026-09-17">
+            <div class="event-date">
+                <span class="month">Sep 17</span>
+                <span class="year">2026</span>
             </div>
-            <h3>Guy Shtotland <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(Ben Gurion University)</span></h3>
-            <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">Title: TBA</p>
-            <details class="abstract-details">
-                <summary class="action-btn abstract">
-                    <i class="fa-solid fa-angle-right"></i> Abstract
-                </summary>
-                <div class="abstract-content">
-                    Abstract TBA.
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-09-17" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
                 </div>
-            </details>
-        </div>
-    </div>
-
-    <!-- Oct 29 -->
-    <div class="event-card recurring pub-card" id="talk-2026-10-29"">
-        <div class="event-date">
-            <span class="month">Oct 29</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-10-29" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                <h3>Naomi Sweeting <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(MIT)</span></h3>
+                <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">New bounds on adjoint Selmer groups for Hilbert modular forms</p>
+                <details class="abstract-details">
+                    <summary class="action-btn abstract">
+                        <i class="fa-solid fa-angle-right"></i> Abstract
+                    </summary>
+                    <div class="abstract-content">
+                        Let $f$ be a cuspidal Hilbert modular eigenform of parallel weight 2, without CM. The Selmer groups for the adjoint $p$-adic Galois representations attached to $f$ have a rich history, including (to name just a few) works of Flach, Wiles, Taylor-Wiles, Kisin, and more recently Newton and Thorne. In particular, these Selmer groups are now all known to be finite. However, it is still not known in general that their lengths are given by appropriate $L$-values or congruence numbers, as predicted by the Tamagawa number conjecture. In this talk, I will report on joint work in progress with Chris Skinner, in which we bound the adjoint Selmer group for $f$ in terms of the congruence number in new cases. Most notably, we are able to get a near-sharp bound even when the level of $f$ is arbitrarily bad at $p$. The proof uses a system of auxiliary Galois cohomology classes, constructed by combining an idea of Skinner and Venkatesh with level-raising techniques inspired by bipartite Euler systems.
+                    </div>
+                </details>
             </div>
-            <h3>TBA</h3>
-            <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
         </div>
-    </div>
 
-    <!-- Nov 5 -->
-    <div class="event-card recurring pub-card" id="talk-2026-11-05"">
-        <div class="event-date">
-            <span class="month">Nov 5</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-11-05" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+        <!-- Sept 24: Tony Zhou -->
+        <div class="event-card recurring pub-card" id="talk-2026-09-24">
+            <div class="event-date">
+                <span class="month">Sep 24</span>
+                <span class="year">2026</span>
             </div>
-            <h3>TBA</h3>
-            <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
-        </div>
-    </div>
-
-    <!-- Nov 12: No Seminar -->
-    <div class="site-notice" style="margin-bottom: 1.5rem;">
-        <i class="fa-solid fa-calendar-xmark"></i>
-        <div><strong>November 12, 2026:</strong> No Seminar (BC/MIT Number Theory Seminar)</div>
-    </div>
-
-    <!-- Nov 19 -->
-    <div class="event-card recurring pub-card" id="talk-2026-11-19"">
-        <div class="event-date">
-            <span class="month">Nov 19</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-11-19" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-09-24" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>Tony Zhou <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(MIT)</span></h3>
+                <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">Title: TBA</p>
+                <details class="abstract-details">
+                    <summary class="action-btn abstract">
+                        <i class="fa-solid fa-angle-right"></i> Abstract
+                    </summary>
+                    <div class="abstract-content">
+                        Abstract TBA.
+                    </div>
+                </details>
             </div>
-            <h3>TBA</h3>
-            <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
         </div>
-    </div>
 
-    <!-- Dec 3 -->
-    <div class="event-card recurring pub-card" id="talk-2026-12-03"">
-        <div class="event-date">
-            <span class="month">Dec 3</span>
-            <span class="year">2026</span>
-        </div>
-        <div class="event-info">
-            <div class="badge-container" style="justify-content: space-between;">
-                <span class="role-tag">1:30 PM • Maloney 560</span>
-                <a href="#talk-2026-12-03" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+        <!-- Oct 1 -->
+        <div class="event-card recurring pub-card" id="talk-2026-10-01">
+            <div class="event-date">
+                <span class="month">Oct 1</span>
+                <span class="year">2026</span>
             </div>
-            <h3>TBA</h3>
-            <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-10-01" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
+            </div>
         </div>
-    </div>    
+
+        <!-- Oct 8: No Seminar -->
+        <div class="site-notice" style="margin-bottom: 1.5rem;">
+            <i class="fa-solid fa-calendar-xmark"></i>
+            <div><strong>October 8, 2026:</strong> No Seminar (BC/MIT Number Theory Seminar)</div>
+        </div>
+
+        <!-- Oct 15: No Seminar -->
+        <div class="site-notice" style="margin-bottom: 1.5rem;">
+            <i class="fa-solid fa-calendar-xmark"></i>
+            <div><strong>October 15, 2026:</strong> No Seminar (Distinguished Lecture Series)</div>
+        </div>
+
+        <!-- Oct 22: Guy Shtotland -->
+        <div class="event-card recurring pub-card" id="talk-2026-10-22">
+            <div class="event-date">
+                <span class="month">Oct 22</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-10-22" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>Guy Shtotland <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(Ben Gurion University)</span></h3>
+                <p style="font-weight: 600; color: var(--primary); margin: 0.25rem 0 0.75rem 0;">Title: TBA</p>
+                <details class="abstract-details">
+                    <summary class="action-btn abstract">
+                        <i class="fa-solid fa-angle-right"></i> Abstract
+                    </summary>
+                    <div class="abstract-content">
+                        Abstract TBA.
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Oct 29 -->
+        <div class="event-card recurring pub-card" id="talk-2026-10-29">
+            <div class="event-date">
+                <span class="month">Oct 29</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-10-29" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
+            </div>
+        </div>
+
+        <!-- Nov 5 -->
+        <div class="event-card recurring pub-card" id="talk-2026-11-05">
+            <div class="event-date">
+                <span class="month">Nov 5</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-11-05" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
+            </div>
+        </div>
+
+        <!-- Nov 12: No Seminar -->
+        <div class="site-notice" style="margin-bottom: 1.5rem;">
+            <i class="fa-solid fa-calendar-xmark"></i>
+            <div><strong>November 12, 2026:</strong> No Seminar (BC/MIT Number Theory Seminar)</div>
+        </div>
+
+        <!-- Nov 19 -->
+        <div class="event-card recurring pub-card" id="talk-2026-11-19">
+            <div class="event-date">
+                <span class="month">Nov 19</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-11-19" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
+            </div>
+        </div>
+
+        <!-- Dec 3 -->
+        <div class="event-card recurring pub-card" id="talk-2026-12-03">
+            <div class="event-date">
+                <span class="month">Dec 3</span>
+                <span class="year">2026</span>
+            </div>
+            <div class="event-info">
+                <div class="badge-container" style="justify-content: space-between;">
+                    <span class="role-tag">1:30 PM • Maloney 560</span>
+                    <a href="#talk-2026-12-03" class="card-anchor" title="Copy direct link"><i class="fa-solid fa-link"></i></a>
+                </div>
+                <h3>TBA</h3>
+                <p style="font-weight: 600; color: var(--text-main); margin: 0.25rem 0 0;">Title: TBA</p>
+            </div>
+        </div>    
     </section>
 
     <!-- ======================================================================
@@ -300,36 +306,6 @@
          ====================================================================== -->
     <section id="past" style="margin-top: 4rem;">
         <h2>Past Talks</h2>
-
-        <!-- Past Talk 1 -->
-        <!-- <div class="event-card pub-card" id="talk-2026-01-22">
-            <div class="event-date">
-                <span class="month">Jan 22</span>
-                <span class="year">2026</span>
-            </div>
-            <div class="event-info">
-                <div class="badge-container" style="justify-content: space-between;">
-                    <span class="role-tag">Maloney 560</span>
-                    <a href="#talk-2026-01-22" class="card-anchor" title="Copy direct link">
-                        <i class="fa-solid fa-link"></i>
-                    </a>
-                </div>
-
-                <h3>Speaker Name <span style="font-size: 1rem; font-weight: normal; color: #64748b;">(Institution)</span></h3>
-                <p style="font-weight: 600; color: var(--text-heading); margin: 0.25rem 0 0.75rem 0;">
-                    Relative Trace Formulas and Period Integrals
-                </p>
-
-                <details class="abstract-details">
-                    <summary class="action-btn abstract">
-                        <i class="fa-solid fa-angle-right"></i> Abstract
-                    </summary>
-                    <div class="abstract-content">
-                        An overview of the Gan-Gross-Prasad conjectures and relative trace formulas comparing spherical varieties and distinguishing automorphic representations.
-                    </div>
-                </details>
-            </div>
-        </div> -->
     </section>
 </main>
 
