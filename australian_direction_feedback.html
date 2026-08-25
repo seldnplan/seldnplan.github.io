@@ -1,282 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference Feedback | The Australian Direction</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Theme Detection Script -->
-    <script>
-        if (localStorage.getItem('theme') === 'dark' || 
-            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark-mode');
-        }
-    </script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+        onload="if(submitted) { window.location='thank-you-feedback.html'; }"></iframe>
 
-    <style>
-        .feedback-section {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .feedback-section:last-of-type {
-            border-bottom: none;
-            margin-bottom: 1rem;
-            padding-bottom: 0;
-        }
-        .section-heading {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            color: var(--text-heading);
-        }
-        .section-desc {
-            font-size: 0.875rem;
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-        .scale-group {
-            display: flex;
-            justify-content: space-between;
-            max-width: 480px;
-            margin-top: 8px;
-            padding: 10px 14px;
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
-        .scale-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-        .scale-labels {
-            display: flex;
-            justify-content: space-between;
-            max-width: 480px;
-            font-size: 0.75rem;
-            color: #64748b;
-            margin-top: 4px;
-            padding: 0 4px;
-        }
-        .label-style {
-            background: none !important;
-            padding: 0 !important;
-            border: none !important;
-            color: var(--text-heading) !important;
-            height: auto !important;
-            text-align: left !important;
-            display: block !important;
-            margin-bottom: 6px !important;
-            font-size: 0.92rem !important;
-            font-weight: 600 !important;
-            text-transform: none !important;
-        }
-        .dark-mode .scale-group {
-            background: #0f172a;
-            border-color: #334155;
-        }
-    </style>
-</head>
-<body>
-    <main class="contact-form-container" style="max-width: 760px;">
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
-                onload="if(submitted) { window.location='thank-you-feedback.html'; }"></iframe>
-        
-        <script>var submitted=false;</script>
+<script>var submitted=false;</script>
 
-        <!-- REPLACE URL BELOW WITH YOUR GOOGLE FORM RESPONSE ENDPOINT -->
-        <form action="https://docs.google.com/forms/u/0/d/e/YOUR_FORM_ID/formResponse" 
-              method="POST" 
-              target="hidden_iframe" 
-              onsubmit="submitted=true;">
+<!-- Google Apps Script Web App Endpoint -->
+<form action="https://script.google.com/a/macros/bc.edu/s/AKfycbxDJOIPLTePZqSMcbNlkNG0vady7YkLmAU581r1A7fIktHuBebB5XP5_hSa7tzYlGkW/exec" 
+      method="POST" 
+      target="hidden_iframe" 
+      onsubmit="submitted=true;">
 
-            <div class="pub-card" style="border-top: 6px solid var(--primary); padding: 2rem;"> 
-                <div class="badge-container" style="justify-content: space-between; margin-bottom: 0.5rem;">
-                    <span class="status-tag" style="background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe;">
-                        <i class="fa-solid fa-clipboard-check" style="margin-right: 6px;"></i> Conference Feedback
-                    </span>
-                    <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank" rel="noopener">
-                        Conference Website
-                    </a>
+    <div class="pub-card" style="border-top: 6px solid var(--primary); padding: 2rem;"> 
+        <div class="badge-container" style="justify-content: space-between; margin-bottom: 0.5rem;">
+            <span class="status-tag" style="background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe;">
+                <i class="fa-solid fa-clipboard-check" style="margin-right: 6px;"></i> Conference Feedback
+            </span>
+            <a href="http://math.utah.edu/~howe/australian-direction.html" class="status-tag conference-link" target="_blank" rel="noopener">
+                Conference Website
+            </a>
+        </div>
+
+        <div class="form-header" style="text-align: center; margin-bottom: 2.5rem;">
+            <h2 style="margin-top: 0;">Participant Feedback Survey</h2>
+            <p style="color: #64748b;">The Australian Direction • Aug 10–14, 2026<br>Your feedback helps us evaluate the scientific program and provides critical reporting metrics for supporting grants.</p>
+        </div>
+
+        <!-- 1. Preparatory & Virtual Lectures -->
+        <div class="feedback-section">
+            <div class="section-heading">
+                <i class="fa-solid fa-chalkboard-user" style="color: var(--primary);"></i>
+                <h3>1. Preparatory & Introductory Virtual Lectures</h3>
+            </div>
+            <p class="section-desc">Evaluating the pre-conference virtual series by Si Ying Lee, Liang Xiao, Stefano Morra, and Florian Herzig.</p>
+
+            <div class="form-group">
+                <label class="label-style">Utility & Preparation</label>
+                <p class="form-question" style="font-weight: 400; font-size: 0.88rem; margin-bottom: 4px;">
+                    Did the virtual introductory lectures and accompanying notes help you better follow the advanced research talks during the conference?
+                </p>
+                <div class="scale-group">
+                    <label class="scale-item"><input type="radio" name="prep_utility" value="1" required>1</label>
+                    <label class="scale-item"><input type="radio" name="prep_utility" value="2">2</label>
+                    <label class="scale-item"><input type="radio" name="prep_utility" value="3">3</label>
+                    <label class="scale-item"><input type="radio" name="prep_utility" value="4">4</label>
+                    <label class="scale-item"><input type="radio" name="prep_utility" value="5">5</label>
                 </div>
-
-                <div class="form-header" style="text-align: center; margin-bottom: 2.5rem;">
-                    <h2 style="margin-top: 0;">Participant Feedback Survey</h2>
-                    <p style="color: #64748b;">The Australian Direction • Aug 10–14, 2026<br>Your feedback helps us evaluate the scientific program and provides critical reporting metrics for supporting grants.</p>
+                <div class="scale-labels">
+                    <span>1 = Not helpful at all</span>
+                    <span>3 = Moderately helpful</span>
+                    <span>5 = Essential</span>
                 </div>
+            </div>
 
-                <!-- 1. Preparatory & Virtual Lectures -->
-                <div class="feedback-section">
-                    <div class="section-heading">
-                        <i class="fa-solid fa-chalkboard-user" style="color: var(--primary);"></i>
-                        <h3>1. Preparatory & Introductory Virtual Lectures</h3>
-                    </div>
-                    <p class="section-desc">Evaluating the pre-conference virtual series by Si Ying Lee, Liang Xiao, Stefano Morra, and Florian Herzig.</p>
+            <div class="form-group">
+                <label class="label-style">Scope & Level</label>
+                <textarea name="prep_scope_level" class="form-input" style="height: 80px;" placeholder="How was the pacing and level of accessibility for your career stage?"></textarea>
+            </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Utility & Preparation</label>
-                        <p class="form-question" style="font-weight: 400; font-size: 0.88rem; margin-bottom: 4px;">
-                            Did the virtual introductory lectures and accompanying notes help you better follow the advanced research talks during the conference?
-                        </p>
-                        <div class="scale-group">
-                            <label class="scale-item"><input type="radio" name="entry.1001" value="1" required>1</label>
-                            <label class="scale-item"><input type="radio" name="entry.1001" value="2">2</label>
-                            <label class="scale-item"><input type="radio" name="entry.1001" value="3">3</label>
-                            <label class="scale-item"><input type="radio" name="entry.1001" value="4">4</label>
-                            <label class="scale-item"><input type="radio" name="entry.1001" value="5">5</label>
-                        </div>
-                        <div class="scale-labels">
-                            <span>1 = Not helpful at all</span>
-                            <span>3 = Moderately helpful</span>
-                            <span>5 = Essential</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="label-style">Scope & Level</label>
-                        <textarea name="entry.1002" class="form-input" style="height: 80px;" placeholder="How was the pacing and level of accessibility for your career stage?"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <p class="form-question">Would you recommend that future workshops in arithmetic geometry continue using a virtual preparatory series prior to meeting in person?</p>
-                        <div class="radio-group">
-                            <label class="radio-label"><input type="radio" name="entry.1003" value="Yes" required> Yes</label>
-                            <label class="radio-label"><input type="radio" name="entry.1003" value="Maybe / Depends"> Maybe / Depends</label>
-                            <label class="radio-label"><input type="radio" name="entry.1003" value="No"> No</label>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <p class="form-question">Would you recommend that future workshops in arithmetic geometry continue using a virtual preparatory series prior to meeting in person?</p>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="prep_future_adoption" value="Yes" required> Yes</label>
+                    <label class="radio-label"><input type="radio" name="prep_future_adoption" value="Maybe / Depends"> Maybe / Depends</label>
+                    <label class="radio-label"><input type="radio" name="prep_future_adoption" value="No"> No</label>
                 </div>
+            </div>
+        </div>
 
-                <!-- 2. Main Scientific Program -->
-                <div class="feedback-section">
-                    <div class="section-heading">
-                        <i class="fa-solid fa-atom" style="color: var(--primary);"></i>
-                        <h3>2. Main Scientific Program & Talks</h3>
-                    </div>
-                    <p class="section-desc">Covering $p$-adic Langlands, Shimura varieties, completed cohomology, Galois deformation rings, and integral $p$-adic Hodge theory.</p>
+        <!-- 2. Main Scientific Program -->
+        <div class="feedback-section">
+            <div class="section-heading">
+                <i class="fa-solid fa-atom" style="color: var(--primary);"></i>
+                <h3>2. Main Scientific Program & Talks</h3>
+            </div>
+            <p class="section-desc">Covering $p$-adic Langlands, Shimura varieties, completed cohomology, Galois deformation rings, and integral $p$-adic Hodge theory.</p>
 
-                    <div class="form-group">
-                        <label class="label-style">Balance of Content</label>
-                        <textarea name="entry.2001" class="form-input" style="height: 80px;" placeholder="How well did the schedule balance broad programmatic overviews with specialized technical developments?"></textarea>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Balance of Content</label>
+                <textarea name="program_balance" class="form-input" style="height: 80px;" placeholder="How well did the schedule balance broad programmatic overviews with specialized technical developments?"></textarea>
+            </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Hybrid / Virtual Talk Experience</label>
-                        <textarea name="entry.2002" class="form-input" style="height: 80px;" placeholder="For virtual presentations (e.g. Breuil, Pappas), how effective was the audio clarity, display, and Q&A interaction?"></textarea>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Hybrid / Virtual Talk Experience</label>
+                <textarea name="hybrid_experience" class="form-input" style="height: 80px;" placeholder="For virtual presentations (e.g. Breuil, Pappas), how effective was the audio clarity, display, and Q&A interaction?"></textarea>
+            </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Scientific Inspiration</label>
-                        <textarea name="entry.2003" class="form-input" style="height: 90px;" placeholder="Which talks or open problems discussed were most relevant or inspiring for your own ongoing research?"></textarea>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Scientific Inspiration</label>
+                <textarea name="scientific_inspiration" class="form-input" style="height: 90px;" placeholder="Which talks or open problems discussed were most relevant or inspiring for your own ongoing research?"></textarea>
+            </div>
+        </div>
+
+        <!-- 3. Collaboration & Atmosphere -->
+        <div class="feedback-section">
+            <div class="section-heading">
+                <i class="fa-solid fa-people-group" style="color: var(--primary);"></i>
+                <h3>3. Collaboration, Networking & Community</h3>
+            </div>
+            <p class="section-desc">Reflecting the celebratory and collaborative environment of the conference.</p>
+
+            <div class="form-group">
+                <p class="form-question">Was there sufficient time outside the lecture schedule (breaks, lunch, free afternoon) for informal blackboard discussions and collaboration?</p>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="discussion_time" value="Yes, plenty" required> Yes, plenty</label>
+                    <label class="radio-label"><input type="radio" name="discussion_time" value="About right"> About right</label>
+                    <label class="radio-label"><input type="radio" name="discussion_time" value="Could use more time"> Could use more time</label>
                 </div>
+            </div>
 
-                <!-- 3. Collaboration & Atmosphere -->
-                <div class="feedback-section">
-                    <div class="section-heading">
-                        <i class="fa-solid fa-people-group" style="color: var(--primary);"></i>
-                        <h3>3. Collaboration, Networking & Community</h3>
-                    </div>
-                    <p class="section-desc">Reflecting the celebratory and collaborative environment of the conference.</p>
+            <div class="form-group">
+                <label class="label-style">Early-Career & Participant Engagement</label>
+                <textarea name="early_career_integration" class="form-input" style="height: 80px;" placeholder="If you are an early-career researcher, did you feel well-integrated into discussions with senior colleagues?"></textarea>
+            </div>
 
-                    <div class="form-group">
-                        <p class="form-question">Was there sufficient time outside the lecture schedule (breaks, lunch, free afternoon) for informal blackboard discussions and collaboration?</p>
-                        <div class="radio-group">
-                            <label class="radio-label"><input type="radio" name="entry.3001" value="Yes, plenty" required> Yes, plenty</label>
-                            <label class="radio-label"><input type="radio" name="entry.3001" value="About right"> About right</label>
-                            <label class="radio-label"><input type="radio" name="entry.3001" value="Could use more time"> Could use more time</label>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Social & Free Afternoon Activities</label>
+                <textarea name="social_activities" class="form-input" style="height: 80px;" placeholder="Did the outings (hikes, museum visits, dinners) provide a productive atmosphere for networking?"></textarea>
+            </div>
+        </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Early-Career & Participant Engagement</label>
-                        <textarea name="entry.3002" class="form-input" style="height: 80px;" placeholder="If you are an early-career researcher, did you feel well-integrated into discussions with senior colleagues?"></textarea>
-                    </div>
+        <!-- 4. Materials & Dissemination -->
+        <div class="feedback-section">
+            <div class="section-heading">
+                <i class="fa-solid fa-book-open" style="color: var(--primary);"></i>
+                <h3>4. Materials & Dissemination</h3>
+            </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Social & Free Afternoon Activities</label>
-                        <textarea name="entry.3003" class="form-input" style="height: 80px;" placeholder="Did the outings (hikes, museum visits, dinners) provide a productive atmosphere for networking?"></textarea>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Lecture Notes & Video Archives</label>
+                <textarea name="notes_video_utility" class="form-input" style="height: 80px;" placeholder="How useful are the published notes, slides, and talk recordings for your reference or sharing with colleagues?"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label-style">Online Resources & Website</label>
+                <textarea name="website_resources" class="form-input" style="height: 80px;" placeholder="Was the conference website (schedule updates, local food/trail guide, abstracts) clear and accessible?"></textarea>
+            </div>
+        </div>
+
+        <!-- 5. Logistics & Grant Reporting -->
+        <div class="feedback-section">
+            <div class="section-heading">
+                <i class="fa-solid fa-chart-pie" style="color: var(--primary);"></i>
+                <h3>5. Logistics, Organization & NSF Reporting</h3>
+            </div>
+            <p class="section-desc">Essential feedback metrics for grant reporting and future planning.</p>
+
+            <div class="form-group">
+                <p class="form-question">Collaboration Outcomes (Grant Metric)</p>
+                <p style="font-size: 0.85rem; color: #64748b; margin: -6px 0 10px 0;">
+                    Did attending result in a new collaboration, a new research project, or significant progress on an existing paper?
+                </p>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="grant_collaboration" value="Yes" required> Yes</label>
+                    <label class="radio-label"><input type="radio" name="grant_collaboration" value="Likely"> Likely</label>
+                    <label class="radio-label"><input type="radio" name="grant_collaboration" value="No"> No</label>
                 </div>
+            </div>
 
-                <!-- 4. Materials & Dissemination -->
-                <div class="feedback-section">
-                    <div class="section-heading">
-                        <i class="fa-solid fa-book-open" style="color: var(--primary);"></i>
-                        <h3>4. Materials & Dissemination</h3>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Travel Support Administration</label>
+                <textarea name="travel_support" class="form-input" style="height: 80px;" placeholder="If you received travel funding, was the award notification and reimbursement process clear and timely?"></textarea>
+            </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Lecture Notes & Video Archives</label>
-                        <textarea name="entry.4001" class="form-input" style="height: 80px;" placeholder="How useful are the published notes, slides, and talk recordings for your reference or sharing with colleagues?"></textarea>
-                    </div>
+            <div class="form-group">
+                <label class="label-style">Venue & Facilities</label>
+                <textarea name="venue_facilities" class="form-input" style="height: 80px;" placeholder="How were the facilities at the University of Utah (blackboard space, acoustics, seating, WiFi)?"></textarea>
+            </div>
 
-                    <div class="form-group">
-                        <label class="label-style">Online Resources & Website</label>
-                        <textarea name="entry.4002" class="form-input" style="height: 80px;" placeholder="Was the conference website (schedule updates, local food/trail guide, abstracts) clear and accessible?"></textarea>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label class="label-style">General Feedback & Suggestions</label>
+                <textarea name="general_feedback" class="form-input" style="height: 100px;" placeholder="What was the highlight of the week, and what could the organizers improve for future iterations?"></textarea>
+            </div>
+        </div>
 
-                <!-- 5. Logistics & Grant Reporting -->
-                <div class="feedback-section">
-                    <div class="section-heading">
-                        <i class="fa-solid fa-chart-pie" style="color: var(--primary);"></i>
-                        <h3>5. Logistics, Organization & NSF Reporting</h3>
-                    </div>
-                    <p class="section-desc">Essential feedback metrics for grant reporting and future planning.</p>
-
-                    <div class="form-group">
-                        <p class="form-question">Collaboration Outcomes (Grant Metric)</p>
-                        <p style="font-size: 0.85rem; color: #64748b; margin: -6px 0 10px 0;">
-                            Did attending result in a new collaboration, a new research project, or significant progress on an existing paper?
-                        </p>
-                        <div class="radio-group">
-                            <label class="radio-label"><input type="radio" name="entry.5001" value="Yes" required> Yes</label>
-                            <label class="radio-label"><input type="radio" name="entry.5001" value="Likely"> Likely</label>
-                            <label class="radio-label"><input type="radio" name="entry.5001" value="No"> No</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="label-style">Travel Support Administration</label>
-                        <textarea name="entry.5002" class="form-input" style="height: 80px;" placeholder="If you received travel funding, was the award notification and reimbursement process clear and timely?"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="label-style">Venue & Facilities</label>
-                        <textarea name="entry.5003" class="form-input" style="height: 80px;" placeholder="How were the facilities at the University of Utah (blackboard space, acoustics, seating, WiFi)?"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="label-style">General Feedback & Suggestions</label>
-                        <textarea name="entry.5004" class="form-input" style="height: 100px;" placeholder="What was the highlight of the week, and what could the organizers improve for future iterations?"></textarea>
-                    </div>
-                </div>
-
-                <div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 2rem; padding-top: 1.5rem;">
-                    <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0 40px; height: 46px; font-weight: 600;">
-                        <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit Conference Feedback
-                    </button>
-                </div>
-            </div> 
-        </form>
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 The Australian Direction Organizing Committee</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+        <div class="card-actions" style="border-top: 1px solid var(--border); margin-top: 2rem; padding-top: 1.5rem;">
+            <button type="submit" class="action-btn" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0 40px; height: 46px; font-weight: 600;">
+                <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Submit Conference Feedback
+            </button>
+        </div>
+    </div> 
+</form>
