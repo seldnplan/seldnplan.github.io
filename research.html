@@ -29,13 +29,13 @@
 <body>
 
 <nav id="main-nav">
-    <button class="menu-toggle" aria-label="Toggle Menu">
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-links">
         <i class="fa-solid fa-bars"></i>
     </button>
 
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
         <a href="index.html">Home</a>
-        <a href="research.html" class="active">Research</a>
+        <a href="research.html" class="active" aria-current="page">Research</a>
         <a href="teaching.html">Teaching</a>
          <a href="events.html">Conferences/Workshops/Seminars</a>
         <a href="advising.html">Advising</a>
@@ -44,12 +44,15 @@
     </div>
 </nav>
 
+<main>
+<h1>Research</h1>
+
 <div class="page-controls">
     <div class="toc-dropdown">
-        <button class="toc-btn">
+        <button class="toc-btn" aria-expanded="false" aria-controls="toc-content">
             Browse by status <i class="fa-solid fa-chevron-down"></i>
         </button>
-        <div class="toc-content">
+        <div class="toc-content" id="toc-content">
             <a href="#preprints">Preprints</a>
             <a href="#in-progress">In Progress</a>
             <a href="#published">Published Papers</a>
@@ -59,7 +62,7 @@
 
     <div class="search-bar">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="pageSearch" class="form-input" placeholder="Search papers...">
+        <input type="text" id="pageSearch" class="form-input" placeholder="Search papers..." aria-label="Search papers">
     </div>
 </div>
 
@@ -202,6 +205,7 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
              
          
         </div>
+    </div>
 
 
 
@@ -319,7 +323,7 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
     <h2>Published Papers</h2>
 
     
- <div class="project-card publshed" id="connected_components">
+ <div class="project-card published" id="connected_components">
        <div class="badge-container">
         <span class="status-tag">To appear</span>
     </div>
@@ -375,7 +379,7 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
           <a href="assets/preprints/canonical_cycles_arXiv-v2.pdf" class="action-btn pdf">
         <i class="fa-solid fa-file-pdf"></i> Download PDF
     </a>
-    <a href="  https://www.cambridge.org/core/journals/compositio-mathematica/article/kudlas-modularity-conjecture-on-integral-models-of-orthogonal-shimura-varieties/8C9753E55EF594E1707924537F5DF1D6" target="_blank" class="action-btn journal">
+    <a href="https://www.cambridge.org/core/journals/compositio-mathematica/article/kudlas-modularity-conjecture-on-integral-models-of-orthogonal-shimura-varieties/8C9753E55EF594E1707924537F5DF1D6" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
         <details class="abstract-details">
@@ -405,7 +409,7 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
     <div class="pub-meta">Duke Math. J., Vol. 171 (7) (2022)</div>
     
    <div class="card-actions">
-    <a href="https://projecteuclid.org/journals/duke-mathematical-journal/volume-171/issue-7/HondaTate-theory-for-Shimura-varieties/10.1215/00127094-2021-0063.short" target="_blank" class="action-btn journal">
+    <a href="https://projecteuclid.org/journals/duke-mathematical-journal/volume-171/issue-7/HondaTate-theory-for-Shimura-varieties/10.1215/00127094-2021-0063.short" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -443,7 +447,7 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
 
     <div class="pub-meta">Ast&eacute;risque, Vol. 421 (2020)</div> 
      <div class="card-actions">
-          <a href="https://smf.emath.fr/system/files/filepdf/smf_ast_421.pdf" target="_blank" class="action-btn journal">
+          <a href="https://smf.emath.fr/system/files/filepdf/smf_ast_421.pdf" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
         <details class="abstract-details">
@@ -480,7 +484,7 @@ The proofs use deformation techniques from derived algebraic geometry, combined 
     <p class="subtitle">Forum of Math. Sigma, Vol. 7 (2019)</p>
     
    <div class="card-actions">
-    <a href="https://www.cambridge.org/core/journals/forum-of-mathematics-sigma/article/compatible-systems-of-galois-representations-associated-to-the-exceptional-group-e6/187D4B009CEBBC726B31F43688B2100E" target="_blank" class="action-btn journal">
+    <a href="https://www.cambridge.org/core/journals/forum-of-mathematics-sigma/article/compatible-systems-of-galois-representations-associated-to-the-exceptional-group-e6/187D4B009CEBBC726B31F43688B2100E" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -519,7 +523,7 @@ pages={e4}}
     <p class="subtitle">Forum of Math. Sigma, Vol. 4 (2016); Forum of Math. Sigma, Vol. 8 (2020)</p>
     
    <div class="card-actions">
-    <a href="https://www.cambridge.org/core/journals/forum-of-mathematics-sigma/article/2adic-integral-canonical-models/A775E4486CF0175DC1A8DBC872094E8C" target="_blank" class="action-btn journal">
+    <a href="https://www.cambridge.org/core/journals/forum-of-mathematics-sigma/article/2adic-integral-canonical-models/A775E4486CF0175DC1A8DBC872094E8C" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -568,7 +572,7 @@ author={{Madapusi Pera}, Keerthi}, year={2020}, pages={e14}}
     <p class="subtitle">Ann. Math., Vol. 187 (2) (2018)</p>
     
    <div class="card-actions">
-    <a href="http://www.jstor.org/stable/26397727" target="_blank" class="action-btn journal">
+    <a href="http://www.jstor.org/stable/26397727" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -609,7 +613,7 @@ author={{Madapusi Pera}, Keerthi}, year={2020}, pages={e14}}
     <p class="subtitle">Compos. Math., Vol. 153 (3) (2017)</p>
     
    <div class="card-actions">
-    <a href="https://www.cambridge.org/core/journals/compositio-mathematica/article/div-classtitleheight-pairings-on-orthogonal-shimura-varietiesdiv/7C8EC526D2AB5BEA4159711695245BEA" target="_blank" class="action-btn journal">
+    <a href="https://www.cambridge.org/core/journals/compositio-mathematica/article/div-classtitleheight-pairings-on-orthogonal-shimura-varietiesdiv/7C8EC526D2AB5BEA4159711695245BEA" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -652,7 +656,7 @@ author={{Madapusi Pera}, Keerthi}, year={2020}, pages={e14}}
     <p class="subtitle">Invent. Math., Vol. 201 (2) (2015)</p>
     
    <div class="card-actions">
-    <a href="https://link.springer.com/article/10.1007/s00222-014-0557-5" target="_blank" class="action-btn journal">
+    <a href="https://link.springer.com/article/10.1007/s00222-014-0557-5" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -692,7 +696,7 @@ author={{Madapusi Pera}, Keerthi}, year={2020}, pages={e14}}
     <p class="subtitle">Compos. Math., Vol. 152 (4) (2016)</p>
     
    <div class="card-actions">
-    <a href="https://www.cambridge.org/core/journals/compositio-mathematica/article/abs/integral-canonical-models-for-spin-shimura-varieties/9114DB93837852A06FC78D691AA98D72" target="_blank" class="action-btn journal">
+    <a href="https://www.cambridge.org/core/journals/compositio-mathematica/article/abs/integral-canonical-models-for-spin-shimura-varieties/9114DB93837852A06FC78D691AA98D72" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -729,7 +733,7 @@ author={{Madapusi Pera}, Keerthi}, year={2020}, pages={e14}}
     <p class="subtitle">Ann. Sci. Ec. Norm. Super., Vol. 52 (2) (2019)</p>
     
    <div class="card-actions">
-    <a href="https://www.numdam.org/articles/10.24033/asens.2391/" target="_blank" class="action-btn journal">
+    <a href="https://www.numdam.org/articles/10.24033/asens.2391/" target="_blank" rel="noopener noreferrer" class="action-btn journal">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Journal Page
     </a>
 
@@ -781,6 +785,7 @@ author={{Madapusi Pera}, Keerthi}, year={2020}, pages={e14}}
         </div>
     </div>
 </section>
+</main>
 
 <script src="script.js"></script>
 

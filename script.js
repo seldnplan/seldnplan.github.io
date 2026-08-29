@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('show');
+            const isOpen = navLinks.classList.toggle('show');
+            this.setAttribute('aria-expanded', String(isOpen));
             const icon = this.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-xmark');
@@ -26,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Sync with root <html> element
         document.documentElement.classList.toggle('dark-mode', isDark);
         themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+        themeBtn.setAttribute('aria-pressed', String(isDark));
+        themeBtn.setAttribute('aria-label', isDark ? 'Use Light Mode' : 'Use Dark Mode');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     };
 
@@ -44,10 +47,14 @@ document.addEventListener("DOMContentLoaded", function() {
     if (tocBtn && tocContent) {
         tocBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            tocContent.classList.toggle('show');
+            const isOpen = tocContent.classList.toggle('show');
+            tocBtn.setAttribute('aria-expanded', String(isOpen));
         });
 
-        window.addEventListener('click', () => tocContent.classList.remove('show'));
+        window.addEventListener('click', () => {
+            tocContent.classList.remove('show');
+            tocBtn.setAttribute('aria-expanded', 'false');
+        });
 
         document.querySelectorAll('.toc-content a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -59,9 +66,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     const offset = 140; 
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    window.scrollTo({ top: offsetPosition, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                     tocContent.classList.remove('show');
+                    tocBtn.setAttribute('aria-expanded', 'false');
                 }
             });
         });
@@ -73,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
-                document.querySelectorAll('.nav-links a').forEach(a => {
+                document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
                     a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
                 });
                 document.querySelectorAll('.toc-content a').forEach(a => {
@@ -84,6 +93,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }, observerOptions);
 
     document.querySelectorAll('section[id], .pub-card[id], .project-card[id]').forEach(el => observer.observe(el));
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+
+        if (navLinks) {
+            navLinks.classList.remove('show');
+            menuToggle?.setAttribute('aria-expanded', 'false');
+            const menuIcon = menuToggle?.querySelector('i');
+            menuIcon?.classList.add('fa-bars');
+            menuIcon?.classList.remove('fa-xmark');
+        }
+
+        if (tocContent && tocBtn) {
+            tocContent.classList.remove('show');
+            tocBtn.setAttribute('aria-expanded', 'false');
+        }
+    });
 
     /* --- 5. Automatic 'New'/'Updated' Badge Logic --- */
     const cards = document.querySelectorAll('.pub-card[data-date], .project-card[data-date]');

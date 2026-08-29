@@ -31,12 +31,12 @@
 <body>
 
 <nav id="main-nav">
-    <button class="menu-toggle" aria-label="Toggle Menu">
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="nav-links">
         <i class="fa-solid fa-bars"></i>
     </button>
 
-    <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
+    <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="research.html">Research</a>
         <a href="teaching.html">Teaching</a>
         <a href="events.html">Conferences/Workshops/Seminars</a>
@@ -48,12 +48,13 @@
 
 
 
+<main>
 <header class="profile-header">
     <img src="assets/profile.jpg" alt="Keerthi Madapusi" class="profile-photo">
     <div class="header-text">
         <h1>Keerthi Madapusi</h1>
-        <p>I am an associate professor at the <a href="https://www.bc.edu/bc-web/schools/mcas/departments/math.html" target="_blank">department of mathematics</a> at <a href="http://www.bc.edu/" target="_blank">Boston College</a>. I am interested in applications of $p$-adic methods to arithmetic questions, in particular those that involve Shimura varieties and their local analogues. </p>
-        <a href="assets/cv.pdf" class="action-btn pdf" style="display:inline-block; text-decoration:none;">
+        <p>I am an associate professor at the <a href="https://www.bc.edu/bc-web/schools/mcas/departments/math.html" target="_blank" rel="noopener noreferrer">department of mathematics</a> at <a href="http://www.bc.edu/" target="_blank" rel="noopener noreferrer">Boston College</a>. I am interested in applications of $p$-adic methods to arithmetic questions, in particular those that involve Shimura varieties and their local analogues. </p>
+        <a href="assets/cv.pdf" class="action-btn pdf">
             <i class="fa-solid fa-file-arrow-down"></i> Download CV
         </a>
     </div>
@@ -77,18 +78,19 @@
         </div>
 
         <div class="contact-profiles">
-            <h2>Profiles & Identifiers</h2>
+            <h2>Profiles &amp; Identifiers</h2>
             <div class="profile-links">
                 <a href="https://orcid.org/0000-0002-9955-1632" class="profile-btn"><i class="fa-brands fa-orcid"></i> ORCID</a>
-                <a href="https://scholar.google.com/citations?user=kYvpENEAAAAJ&hl=en" class="profile-btn"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
-                <a href="https://arxiv.org/search/?query=madapusi+keerthi&searchtype=author&source=header" class="profile-btn"><i class="fa-solid fa-book"></i> arXiv Profile</a>
+                <a href="https://scholar.google.com/citations?user=kYvpENEAAAAJ&amp;hl=en" class="profile-btn"><i class="fa-solid fa-graduation-cap"></i> Google Scholar</a>
+                <a href="https://arxiv.org/search/?query=madapusi+keerthi&amp;searchtype=author&amp;source=header" class="profile-btn"><i class="fa-solid fa-book"></i> arXiv Profile</a>
             </div>
         </div>
     </div>
 </section>
+</main>
 
 <footer class="site-footer">
-    <p>&copy; 2025 Keerthi Madapusi • Typeset in Georgia & Inter</p>
+    <p>&copy; 2025 Keerthi Madapusi • Typeset in Georgia &amp; Inter</p>
 </footer>
 
 <script src="script.js"></script>
