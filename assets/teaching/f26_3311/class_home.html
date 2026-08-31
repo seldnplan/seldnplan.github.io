@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATH 3312 | Keerthi Madapusi</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="../../style.css">
+    <script>
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark-mode');
+        // Note: use documentElement or body. Use whatever matches your CSS selector.
+    }
+</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+</script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body class="course-page">
+<header class="course-header">
+    <h1>MATH 3312: Algebra II (Spring 2026)</h1>
+    <p>Boston College • Department of Mathematics</p>
+
+    <div class="card-actions" style="border-top: none; margin-top: 10px;">
+        <a href="s26_3312/syllabus.pdf" class="action-btn pdf">
+            <i class="fa-solid fa-file-pdf"></i> Syllabus
+        </a>
+        <a href="https://bccte.zoom.us/j/94624851008" class="action-btn journal">
+            <i class="fa-solid fa-video"></i> Zoom Link
+        </a>
+        <a href="https://www.youtube.com/playlist?list=PLgWoLVOorfD5VlcPnHejZ1k12M-iDafsS" class="action-btn video-link">
+            <i class="fa-solid fa-play"></i> YouTube Playlist
+        </a>
+        <a href="https://www.gradescope.com/courses/1221489" class="action-btn journal">
+            <i class="fa-solid fa-check-to-slot"></i> Gradescope
+        </a>
+       <a href="https://www.overleaf.com/read/vgvpjxmcsgyr#91a233" class="action-btn journal">
+            <i class="fa-solid fa-leaf"></i> Overleaf
+        </a>
+        <a href="https://piazza.com/bc/spring2026/math331201spring2026algebraiimadapusi/" class="action-btn journal">
+            <i class="fa-solid fa-comments"></i> Piazza
+        </a>
+    </div>
+</header>
+
+
+<div class="page-controls">
+    <div class="toc-dropdown">
+        <button class="toc-btn">
+            Jump to <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="toc-content">
+            <a href="#lecture-list-3312">Lectures</a>
+            <a href="#homework-list-3312">Homeworks</a>
+            <a href="#exam-materials-3312">Exams</a>
+        </div>
+    </div>
+</div>
+
+<main>
+    <div class="pub-card" id="lecture-archive">
+        <span class="status-tag">Spring 2026</span>
+        <h3>Lectures & Course Materials</h3>
+        <p>Notes and videos will be posted shortly after each class meeting.</p>
+
+        <div class="lecture-list-container" id="lecture-list-3312">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Lec</th>
+                        <th>Date</th>
+                        <th>Topic</th>
+                        <th>Notes</th>
+                        <th>Video</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>37</td>
+                        <td>Apr 29</td>
+                        <td>The main theorem of Galois theory: completing the proof</td>
+                        <td><a href="s26_3312/lecture37.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/hxRKJob8Rfg" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td>Apr 27</td>
+                        <td>Subextensions of Galois extensions; the main theorem of Galois theory</td>
+                        <td><a href="s26_3312/lecture36.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/YnTbHrs5wSM" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>Apr 24</td>
+                        <td>Constructing Galois extensions as splitting fields; Galois orbits</td>
+                        <td><a href="s26_3312/lecture35.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/0lV9AJhtfe0" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>34</td>
+                        <td>Apr 22</td>
+                        <td>Splitting fields and Galois extensions</td>
+                        <td><a href="s26_3312/lecture34.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/BzYiQQ4uRVI" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>Apr 21</td>
+                        <td>The example of $\mathbb{Q}(\sqrt[3]{2},\zeta_3)$; characterizing Galois extensions</td>
+                        <td><a href="s26_3312/lecture33.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/x2fe0Ij1GCs" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td>Apr 17</td>
+                        <td>Galois extensions and Galois groups</td>
+                        <td><a href="s26_3312/lecture32.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/PJnz-jiAxqE" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>Apr 15</td>
+                        <td>Embeddings of monogenic extensions; bounding $\mathrm{Emb}_k(M,L)$ for a finite extension $M/k$</td>
+                        <td><a href="s26_3312/lecture31.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/yruIrvXVEHI" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>Apr 13</td>
+                        <td>Algebraicity and finite extensions</td>
+                        <td><a href="s26_3312/lecture30.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/h4oPE1b6ttI" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>29</td>
+                        <td>Apr 10</td>
+                        <td>Finite extensions; algebraic and transcendental elements</td>
+                        <td><a href="s26_3312/lecture29.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/OslSlys85UM" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>28</td>
+                        <td>Apr 08</td>
+                        <td>Midterm 2 analysis; back to Frobenius!</td>
+                        <td><a href="s26_3312/lecture28.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/MK35oYZz1wI" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>Mar 30</td>
+                        <td>Putting it all together to get the rational canonical form</td>
+                        <td><a href="s26_3312/lecture27.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/EZfcPetSOUE" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>26</td>
+                        <td>Mar 27</td>
+                        <td>Torsion and torsion-freeness; uniqueness of rank</td>
+                        <td><a href="s26_3312/lecture26.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/y9B9rRNYBjM" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>Mar 25</td>
+                        <td>The Smith Normal Form over PIDs</td>
+                        <td><a href="s26_3312/lecture25.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/Q5l_V5H_o8c" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>Mar 23</td>
+                        <td>The existence part of the fundamental theorem over PIDs</td>
+                        <td><a href="s26_3312/lecture24.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/s1bH2RVzVmE" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Mar 20</td>
+                        <td>Finitely generated modules over PIDs: The statement of the theorem</td>
+                        <td><a href="s26_3312/lecture23.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/2SyHjF7-BA4" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>Mar 18</td>
+                        <td>Unique factorization domains; PIDs are UFDs</td>
+                        <td><a href="s26_3312/lecture22.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/GfP1pdVxCCw" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>Mar 16</td>
+                        <td>Principal ideal domains; irreducible and prime elements</td>
+                        <td><a href="s26_3312/lecture21.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/NdRvPEOvtbg" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Mar 13</td>
+                        <td>$k[x]$-modules and $k$-pairs</td>
+                        <td><a href="s26_3312/lecture20.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/K24jHnzQjUs" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Mar 11</td>
+                        <td>Endomorphisms and modules</td>
+                        <td><a href="s26_3312/lecture19.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/wsjJq7BX2ds" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Mar 9</td>
+                        <td>$k$-pairs and classifying linear transformations</td>
+                        <td><a href="s26_3312/lecture18.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/I76KXI-kEgw" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>17</td>
+                        <td>Feb 27</td>
+                        <td>Midterm analysis; Classifying linear transformations</td>
+                        <td><a href="s26_3312/lecture17.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/lxzqYxnoTEM" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr> 
+                    <tr>
+                        <td>16</td>
+                        <td>Feb 25</td>
+                        <td>Solving linear equations: Reduced row echelon form</td>
+                        <td><a href="s26_3312/lecture16.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <!-- <td><a href="https://youtu.be/-_k6YDGjKSU" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td> -->
+                    </tr>
+                      <tr>
+                        <td>15</td>
+                        <td>Feb 20</td>
+                        <td>Finitely generated vector spaces II</td>
+                        <td><a href="s26_3312/lecture15.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <!-- <td><a href="https://youtu.be/-_k6YDGjKSU" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td> -->
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Feb 16</td>
+                        <td>Finitely generated vector spaces I</td>
+                        <td><a href="s26_3312/lecture14.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/-_k6YDGjKSU" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Feb 13</td>
+                        <td>Linear transformations</td>
+                        <td><a href="s26_3312/lecture13.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/6-Vcwh5BVa0" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Feb 11</td>
+                        <td>Vector spaces</td>
+                        <td><a href="s26_3312/lecture12.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/y0xDzeJ8Znk" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Feb 9</td>
+                        <td>Summary of story so far</td>
+                        <td><a href="s26_3312/lecture11.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/5MXu3qXRZfo" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Feb 6</td>
+                        <td>More about the Frobenius automorphism</td>
+                        <td><a href="s26_3312/lecture10.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/qS4lA59p9Kw" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>9</td>
+                        <td>Feb 4</td>
+                        <td>Uniqueness in Galois' theorem; polynomial derivatives</td>
+                        <td><a href="s26_3312/lecture09.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/62CKBa-Jahs" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Feb 2</td>
+                        <td>Galois' theorem on finite fields</td>
+                        <td><a href="s26_3312/lecture08.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/6jdhnjRrp3Y" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Jan 30</td>
+                        <td>Ideals in polynomial rings</td>
+                        <td><a href="s26_3312/lecture07.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/Woi0BrGv_J4" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>6</td>
+                        <td>Jan 28</td>
+                        <td>Cyclicity of $k^\times$ for $k$ finite; ideals and quotient rings</td>
+                        <td><a href="s26_3312/lecture06.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/7vUrDn1oZmU" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Jan 23</td>
+                        <td>Embeddings of field extensions; back to finite fields</td>
+                        <td><a href="s26_3312/lecture05.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/agfs4VTdXQE" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Jan 21</td>
+                        <td>Homomorphism property of polynomial rings; Bezout in polynomial rings over fields</td>
+                        <td><a href="s26_3312/lecture04.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/PIFuImF3fm8" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Jan 16</td>
+                        <td>Ring homomorpisms out of quotient rings; applications of polynomial division</td>
+                        <td><a href="s26_3312/lecture03.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/E_0bwckcwAc" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jan 14</td>
+                        <td>Monic polynomials; ideals generated by polynomials; quotient rings</td>
+                        <td><a href="s26_3312/lecture02.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/PrZZUut0l6M" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td>Jan 12</td>
+                        <td>Refresher on fields, polynomial rings</td>
+                        <td><a href="s26_3312/lecture01.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="https://youtu.be/02rhwiWo0tY?si=snsKTG1O44Yr7wf7" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                    </tr>
+                    
+                </tbody> 
+            </table>
+        </div>
+
+        <h3>Homeworks</h3>
+        <p>Homeworks will be posted every Friday and will be due the following Thursday night. LaTeX files are available on the Overleaf page. Homeworks should be submitted on the Gradescope page.</p>
+
+        <div class="lecture-list-container" id="homework-list-3312">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Homework</th>
+                        <th>Due date</th>
+                        <th>PDF</th>
+                        <th>Solutions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10</td>
+                        <td>Apr 24</td>
+                        <td><a href="s26_3312/homework10.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework10_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Apr 17</td>
+                        <td><a href="s26_3312/homework09.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework09_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>8</td>
+                        <td>Mar 27</td>
+                        <td><a href="s26_3312/homework08.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework08_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Mar 20</td>
+                        <td><a href="s26_3312/homework07.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework07_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>Mar 13</td>
+                        <td><a href="s26_3312/homework06.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework06_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                     <tr>
+                        <td>5</td>
+                        <td>Feb 27</td>
+                        <td><a href="s26_3312/homework05.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework05_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Feb 12</td>
+                        <td><a href="s26_3312/homework04.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework04_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Feb 5</td>
+                        <td><a href="s26_3312/homework03.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework03_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                        <td>2</td>
+                        <td>Jan 29</td>
+                        <td><a href="s26_3312/homework02.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework02_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Jan 22</td>
+                        <td><a href="s26_3312/homework01.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                        <td><a href="s26_3312/homework01_solns.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Exams</h3>
+    
+        <div class="lecture-list-container" id="exam-materials-3312">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Exam</th>
+                        <th>Date</th>
+                        <th>Office hours</th>
+                        <th>Exam PDF</th>
+                        <th>Practice problems</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Midterm 1</td>
+                        <td>Feb 18</td>
+                        <td></td>
+                        <td><a href="s26_3312/midterm1.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Midterm 2</td>
+                        <td>Apr 01</td>
+                         <td><a href="https://youtu.be/ackFUiNNaTw" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                        <td><a href="s26_3312/midterm2.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Final</td>
+                        <td>May 08</td>
+                         <td><a href="https://youtu.be/YJFQj4k8R_A" class="video-link"><i class="fa-solid fa-circle-play"></i></a></td>
+                         <td></td>
+                        <td><a href="s26_3312/final_practice.pdf"><i class="fa-solid fa-file-pdf"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+
+<script src="../../script.js"></script>
+
+
+</body>
+</html>

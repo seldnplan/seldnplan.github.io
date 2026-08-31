@@ -1,0 +1,1647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Roots Unity Powers</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Roots Unity Powers" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Roots Unity Powers&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;section id=&quot;roots-unity-powers&quot; aria-labelledby=&quot;rup-title&quot;&gt;
+  &lt;style&gt;
+    #roots-unity-powers {
+      width: 100%;
+      color: var(--foreground);
+    }
+
+    #roots-unity-powers .rup-heading,
+    #roots-unity-powers .rup-control-head,
+    #roots-unity-powers .rup-detail {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    #roots-unity-powers .rup-heading {
+      margin-bottom: 12px;
+    }
+
+    #roots-unity-powers .rup-heading h2,
+    #roots-unity-powers .rup-heading p,
+    #roots-unity-powers .rup-detail p {
+      margin: 0;
+    }
+
+    #roots-unity-powers .viz-controls {
+      align-items: end;
+      margin-bottom: 12px;
+    }
+
+    #roots-unity-powers .rup-degree-control,
+    #roots-unity-powers .rup-power-control {
+      flex: 1 1 300px;
+    }
+
+    #roots-unity-powers .rup-alpha-control {
+      flex: 0 1 210px;
+    }
+
+    #roots-unity-powers .rup-control-head {
+      margin-bottom: 6px;
+    }
+
+    #roots-unity-powers .rup-plot-wrap {
+      width: 100%;
+      min-height: 320px;
+    }
+
+    #roots-unity-powers .rup-plot {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    #roots-unity-powers .rup-frame,
+    #roots-unity-powers .rup-axis,
+    #roots-unity-powers .rup-tick,
+    #roots-unity-powers .rup-circle,
+    #roots-unity-powers .rup-cycle,
+    #roots-unity-powers .rup-trail,
+    #roots-unity-powers .rup-root,
+    #roots-unity-powers .rup-alpha,
+    #roots-unity-powers .rup-current {
+      vector-effect: non-scaling-stroke;
+    }
+
+    #roots-unity-powers .rup-frame {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 1;
+    }
+
+    #roots-unity-powers .rup-axis,
+    #roots-unity-powers .rup-tick {
+      stroke: var(--muted-foreground);
+      stroke-width: 1;
+    }
+
+    #roots-unity-powers .rup-circle {
+      fill: none;
+      stroke: var(--foreground);
+      stroke-width: 1.5;
+    }
+
+    #roots-unity-powers .rup-cycle {
+      fill: none;
+      stroke: var(--viz-series-1);
+      stroke-width: 1.5;
+    }
+
+    #roots-unity-powers .rup-trail {
+      fill: none;
+      stroke: var(--viz-series-2);
+      stroke-width: 3;
+    }
+
+    #roots-unity-powers .rup-root {
+      fill: var(--muted-foreground);
+      stroke: var(--background);
+      stroke-width: 2;
+    }
+
+    #roots-unity-powers .rup-root.is-subgroup {
+      fill: var(--viz-series-1);
+    }
+
+    #roots-unity-powers .rup-alpha {
+      fill: var(--viz-series-3);
+      stroke: var(--foreground);
+      stroke-width: 2;
+    }
+
+    #roots-unity-powers .rup-current {
+      fill: var(--viz-series-2);
+      stroke: var(--foreground);
+      stroke-width: 3;
+    }
+
+    #roots-unity-powers .rup-alpha,
+    #roots-unity-powers .rup-current,
+    #roots-unity-powers .rup-label {
+      pointer-events: none;
+    }
+
+    #roots-unity-powers .rup-hit {
+      fill: transparent;
+      cursor: pointer;
+    }
+
+    #roots-unity-powers .rup-label,
+    #roots-unity-powers .rup-axis-label,
+    #roots-unity-powers .rup-tick-label {
+      fill: var(--foreground);
+      font-size: 12px;
+    }
+
+    #roots-unity-powers .rup-tick-label {
+      fill: var(--muted-foreground);
+    }
+
+    #roots-unity-powers .rup-label {
+      font-weight: 500;
+    }
+
+    #roots-unity-powers .rup-detail {
+      margin-top: 10px;
+    }
+
+    #roots-unity-powers .rup-detail output {
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 440px) {
+      #roots-unity-powers .rup-plot-wrap {
+        min-height: 280px;
+      }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;rup-heading&quot;&gt;
+    &lt;h2 id=&quot;rup-title&quot;&gt;Powers of a root&lt;/h2&gt;
+    &lt;p&gt;&lt;code id=&quot;rup-alpha-equation&quot;&gt;α = ζ₃ ∈ μ₈&lt;/code&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Root controls&quot;&gt;
+    &lt;div class=&quot;rup-degree-control&quot;&gt;
+      &lt;div class=&quot;rup-control-head&quot;&gt;
+        &lt;label class=&quot;form-label&quot; for=&quot;rup-degree&quot;&gt;Degree &lt;em&gt;n&lt;/em&gt;&lt;/label&gt;
+        &lt;output id=&quot;rup-degree-value&quot; for=&quot;rup-degree&quot;&gt;8&lt;/output&gt;
+      &lt;/div&gt;
+      &lt;input class=&quot;form-range&quot; id=&quot;rup-degree&quot; type=&quot;range&quot; min=&quot;2&quot; max=&quot;24&quot; step=&quot;1&quot; value=&quot;8&quot;&gt;
+    &lt;/div&gt;
+    &lt;label class=&quot;form-label rup-alpha-control&quot; for=&quot;rup-alpha-select&quot;&gt;
+      Distinguished root α
+      &lt;select class=&quot;form-select&quot; id=&quot;rup-alpha-select&quot;&gt;&lt;/select&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;viz-controls&quot; aria-label=&quot;Power control&quot;&gt;
+    &lt;div class=&quot;rup-power-control&quot;&gt;
+      &lt;div class=&quot;rup-control-head&quot;&gt;
+        &lt;label class=&quot;form-label&quot; for=&quot;rup-power&quot;&gt;Power &lt;em&gt;m&lt;/em&gt;&lt;/label&gt;
+        &lt;output id=&quot;rup-power-value&quot; for=&quot;rup-power&quot;&gt;m = 4&lt;/output&gt;
+      &lt;/div&gt;
+      &lt;input class=&quot;form-range&quot; id=&quot;rup-power&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;8&quot; step=&quot;1&quot; value=&quot;4&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;rup-plot-wrap&quot; id=&quot;rup-plot-wrap&quot;&gt;
+    &lt;svg class=&quot;rup-plot&quot; id=&quot;rup-plot&quot; role=&quot;img&quot; aria-labelledby=&quot;rup-svg-title rup-svg-desc&quot;&gt;
+      &lt;title id=&quot;rup-svg-title&quot;&gt;Powers of a selected root on the complex plane&lt;/title&gt;
+      &lt;desc id=&quot;rup-svg-desc&quot;&gt;The powers of zeta three trace an eight-step cycle through all eighth roots of unity.&lt;/desc&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;rup-detail&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;p&gt;&lt;output id=&quot;rup-current-value&quot;&gt;α⁴ = ζ₄ = −1.000 + 0.000i&lt;/output&gt;&lt;/p&gt;
+    &lt;p class=&quot;text-muted&quot;&gt;&lt;output id=&quot;rup-order-value&quot;&gt;order(α) = 8 · α⁸ = 1&lt;/output&gt;&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById(&#x27;roots-unity-powers&#x27;);
+      const degreeInput = root.querySelector(&#x27;#rup-degree&#x27;);
+      const degreeValue = root.querySelector(&#x27;#rup-degree-value&#x27;);
+      const alphaSelect = root.querySelector(&#x27;#rup-alpha-select&#x27;);
+      const alphaEquation = root.querySelector(&#x27;#rup-alpha-equation&#x27;);
+      const powerInput = root.querySelector(&#x27;#rup-power&#x27;);
+      const powerValue = root.querySelector(&#x27;#rup-power-value&#x27;);
+      const currentValue = root.querySelector(&#x27;#rup-current-value&#x27;);
+      const orderValue = root.querySelector(&#x27;#rup-order-value&#x27;);
+      const plotWrap = root.querySelector(&#x27;#rup-plot-wrap&#x27;);
+      const svg = root.querySelector(&#x27;#rup-plot&#x27;);
+      const reducedMotion = window.matchMedia(&#x27;(prefers-reduced-motion: reduce)&#x27;);
+      const svgNS = &#x27;http://www.w3.org/2000/svg&#x27;;
+      const superscriptMap = {
+        &#x27;-&#x27;: &#x27;⁻&#x27;, &#x27;0&#x27;: &#x27;⁰&#x27;, &#x27;1&#x27;: &#x27;¹&#x27;, &#x27;2&#x27;: &#x27;²&#x27;, &#x27;3&#x27;: &#x27;³&#x27;, &#x27;4&#x27;: &#x27;⁴&#x27;,
+        &#x27;5&#x27;: &#x27;⁵&#x27;, &#x27;6&#x27;: &#x27;⁶&#x27;, &#x27;7&#x27;: &#x27;⁷&#x27;, &#x27;8&#x27;: &#x27;⁸&#x27;, &#x27;9&#x27;: &#x27;⁹&#x27;
+      };
+      const subscriptMap = {
+        &#x27;0&#x27;: &#x27;₀&#x27;, &#x27;1&#x27;: &#x27;₁&#x27;, &#x27;2&#x27;: &#x27;₂&#x27;, &#x27;3&#x27;: &#x27;₃&#x27;, &#x27;4&#x27;: &#x27;₄&#x27;,
+        &#x27;5&#x27;: &#x27;₅&#x27;, &#x27;6&#x27;: &#x27;₆&#x27;, &#x27;7&#x27;: &#x27;₇&#x27;, &#x27;8&#x27;: &#x27;₈&#x27;, &#x27;9&#x27;: &#x27;₉&#x27;
+      };
+      let degree = Number(degreeInput.value);
+      let alphaIndex = 3;
+      let power = Number(powerInput.value);
+      let previousPower = power;
+      let markerProgress = 1;
+      let animationFrame = null;
+
+      const toSuper = value =&gt; String(value).split(&#x27;&#x27;).map(char =&gt; superscriptMap[char] || char).join(&#x27;&#x27;);
+      const toSub = value =&gt; String(value).split(&#x27;&#x27;).map(char =&gt; subscriptMap[char] || char).join(&#x27;&#x27;);
+      const makeSvg = name =&gt; document.createElementNS(svgNS, name);
+      const setAttrs = (node, attrs) =&gt; Object.entries(attrs).forEach(([key, value]) =&gt; node.setAttribute(key, value));
+      const gcd = (a, b) =&gt; b === 0 ? a : gcd(b, a % b);
+      const alphaOrder = () =&gt; degree / gcd(degree, alphaIndex);
+      const rootIndexAtPower = exponent =&gt; (alphaIndex * exponent) % degree;
+
+      function rootPoint(index, cx, cy, radius) {
+        const angle = (2 * Math.PI * index) / degree;
+        return {
+          x: cx + radius * Math.cos(angle),
+          y: cy - radius * Math.sin(angle),
+          angle
+        };
+      }
+
+      function pathFrom(points, close = false) {
+        if (!points.length) return &#x27;&#x27;;
+        const parts = [`M ${points[0].x} ${points[0].y}`];
+        for (let i = 1; i &lt; points.length; i += 1) {
+          parts.push(`L ${points[i].x} ${points[i].y}`);
+        }
+        if (close &amp;&amp; points.length &gt; 1) parts.push(&#x27;Z&#x27;);
+        return parts.join(&#x27; &#x27;);
+      }
+
+      function formatComponent(value) {
+        const clean = Math.abs(value) &lt; 0.0005 ? 0 : value;
+        return clean.toFixed(3).replace(&#x27;-&#x27;, &#x27;−&#x27;);
+      }
+
+      function updateAlphaSelector() {
+        alphaSelect.replaceChildren();
+        for (let k = 0; k &lt; degree; k += 1) {
+          const option = document.createElement(&#x27;option&#x27;);
+          option.value = String(k);
+          option.textContent = `ζ${toSub(k)}  (k = ${k})`;
+          alphaSelect.appendChild(option);
+        }
+        alphaIndex = Math.min(alphaIndex, degree - 1);
+        alphaSelect.value = String(alphaIndex);
+      }
+
+      function updateStateText() {
+        const order = alphaOrder();
+        power = Math.min(power, order);
+        powerInput.max = String(order);
+        powerInput.value = String(power);
+        const currentIndex = rootIndexAtPower(power);
+        const theta = (2 * Math.PI * currentIndex) / degree;
+        const real = Math.cos(theta);
+        const imaginary = Math.sin(theta);
+        const sign = imaginary &lt; -0.0005 ? &#x27;−&#x27; : &#x27;+&#x27;;
+
+        degreeValue.value = String(degree);
+        powerValue.value = `m = ${power} of ${order}`;
+        alphaEquation.textContent = `α = ζ${toSub(alphaIndex)} ∈ μ${toSub(degree)}`;
+        currentValue.value = `α${toSuper(power)} = ζ${toSub(currentIndex)} = ${formatComponent(real)} ${sign} ${formatComponent(Math.abs(imaginary))}i`;
+        orderValue.value = `order(α) = ${order} · α${toSuper(order)} = 1`;
+      }
+
+      function draw() {
+        const width = Math.max(320, Math.round(plotWrap.getBoundingClientRect().width));
+        const height = Math.max(280, Math.min(550, Math.round(width * 0.72)));
+        const margin = width &lt; 440 ? 44 : 54;
+        const cx = width / 2;
+        const cy = height / 2;
+        const radius = Math.max(78, Math.min((width - 2 * margin) / 2, (height - 2 * margin) / 2));
+        const order = alphaOrder();
+        const orbitIndices = Array.from({ length: order }, (_, exponent) =&gt; rootIndexAtPower(exponent));
+        const subgroup = new Set(orbitIndices);
+        const orbitPoints = orbitIndices.map(index =&gt; rootPoint(index, cx, cy, radius));
+        const trailPoints = Array.from({ length: power + 1 }, (_, exponent) =&gt; rootPoint(rootIndexAtPower(exponent), cx, cy, radius));
+        const oldPoint = rootPoint(rootIndexAtPower(previousPower), cx, cy, radius);
+        const newPoint = rootPoint(rootIndexAtPower(power), cx, cy, radius);
+        const currentPoint = {
+          x: oldPoint.x + (newPoint.x - oldPoint.x) * markerProgress,
+          y: oldPoint.y + (newPoint.y - oldPoint.y) * markerProgress,
+          angle: newPoint.angle
+        };
+        const alphaPoint = rootPoint(alphaIndex, cx, cy, radius);
+
+        svg.setAttribute(&#x27;viewBox&#x27;, `0 0 ${width} ${height}`);
+        svg.setAttribute(&#x27;width&#x27;, String(width));
+        svg.setAttribute(&#x27;height&#x27;, String(height));
+        svg.replaceChildren();
+
+        const title = makeSvg(&#x27;title&#x27;);
+        title.id = &#x27;rup-svg-title&#x27;;
+        title.textContent = &#x27;Powers of a selected root on the complex plane&#x27;;
+        const desc = makeSvg(&#x27;desc&#x27;);
+        desc.id = &#x27;rup-svg-desc&#x27;;
+        desc.textContent = `The powers of zeta ${alphaIndex} trace a cycle of length ${order} among the ${degree}th roots of unity. Power ${power} is highlighted.`;
+        svg.append(title, desc);
+
+        const frame = makeSvg(&#x27;rect&#x27;);
+        setAttrs(frame, { x: 0.5, y: 0.5, width: width - 1, height: height - 1, class: &#x27;rup-frame&#x27;, &#x27;data-chart-frame&#x27;: &#x27;&#x27; });
+        svg.appendChild(frame);
+
+        const horizontalAxis = makeSvg(&#x27;line&#x27;);
+        setAttrs(horizontalAxis, { x1: margin / 2, y1: cy, x2: width - margin / 2, y2: cy, class: &#x27;rup-axis&#x27; });
+        const verticalAxis = makeSvg(&#x27;line&#x27;);
+        setAttrs(verticalAxis, { x1: cx, y1: margin / 2, x2: cx, y2: height - margin / 2, class: &#x27;rup-axis&#x27; });
+        svg.append(horizontalAxis, verticalAxis);
+
+        [-1, 1].forEach(value =&gt; {
+          const x = cx + value * radius;
+          const y = cy - value * radius;
+          const xTick = makeSvg(&#x27;line&#x27;);
+          setAttrs(xTick, { x1: x, y1: cy - 4, x2: x, y2: cy + 4, class: &#x27;rup-tick&#x27; });
+          const yTick = makeSvg(&#x27;line&#x27;);
+          setAttrs(yTick, { x1: cx - 4, y1: y, x2: cx + 4, y2: y, class: &#x27;rup-tick&#x27; });
+          const xLabel = makeSvg(&#x27;text&#x27;);
+          setAttrs(xLabel, { x, y: cy + 18, &#x27;text-anchor&#x27;: &#x27;middle&#x27;, class: &#x27;rup-tick-label&#x27; });
+          xLabel.textContent = String(value).replace(&#x27;-&#x27;, &#x27;−&#x27;);
+          const yLabel = makeSvg(&#x27;text&#x27;);
+          setAttrs(yLabel, { x: cx - 9, y: y + 4, &#x27;text-anchor&#x27;: &#x27;end&#x27;, class: &#x27;rup-tick-label&#x27; });
+          yLabel.textContent = String(value).replace(&#x27;-&#x27;, &#x27;−&#x27;);
+          svg.append(xTick, yTick, xLabel, yLabel);
+        });
+
+        const xAxisLabel = makeSvg(&#x27;text&#x27;);
+        setAttrs(xAxisLabel, { x: width - margin / 2, y: cy - 9, &#x27;text-anchor&#x27;: &#x27;end&#x27;, class: &#x27;rup-axis-label axis-title&#x27;, &#x27;data-axis&#x27;: &#x27;x&#x27; });
+        xAxisLabel.textContent = &#x27;Real&#x27;;
+        const yAxisLabel = makeSvg(&#x27;text&#x27;);
+        setAttrs(yAxisLabel, { x: cx + 9, y: margin / 2 + 12, class: &#x27;rup-axis-label axis-title&#x27;, &#x27;data-axis&#x27;: &#x27;y&#x27; });
+        yAxisLabel.textContent = &#x27;Imaginary&#x27;;
+        svg.append(xAxisLabel, yAxisLabel);
+
+        const unitCircle = makeSvg(&#x27;circle&#x27;);
+        setAttrs(unitCircle, { cx, cy, r: radius, class: &#x27;rup-circle&#x27; });
+        svg.appendChild(unitCircle);
+
+        if (orbitPoints.length &gt; 1) {
+          const cycle = makeSvg(&#x27;path&#x27;);
+          setAttrs(cycle, { d: pathFrom(orbitPoints, true), class: &#x27;rup-cycle&#x27; });
+          svg.appendChild(cycle);
+        }
+
+        if (trailPoints.length &gt; 1) {
+          const trail = makeSvg(&#x27;path&#x27;);
+          setAttrs(trail, { d: pathFrom(trailPoints), class: &#x27;rup-trail&#x27; });
+          svg.appendChild(trail);
+        }
+
+        for (let index = 0; index &lt; degree; index += 1) {
+          const point = rootPoint(index, cx, cy, radius);
+          const marker = makeSvg(&#x27;circle&#x27;);
+          setAttrs(marker, {
+            cx: point.x,
+            cy: point.y,
+            r: subgroup.has(index) ? 6 : 4,
+            class: `rup-root${subgroup.has(index) ? &#x27; is-subgroup&#x27; : &#x27;&#x27;}`
+          });
+          svg.appendChild(marker);
+
+          const hit = makeSvg(&#x27;circle&#x27;);
+          setAttrs(hit, {
+            cx: point.x,
+            cy: point.y,
+            r: 16,
+            class: &#x27;rup-hit&#x27;,
+            &#x27;data-chart-hit&#x27;: &#x27;&#x27;,
+            &#x27;data-tooltip&#x27;: `Choose ζ${toSub(index)} as α`
+          });
+          hit.addEventListener(&#x27;click&#x27;, () =&gt; {
+            alphaIndex = index;
+            alphaSelect.value = String(alphaIndex);
+            power = Math.min(power, alphaOrder());
+            previousPower = power;
+            markerProgress = 1;
+            updateStateText();
+            draw();
+          });
+          svg.appendChild(hit);
+        }
+
+        const alphaMarker = makeSvg(&#x27;rect&#x27;);
+        setAttrs(alphaMarker, {
+          x: alphaPoint.x - 6,
+          y: alphaPoint.y - 6,
+          width: 12,
+          height: 12,
+          class: &#x27;rup-alpha&#x27;,
+          transform: `rotate(45 ${alphaPoint.x} ${alphaPoint.y})`
+        });
+        svg.appendChild(alphaMarker);
+
+        const currentMarker = makeSvg(&#x27;circle&#x27;);
+        setAttrs(currentMarker, { cx: currentPoint.x, cy: currentPoint.y, r: 8, class: &#x27;rup-current&#x27; });
+        svg.appendChild(currentMarker);
+
+        function addLabel(point, text, extraOffset = 0) {
+          const label = makeSvg(&#x27;text&#x27;);
+          const offset = 18 + extraOffset;
+          const cosine = Math.cos(point.angle);
+          const sine = Math.sin(point.angle);
+          setAttrs(label, {
+            x: point.x + cosine * offset,
+            y: point.y - sine * offset + 4,
+            &#x27;text-anchor&#x27;: cosine &gt; 0.2 ? &#x27;start&#x27; : cosine &lt; -0.2 ? &#x27;end&#x27; : &#x27;middle&#x27;,
+            class: &#x27;rup-label&#x27;
+          });
+          label.textContent = text;
+          svg.appendChild(label);
+        }
+
+        const samePoint = rootIndexAtPower(power) === alphaIndex;
+        if (samePoint) {
+          addLabel(alphaPoint, `α = α${toSuper(power)}`);
+        } else {
+          addLabel(alphaPoint, &#x27;α&#x27;);
+          addLabel(newPoint, `α${toSuper(power)}`);
+        }
+      }
+
+      function animatePowerChange(oldPower) {
+        previousPower = oldPower;
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        if (reducedMotion.matches) {
+          markerProgress = 1;
+          draw();
+          previousPower = power;
+          return;
+        }
+        const start = performance.now();
+        const duration = 320;
+        const tick = now =&gt; {
+          const elapsed = Math.min(1, (now - start) / duration);
+          markerProgress = 1 - Math.pow(1 - elapsed, 3);
+          draw();
+          if (elapsed &lt; 1) {
+            animationFrame = requestAnimationFrame(tick);
+          } else {
+            previousPower = power;
+            markerProgress = 1;
+            animationFrame = null;
+          }
+        };
+        markerProgress = 0;
+        animationFrame = requestAnimationFrame(tick);
+      }
+
+      degreeInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        degree = Number(degreeInput.value);
+        alphaIndex = Math.min(alphaIndex, degree - 1);
+        updateAlphaSelector();
+        power = Math.min(power, alphaOrder());
+        previousPower = power;
+        markerProgress = 1;
+        updateStateText();
+        draw();
+      });
+
+      alphaSelect.addEventListener(&#x27;change&#x27;, () =&gt; {
+        alphaIndex = Number(alphaSelect.value);
+        power = Math.min(power, alphaOrder());
+        previousPower = power;
+        markerProgress = 1;
+        updateStateText();
+        draw();
+      });
+
+      powerInput.addEventListener(&#x27;input&#x27;, () =&gt; {
+        const oldPower = power;
+        power = Number(powerInput.value);
+        updateStateText();
+        animatePowerChange(oldPower);
+      });
+
+      const resizeObserver = new ResizeObserver(() =&gt; draw());
+      resizeObserver.observe(plotWrap);
+      updateAlphaSelector();
+      updateStateText();
+      draw();
+    })();
+  &lt;/script&gt;
+&lt;/section&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
