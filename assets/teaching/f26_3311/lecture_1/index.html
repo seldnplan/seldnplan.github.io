@@ -13,10 +13,100 @@
         ) {
             document.documentElement.classList.add('dark-mode');
         }
+
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
     </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .lecture-nav {
             margin-bottom: 1.5rem;
+        }
+
+        .lecture-intro {
+            font-size: 1.05rem;
+        }
+
+        .lecture-section h2 {
+            margin-top: 0;
+        }
+
+        .lecture-section h3 {
+            margin-top: 1.8rem;
+        }
+
+        .lecture-section p,
+        .lecture-section li {
+            line-height: 1.7;
+        }
+
+        .lecture-section li + li {
+            margin-top: 0.65rem;
+        }
+
+        .example-block,
+        .remark-block,
+        .definition-block,
+        .lemma-block {
+            margin: 1.25rem 0;
+            padding: 1rem 1.1rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            background: var(--bg-light);
+        }
+
+        .remark-block {
+            border-left-color: #8b5cf6;
+        }
+
+        .definition-block {
+            border-left-color: #0f766e;
+        }
+
+        .lemma-block {
+            border-left-color: #d97706;
+        }
+
+        .example-label,
+        .block-label {
+            display: block;
+            margin-bottom: 0.45rem;
+            color: var(--text-heading);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .example-block p:last-child,
+        .remark-block p:last-child,
+        .definition-block p:last-child,
+        .lemma-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .theme-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1.25rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .theme-list li {
+            padding: 0.45rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: var(--bg-light);
+            color: var(--text-heading);
+            font-weight: 700;
         }
 
         .lecture-figures {
@@ -45,13 +135,19 @@
 
         .lecture-figure figcaption {
             margin-top: 0.75rem;
-            font-weight: 600;
             color: var(--text-heading);
+            font-weight: 600;
         }
 
-        .lecture-applet + .lecture-applet {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
+        .equation-scroll {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .lecture-applet {
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--border);
         }
 
@@ -73,9 +169,17 @@
             margin-top: 0.75rem;
         }
 
+        .classification-list strong {
+            color: var(--text-heading);
+        }
+
+        .homework-actions {
+            margin-top: 1.25rem;
+        }
+
         @media (max-width: 600px) {
             .lecture-applet iframe {
-                height: 480px;
+                height: 520px;
             }
 
             .lecture-applet iframe.clock-arithmetic-frame {
@@ -90,13 +194,64 @@
         <div class="lecture-nav">
             <a class="action-btn" href="../">← Back to MATH 3311</a>
         </div>
-        <h1>Lecture 1</h1>
-        <p>Abel, Galois, and roots of unity</p>
+        <h1>Lecture 1: What is algebra?</h1>
+        <p>September 1, 2026 · Symmetry, roots of unity, and modular arithmetic</p>
+        <div class="card-actions" style="border-top: none; margin-top: 10px; padding-top: 0;">
+            <a class="action-btn video-link" href="https://youtu.be/QBkOzRrhI6k" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i> Lecture video
+            </a>
+        </div>
     </header>
 
     <main>
-        <section class="pub-card">
-            <h2>Abel and Galois</h2>
+        <section class="pub-card lecture-section">
+            <span class="status-tag">Lecture 1</span>
+            <h2>What is algebra?</h2>
+            <p class="lecture-intro">In simple terms, algebra is what turns up when we notice that ostensibly different kinds of mathematical objects have the same essential structures governing their behavior. We extract that essential structure and formalize it as axioms, which let us reason abstractly and develop results that apply to every object with the same structure.</p>
+
+            <p>In this course, we will study examples of such essential structures, including:</p>
+            <ul class="theme-list" aria-label="Central algebraic structures">
+                <li>Groups</li>
+                <li>Rings</li>
+                <li>Fields</li>
+            </ul>
+        </section>
+
+        <section class="pub-card lecture-section">
+            <h2>Roots, choices, and symmetry</h2>
+
+            <div class="example-block">
+                <span class="example-label">Example 1</span>
+                <p>Step back for a moment to high-school algebra and consider</p>
+                <div class="equation-scroll">\[x^2-2=0.\]</div>
+                <p>It has two solutions, $\pm\sqrt{2}$. How do we tell them apart? One is positive and the other is negative. The positive root is also the only one of the two that has a real square root, namely $\sqrt[4]{2}$.</p>
+            </div>
+
+            <div class="example-block">
+                <span class="example-label">Example 2</span>
+                <p>Now consider</p>
+                <div class="equation-scroll">\[x^2+1=0.\]</div>
+                <p>It also has two solutions, $\pm i$. Unlike the previous example, there is no God-given choice between them. All we can say intrinsically is that there are two roots and that each is the negative of the other.</p>
+            </div>
+
+            <div class="example-block">
+                <span class="example-label">Example 3</span>
+                <p>The zeros of $x^2+x+1$ are</p>
+                <div class="equation-scroll">\[\frac{-1\pm i\sqrt{3}}{2}.\]</div>
+                <p>The sign $\pm$ accounts for the ambiguity in choosing $i$: either choice produces the same <em>pair</em> of complex numbers, although it does not distinguish one root from the other.</p>
+                <p>The reason is a <strong>symmetry</strong>: complex conjugation, $a+ib\mapsto a-ib$, exchanges the two roots. More generally, every quadratic polynomial with real coefficients and no real roots has two roots related by complex conjugation, with no systematic way to break the symmetry between them.</p>
+            </div>
+        </section>
+
+        <section class="pub-card lecture-section">
+            <h2>From Abel to Galois</h2>
+
+            <aside class="remark-block">
+                <span class="block-label">A forward-looking remark</span>
+                <p>The quadratic formula was known, but for centuries mathematicians sought analogous formulas for higher-degree equations. Italian mathematicians settled the cubic and quartic cases in the sixteenth century. In the early nineteenth century, Niels Henrik Abel proved that no formula by radicals exists for the general quintic.</p>
+                <p>Soon afterward, Évariste Galois—who died in a duel at the age of twenty-one—explained this phenomenon by studying the <em>symmetries</em> of polynomial roots. His work led directly to group theory, our first focus this semester. We will return to Galois's ideas near the end of this semester and study them much more closely next semester.</p>
+            </aside>
+
             <div class="lecture-figures">
                 <figure class="lecture-figure">
                     <img src="niels-henrik-abel-labeled.png" alt="Portrait of the mathematician Niels Henrik Abel" loading="lazy">
@@ -109,24 +264,96 @@
             </div>
         </section>
 
-        <section class="pub-card">
-            <h2>Interactive applets</h2>
+        <section class="pub-card lecture-section">
+            <h2>Fifth roots of unity</h2>
+            <p>Consider the equation $x^5-1=0$. Its solutions are the five fifth roots of unity:</p>
+            <div class="equation-scroll">\[1,\ \zeta_5,\ \zeta_5^2,\ \zeta_5^3,\ \zeta_5^4,\qquad \zeta_5=e^{2\pi i/5}.\]</div>
 
+            <p>A complex number of length $1$ at angle $\theta$ to the real axis is $e^{i\theta}$. Multiplication adds angles, so</p>
+            <div class="equation-scroll">\[(e^{i\theta})^n=e^{in\theta},\qquad e^{2m\pi i}=1\quad(m,n\in\mathbb Z).\]</div>
+            <p>Consequently, $\zeta_5^5=e^{2\pi i}=1$, and the same is true for every power of $\zeta_5$. More generally, if $\zeta_n=e^{2\pi i/n}$, then every power of $\zeta_n$ is a solution of $x^n-1=0$. Geometrically, the fifth roots lie at the vertices of a regular pentagon on the unit circle.</p>
 
             <article class="lecture-applet">
-                <h3>Roots of unity</h3>
+                <h3>Explore roots of unity</h3>
+                <p>Change $n$ to see the $n$th roots arranged around the unit circle and compare their algebraic and geometric descriptions.</p>
                 <iframe src="roots-of-unity.html" title="Interactive roots of unity applet" loading="lazy"></iframe>
                 <p class="applet-link"><a href="roots-of-unity.html" target="_blank" rel="noopener noreferrer">Open the roots-of-unity applet in a new tab</a></p>
             </article>
+        </section>
+
+        <section class="pub-card lecture-section">
+            <h2>Symmetries by taking powers</h2>
+            <p>We can distinguish $1$ from the other fifth roots because it is the only real root. But the other four cannot be distinguished naturally. We could name any one of them $\zeta_5$, and the non-real roots would still be $\zeta_5,\zeta_5^2,\zeta_5^3,\zeta_5^4$.</p>
+
+            <p>Complex conjugation supplies one symmetry: it exchanges $\zeta_5$ with $\zeta_5^4$ and $\zeta_5^2$ with $\zeta_5^3$. Cubing gives another:</p>
+            <div class="equation-scroll">
+                \[\zeta_5\longmapsto\zeta_5^3\longmapsto\zeta_5^9=\zeta_5^4
+                \longmapsto\zeta_5^{12}=\zeta_5^2\longmapsto\zeta_5^6=\zeta_5.\]
+            </div>
+
+            <p>The simplifications use $\zeta_5^5=1$. In general, $\zeta_5^m$ depends only on the remainder of $m$ after division by $5$, because</p>
+            <div class="equation-scroll">\[\zeta_5^{5q+r}=(\zeta_5^5)^q\zeta_5^r=\zeta_5^r.\]</div>
+            <p>Thus the symmetries of the nontrivial fifth roots move every one of them to every other one; no distinguished proper subset survives.</p>
 
             <article class="lecture-applet">
-                <h3>Powers of roots of unity</h3>
+                <h3>Follow powers around the circle</h3>
+                <p>Select a root and a power to see how exponentiation permutes the roots of unity.</p>
                 <iframe src="roots-of-unity-powers.html" title="Interactive powers of roots of unity applet" loading="lazy"></iframe>
                 <p class="applet-link"><a href="roots-of-unity-powers.html" target="_blank" rel="noopener noreferrer">Open the powers applet in a new tab</a></p>
             </article>
-            
+        </section>
+
+        <section class="pub-card lecture-section">
+            <h2>The twelfth roots of unity</h2>
+            <p>The twelfth roots break into pieces with different algebraic features:</p>
+            <ol class="classification-list">
+                <li><strong>$1$:</strong> the most distinguished root, and the root of $x-1=0$.</li>
+                <li><strong>$-1$:</strong> it squares to $1$ and is the root of $x+1=0$.</li>
+                <li><strong>Primitive cube roots:</strong> $\zeta_{12}^4$ and $\zeta_{12}^8$, the zeros of $x^2+x+1$.</li>
+                <li><strong>Primitive fourth roots:</strong> $i=\zeta_{12}^3$ and $-i=\zeta_{12}^9$, the zeros of $x^2+1$.</li>
+                <li><strong>Primitive sixth roots:</strong> $\zeta_{12}^2$ and $\zeta_{12}^{10}$, which cube to $-1$ and are the zeros of
+                    <div class="equation-scroll">\[x^2-x+1=\frac{x^3+1}{x+1}.\]</div>
+                </li>
+                <li><strong>Primitive twelfth roots:</strong> $\zeta_{12},\zeta_{12}^5,\zeta_{12}^7,\zeta_{12}^{11}$. No positive power smaller than $12$ sends any of them to $1$; they are the zeros of $x^4-x^2+1$.</li>
+            </ol>
+        </section>
+
+        <section class="pub-card lecture-section" id="from-homework">
+            <h2>From Homework 1: congruences</h2>
+            <p>Homework 1, due <time datetime="2026-09-09">Wednesday, September 9</time>, develops several ideas that may be familiar from earlier courses:</p>
+            <ol>
+                <li>The Euclidean algorithm.</li>
+                <li>Bézout's identity.</li>
+                <li>Equivalence relations and equivalence classes, especially congruence modulo $n$.</li>
+            </ol>
+
+            <div class="lemma-block">
+                <span class="block-label">Bézout's identity</span>
+                <p>Given integers $a,b\in\mathbb Z$, there are integers $s,t\in\mathbb Z$ such that</p>
+                <div class="equation-scroll">\[\gcd(a,b)=sa+tb.\]</div>
+                <p>In particular, the following are equivalent:</p>
+                <ol>
+                    <li>$a$ and $b$ are relatively prime.</li>
+                    <li>$1$ is an integer linear combination of $a$ and $b$.</li>
+                </ol>
+            </div>
+
+            <div class="definition-block">
+                <span class="block-label">Congruence modulo $n$</span>
+                <p>Two integers are equivalent modulo $n$ when their difference is divisible by $n$—equivalently, when they leave the same remainder after division by $n$. We write</p>
+                <div class="equation-scroll">\[a\equiv b\pmod n.\]</div>
+                <p>The equivalence classes form $\mathbb Z/n\mathbb Z$. Addition and multiplication of classes can be pictured as arithmetic on a clock.</p>
+            </div>
+
+            <div class="homework-actions">
+                <a class="action-btn pdf" href="../homeworks/homework1.pdf" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Open Homework 1
+                </a>
+            </div>
+
             <article class="lecture-applet">
-                <h3>Clock arithmetic in ℤ/nℤ</h3>
+                <h3>Add and multiply on a residue clock</h3>
+                <p>Choose $n$, $a$, and $b$. Addition moves clockwise from $a$ by $b$ steps; multiplication makes $b$ repeated jumps of size $a$ from $0$.</p>
                 <iframe class="clock-arithmetic-frame" src="modular-clock-arithmetic.html" title="Interactive addition and multiplication clock for integers modulo n" loading="lazy"></iframe>
                 <p class="applet-link"><a href="modular-clock-arithmetic.html" target="_blank" rel="noopener noreferrer">Open the clock-arithmetic applet in a new tab</a></p>
             </article>
