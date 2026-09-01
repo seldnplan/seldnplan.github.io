@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Arithmetic in Z/nZ</title>
+    <script>
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f8fafc;
+            --surface: #ffffff;
+            --surface-soft: #f1f5f9;
+            --border: #dbe3ee;
+            --text: #1e293b;
+            --muted: #64748b;
+            --addition: #2563eb;
+            --multiplication: #7c3aed;
+            --result: #ea580c;
+            --active-operation: var(--addition);
+            --shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        }
+
+        :root.dark-mode {
+            color-scheme: dark;
+            --page: #0f172a;
+            --surface: #1e293b;
+            --surface-soft: #172033;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #a7b3c6;
+            --addition: #60a5fa;
+            --multiplication: #c084fc;
+            --result: #fb923c;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.24);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 1rem;
+            background: var(--page);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button:focus-visible,
+        input:focus-visible {
+            outline: 3px solid color-mix(in srgb, var(--active-operation) 35%, transparent);
+            outline-offset: 2px;
+        }
+
+        .clock-applet {
+            --active-operation: var(--addition);
+            width: min(100%, 980px);
+            margin: 0 auto;
+        }
+
+        .clock-applet[data-operation="multiplication"] {
+            --active-operation: var(--multiplication);
+        }
+
+        .applet-header {
+            margin-bottom: 1rem;
+        }
+
+        .applet-header h1 {
+            margin: 0;
+            font-size: clamp(1.35rem, 3vw, 1.8rem);
+            line-height: 1.2;
+        }
+
+        .applet-header p {
+            margin: 0.4rem 0 0;
+            color: var(--muted);
+        }
+
+        .operation-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .operation-button {
+            min-height: 44px;
+            padding: 0.65rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--surface);
+            color: var(--text);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .operation-button[data-operation="addition"][aria-pressed="true"] {
+            border-color: var(--addition);
+            background: color-mix(in srgb, var(--addition) 12%, var(--surface));
+            color: var(--addition);
+        }
+
+        .operation-button[data-operation="multiplication"][aria-pressed="true"] {
+            border-color: var(--multiplication);
+            background: color-mix(in srgb, var(--multiplication) 12%, var(--surface));
+            color: var(--multiplication);
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: minmax(240px, 0.7fr) minmax(360px, 1.3fr);
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .controls,
+        .clock-panel {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .controls {
+            padding: 1rem;
+        }
+
+        .control + .control {
+            margin-top: 1.15rem;
+        }
+
+        .control-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.45rem;
+            font-size: 0.92rem;
+            font-weight: 650;
+        }
+
+        .control-value {
+            color: var(--active-operation);
+            font-variant-numeric: tabular-nums;
+            font-weight: 800;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 0;
+            accent-color: var(--active-operation);
+            cursor: pointer;
+        }
+
+        .replay-button {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 1.25rem;
+            border: 0;
+            border-radius: 9px;
+            background: var(--active-operation);
+            color: #ffffff;
+            font-weight: 750;
+            cursor: pointer;
+        }
+
+        .replay-button:disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .equation-block {
+            margin-top: 1rem;
+            padding: 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--surface-soft);
+        }
+
+        .equation {
+            margin: 0;
+            color: var(--text);
+            font-size: 1.08rem;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+
+        .instruction,
+        .step-status {
+            margin: 0.4rem 0 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.4;
+        }
+
+        .clock-panel {
+            min-width: 0;
+            padding: 0.75rem;
+        }
+
+        .clock-svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+        }
+
+        .clock-face {
+            fill: var(--surface-soft);
+            stroke: var(--border);
+            stroke-width: 3;
+        }
+
+        .clock-inner-ring {
+            fill: none;
+            stroke: var(--border);
+            stroke-dasharray: 5 8;
+            stroke-width: 2;
+        }
+
+        .clock-tick {
+            stroke: var(--muted);
+            stroke-width: 2;
+        }
+
+        .residue-node {
+            fill: var(--surface);
+            stroke: var(--muted);
+            stroke-width: 2;
+        }
+
+        .residue-node.is-start {
+            fill: var(--active-operation);
+            stroke: var(--active-operation);
+        }
+
+        .residue-node.is-current {
+            stroke: var(--result);
+            stroke-width: 6;
+        }
+
+        .residue-label {
+            fill: var(--text);
+            font-size: 18px;
+            font-weight: 700;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .movement-path {
+            fill: none;
+            stroke: var(--active-operation);
+            stroke-linecap: round;
+            stroke-width: 6;
+        }
+
+        .movement-step {
+            fill: var(--active-operation);
+        }
+
+        .clock-center-label {
+            fill: var(--text);
+            font-size: 26px;
+            font-weight: 800;
+            text-anchor: middle;
+        }
+
+        .clock-center-subtitle {
+            fill: var(--muted);
+            font-size: 16px;
+            text-anchor: middle;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem 1rem;
+            margin: 0.25rem 0 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-dot,
+        .legend-ring,
+        .legend-line {
+            display: inline-block;
+            flex: 0 0 auto;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--active-operation);
+        }
+
+        .legend-ring {
+            width: 12px;
+            height: 12px;
+            border: 3px solid var(--result);
+            border-radius: 50%;
+        }
+
+        .legend-line {
+            width: 18px;
+            height: 4px;
+            border-radius: 99px;
+            background: var(--active-operation);
+        }
+
+        .sequence {
+            min-height: 2.7em;
+            margin: 0.8rem 0 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.45;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.9rem;
+            }
+
+            .control + .control {
+                margin-top: 0;
+            }
+
+            .replay-button,
+            .equation-block {
+                grid-column: 1 / -1;
+                margin-top: 0;
+            }
+
+            .clock-svg {
+                max-height: 500px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .control-heading {
+                margin-bottom: 0.25rem;
+            }
+
+            .clock-panel {
+                padding: 0.35rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="clock-applet" id="clock-applet" data-operation="addition">
+        <header class="applet-header">
+            <h1>Clock arithmetic in ℤ/nℤ</h1>
+            <p>Choose a modulus and watch arithmetic wrap around the clock.</p>
+        </header>
+
+        <div class="operation-tabs" role="group" aria-label="Choose an operation">
+            <button class="operation-button" type="button" data-operation="addition" aria-pressed="true">Addition</button>
+            <button class="operation-button" type="button" data-operation="multiplication" aria-pressed="false">Multiplication</button>
+        </div>
+
+        <div class="workspace">
+            <section class="controls" aria-label="Clock arithmetic controls">
+                <div class="control">
+                    <div class="control-heading">
+                        <label for="modulus">Modulus n</label>
+                        <output class="control-value" id="modulus-value" for="modulus">12</output>
+                    </div>
+                    <input id="modulus" type="range" min="2" max="20" value="12" step="1">
+                </div>
+
+                <div class="control">
+                    <div class="control-heading">
+                        <label for="operand-a">First value a</label>
+                        <output class="control-value" id="operand-a-value" for="operand-a">7</output>
+                    </div>
+                    <input id="operand-a" type="range" min="0" max="11" value="7" step="1">
+                </div>
+
+                <div class="control">
+                    <div class="control-heading">
+                        <label for="operand-b">Second value b</label>
+                        <output class="control-value" id="operand-b-value" for="operand-b">5</output>
+                    </div>
+                    <input id="operand-b" type="range" min="0" max="11" value="5" step="1">
+                </div>
+
+                <button class="replay-button" id="replay" type="button">Replay motion</button>
+
+                <div class="equation-block" aria-live="polite">
+                    <p class="equation" id="equation"></p>
+                    <p class="instruction" id="instruction"></p>
+                    <p class="step-status" id="step-status"></p>
+                </div>
+            </section>
+
+            <section class="clock-panel" aria-label="Residue clock visualization">
+                <svg class="clock-svg" id="clock" viewBox="0 0 640 640" role="img" aria-labelledby="clock-title clock-description">
+                    <title id="clock-title">Clock arithmetic diagram</title>
+                    <desc id="clock-description">A clock whose positions are the residue classes modulo n.</desc>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <path d="M 0 0 L 8 4 L 0 8 z" fill="var(--active-operation)"></path>
+                        </marker>
+                    </defs>
+                    <circle class="clock-face" cx="320" cy="320" r="252"></circle>
+                    <circle class="clock-inner-ring" cx="320" cy="320" r="194"></circle>
+                    <g id="movement-layer"></g>
+                    <g id="tick-layer"></g>
+                    <g id="node-layer"></g>
+                    <text class="clock-center-label" id="center-label" x="320" y="311"></text>
+                    <text class="clock-center-subtitle" id="center-subtitle" x="320" y="342"></text>
+                </svg>
+
+                <div class="legend" aria-hidden="true">
+                    <span class="legend-item"><span class="legend-dot"></span>Start</span>
+                    <span class="legend-item"><span class="legend-ring"></span>Current position</span>
+                    <span class="legend-item"><span class="legend-line"></span>Movement</span>
+                </div>
+                <p class="sequence" id="sequence"></p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        (() => {
+            const SVG_NS = 'http://www.w3.org/2000/svg';
+            const root = document.getElementById('clock-applet');
+            const modulusInput = document.getElementById('modulus');
+            const operandAInput = document.getElementById('operand-a');
+            const operandBInput = document.getElementById('operand-b');
+            const modulusValue = document.getElementById('modulus-value');
+            const operandAValue = document.getElementById('operand-a-value');
+            const operandBValue = document.getElementById('operand-b-value');
+            const operationButtons = Array.from(document.querySelectorAll('.operation-button'));
+            const replayButton = document.getElementById('replay');
+            const equation = document.getElementById('equation');
+            const instruction = document.getElementById('instruction');
+            const stepStatus = document.getElementById('step-status');
+            const sequence = document.getElementById('sequence');
+            const movementLayer = document.getElementById('movement-layer');
+            const tickLayer = document.getElementById('tick-layer');
+            const nodeLayer = document.getElementById('node-layer');
+            const centerLabel = document.getElementById('center-label');
+            const centerSubtitle = document.getElementById('center-subtitle');
+            const clockTitle = document.getElementById('clock-title');
+            const clockDescription = document.getElementById('clock-description');
+
+            const center = 320;
+            const clockRadius = 230;
+            const pathRadius = 190;
+            let operation = 'addition';
+            let progress = Number(operandBInput.value);
+            let replayTimer = null;
+
+            function svgElement(tag, attributes, parent, text) {
+                const element = document.createElementNS(SVG_NS, tag);
+                Object.entries(attributes).forEach(([name, value]) => element.setAttribute(name, value));
+                if (text !== undefined) element.textContent = text;
+                parent.appendChild(element);
+                return element;
+            }
+
+            function polarPoint(residue, radius, n) {
+                const angle = -Math.PI / 2 + residue * (2 * Math.PI / n);
+                return {
+                    x: center + radius * Math.cos(angle),
+                    y: center + radius * Math.sin(angle)
+                };
+            }
+
+            function clearLayer(layer) {
+                while (layer.firstChild) layer.removeChild(layer.firstChild);
+            }
+
+            function additionArc(startResidue, n) {
+                const start = polarPoint(startResidue, pathRadius, n);
+                const end = polarPoint(startResidue + 1, pathRadius, n);
+                return `M ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${pathRadius} ${pathRadius} 0 0 1 ${end.x.toFixed(2)} ${end.y.toFixed(2)}`;
+            }
+
+            function multiplicationJump(startResidue, endResidue, n, index) {
+                const start = polarPoint(startResidue, pathRadius, n);
+                const end = polarPoint(endResidue, pathRadius, n);
+                const dx = end.x - start.x;
+                const dy = end.y - start.y;
+                const length = Math.hypot(dx, dy) || 1;
+                const midpointX = (start.x + end.x) / 2;
+                const midpointY = (start.y + end.y) / 2;
+                const bend = 28 + (index % 3) * 12;
+                const direction = index % 2 === 0 ? 1 : -1;
+                const controlX = midpointX - direction * (dy / length) * bend;
+                const controlY = midpointY + direction * (dx / length) * bend;
+
+                return `M ${start.x.toFixed(2)} ${start.y.toFixed(2)} Q ${controlX.toFixed(2)} ${controlY.toFixed(2)} ${end.x.toFixed(2)} ${end.y.toFixed(2)}`;
+            }
+
+            function stopReplay() {
+                if (replayTimer !== null) {
+                    window.clearInterval(replayTimer);
+                    replayTimer = null;
+                }
+                replayButton.disabled = false;
+                replayButton.textContent = 'Replay motion';
+            }
+
+            function values() {
+                return {
+                    n: Number(modulusInput.value),
+                    a: Number(operandAInput.value),
+                    b: Number(operandBInput.value)
+                };
+            }
+
+            function drawClock(n, a, b) {
+                clearLayer(movementLayer);
+                clearLayer(tickLayer);
+                clearLayer(nodeLayer);
+
+                const startResidue = operation === 'addition' ? a : 0;
+                const finalResidue = operation === 'addition' ? (a + b) % n : (a * b) % n;
+                const currentResidue = operation === 'addition' ? (a + progress) % n : (a * progress) % n;
+
+                for (let residue = 0; residue < n; residue += 1) {
+                    const tickStart = polarPoint(residue, clockRadius - 16, n);
+                    const tickEnd = polarPoint(residue, clockRadius + 3, n);
+                    const node = polarPoint(residue, clockRadius, n);
+                    const label = polarPoint(residue, clockRadius + 34, n);
+
+                    svgElement('line', {
+                        class: 'clock-tick',
+                        x1: tickStart.x,
+                        y1: tickStart.y,
+                        x2: tickEnd.x,
+                        y2: tickEnd.y
+                    }, tickLayer);
+
+                    const nodeClasses = ['residue-node'];
+                    if (residue === startResidue) nodeClasses.push('is-start');
+                    if (residue === currentResidue) nodeClasses.push('is-current');
+
+                    svgElement('circle', {
+                        class: nodeClasses.join(' '),
+                        cx: node.x,
+                        cy: node.y,
+                        r: 10
+                    }, nodeLayer);
+
+                    svgElement('text', {
+                        class: 'residue-label',
+                        x: label.x,
+                        y: label.y
+                    }, nodeLayer, residue);
+                }
+
+                if (operation === 'addition') {
+                    for (let index = 0; index < progress; index += 1) {
+                        const path = svgElement('path', {
+                            class: 'movement-path',
+                            d: additionArc(a + index, n),
+                            opacity: index === progress - 1 ? 1 : 0.55,
+                            'marker-end': 'url(#arrowhead)'
+                        }, movementLayer);
+                        path.setAttribute('aria-hidden', 'true');
+                    }
+                } else if (a === 0) {
+                    const zeroPoint = polarPoint(0, pathRadius, n);
+                    for (let index = 0; index < progress; index += 1) {
+                        svgElement('circle', {
+                            class: 'movement-path',
+                            cx: zeroPoint.x,
+                            cy: zeroPoint.y,
+                            r: 18 + (index % 4) * 5,
+                            opacity: index === progress - 1 ? 1 : 0.35
+                        }, movementLayer);
+                    }
+                } else {
+                    for (let index = 0; index < progress; index += 1) {
+                        const jumpStart = (a * index) % n;
+                        const jumpEnd = (a * (index + 1)) % n;
+                        svgElement('path', {
+                            class: 'movement-path',
+                            d: multiplicationJump(jumpStart, jumpEnd, n, index),
+                            opacity: index === progress - 1 ? 1 : 0.48,
+                            'marker-end': 'url(#arrowhead)'
+                        }, movementLayer);
+                    }
+                }
+
+                centerLabel.textContent = operation === 'addition' ? `+ ${b}` : `${a} × ${b}`;
+                centerSubtitle.textContent = `mod ${n}`;
+                clockTitle.textContent = `${operation === 'addition' ? 'Addition' : 'Multiplication'} modulo ${n}`;
+                clockDescription.textContent = `Residue clock modulo ${n}. The motion starts at ${startResidue}, is currently at ${currentResidue}, and finishes at ${finalResidue}.`;
+            }
+
+            function render() {
+                const { n, a, b } = values();
+                const result = operation === 'addition' ? (a + b) % n : (a * b) % n;
+                const displayedValues = [];
+
+                modulusValue.textContent = n;
+                operandAValue.textContent = a;
+                operandBValue.textContent = b;
+
+                if (operation === 'addition') {
+                    equation.textContent = `[${a}] + [${b}] = [${result}] in ℤ/${n}ℤ`;
+                    instruction.textContent = `Start at ${a}, then move ${b} ${b === 1 ? 'tick' : 'ticks'} clockwise.`;
+                    for (let step = 0; step <= progress; step += 1) displayedValues.push((a + step) % n);
+                } else {
+                    equation.textContent = `[${a}] × [${b}] = [${result}] in ℤ/${n}ℤ`;
+                    instruction.textContent = `Start at 0, then take ${b} ${b === 1 ? 'jump' : 'jumps'} of size ${a}.`;
+                    for (let step = 0; step <= progress; step += 1) displayedValues.push((a * step) % n);
+                }
+
+                stepStatus.textContent = b === 0 ? 'No movement is needed.' : `Showing ${progress} of ${b} moves.`;
+                sequence.textContent = `Visited residues: ${displayedValues.join(' → ')}`;
+                replayButton.disabled = b === 0 || replayTimer !== null;
+                drawClock(n, a, b);
+            }
+
+            function updateOperandRanges() {
+                const n = Number(modulusInput.value);
+                operandAInput.max = n - 1;
+                operandBInput.max = n - 1;
+                operandAInput.value = Math.min(Number(operandAInput.value), n - 1);
+                operandBInput.value = Math.min(Number(operandBInput.value), n - 1);
+            }
+
+            function showCompleteResult() {
+                stopReplay();
+                updateOperandRanges();
+                progress = Number(operandBInput.value);
+                render();
+            }
+
+            operationButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    stopReplay();
+                    operation = button.dataset.operation;
+                    root.dataset.operation = operation;
+                    operationButtons.forEach((candidate) => {
+                        candidate.setAttribute('aria-pressed', String(candidate === button));
+                    });
+                    progress = Number(operandBInput.value);
+                    render();
+                });
+            });
+
+            [modulusInput, operandAInput, operandBInput].forEach((input) => {
+                input.addEventListener('input', showCompleteResult);
+            });
+
+            replayButton.addEventListener('click', () => {
+                stopReplay();
+                const totalSteps = Number(operandBInput.value);
+                if (totalSteps === 0) return;
+
+                progress = 0;
+                replayButton.disabled = true;
+                replayButton.textContent = 'Replaying…';
+                replayTimer = window.setInterval(() => {
+                    progress += 1;
+                    render();
+                    if (progress >= totalSteps) stopReplay();
+                }, 500);
+                render();
+            });
+
+            window.addEventListener('storage', (event) => {
+                if (event.key !== 'theme') return;
+                document.documentElement.classList.toggle('dark-mode', event.newValue === 'dark');
+            });
+
+            render();
+        })();
+    </script>
+</body>
+</html>

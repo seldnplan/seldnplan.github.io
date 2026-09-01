@@ -65,6 +65,10 @@
             background: var(--bg-light);
         }
 
+        .lecture-applet iframe.clock-arithmetic-frame {
+            height: 700px;
+        }
+
         .applet-link {
             margin-top: 0.75rem;
         }
@@ -72,6 +76,10 @@
         @media (max-width: 600px) {
             .lecture-applet iframe {
                 height: 480px;
+            }
+
+            .lecture-applet iframe.clock-arithmetic-frame {
+                height: 980px;
             }
         }
     </style>
@@ -109,6 +117,12 @@
 
         <section class="pub-card">
             <h2>Interactive applets</h2>
+
+            <article class="lecture-applet">
+                <h3>Clock arithmetic in ℤ/nℤ</h3>
+                <iframe class="clock-arithmetic-frame" src="modular-clock-arithmetic.html" title="Interactive addition and multiplication clock for integers modulo n" loading="lazy"></iframe>
+                <p class="applet-link"><a href="modular-clock-arithmetic.html" target="_blank" rel="noopener noreferrer">Open the clock-arithmetic applet in a new tab</a></p>
+            </article>
 
             <article class="lecture-applet">
                 <h3>Roots of unity</h3>
