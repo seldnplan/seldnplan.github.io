@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus | MATH 3311</title>
+    <link rel="icon" type="image/png" href="../../../assets/favicon.png">
+    <link rel="stylesheet" href="../../../style.css">
+    <script>
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <style>
+        .syllabus-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .course-details {
+            display: grid;
+            grid-template-columns: minmax(130px, 0.35fr) 1fr;
+            margin: 1.5rem 0 0;
+        }
+
+        .course-details dt,
+        .course-details dd {
+            margin: 0;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .course-details dt {
+            padding-right: 1rem;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .syllabus-section h2 {
+            margin-top: 0;
+        }
+
+        .syllabus-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grading-table {
+            width: 100%;
+            max-width: 480px;
+            margin-top: 1rem;
+            border-collapse: collapse;
+        }
+
+        .grading-table th,
+        .grading-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .grading-table th:last-child,
+        .grading-table td:last-child {
+            text-align: right;
+        }
+
+        .exam-list {
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .course-details {
+                grid-template-columns: 1fr;
+            }
+
+            .course-details dt {
+                padding-bottom: 0.25rem;
+                border-bottom: 0;
+            }
+
+            .course-details dd {
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="course-page">
+    <header class="course-header">
+        <div class="syllabus-nav">
+            <a class="action-btn" href="./">← Back to MATH 3311</a>
+        </div>
+        <h1>MATH 3311: Algebra I</h1>
+        <p>Fall 2026 syllabus</p>
+    </header>
+
+    <main>
+        <section class="pub-card syllabus-section">
+            <span class="status-tag">Fall 2026</span>
+            <h2>Course information</h2>
+            <dl class="course-details">
+                <dt>Instructor</dt>
+                <dd>Keerthi Madapusi</dd>
+
+                <dt>Office</dt>
+                <dd>Maloney 546</dd>
+
+                <dt>Office hours</dt>
+                <dd>TBD and by appointment</dd>
+
+                <dt>Email</dt>
+                <dd><a href="mailto:madapusi@bc.edu">madapusi@bc.edu</a></dd>
+
+                <dt>Website</dt>
+                <dd><a href="./">MATH 3311 course website</a></dd>
+            </dl>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Course communication</h2>
+            <p>We will be using Piazza in this course for announcements and discussion. Piazza makes it easy to have mathematical discussions and supports anonymous posts as well as group-based interactions. If you have questions about the homework or other course content, I strongly encourage you to post them there so that the entire class can benefit from the discussion. You may post anonymously if you wish.</p>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Course content</h2>
+            <p>Algebra is essentially the part of mathematics that deals with the formalization of mathematical analogies. We will be covering the following topics in the first term of the course: Groups and group homomorphisms, group actions, group quotients, the symmetric group and its conjugacy classes, semi-direct products, the Sylow theorems, finitely generated abelian groups and their classification using the Smith normal form, rings and ring homomorphisms, polynomial rings, ideals and quotient rings, finite fields and their classification.
+            </p>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Lectures</h2>
+            <p>There is no prescribed textbook for the class. Each lecture will have its own page on the course website, where notes, images, interactive applets, and other materials can be posted. Supplementary videos or Zoom links will be shared when applicable.</p>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Office hours</h2>
+            <p>Some office hours may be held over Zoom. I will announce this ahead of time.</p>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Homeworks</h2>
+            <p>Homeworks are an essential part of this course. They will be posted on the class webpage by Tuesday and will be due the following Wednesday evening. The first homework due date is Wednesday, Sep 09. You will upload completed assignments on Gradescope.</p>
+
+            <p>To make things as legible as possible, I encourage you to use LaTeX to type your homeworks. I will share the homework files on Overleaf, an online TeX platform that is fairly self-explanatory and easy to use.</p>
+
+            <p><strong>No late papers will be accepted.</strong> However, you are allowed to drop <em>one</em> homework of your choice without it affecting your grade. If you turn in all homeworks, I will automatically drop your lowest score.</p>
+
+            <p>Homework solutions will be made available after the due date.</p>
+
+            <p>You are allowed—and encouraged—to discuss your homework assignments with other students. However, you must write up the solutions individually.</p>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>AI and its discontents</h2>
+            <p>There is no sugarcoating this: LLMs have advanced to the point where they can do the homework for you (and much more!). How you choose to use this power is up to you. There are ways to use them as assistants that help you <em>understand</em> and <em>organize</em> the material better for yourself, and there are ways to use them to voluntarily atrophy your cognitive abilities. I use them myself to move quickly through references and summarize long papers, but you really have to know what you are doing to avoid being misled by irrelevant material.
+            
+            <p>It may also be helpful to remember that one purpose of learning is for you eventually to be able to create <em>new knowledge</em>. On a shorter timescale, the exams in this class are in person, with pen and paper and no outside assistance, so you should make sure that you are preparing yourself to do well there. I and the class TA will do their best to ensure that you have the resources to do so.</p>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Exam dates</h2>
+            <ul class="exam-list">
+                <li>Midterm 1 (in class): Tue, Sep 29 (in class)</li>
+                <li>Midterm 2 (in class): Thu, Oct 29 (in class)</li>
+                <li>Final exam (in class): Fri, Dec 18, 12:30pm</li>
+            </ul>
+        </section>
+
+        <section class="pub-card syllabus-section">
+            <h2>Grading policies</h2>
+            <table class="grading-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Component</th>
+                        <th scope="col">Weight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Homework</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>Midterms</td>
+                        <td>45%</td>
+                    </tr>
+                    <tr>
+                        <td>Final</td>
+                        <td>35%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="../../../script.js"></script>
+</body>
+</html>
