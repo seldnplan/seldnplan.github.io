@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotations of Roots of Unity</title>
+    <script>
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+    <style>
+        :root {
+            color-scheme: light;
+            --page: #f8fafc;
+            --surface: #ffffff;
+            --surface-soft: #f1f5f9;
+            --border: #dbe3ee;
+            --text: #1e293b;
+            --muted: #64748b;
+            --accent: #2563eb;
+            --selected: #ea580c;
+            --shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        }
+
+        :root.dark-mode {
+            color-scheme: dark;
+            --page: #0f172a;
+            --surface: #1e293b;
+            --surface-soft: #172033;
+            --border: #334155;
+            --text: #f8fafc;
+            --muted: #a7b3c6;
+            --accent: #60a5fa;
+            --selected: #fb923c;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.24);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 1rem;
+            background: var(--page);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button:focus-visible,
+        input:focus-visible,
+        select:focus-visible {
+            outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
+            outline-offset: 2px;
+        }
+
+        .rotation-applet {
+            width: min(100%, 980px);
+            margin: 0 auto;
+        }
+
+        .applet-header {
+            margin-bottom: 1rem;
+        }
+
+        .applet-header h1 {
+            margin: 0;
+            font-size: clamp(1.35rem, 3vw, 1.8rem);
+            line-height: 1.2;
+        }
+
+        .applet-header p {
+            margin: 0.4rem 0 0;
+            color: var(--muted);
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: minmax(240px, 0.7fr) minmax(360px, 1.3fr);
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .controls,
+        .diagram-panel {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .controls {
+            padding: 1rem;
+        }
+
+        .control + .control {
+            margin-top: 1.15rem;
+        }
+
+        .control-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.45rem;
+            font-size: 0.92rem;
+            font-weight: 650;
+        }
+
+        .control-value {
+            color: var(--accent);
+            font-variant-numeric: tabular-nums;
+            font-weight: 800;
+        }
+
+        input[type="range"],
+        select {
+            width: 100%;
+        }
+
+        input[type="range"] {
+            margin: 0;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        select {
+            min-height: 44px;
+            padding: 0.55rem 0.7rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        .replay-button {
+            width: 100%;
+            min-height: 44px;
+            margin-top: 1.25rem;
+            border: 0;
+            border-radius: 9px;
+            background: var(--accent);
+            color: #ffffff;
+            font-weight: 750;
+            cursor: pointer;
+        }
+
+        .replay-button:disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .result-block {
+            margin-top: 1rem;
+            padding: 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--surface-soft);
+        }
+
+        .mapping-equation {
+            margin: 0;
+            color: var(--text);
+            font-size: 1.08rem;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+
+        .angle-label,
+        .structure-note {
+            margin: 0.45rem 0 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.45;
+        }
+
+        .diagram-panel {
+            min-width: 0;
+            padding: 0.75rem;
+        }
+
+        .rotation-svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 520px;
+        }
+
+        .unit-circle {
+            fill: var(--surface-soft);
+            stroke: var(--border);
+            stroke-width: 3;
+        }
+
+        .axis {
+            stroke: var(--border);
+            stroke-width: 2;
+        }
+
+        .target-node {
+            fill: var(--surface);
+            stroke: var(--muted);
+            stroke-width: 2;
+        }
+
+        .target-node.is-destination {
+            stroke: var(--selected);
+            stroke-width: 5;
+        }
+
+        .target-label {
+            fill: var(--text);
+            font-size: 17px;
+            font-weight: 700;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .moving-polygon {
+            fill: color-mix(in srgb, var(--accent) 8%, transparent);
+            stroke: var(--accent);
+            stroke-width: 4;
+            stroke-linejoin: round;
+        }
+
+        .moving-node {
+            fill: var(--accent);
+            stroke: var(--surface);
+            stroke-width: 3;
+        }
+
+        .moving-node.is-selected {
+            fill: var(--selected);
+        }
+
+        .selected-radius {
+            stroke: var(--selected);
+            stroke-dasharray: 7 7;
+            stroke-width: 3;
+        }
+
+        .angle-arc {
+            fill: none;
+            stroke: var(--selected);
+            stroke-linecap: round;
+            stroke-width: 6;
+        }
+
+        .center-label {
+            fill: var(--text);
+            font-size: 25px;
+            font-weight: 800;
+            text-anchor: middle;
+        }
+
+        .center-subtitle {
+            fill: var(--muted);
+            font-size: 15px;
+            text-anchor: middle;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem 1rem;
+            margin-top: 0.2rem;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-mark {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .legend-mark.source {
+            background: var(--selected);
+        }
+
+        .legend-mark.target {
+            border: 3px solid var(--selected);
+        }
+
+        .cycles {
+            min-height: 2.7em;
+            margin: 0.8rem 0 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.45;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 0.75rem;
+            }
+
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.9rem;
+            }
+
+            .control + .control {
+                margin-top: 0;
+            }
+
+            .replay-button,
+            .result-block {
+                grid-column: 1 / -1;
+                margin-top: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .controls {
+                grid-template-columns: 1fr;
+            }
+
+            .diagram-panel {
+                padding: 0.35rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="rotation-applet">
+        <header class="applet-header">
+            <h1>Rotations of roots of unity</h1>
+            <p>Rotate the regular n-gon and follow one chosen root.</p>
+        </header>
+
+        <div class="workspace">
+            <section class="controls" aria-label="Rotation controls">
+                <div class="control">
+                    <div class="control-heading">
+                        <label for="degree">Number of roots n</label>
+                        <output class="control-value" id="degree-value" for="degree">5</output>
+                    </div>
+                    <input id="degree" type="range" min="3" max="20" value="5" step="1">
+                </div>
+
+                <div class="control">
+                    <div class="control-heading">
+                        <label for="rotation">Rotation steps r</label>
+                        <output class="control-value" id="rotation-value" for="rotation">1</output>
+                    </div>
+                    <input id="rotation" type="range" min="0" max="4" value="1" step="1">
+                </div>
+
+                <div class="control">
+                    <div class="control-heading">
+                        <label for="selected-root">Follow a root</label>
+                    </div>
+                    <select id="selected-root"></select>
+                </div>
+
+                <button class="replay-button" id="replay" type="button">Replay rotation</button>
+
+                <div class="result-block" aria-live="polite">
+                    <p class="mapping-equation" id="mapping-equation"></p>
+                    <p class="angle-label" id="angle-label"></p>
+                    <p class="structure-note" id="structure-note"></p>
+                </div>
+            </section>
+
+            <section class="diagram-panel" aria-label="Rotation diagram">
+                <svg class="rotation-svg" id="rotation-svg" viewBox="0 0 640 640" role="img" aria-labelledby="diagram-title diagram-description">
+                    <title id="diagram-title">Rotation of roots of unity</title>
+                    <desc id="diagram-description">A regular polygon on the unit circle rotating counterclockwise.</desc>
+                    <defs>
+                        <marker id="rotation-arrow" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="strokeWidth">
+                            <path d="M 0 0 L 8 4 L 0 8 z" fill="var(--selected)"></path>
+                        </marker>
+                    </defs>
+                    <circle class="unit-circle" cx="320" cy="320" r="242"></circle>
+                    <line class="axis" x1="55" y1="320" x2="585" y2="320"></line>
+                    <line class="axis" x1="320" y1="55" x2="320" y2="585"></line>
+                    <g id="target-layer"></g>
+                    <g id="polygon-layer"></g>
+                    <g id="annotation-layer"></g>
+                    <text class="center-label" id="center-label" x="320" y="310"></text>
+                    <text class="center-subtitle" id="center-subtitle" x="320" y="340"></text>
+                </svg>
+
+                <div class="legend" aria-hidden="true">
+                    <span class="legend-item"><span class="legend-mark source"></span>Chosen root</span>
+                    <span class="legend-item"><span class="legend-mark target"></span>Its destination</span>
+                </div>
+                <p class="cycles" id="cycles"></p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        (() => {
+            const SVG_NS = 'http://www.w3.org/2000/svg';
+            const degreeInput = document.getElementById('degree');
+            const rotationInput = document.getElementById('rotation');
+            const selectedRootInput = document.getElementById('selected-root');
+            const degreeValue = document.getElementById('degree-value');
+            const rotationValue = document.getElementById('rotation-value');
+            const replayButton = document.getElementById('replay');
+            const mappingEquation = document.getElementById('mapping-equation');
+            const angleLabel = document.getElementById('angle-label');
+            const structureNote = document.getElementById('structure-note');
+            const cycles = document.getElementById('cycles');
+            const targetLayer = document.getElementById('target-layer');
+            const polygonLayer = document.getElementById('polygon-layer');
+            const annotationLayer = document.getElementById('annotation-layer');
+            const centerLabel = document.getElementById('center-label');
+            const centerSubtitle = document.getElementById('center-subtitle');
+            const diagramTitle = document.getElementById('diagram-title');
+            const diagramDescription = document.getElementById('diagram-description');
+
+            const center = 320;
+            const rootRadius = 222;
+            const labelRadius = 270;
+            const angleRadius = 82;
+            const superscriptDigits = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+            const subscriptDigits = '₀₁₂₃₄₅₆₇₈₉';
+            let rotationProgress = 1;
+            let animationFrame = null;
+
+            function scriptNumber(value, digits) {
+                return String(value).split('').map((digit) => digits[Number(digit)]).join('');
+            }
+
+            function rootName(n, exponent) {
+                return `ζ${scriptNumber(n, subscriptDigits)}${scriptNumber(exponent, superscriptDigits)}`;
+            }
+
+            function svgElement(tag, attributes, parent, text) {
+                const element = document.createElementNS(SVG_NS, tag);
+                Object.entries(attributes).forEach(([name, value]) => element.setAttribute(name, value));
+                if (text !== undefined) element.textContent = text;
+                parent.appendChild(element);
+                return element;
+            }
+
+            function clearLayer(layer) {
+                while (layer.firstChild) layer.removeChild(layer.firstChild);
+            }
+
+            function pointAt(angle, radius) {
+                return {
+                    x: center + radius * Math.cos(angle),
+                    y: center - radius * Math.sin(angle)
+                };
+            }
+
+            function state() {
+                return {
+                    n: Number(degreeInput.value),
+                    r: Number(rotationInput.value),
+                    selected: Number(selectedRootInput.value)
+                };
+            }
+
+            function angleArcPath(angle) {
+                const start = pointAt(0, angleRadius);
+                const end = pointAt(angle, angleRadius);
+                const largeArc = angle > Math.PI ? 1 : 0;
+                return `M ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${angleRadius} ${angleRadius} 0 ${largeArc} 0 ${end.x.toFixed(2)} ${end.y.toFixed(2)}`;
+            }
+
+            function orbitCycles(n, r) {
+                const seen = new Set();
+                const result = [];
+
+                for (let start = 0; start < n; start += 1) {
+                    if (seen.has(start)) continue;
+                    const orbit = [];
+                    let current = start;
+                    while (!seen.has(current)) {
+                        seen.add(current);
+                        orbit.push(current);
+                        current = (current + r) % n;
+                    }
+                    result.push(`(${orbit.join(' ')})`);
+                }
+                return result.join(' ');
+            }
+
+            function populateRootOptions(n) {
+                const previous = Math.min(Number(selectedRootInput.value || 0), n - 1);
+                selectedRootInput.replaceChildren();
+                for (let exponent = 0; exponent < n; exponent += 1) {
+                    const option = document.createElement('option');
+                    option.value = exponent;
+                    option.textContent = `${rootName(n, exponent)}  (j = ${exponent})`;
+                    selectedRootInput.appendChild(option);
+                }
+                selectedRootInput.value = previous;
+            }
+
+            function draw() {
+                const { n, r, selected } = state();
+                const stepAngle = 2 * Math.PI / n;
+                const currentAngle = r * stepAngle * rotationProgress;
+                const destination = (selected + r) % n;
+                const polygonPoints = [];
+
+                clearLayer(targetLayer);
+                clearLayer(polygonLayer);
+                clearLayer(annotationLayer);
+
+                for (let exponent = 0; exponent < n; exponent += 1) {
+                    const angle = exponent * stepAngle;
+                    const target = pointAt(angle, rootRadius);
+                    const label = pointAt(angle, labelRadius);
+                    const targetClasses = ['target-node'];
+                    if (exponent === destination) targetClasses.push('is-destination');
+
+                    svgElement('circle', {
+                        class: targetClasses.join(' '),
+                        cx: target.x,
+                        cy: target.y,
+                        r: exponent === destination ? 18 : 11
+                    }, targetLayer);
+
+                    svgElement('text', {
+                        class: 'target-label',
+                        x: label.x,
+                        y: label.y
+                    }, targetLayer, rootName(n, exponent));
+                }
+
+                for (let exponent = 0; exponent < n; exponent += 1) {
+                    const angle = exponent * stepAngle + currentAngle;
+                    const point = pointAt(angle, rootRadius);
+                    polygonPoints.push(`${point.x.toFixed(2)},${point.y.toFixed(2)}`);
+                }
+
+                svgElement('polygon', {
+                    class: 'moving-polygon',
+                    points: polygonPoints.join(' ')
+                }, polygonLayer);
+
+                for (let exponent = 0; exponent < n; exponent += 1) {
+                    const angle = exponent * stepAngle + currentAngle;
+                    const point = pointAt(angle, rootRadius);
+                    const classes = ['moving-node'];
+                    if (exponent === selected) classes.push('is-selected');
+                    const node = svgElement('circle', {
+                        class: classes.join(' '),
+                        cx: point.x,
+                        cy: point.y,
+                        r: exponent === selected ? 13 : 9
+                    }, polygonLayer);
+                    svgElement('title', {}, node, `${rootName(n, exponent)} moves to ${rootName(n, (exponent + r) % n)}`);
+                }
+
+                const selectedPoint = pointAt(selected * stepAngle + currentAngle, rootRadius);
+                svgElement('line', {
+                    class: 'selected-radius',
+                    x1: center,
+                    y1: center,
+                    x2: selectedPoint.x,
+                    y2: selectedPoint.y
+                }, annotationLayer);
+
+                if (currentAngle > 0.001) {
+                    svgElement('path', {
+                        class: 'angle-arc',
+                        d: angleArcPath(currentAngle),
+                        'marker-end': 'url(#rotation-arrow)'
+                    }, annotationLayer);
+                }
+
+                centerLabel.textContent = `R${scriptNumber(r, subscriptDigits)}`;
+                centerSubtitle.textContent = r === 0 ? 'identity' : `${r} ${r === 1 ? 'step' : 'steps'}`;
+                diagramTitle.textContent = `Rotation of the ${n}th roots by ${r} steps`;
+                diagramDescription.textContent = `${rootName(n, selected)} rotates counterclockwise to ${rootName(n, destination)} through an angle of ${r} times two pi over ${n}.`;
+            }
+
+            function updateText() {
+                const { n, r, selected } = state();
+                const destination = (selected + r) % n;
+                const degrees = 360 * r / n;
+
+                degreeValue.textContent = n;
+                rotationValue.textContent = r;
+                mappingEquation.textContent = `R${scriptNumber(r, subscriptDigits)}(${rootName(n, selected)}) = ${rootName(n, destination)}`;
+                angleLabel.textContent = `Counterclockwise angle: ${r} · 2π/${n} = ${Number(degrees.toFixed(2))}°`;
+                structureNote.textContent = r === 0
+                    ? 'The identity rotation preserves both the polygon and multiplication of roots.'
+                    : `This preserves the regular ${n}-gon, but not multiplication of roots: it moves 1 to ${rootName(n, r)}.`;
+                cycles.textContent = `Permutation cycles: ${orbitCycles(n, r)}`;
+                replayButton.disabled = r === 0 || animationFrame !== null;
+            }
+
+            function render() {
+                updateText();
+                draw();
+            }
+
+            function stopAnimation() {
+                if (animationFrame !== null) {
+                    cancelAnimationFrame(animationFrame);
+                    animationFrame = null;
+                }
+                replayButton.textContent = 'Replay rotation';
+                replayButton.disabled = Number(rotationInput.value) === 0;
+            }
+
+            function showFinalState() {
+                stopAnimation();
+                rotationProgress = 1;
+                render();
+            }
+
+            degreeInput.addEventListener('input', () => {
+                const n = Number(degreeInput.value);
+                rotationInput.max = n - 1;
+                rotationInput.value = Math.min(Number(rotationInput.value), n - 1);
+                populateRootOptions(n);
+                showFinalState();
+            });
+
+            rotationInput.addEventListener('input', showFinalState);
+            selectedRootInput.addEventListener('change', showFinalState);
+
+            replayButton.addEventListener('click', () => {
+                stopAnimation();
+                const { r } = state();
+                if (r === 0) return;
+
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (reducedMotion) {
+                    rotationProgress = 1;
+                    render();
+                    return;
+                }
+
+                const startedAt = performance.now();
+                const duration = 1200;
+                replayButton.textContent = 'Rotating…';
+
+                const animate = (now) => {
+                    rotationProgress = Math.min((now - startedAt) / duration, 1);
+                    draw();
+                    if (rotationProgress < 1) {
+                        animationFrame = requestAnimationFrame(animate);
+                    } else {
+                        stopAnimation();
+                        render();
+                    }
+                };
+
+                animationFrame = requestAnimationFrame(animate);
+                updateText();
+            });
+
+            window.addEventListener('storage', (event) => {
+                if (event.key !== 'theme') return;
+                document.documentElement.classList.toggle('dark-mode', event.newValue === 'dark');
+            });
+
+            populateRootOptions(Number(degreeInput.value));
+            render();
+        })();
+    </script>
+</body>
+</html>

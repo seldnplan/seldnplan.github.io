@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 2 | MATH 3311</title>
+    <link rel="icon" type="image/png" href="../../../../assets/favicon.png">
+    <link rel="stylesheet" href="../../../../style.css">
+    <script>
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark-mode');
+        }
+
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .lecture-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .lecture-intro {
+            font-size: 1.05rem;
+        }
+
+        .lecture-section h2 {
+            margin-top: 0;
+        }
+
+        .lecture-section h3 {
+            margin-top: 1.8rem;
+        }
+
+        .lecture-section p,
+        .lecture-section li {
+            line-height: 1.7;
+        }
+
+        .definition-block,
+        .observation-block {
+            margin: 1.25rem 0;
+            padding: 1rem 1.1rem;
+            border-left: 4px solid #0f766e;
+            border-radius: 0 8px 8px 0;
+            background: var(--bg-light);
+        }
+
+        .observation-block {
+            border-left-color: var(--primary);
+        }
+
+        .block-label {
+            display: block;
+            margin-bottom: 0.45rem;
+            color: var(--text-heading);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .definition-block p:last-child,
+        .observation-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .equation-scroll {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        .lecture-applet {
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .lecture-applet iframe {
+            display: block;
+            width: 100%;
+            height: 700px;
+            margin-top: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-light);
+        }
+
+        .applet-link {
+            margin-top: 0.75rem;
+        }
+
+        @media (max-width: 600px) {
+            .lecture-applet iframe {
+                height: 980px;
+            }
+        }
+    </style>
+</head>
+
+<body class="course-page">
+    <header class="course-header">
+        <div class="lecture-nav">
+            <a class="action-btn" href="../">← Back to MATH 3311</a>
+        </div>
+        <h1>Lecture 2: Symmetries of roots of unity</h1>
+        <p>September 3, 2026 · Multiplicative structure and rigid motions</p>
+    </header>
+
+    <main>
+        <section class="pub-card lecture-section">
+            <span class="status-tag">Lecture 2</span>
+            <h2>Two kinds of symmetry</h2>
+            <p class="lecture-intro">The fifth roots of unity carry more than one kind of structure. They form a set with multiplication, and geometrically they are the vertices of a regular pentagon. A permutation can preserve one of these structures without preserving the other.</p>
+
+            <div class="observation-block">
+                <span class="block-label">Multiplicative symmetry</span>
+                <p>The four maps $\sigma_k(\zeta_5^j)=\zeta_5^{kj}$, for $k=1,2,3,4$, are exactly the bijections of the fifth roots that preserve multiplication. In particular, each fixes $1$.</p>
+            </div>
+
+            <p>Composition multiplies the subscripts modulo $5$:</p>
+            <div class="equation-scroll">\[\sigma_i\circ\sigma_j=\sigma_{ij}.\]</div>
+        </section>
+
+        <section class="pub-card lecture-section">
+            <h2>Rigid symmetries of the regular pentagon</h2>
+            <p>We can instead ask for transformations that preserve the pentagon's side lengths and adjacency. Reflections and rotations do this. Reflection across the line through $1$ is complex conjugation; rotation counterclockwise by $2\pi/5$ gives</p>
+            <div class="equation-scroll">\[1\longmapsto\zeta_5\longmapsto\zeta_5^2\longmapsto\zeta_5^3\longmapsto\zeta_5^4\longmapsto1.\]</div>
+
+            <p>More generally, rotating the $n$th roots by $r$ steps sends</p>
+            <div class="equation-scroll">\[R_r(\zeta_n^j)=\zeta_n^{j+r}.\]</div>
+
+            <div class="definition-block">
+                <span class="block-label">A useful contrast</span>
+                <p>Every rotation preserves the regular polygon. A nonidentity rotation does not preserve multiplication of the roots, because it moves the multiplicative identity $1$.</p>
+            </div>
+
+            <article class="lecture-applet">
+                <h3>Rotate the roots of unity</h3>
+                <p>Choose $n$ and a number of counterclockwise steps. Follow a root through the rotation and compare geometric symmetry with preservation of multiplication.</p>
+                <iframe src="roots-of-unity-rotations.html" title="Interactive rotations of the roots of unity" loading="lazy"></iframe>
+                <p class="applet-link"><a href="roots-of-unity-rotations.html" target="_blank" rel="noopener noreferrer">Open the rotation applet in a new tab</a></p>
+            </article>
+        </section>
+    </main>
+
+    <script src="../../../../script.js"></script>
+</body>
+</html>
