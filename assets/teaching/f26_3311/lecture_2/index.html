@@ -47,7 +47,9 @@
         }
 
         .definition-block,
-        .observation-block {
+        .observation-block,
+        .proof-block,
+        .question-block {
             margin: 1.25rem 0;
             padding: 1rem 1.1rem;
             border-left: 4px solid #0f766e;
@@ -57,6 +59,14 @@
 
         .observation-block {
             border-left-color: var(--primary);
+        }
+
+        .proof-block {
+            border-left-color: #0f766e;
+        }
+
+        .question-block {
+            border-left-color: #d97706;
         }
 
         .block-label {
@@ -70,7 +80,9 @@
         }
 
         .definition-block p:last-child,
-        .observation-block p:last-child {
+        .observation-block p:last-child,
+        .proof-block p:last-child,
+        .question-block p:last-child {
             margin-bottom: 0;
         }
 
@@ -78,6 +90,120 @@
             max-width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
+        }
+
+        .lecture-table-wrap {
+            max-width: 100%;
+            margin: 1.25rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--white);
+        }
+
+        .lecture-table {
+            width: 100%;
+            min-width: 540px;
+            border-collapse: collapse;
+            color: var(--text-main);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .lecture-table caption {
+            padding: 0.9rem 1rem 0.6rem;
+            color: var(--text-heading);
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .lecture-table th,
+        .lecture-table td {
+            padding: 0.7rem 0.85rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .lecture-table thead th,
+        .lecture-table tbody th {
+            background: var(--bg-light);
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        .lecture-table tr:last-child th,
+        .lecture-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .symmetry-diagrams {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+
+        .symmetry-diagram {
+            margin: 0;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--bg-light);
+        }
+
+        .symmetry-diagram svg {
+            display: block;
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .symmetry-diagram figcaption {
+            margin-top: 0.5rem;
+            color: var(--text-main);
+            line-height: 1.55;
+            text-align: center;
+        }
+
+        .root-circle {
+            fill: var(--white);
+            stroke: var(--border);
+            stroke-width: 2;
+        }
+
+        .root-polygon {
+            fill: color-mix(in srgb, var(--primary) 9%, transparent);
+            stroke: var(--primary);
+            stroke-linejoin: round;
+            stroke-width: 3;
+        }
+
+        .root-node {
+            fill: var(--white);
+            stroke: var(--primary);
+            stroke-width: 3;
+        }
+
+        .reflection-axis {
+            stroke: #d97706;
+            stroke-dasharray: 8 6;
+            stroke-width: 3;
+        }
+
+        .root-label {
+            fill: var(--text-heading);
+            font-family: Georgia, serif;
+            font-size: 16px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .axis-label {
+            fill: var(--text-muted);
+            font-family: Inter, sans-serif;
+            font-size: 13px;
+            text-anchor: middle;
         }
 
         .lecture-applet {
@@ -101,6 +227,11 @@
         }
 
         @media (max-width: 600px) {
+            .lecture-table-wrap {
+                margin-right: -0.35rem;
+                margin-left: -0.35rem;
+            }
+
             .lecture-applet iframe {
                 height: 980px;
             }
@@ -115,35 +246,189 @@
         </div>
         <h1>Lecture 2: Symmetries of roots of unity</h1>
         <p>September 3, 2026 · Multiplicative structure and rigid motions</p>
+        <div class="card-actions" style="border-top: none; margin-top: 10px; padding-top: 0;">
+            <a class="action-btn video-link" href="https://youtu.be/fkJs-0GeNR4" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i> Lecture video
+            </a>
+        </div>
     </header>
 
     <main>
-        <section class="pub-card lecture-section">
+        <section class="pub-card lecture-section" id="composition">
             <span class="status-tag">Lecture 2</span>
-            <h2>Two kinds of symmetry</h2>
-            <p class="lecture-intro">The fifth roots of unity carry more than one kind of structure. They form a set with multiplication, and geometrically they are the vertices of a regular pentagon. A permutation can preserve one of these structures without preserving the other.</p>
+            <h2>Composing multiplicative symmetries</h2>
+            <p class="lecture-intro">In the last lecture, we considered the symmetries of the set</p>
+            <div class="equation-scroll">\[\mu_5=\{1,\zeta_5,\zeta_5^2,\zeta_5^3,\zeta_5^4\}\]</div>
+            <p>equipped with its <em>multiplicative</em> structure. There are exactly four such symmetries, $\sigma_1,\sigma_2,\sigma_3,\sigma_4$, where $\sigma_i$ raises each root to the $i$th power.</p>
 
-            <div class="observation-block">
-                <span class="block-label">Multiplicative symmetry</span>
-                <p>The four maps $\sigma_k(\zeta_5^j)=\zeta_5^{kj}$, for $k=1,2,3,4$, are exactly the bijections of the fifth roots that preserve multiplication. In particular, each fixes $1$.</p>
+            <p>Two bijections from a set to itself can be composed. Composing these four symmetries never takes us outside the same collection: the set $\{\sigma_1,\sigma_2,\sigma_3,\sigma_4\}$ is <em>closed</em> under composition. Indeed,</p>
+            <div class="equation-scroll">\[\sigma_i\circ\sigma_j=\sigma_{ij},\]</div>
+            <p>where the subscript is read modulo $5$.</p>
+
+            <div class="lecture-table-wrap">
+                <table class="lecture-table">
+                    <caption>Composition of the four multiplicative symmetries</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">$\circ$</th>
+                            <th scope="col">$\sigma_1$</th>
+                            <th scope="col">$\sigma_2$</th>
+                            <th scope="col">$\sigma_3$</th>
+                            <th scope="col">$\sigma_4$</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">$\sigma_1$</th><td>$\sigma_1$</td><td>$\sigma_2$</td><td>$\sigma_3$</td><td>$\sigma_4$</td></tr>
+                        <tr><th scope="row">$\sigma_2$</th><td>$\sigma_2$</td><td>$\sigma_4$</td><td>$\sigma_1$</td><td>$\sigma_3$</td></tr>
+                        <tr><th scope="row">$\sigma_3$</th><td>$\sigma_3$</td><td>$\sigma_1$</td><td>$\sigma_4$</td><td>$\sigma_2$</td></tr>
+                        <tr><th scope="row">$\sigma_4$</th><td>$\sigma_4$</td><td>$\sigma_3$</td><td>$\sigma_2$</td><td>$\sigma_1$</td></tr>
+                    </tbody>
+                </table>
             </div>
 
-            <p>Composition multiplies the subscripts modulo $5$:</p>
-            <div class="equation-scroll">\[\sigma_i\circ\sigma_j=\sigma_{ij}.\]</div>
+            <p>If we remember only the subscripts, this is multiplication modulo $5$:</p>
+            <div class="lecture-table-wrap">
+                <table class="lecture-table">
+                    <caption>Multiplication of nonzero residue classes modulo $5$</caption>
+                    <thead>
+                        <tr><th scope="col">$\cdot$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th><th scope="col">$4$</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">$1$</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
+                        <tr><th scope="row">$2$</th><td>$2$</td><td>$4$</td><td>$1$</td><td>$3$</td></tr>
+                        <tr><th scope="row">$3$</th><td>$3$</td><td>$1$</td><td>$4$</td><td>$2$</td></tr>
+                        <tr><th scope="row">$4$</th><td>$4$</td><td>$3$</td><td>$2$</td><td>$1$</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
-        <section class="pub-card lecture-section">
-            <h2>Rigid symmetries of the regular pentagon</h2>
-            <p>We can instead ask for transformations that preserve the pentagon's side lengths and adjacency. Reflections and rotations do this. Reflection across the line through $1$ is complex conjugation; rotation counterclockwise by $2\pi/5$ gives</p>
+        <section class="pub-card lecture-section" id="multiplicative-structure">
+            <h2>The structure being preserved</h2>
+            <p>There are $4!=24$ ways to shuffle the four nontrivial fifth roots. What makes these four particular symmetries special?</p>
+
+            <p>The fifth roots of unity are not a random collection of five objects. They have a multiplicative structure: multiplying two roots gives another root, and</p>
+            <div class="equation-scroll">\[\zeta_5^i\cdot\zeta_5^j=\zeta_5^{i+j}.\]</div>
+            <p>Since $\zeta_5^5=1$, only the remainder of an exponent modulo $5$ matters.</p>
+
+            <div class="lecture-table-wrap">
+                <table class="lecture-table">
+                    <caption>Multiplication of the fifth roots of unity</caption>
+                    <thead>
+                        <tr><th scope="col">$\cdot$</th><th scope="col">$1$</th><th scope="col">$\zeta_5$</th><th scope="col">$\zeta_5^2$</th><th scope="col">$\zeta_5^3$</th><th scope="col">$\zeta_5^4$</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">$1$</th><td>$1$</td><td>$\zeta_5$</td><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td></tr>
+                        <tr><th scope="row">$\zeta_5$</th><td>$\zeta_5$</td><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td><td>$1$</td></tr>
+                        <tr><th scope="row">$\zeta_5^2$</th><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td><td>$1$</td><td>$\zeta_5$</td></tr>
+                        <tr><th scope="row">$\zeta_5^3$</th><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td><td>$1$</td><td>$\zeta_5$</td><td>$\zeta_5^2$</td></tr>
+                        <tr><th scope="row">$\zeta_5^4$</th><td>$\zeta_5^4$</td><td>$1$</td><td>$\zeta_5$</td><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>If we keep only the exponents, regarding $1$ as $\zeta_5^0$, the same information becomes addition modulo $5$:</p>
+            <div class="lecture-table-wrap">
+                <table class="lecture-table">
+                    <caption>Addition modulo $5$</caption>
+                    <thead>
+                        <tr><th scope="col">$+$</th><th scope="col">$0$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th><th scope="col">$4$</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">$0$</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
+                        <tr><th scope="row">$1$</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$0$</td></tr>
+                        <tr><th scope="row">$2$</th><td>$2$</td><td>$3$</td><td>$4$</td><td>$0$</td><td>$1$</td></tr>
+                        <tr><th scope="row">$3$</th><td>$3$</td><td>$4$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr>
+                        <tr><th scope="row">$4$</th><td>$4$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>The last two tables are the same up to relabeling the rows, columns, and entries. We will formalize this idea in later lectures.</p>
+        </section>
+
+        <section class="pub-card lecture-section" id="multiplicative-symmetries">
+            <h2>Which bijections preserve multiplication?</h2>
+
+            <div class="observation-block">
+                <span class="block-label">Observation</span>
+                <p>The identity, squaring, cubing, and fourth-power maps are precisely the bijections</p>
+                <div class="equation-scroll">\[\sigma:\mu_5\longrightarrow\mu_5\]</div>
+                <p>that preserve the multiplicative structure. More precisely, they satisfy</p>
+                <div class="equation-scroll">\[\sigma(\zeta_5^i)\sigma(\zeta_5^j)=\sigma(\zeta_5^{i+j})\]</div>
+                <p>for all $i,j\in\{0,1,2,3,4\}$.</p>
+            </div>
+
+            <div class="proof-block">
+                <span class="block-label">Proof</span>
+                <p>First, a multiplicative symmetry $\sigma$ must fix $1$. For every $j$,</p>
+                <div class="equation-scroll">\[\sigma(1)\sigma(\zeta_5^j)=\sigma(\zeta_5^0)\sigma(\zeta_5^j)=\sigma(\zeta_5^{0+j})=\sigma(\zeta_5^j).\]</div>
+                <p>Because $\sigma(\zeta_5^j)\ne0$, cancellation gives $\sigma(1)=1$.</p>
+
+                <p>There are therefore four possible values for $\sigma(\zeta_5)$: $\zeta_5,\zeta_5^2,\zeta_5^3,$ or $\zeta_5^4$. Once this value is chosen, preservation of multiplication determines every other value. If $\sigma(\zeta_5)=\zeta_5^k$, for example, then</p>
+                <div class="equation-scroll">\[\sigma(\zeta_5^2)=\sigma(\zeta_5)\sigma(\zeta_5)=\zeta_5^{2k}.\]</div>
+                <p>Similarly, $\sigma(\zeta_5^3)=\zeta_5^{3k}$ and $\sigma(\zeta_5^4)=\zeta_5^{4k}$. The four choices for $k$ give exactly the identity, squaring, cubing, and fourth-power symmetries.</p>
+            </div>
+        </section>
+
+        <section class="pub-card lecture-section" id="rigid-symmetries">
+            <h2>Rigid symmetries of the pentagon</h2>
+            <p>There is another, geometric structure on $\mu_5$: its elements are the vertices of a regular pentagon. We can therefore consider the rigid symmetries that preserve the pentagon's perimeter and adjacency.</p>
+
+            <h3>Reflections</h3>
+            <p>Reflecting across the median through the vertex $1$ is complex conjugation, the multiplicative symmetry $\sigma_4$. It fixes $1$ and exchanges the other four roots in pairs.</p>
+
+            <div class="symmetry-diagrams">
+                <figure class="symmetry-diagram">
+                    <svg viewBox="0 0 320 320" role="img" aria-labelledby="reflection-one-title reflection-one-desc">
+                        <title id="reflection-one-title">Reflection through the vertex one</title>
+                        <desc id="reflection-one-desc">A regular pentagon formed by the fifth roots of unity, with a horizontal reflection axis through one.</desc>
+                        <circle class="root-circle" cx="160" cy="160" r="105"></circle>
+                        <line class="reflection-axis" x1="28" y1="160" x2="276" y2="160"></line>
+                        <polygon class="root-polygon" points="265,160 192.4,60.1 75.1,98.3 75.1,221.7 192.4,259.9"></polygon>
+                        <circle class="root-node" cx="265" cy="160" r="7"></circle>
+                        <circle class="root-node" cx="192.4" cy="60.1" r="7"></circle>
+                        <circle class="root-node" cx="75.1" cy="98.3" r="7"></circle>
+                        <circle class="root-node" cx="75.1" cy="221.7" r="7"></circle>
+                        <circle class="root-node" cx="192.4" cy="259.9" r="7"></circle>
+                        <text class="root-label" x="292" y="160">1</text>
+                        <text class="root-label" x="201" y="34">ζ₅¹</text>
+                        <text class="root-label" x="48" y="82">ζ₅²</text>
+                        <text class="root-label" x="48" y="239">ζ₅³</text>
+                        <text class="root-label" x="201" y="286">ζ₅⁴</text>
+                        <text class="axis-label" x="160" y="149">reflection axis</text>
+                    </svg>
+                    <figcaption>$1$ is fixed, while $\zeta_5\leftrightarrow\zeta_5^4$ and $\zeta_5^2\leftrightarrow\zeta_5^3$.</figcaption>
+                </figure>
+
+                <figure class="symmetry-diagram">
+                    <svg viewBox="0 0 320 320" role="img" aria-labelledby="reflection-zeta-title reflection-zeta-desc">
+                        <title id="reflection-zeta-title">Reflection through zeta five</title>
+                        <desc id="reflection-zeta-desc">A regular pentagon formed by the fifth roots of unity, with a reflection axis through zeta five.</desc>
+                        <circle class="root-circle" cx="160" cy="160" r="105"></circle>
+                        <line class="reflection-axis" x1="119.2" y1="285.5" x2="200.8" y2="34.5"></line>
+                        <polygon class="root-polygon" points="265,160 192.4,60.1 75.1,98.3 75.1,221.7 192.4,259.9"></polygon>
+                        <circle class="root-node" cx="265" cy="160" r="7"></circle>
+                        <circle class="root-node" cx="192.4" cy="60.1" r="7"></circle>
+                        <circle class="root-node" cx="75.1" cy="98.3" r="7"></circle>
+                        <circle class="root-node" cx="75.1" cy="221.7" r="7"></circle>
+                        <circle class="root-node" cx="192.4" cy="259.9" r="7"></circle>
+                        <text class="root-label" x="292" y="160">1</text>
+                        <text class="root-label" x="201" y="34">ζ₅¹</text>
+                        <text class="root-label" x="48" y="82">ζ₅²</text>
+                        <text class="root-label" x="48" y="239">ζ₅³</text>
+                        <text class="root-label" x="201" y="286">ζ₅⁴</text>
+                        <text class="axis-label" x="154" y="104" transform="rotate(-72 154 104)">reflection axis</text>
+                    </svg>
+                    <figcaption>$\zeta_5$ is fixed, while $1\leftrightarrow\zeta_5^2$ and $\zeta_5^3\leftrightarrow\zeta_5^4$.</figcaption>
+                </figure>
+            </div>
+
+            <h3>Rotations</h3>
+            <p>We can also rotate the pentagon through an integer multiple of $2\pi/5$. Rotation counterclockwise by one step gives</p>
             <div class="equation-scroll">\[1\longmapsto\zeta_5\longmapsto\zeta_5^2\longmapsto\zeta_5^3\longmapsto\zeta_5^4\longmapsto1.\]</div>
 
-            <p>More generally, rotating the $n$th roots by $r$ steps sends</p>
-            <div class="equation-scroll">\[R_r(\zeta_n^j)=\zeta_n^{j+r}.\]</div>
-
-            <div class="definition-block">
-                <span class="block-label">A useful contrast</span>
-                <p>Every rotation preserves the regular polygon. A nonidentity rotation does not preserve multiplication of the roots, because it moves the multiplicative identity $1$.</p>
-            </div>
+            <p>This preserves the rigid geometry of the pentagon, but it does not preserve multiplication. For example, rotating the equality $1\cdot1=1$ by one step would produce the false equality $\zeta_5\cdot\zeta_5=\zeta_5$.</p>
 
             <article class="lecture-applet">
                 <h3>Rotate the roots of unity</h3>
@@ -151,6 +436,11 @@
                 <iframe src="roots-of-unity-rotations.html" title="Interactive rotations of the roots of unity" loading="lazy"></iframe>
                 <p class="applet-link"><a href="roots-of-unity-rotations.html" target="_blank" rel="noopener noreferrer">Open the rotation applet in a new tab</a></p>
             </article>
+
+            <div class="question-block">
+                <span class="block-label">Notation</span>
+                <p>We will call counterclockwise rotation by $2\pi/5$ the symmetry $\sigma$, and write $\tau$ for complex conjugation, or reflection across the median through $1$.</p>
+            </div>
         </section>
     </main>
 
