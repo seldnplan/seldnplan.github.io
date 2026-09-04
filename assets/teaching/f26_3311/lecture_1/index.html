@@ -84,20 +84,6 @@
             text-transform: uppercase;
         }
 
-        .block-permalink {
-            margin-left: 0.35rem;
-            color: var(--text-muted);
-            font-size: 0.9em;
-            letter-spacing: normal;
-            text-decoration: none;
-            text-transform: none;
-        }
-
-        .block-permalink:hover,
-        .block-permalink:focus-visible {
-            color: var(--primary);
-        }
-
         .example-block,
         .remark-block,
         .definition-block,
@@ -245,21 +231,21 @@
             <h2>Roots, choices, and symmetry</h2>
 
             <div class="example-block" id="example-quadratic-root-two">
-                <span class="example-label">Example 1<a class="block-permalink" href="#example-quadratic-root-two" aria-label="Link to Example 1">#</a></span>
+                <span class="example-label">Example 1</span>
                 <p>Step back for a moment to high-school algebra and consider</p>
                 <div class="equation-scroll">\[x^2-2=0.\]</div>
                 <p>It has two solutions, $\pm\sqrt{2}$. How do we tell them apart? One is positive and the other is negative. The positive root is also the only one of the two that has a real square root, namely $\sqrt[4]{2}$.</p>
             </div>
 
             <div class="example-block" id="example-square-roots-minus-one">
-                <span class="example-label">Example 2<a class="block-permalink" href="#example-square-roots-minus-one" aria-label="Link to Example 2">#</a></span>
+                <span class="example-label">Example 2</span>
                 <p>Now consider</p>
                 <div class="equation-scroll">\[x^2+1=0.\]</div>
                 <p>It also has two solutions, $\pm i$. Unlike the previous example, there is no God-given choice between them. All we can say intrinsically is that there are two roots and that each is the negative of the other, and the two roots are exchanged by complex conjugation.</p>
             </div>
 
             <div class="example-block" id="example-quadratic-roots-of-unity">
-                <span class="example-label">Example 3<a class="block-permalink" href="#example-quadratic-roots-of-unity" aria-label="Link to Example 3">#</a></span>
+                <span class="example-label">Example 3</span>
                 <p>The zeros of $x^2+x+1$ are</p>
                 <div class="equation-scroll">\[\frac{-1\pm i\sqrt{3}}{2}.\]</div>
                 <p>The sign $\pm$ accounts for the ambiguity in choosing $i$: either choice produces the same <em>pair</em> of complex numbers, although it does not distinguish one root from the other.</p>
@@ -271,7 +257,7 @@
             <h2>From Abel to Galois</h2>
 
             <aside class="remark-block" id="remark-abel-galois">
-                <span class="block-label">A forward-looking remark<a class="block-permalink" href="#remark-abel-galois" aria-label="Link to the forward-looking remark">#</a></span>
+                <span class="block-label">A forward-looking remark</span>
                 <p>The quadratic formula was known, but for centuries mathematicians sought analogous formulas for higher-degree equations. Italian mathematicians settled the cubic and quartic cases in the sixteenth century. In the early nineteenth century, Niels Henrik Abel proved that no formula by radicals exists for the general quintic.</p>
                 <p>Soon afterward, Évariste Galois—who died in a duel at the age of twenty-one—explained this phenomenon by studying the <em>symmetries</em> of polynomial roots. His work led directly to group theory, our first focus this semester. We will return to Galois's ideas near the end of this semester and study them much more closely next semester.</p>
             </aside>
@@ -352,7 +338,7 @@
             </ol>
 
             <div class="lemma-block" id="lemma-bezout">
-                <span class="block-label">Bézout's identity<a class="block-permalink" href="#lemma-bezout" aria-label="Link to Bézout's identity">#</a></span>
+                <span class="block-label">Bézout's identity</span>
                 <p>Given integers $a,b\in\mathbb Z$, there are integers $s,t\in\mathbb Z$ such that</p>
                 <div class="equation-scroll">\[\gcd(a,b)=sa+tb.\]</div>
                 <p>In particular, the following are equivalent:</p>
@@ -363,7 +349,7 @@
             </div>
 
             <div class="definition-block" id="definition-congruence-mod-n">
-                <span class="block-label">Congruence modulo $n$<a class="block-permalink" href="#definition-congruence-mod-n" aria-label="Link to the definition of congruence modulo n">#</a></span>
+                <span class="block-label">Congruence modulo $n$</span>
                 <p>Two integers are equivalent modulo $n$ when their difference is divisible by $n$—equivalently, when they leave the same remainder after division by $n$. We write</p>
                 <div class="equation-scroll">\[a\equiv b\pmod n.\]</div>
                 <p>The equivalence classes form $\mathbb Z/n\mathbb Z$. Addition and multiplication of classes can be pictured as arithmetic on a clock.</p>
