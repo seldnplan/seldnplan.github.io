@@ -221,7 +221,7 @@
         .lecture-applet iframe {
             display: block;
             width: 100%;
-            height: 700px;
+            height: 1040px;
             margin-top: 1rem;
             border: 1px solid var(--border);
             border-radius: 10px;
@@ -232,6 +232,12 @@
             margin-top: 0.75rem;
         }
 
+        @media (max-width: 900px) {
+            .lecture-applet iframe {
+                height: 1500px;
+            }
+        }
+
         @media (max-width: 600px) {
             .lecture-table-wrap {
                 margin-right: -0.35rem;
@@ -239,7 +245,13 @@
             }
 
             .lecture-applet iframe {
-                height: 980px;
+                height: 1650px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .lecture-applet iframe {
+                height: 1800px;
             }
         }
     </style>
@@ -250,38 +262,67 @@
         <div class="lecture-nav">
             <a class="action-btn" href="../">← Back to MATH 3311</a>
         </div>
-        <h1>Lecture 2: Symmetries of roots of unity</h1>
+        <h1>Lecture 2: Symmetries of roots of unity; groups</h1>
         <p>September 3, 2026 · Multiplicative structure and rigid motions</p>
         <div class="card-actions" style="border-top: none; margin-top: 10px; padding-top: 0;">
-            <a class="action-btn video-link" href="https://youtu.be/fkJs-0GeNR4" target="_blank" rel="noopener noreferrer">
+            <a class="action-btn video-link" href="https://youtu.be/pti-RluSEjs" target="_blank" rel="noopener noreferrer">
                 <i class="fa-solid fa-circle-play" aria-hidden="true"></i> Lecture video
             </a>
         </div>
     </header>
 
     <main>
-        <section class="pub-card lecture-section" id="composition">
+        <section class="pub-card lecture-section" id="symmetry-and-structure">
             <span class="status-tag">Lecture 2</span>
-            <h2>Composing multiplicative symmetries</h2>
-            <p class="lecture-intro">In the last lecture, we considered the symmetries of the set</p>
-            <div class="equation-scroll">\[\mu_5=\{1,\zeta_5,\zeta_5^2,\zeta_5^3,\zeta_5^4\}\]</div>
-            <p>equipped with its <em>multiplicative</em> structure. There are exactly four such symmetries, $\sigma_1,\sigma_2,\sigma_3,\sigma_4$, where $\sigma_i$ raises each root to the $i$th power.</p>
+            <h2>Symmetry depends on structure</h2>
+            <p class="lecture-intro">We return to the fifth roots of unity</p>
+            <div class="equation-scroll">\[\mu_5=\{1,\zeta_5,\zeta_5^2,\zeta_5^3,\zeta_5^4\},\qquad \zeta_5=e^{2\pi i/5}.\]</div>
 
-            <p>Two bijections from a set to itself can be composed. Composing these four symmetries never takes us outside the same collection: the set $\{\sigma_1,\sigma_2,\sigma_3,\sigma_4\}$ is <em>closed</em> under composition. Indeed,</p>
-            <div class="equation-scroll">\[\sigma_i\circ\sigma_j=\sigma_{ij},\]</div>
-            <p>where the subscript is read modulo $5$.</p>
+            <div class="definition-block">
+                <span class="block-label">Guiding definition</span>
+                <p>A <strong>symmetry</strong> is a structure-preserving transformation. The same set can therefore have different collections of symmetries, depending on which structure we choose to preserve.</p>
+            </div>
+
+            <p>Today we place two different structures on $\mu_5$. First we remember that its elements multiply. Later we remember that they are the vertices of a regular pentagon in the plane.</p>
+
+            <h3>The multiplicative structure</h3>
+            <p>Multiplication of roots is controlled entirely by their exponents:</p>
+            <div class="equation-scroll">\[\zeta_5^i\zeta_5^j=\zeta_5^{i+j}.\]</div>
+
+            <div class="observation-block">
+                <span class="block-label">Observation</span>
+                <p>Exponents are read modulo $5$: $\zeta_5^{i+5}=\zeta_5^i$. Thus we may regard the exponents as residue classes in $\mathbb Z/5\mathbb Z$.</p>
+            </div>
+        </section>
+
+        <section class="pub-card lecture-section" id="multiplicative-symmetries">
+            <h2>Classifying the multiplicative symmetries</h2>
+            <p>A multiplicative symmetry is a bijection $\sigma:\mu_5\to\mu_5$ satisfying</p>
+            <div class="equation-scroll">\[\sigma(\zeta_5^i)\sigma(\zeta_5^j)=\sigma(\zeta_5^{i+j})\qquad\text{for every }i,j.\]</div>
+
+            <p>Repeated multiplication then gives</p>
+            <div class="equation-scroll">\[\sigma(\zeta_5^k)=\sigma(\zeta_5)^k.\]</div>
+            <p>For example, $\sigma(\zeta_5^2)=\sigma(\zeta_5)^2$ and $\sigma(\zeta_5^3)=\sigma(\zeta_5)^3$. Consequently, the single value $\sigma(\zeta_5)$ determines every value of $\sigma$.</p>
+
+            <div class="proof-block">
+                <span class="block-label">Why there are four</span>
+                <p>If $\sigma(\zeta_5)=1$, then $\sigma(\zeta_5^k)=1$ for every $k$, so $\sigma$ is not a bijection. Each of the other four choices is allowed. They give</p>
+                <div class="equation-scroll">\[\sigma_a(\zeta_5^k)=\zeta_5^{ak},\qquad a\in\{1,2,3,4\},\]</div>
+                <p>the identity, squaring, cubing, and fourth-power maps.</p>
+            </div>
+        </section>
+
+        <section class="pub-card lecture-section" id="composition">
+            <h2>Composing multiplicative symmetries</h2>
+            <p>Composition stays inside the same four-element collection. Indeed,</p>
+            <div class="equation-scroll">\[(\sigma_a\circ\sigma_b)(\zeta_5^k)=\zeta_5^{abk},\qquad\text{so}\qquad \sigma_a\circ\sigma_b=\sigma_{ab},\]</div>
+            <p>where the subscript is reduced modulo $5$.</p>
 
             <div class="lecture-table-wrap">
                 <table class="lecture-table">
                     <caption>Composition of the four multiplicative symmetries</caption>
                     <thead>
-                        <tr>
-                            <th scope="col">$\circ$</th>
-                            <th scope="col">$\sigma_1$</th>
-                            <th scope="col">$\sigma_2$</th>
-                            <th scope="col">$\sigma_3$</th>
-                            <th scope="col">$\sigma_4$</th>
-                        </tr>
+                        <tr><th scope="col">$\circ$</th><th scope="col">$\sigma_1$</th><th scope="col">$\sigma_2$</th><th scope="col">$\sigma_3$</th><th scope="col">$\sigma_4$</th></tr>
                     </thead>
                     <tbody>
                         <tr><th scope="row">$\sigma_1$</th><td>$\sigma_1$</td><td>$\sigma_2$</td><td>$\sigma_3$</td><td>$\sigma_4$</td></tr>
@@ -292,10 +333,10 @@
                 </table>
             </div>
 
-            <p>If we remember only the subscripts, this is multiplication modulo $5$:</p>
+            <p>If we keep only the subscripts, this is exactly multiplication of the nonzero residue classes modulo $5$:</p>
             <div class="lecture-table-wrap">
                 <table class="lecture-table">
-                    <caption>Multiplication of nonzero residue classes modulo $5$</caption>
+                    <caption>Multiplication in $(\mathbb Z/5\mathbb Z)^\times$</caption>
                     <thead>
                         <tr><th scope="col">$\cdot$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th><th scope="col">$4$</th></tr>
                     </thead>
@@ -307,82 +348,21 @@
                     </tbody>
                 </table>
             </div>
-        </section>
 
-        <section class="pub-card lecture-section" id="multiplicative-structure">
-            <h2>The structure being preserved</h2>
-            <p>There are $4!=24$ ways to shuffle the four nontrivial fifth roots. What makes these four particular symmetries special?</p>
-
-            <p>The fifth roots of unity are not a random collection of five objects. They have a multiplicative structure: multiplying two roots gives another root, and</p>
-            <div class="equation-scroll">\[\zeta_5^i\cdot\zeta_5^j=\zeta_5^{i+j}.\]</div>
-            <p>Since $\zeta_5^5=1$, only the remainder of an exponent modulo $5$ matters.</p>
-
-            <div class="lecture-table-wrap">
-                <table class="lecture-table">
-                    <caption>Multiplication of the fifth roots of unity</caption>
-                    <thead>
-                        <tr><th scope="col">$\cdot$</th><th scope="col">$1$</th><th scope="col">$\zeta_5$</th><th scope="col">$\zeta_5^2$</th><th scope="col">$\zeta_5^3$</th><th scope="col">$\zeta_5^4$</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><th scope="row">$1$</th><td>$1$</td><td>$\zeta_5$</td><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td></tr>
-                        <tr><th scope="row">$\zeta_5$</th><td>$\zeta_5$</td><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td><td>$1$</td></tr>
-                        <tr><th scope="row">$\zeta_5^2$</th><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td><td>$1$</td><td>$\zeta_5$</td></tr>
-                        <tr><th scope="row">$\zeta_5^3$</th><td>$\zeta_5^3$</td><td>$\zeta_5^4$</td><td>$1$</td><td>$\zeta_5$</td><td>$\zeta_5^2$</td></tr>
-                        <tr><th scope="row">$\zeta_5^4$</th><td>$\zeta_5^4$</td><td>$1$</td><td>$\zeta_5$</td><td>$\zeta_5^2$</td><td>$\zeta_5^3$</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p>If we keep only the exponents, regarding $1$ as $\zeta_5^0$, the same information becomes addition modulo $5$:</p>
-            <div class="lecture-table-wrap">
-                <table class="lecture-table">
-                    <caption>Addition modulo $5$</caption>
-                    <thead>
-                        <tr><th scope="col">$+$</th><th scope="col">$0$</th><th scope="col">$1$</th><th scope="col">$2$</th><th scope="col">$3$</th><th scope="col">$4$</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><th scope="row">$0$</th><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td></tr>
-                        <tr><th scope="row">$1$</th><td>$1$</td><td>$2$</td><td>$3$</td><td>$4$</td><td>$0$</td></tr>
-                        <tr><th scope="row">$2$</th><td>$2$</td><td>$3$</td><td>$4$</td><td>$0$</td><td>$1$</td></tr>
-                        <tr><th scope="row">$3$</th><td>$3$</td><td>$4$</td><td>$0$</td><td>$1$</td><td>$2$</td></tr>
-                        <tr><th scope="row">$4$</th><td>$4$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p>The last two tables are the same up to relabeling the rows, columns, and entries. We will formalize this idea in later lectures.</p>
-        </section>
-
-        <section class="pub-card lecture-section" id="multiplicative-symmetries">
-            <h2>Which bijections preserve multiplication?</h2>
-
-            <div class="observation-block">
-                <span class="block-label">Observation</span>
-                <p>The identity, squaring, cubing, and fourth-power maps are precisely the bijections</p>
-                <div class="equation-scroll">\[\sigma:\mu_5\longrightarrow\mu_5\]</div>
-                <p>that preserve the multiplicative structure. More precisely, they satisfy</p>
-                <div class="equation-scroll">\[\sigma(\zeta_5^i)\sigma(\zeta_5^j)=\sigma(\zeta_5^{i+j})\]</div>
-                <p>for all $i,j\in\{0,1,2,3,4\}$.</p>
-            </div>
-
-            <div class="proof-block">
-                <span class="block-label">Proof</span>
-                <p>First, a multiplicative symmetry $\sigma$ must fix $1$. For every $j$,</p>
-                <div class="equation-scroll">\[\sigma(1)\sigma(\zeta_5^j)=\sigma(\zeta_5^0)\sigma(\zeta_5^j)=\sigma(\zeta_5^{0+j})=\sigma(\zeta_5^j).\]</div>
-                <p>Because $\sigma(\zeta_5^j)\ne0$, cancellation gives $\sigma(1)=1$.</p>
-
-                <p>There are therefore four possible values for $\sigma(\zeta_5)$: $\zeta_5,\zeta_5^2,\zeta_5^3,$ or $\zeta_5^4$. Once this value is chosen, preservation of multiplication determines every other value. If $\sigma(\zeta_5)=\zeta_5^k$, for example, then</p>
-                <div class="equation-scroll">\[\sigma(\zeta_5^2)=\sigma(\zeta_5)\sigma(\zeta_5)=\zeta_5^{2k}.\]</div>
-                <p>Similarly, $\sigma(\zeta_5^3)=\zeta_5^{3k}$ and $\sigma(\zeta_5^4)=\zeta_5^{4k}$. The four choices for $k$ give exactly the identity, squaring, cubing, and fourth-power symmetries.</p>
-            </div>
+            <p>The table is symmetric across its diagonal, so these four symmetries commute with one another.</p>
         </section>
 
         <section class="pub-card lecture-section" id="rigid-symmetries">
             <h2>Rigid symmetries of the pentagon</h2>
-            <p>There is another, geometric structure on $\mu_5$: its elements are the vertices of a regular pentagon. We can therefore consider the rigid symmetries that preserve the pentagon's perimeter and adjacency.</p>
+            <p>Now forget multiplication and view $\mu_5$ as the vertices of a regular pentagon. A rigid symmetry is a transformation of the plane that carries this pentagon onto itself.</p>
+
+            <div class="question-block">
+                <span class="block-label">Generators</span>
+                <p>Let $r$ be counterclockwise rotation through $2\pi/5$, and let $s$ be reflection across the real axis. In the handwritten lecture notes these were denoted $\sigma$ and $\tau$, respectively.</p>
+            </div>
 
             <h3>Reflections</h3>
-            <p>Reflecting across the median through the vertex $1$ is complex conjugation, the multiplicative symmetry $\sigma_4$. It fixes $1$ and exchanges the other four roots in pairs.</p>
+            <p>The reflection $s$ is complex conjugation. It fixes $1$ and exchanges the remaining roots in pairs. Rotating its axis produces four more reflections.</p>
 
             <div class="symmetry-diagrams">
                 <figure class="symmetry-diagram">
@@ -409,8 +389,8 @@
 
                 <figure class="symmetry-diagram">
                     <svg viewBox="0 0 320 320" role="img" aria-labelledby="reflection-zeta-title reflection-zeta-desc">
-                        <title id="reflection-zeta-title">Reflection through zeta five</title>
-                        <desc id="reflection-zeta-desc">A regular pentagon formed by the fifth roots of unity, with a reflection axis through zeta five.</desc>
+                        <title id="reflection-zeta-title">Another reflection of the pentagon</title>
+                        <desc id="reflection-zeta-desc">A regular pentagon formed by the fifth roots of unity, with a second reflection axis.</desc>
                         <circle class="root-circle" cx="160" cy="160" r="105"></circle>
                         <line class="reflection-axis" x1="119.2" y1="285.5" x2="200.8" y2="34.5"></line>
                         <polygon class="root-polygon" points="265,160 192.4,60.1 75.1,98.3 75.1,221.7 192.4,259.9"></polygon>
@@ -430,22 +410,56 @@
                 </figure>
             </div>
 
-            <h3>Rotations</h3>
-            <p>We can also rotate the pentagon through an integer multiple of $2\pi/5$. Rotation counterclockwise by one step gives</p>
+            <h3>Rotations and order of composition</h3>
+            <p>The rotation $r$ moves each vertex one step counterclockwise:</p>
             <div class="equation-scroll">\[1\longmapsto\zeta_5\longmapsto\zeta_5^2\longmapsto\zeta_5^3\longmapsto\zeta_5^4\longmapsto1.\]</div>
 
-            <p>This preserves the rigid geometry of the pentagon, but it does not preserve multiplication. For example, rotating the equality $1\cdot1=1$ by one step would produce the false equality $\zeta_5\cdot\zeta_5=\zeta_5$.</p>
+            <p>Unlike the multiplicative symmetries, rigid symmetries need not commute. Reading composition from right to left,</p>
+            <div class="equation-scroll">\[(r\circ s)(1)=\zeta_5,\qquad (s\circ r)(1)=\zeta_5^4,\]</div>
+            <p>so $r\circ s\ne s\circ r$. This is the first example of <strong>noncommutativity</strong>.</p>
+
+            <div class="observation-block">
+                <span class="block-label">All rigid symmetries</span>
+                <p>The five rotations $e,r,r^2,r^3,r^4$ and the five reflections $s,rs,r^2s,r^3s,r^4s$ give every rigid symmetry of the pentagon. Together they form the dihedral group $D_{10}$ of order $10$, with relations</p>
+                <div class="equation-scroll">\[r^5=e,\qquad s^2=e,\qquad srs=r^{-1}.\]</div>
+            </div>
 
             <article class="lecture-applet">
-                <h3>Rotate the roots of unity</h3>
-                <p>Choose $n$ and a number of counterclockwise steps. Follow a root through the rotation and compare geometric symmetry with preservation of multiplication.</p>
-                <iframe src="roots-of-unity-rotations.html" title="Interactive rotations of the roots of unity" loading="lazy"></iframe>
-                <p class="applet-link"><a href="roots-of-unity-rotations.html" target="_blank" rel="noopener noreferrer">Open the rotation applet in a new tab</a></p>
+                <h3>Explore the dihedral group $D_{10}$</h3>
+                <p>Apply each of the ten rigid symmetries, follow all five vertices, and compose two symmetries in either order.</p>
+                <iframe src="roots-of-unity-rotations.html" title="Interactive rigid symmetries of the pentagon and the dihedral group D10" loading="lazy"></iframe>
+                <p class="applet-link"><a href="roots-of-unity-rotations.html" target="_blank" rel="noopener noreferrer">Open the $D_{10}$ applet in a new tab</a></p>
             </article>
+        </section>
 
-            <div class="question-block">
-                <span class="block-label">Notation</span>
-                <p>We will call counterclockwise rotation by $2\pi/5$ the symmetry $\sigma$, and write $\tau$ for complex conjugation, or reflection across the median through $1$.</p>
+        <section class="pub-card lecture-section" id="groups">
+            <h2>Abstracting the pattern: groups</h2>
+            <p>Both collections of symmetries are closed under composition, contain a do-nothing symmetry, and allow every motion to be undone. This common pattern is the definition of a group.</p>
+
+            <div class="definition-block">
+                <span class="block-label">Definition</span>
+                <p>A <strong>group</strong> is a triple $(G,*,e)$ consisting of a set $G$, a binary operation $*:G\times G\to G$, and a distinguished element $e\in G$, such that:</p>
+                <ol>
+                    <li><strong>Identity:</strong> $e*g=g=g*e$ for every $g\in G$.</li>
+                    <li><strong>Associativity:</strong> $g_1*(g_2*g_3)=(g_1*g_2)*g_3$ for all $g_1,g_2,g_3\in G$.</li>
+                    <li><strong>Inverses:</strong> for every $g\in G$, there is an element $h\in G$ such that $h*g=e=g*h$.</li>
+                </ol>
+            </div>
+
+            <p>The four multiplication-preserving symmetries form a commutative group isomorphic to $(\mathbb Z/5\mathbb Z)^\times$. The ten rigid symmetries form the noncommutative group $D_{10}$.</p>
+
+            <div class="proof-block">
+                <span class="block-label">Lemma: inverses are unique</span>
+                <p>If both $h$ and $h'$ are inverses of $g$, then associativity gives</p>
+                <div class="equation-scroll">\[h=h*e=h*(g*h')=(h*g)*h'=e*h'=h'.\]</div>
+                <p>We may therefore write the inverse unambiguously as $g^{-1}$.</p>
+            </div>
+
+            <div class="observation-block">
+                <span class="block-label">Why composition is associative</span>
+                <p>For functions $f_1,f_2,f_3$ and every input $x$,</p>
+                <div class="equation-scroll">\[(f_1\circ(f_2\circ f_3))(x)=f_1(f_2(f_3(x)))=((f_1\circ f_2)\circ f_3)(x).\]</div>
+                <p>Thus composition automatically supplies the associativity required in the group definition.</p>
             </div>
         </section>
     </main>

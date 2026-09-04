@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotations of Roots of Unity</title>
+    <title>Rigid Symmetries of the Pentagon · D10</title>
     <script>
         if (
             localStorage.getItem('theme') === 'dark' ||
@@ -22,7 +22,10 @@
             --text: #1e293b;
             --muted: #64748b;
             --accent: #2563eb;
-            --selected: #ea580c;
+            --accent-soft: #dbeafe;
+            --selected: #c2410c;
+            --selected-soft: #ffedd5;
+            --success: #0f766e;
             --shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
         }
 
@@ -35,7 +38,10 @@
             --text: #f8fafc;
             --muted: #a7b3c6;
             --accent: #60a5fa;
+            --accent-soft: #1e3a5f;
             --selected: #fb923c;
+            --selected-soft: #5b2b16;
+            --success: #5eead4;
             --shadow: 0 10px 25px rgba(0, 0, 0, 0.24);
         }
 
@@ -52,147 +58,242 @@
         }
 
         button,
-        input,
         select {
             font: inherit;
         }
 
         button:focus-visible,
-        input:focus-visible,
         select:focus-visible {
             outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
             outline-offset: 2px;
         }
 
-        .rotation-applet {
-            width: min(100%, 980px);
+        .applet-shell {
+            width: min(1120px, 100%);
             margin: 0 auto;
         }
 
         .applet-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        .applet-header h1 {
-            margin: 0;
-            font-size: clamp(1.35rem, 3vw, 1.8rem);
-            line-height: 1.2;
+        .eyebrow {
+            margin: 0 0 0.35rem;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        .applet-header p {
-            margin: 0.4rem 0 0;
+        h1,
+        h2,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            margin-bottom: 0.35rem;
+            font-size: clamp(1.45rem, 3vw, 2.15rem);
+            line-height: 1.12;
+        }
+
+        h2 {
+            margin-bottom: 0.7rem;
+            font-size: 1rem;
+        }
+
+        .subtitle {
+            max-width: 62ch;
+            margin-bottom: 0;
             color: var(--muted);
+            line-height: 1.5;
         }
 
-        .workspace {
+        .relation-badge {
+            flex: none;
+            padding: 0.65rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            color: var(--muted);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 0.92rem;
+            white-space: nowrap;
+        }
+
+        .lab-grid {
             display: grid;
-            grid-template-columns: minmax(240px, 0.7fr) minmax(360px, 1.3fr);
+            grid-template-columns: minmax(280px, 0.85fr) minmax(420px, 1.35fr);
             gap: 1rem;
             align-items: start;
         }
 
-        .controls,
-        .diagram-panel {
+        .panel {
+            min-width: 0;
+            padding: 1rem;
             border: 1px solid var(--border);
             border-radius: 12px;
             background: var(--surface);
             box-shadow: var(--shadow);
         }
 
-        .controls {
-            padding: 1rem;
+        fieldset {
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
         }
 
-        .control + .control {
-            margin-top: 1.15rem;
-        }
-
-        .control-heading {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 0.45rem;
-            font-size: 0.92rem;
-            font-weight: 650;
-        }
-
-        .control-value {
-            color: var(--accent);
-            font-variant-numeric: tabular-nums;
+        legend {
+            margin-bottom: 0.7rem;
+            font-size: 1rem;
             font-weight: 800;
         }
 
-        input[type="range"],
-        select {
-            width: 100%;
+        .symmetry-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.45rem;
         }
 
-        input[type="range"] {
-            margin: 0;
-            accent-color: var(--accent);
+        .symmetry-button,
+        .action-button {
+            min-height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-soft);
+            color: var(--text);
+            font-weight: 750;
             cursor: pointer;
         }
 
-        select {
-            min-height: 44px;
-            padding: 0.55rem 0.7rem;
+        .symmetry-button {
+            padding: 0.45rem 0.2rem;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.02rem;
+        }
+
+        .symmetry-button:hover,
+        .action-button:hover {
+            border-color: var(--accent);
+        }
+
+        .symmetry-button[aria-pressed="true"] {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .selection-card,
+        .composition-result {
+            margin-top: 0.85rem;
+            padding: 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: var(--surface-soft);
+        }
+
+        .selection-name,
+        .composition-equation {
+            margin-bottom: 0.25rem;
+            color: var(--text);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.16rem;
+            font-weight: 700;
+        }
+
+        .selection-description,
+        .selection-formula,
+        .cycle-text,
+        .composition-note,
+        .motion-note {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        .selection-formula,
+        .cycle-text {
+            margin-top: 0.35rem;
+            overflow-wrap: anywhere;
+        }
+
+        .action-button {
+            width: 100%;
+            margin-top: 0.75rem;
+            padding: 0.65rem 0.8rem;
+        }
+
+        .action-button.primary {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .action-button:disabled {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        .section-divider {
+            height: 1px;
+            margin: 1.15rem 0;
+            border: 0;
+            background: var(--border);
+        }
+
+        .compose-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.65rem;
+        }
+
+        .compose-field label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            font-weight: 750;
+        }
+
+        .compose-field select {
+            width: 100%;
+            min-height: 42px;
+            padding: 0.45rem 0.55rem;
             border: 1px solid var(--border);
             border-radius: 8px;
             background: var(--surface);
             color: var(--text);
         }
 
-        .replay-button {
-            width: 100%;
-            min-height: 44px;
-            margin-top: 1.25rem;
-            border: 0;
-            border-radius: 9px;
-            background: var(--accent);
-            color: #ffffff;
-            font-weight: 750;
-            cursor: pointer;
-        }
-
-        .replay-button:disabled {
-            cursor: default;
-            opacity: 0.6;
-        }
-
-        .result-block {
-            margin-top: 1rem;
-            padding: 0.9rem;
-            border: 1px solid var(--border);
-            border-radius: 9px;
-            background: var(--surface-soft);
-        }
-
-        .mapping-equation {
-            margin: 0;
-            color: var(--text);
-            font-size: 1.08rem;
-            font-weight: 800;
-            line-height: 1.45;
-        }
-
-        .angle-label,
-        .structure-note {
-            margin: 0.45rem 0 0;
+        .order-note {
+            margin: 0.55rem 0 0;
             color: var(--muted);
-            font-size: 0.86rem;
-            line-height: 1.45;
+            font-size: 0.78rem;
+        }
+
+        .compose-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.55rem;
         }
 
         .diagram-panel {
-            min-width: 0;
             padding: 0.75rem;
         }
 
-        .rotation-svg {
+        .symmetry-svg {
             display: block;
             width: 100%;
-            height: auto;
-            max-height: 520px;
+            max-height: 590px;
+            margin: 0 auto;
         }
 
         .unit-circle {
@@ -201,9 +302,16 @@
             stroke-width: 3;
         }
 
-        .axis {
+        .base-axis {
             stroke: var(--border);
             stroke-width: 2;
+        }
+
+        .target-polygon {
+            fill: none;
+            stroke: var(--muted);
+            stroke-dasharray: 6 7;
+            stroke-width: 3;
         }
 
         .target-node {
@@ -212,246 +320,475 @@
             stroke-width: 2;
         }
 
-        .target-node.is-destination {
-            stroke: var(--selected);
-            stroke-width: 5;
-        }
-
         .target-label {
             fill: var(--text);
-            font-size: 17px;
-            font-weight: 700;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
             text-anchor: middle;
             dominant-baseline: middle;
         }
 
-        .moving-polygon {
-            fill: color-mix(in srgb, var(--accent) 8%, transparent);
-            stroke: var(--accent);
+        .reflection-axis {
+            stroke: var(--selected);
+            stroke-dasharray: 11 8;
             stroke-width: 4;
+        }
+
+        .moving-polygon {
+            fill: color-mix(in srgb, var(--accent) 9%, transparent);
+            stroke: var(--accent);
             stroke-linejoin: round;
+            stroke-width: 4;
         }
 
-        .moving-node {
-            fill: var(--accent);
+        .token {
             stroke: var(--surface);
-            stroke-width: 3;
+            stroke-width: 4;
         }
 
-        .moving-node.is-selected {
-            fill: var(--selected);
+        .token-number {
+            fill: #ffffff;
+            font-size: 18px;
+            font-weight: 850;
+            text-anchor: middle;
+            dominant-baseline: middle;
         }
 
-        .selected-radius {
-            stroke: var(--selected);
-            stroke-dasharray: 7 7;
-            stroke-width: 3;
-        }
-
-        .angle-arc {
-            fill: none;
-            stroke: var(--selected);
-            stroke-linecap: round;
-            stroke-width: 6;
-        }
-
-        .center-label {
+        .center-name {
             fill: var(--text);
-            font-size: 25px;
-            font-weight: 800;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 32px;
+            font-weight: 700;
             text-anchor: middle;
         }
 
-        .center-subtitle {
+        .center-kind {
             fill: var(--muted);
             font-size: 15px;
             text-anchor: middle;
         }
 
-        .legend {
+        .diagram-legend {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0.65rem 1rem;
-            margin-top: 0.2rem;
+            gap: 0.5rem 1rem;
+            margin: 0.25rem 0 0;
             color: var(--muted);
-            font-size: 0.82rem;
+            font-size: 0.78rem;
         }
 
         .legend-item {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.35rem;
         }
 
-        .legend-mark {
+        .legend-token,
+        .legend-target {
             display: inline-block;
-            width: 11px;
-            height: 11px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
         }
 
-        .legend-mark.source {
-            background: var(--selected);
+        .legend-token {
+            background: var(--accent);
         }
 
-        .legend-mark.target {
-            border: 3px solid var(--selected);
+        .legend-target {
+            border: 2px solid var(--muted);
+            background: var(--surface);
         }
 
-        .cycles {
-            min-height: 2.7em;
-            margin: 0.8rem 0 0;
-            color: var(--muted);
-            font-size: 0.86rem;
-            line-height: 1.45;
+        .mapping-list {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.4rem;
+            margin-top: 0.7rem;
+        }
+
+        .mapping-item {
+            padding: 0.45rem 0.25rem;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--surface-soft);
+            color: var(--text);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 0.82rem;
             text-align: center;
-            overflow-wrap: anywhere;
+            white-space: nowrap;
         }
 
-        @media (max-width: 720px) {
-            body {
-                padding: 0.75rem;
+        .motion-note {
+            min-height: 1.25rem;
+            margin-top: 0.55rem;
+            text-align: center;
+        }
+
+        .noncomm-card {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--selected);
+            border-radius: 10px;
+            background: var(--surface);
+        }
+
+        .noncomm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.65rem;
+        }
+
+        .noncomm-example {
+            padding: 0.7rem;
+            border-radius: 8px;
+            background: var(--surface-soft);
+        }
+
+        .noncomm-example strong {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.05rem;
+        }
+
+        .noncomm-example span {
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        .noncomm-conclusion {
+            margin: 0.7rem 0 0;
+            color: var(--selected);
+            font-weight: 800;
+            text-align: center;
+        }
+
+        @media (max-width: 740px) {
+            .applet-header {
+                display: block;
             }
 
-            .workspace {
+            .relation-badge {
+                display: inline-block;
+                margin-top: 0.8rem;
+            }
+
+            .lab-grid {
                 grid-template-columns: 1fr;
             }
 
-            .controls {
+            .controls-panel {
                 display: grid;
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 0.9rem;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
 
-            .control + .control {
-                margin-top: 0;
+            .explore-group,
+            .compose-group {
+                min-width: 0;
             }
 
-            .replay-button,
-            .result-block {
-                grid-column: 1 / -1;
-                margin-top: 0;
+            .section-divider {
+                display: none;
             }
         }
 
-        @media (max-width: 480px) {
-            .controls {
+        @media (max-width: 560px) {
+            body {
+                padding: 0.7rem;
+            }
+
+            .controls-panel,
+            .noncomm-grid {
                 grid-template-columns: 1fr;
             }
 
-            .diagram-panel {
-                padding: 0.35rem;
+            .symmetry-buttons {
+                grid-template-columns: repeat(5, minmax(42px, 1fr));
+                overflow-x: auto;
+                padding-bottom: 0.25rem;
+            }
+
+            .mapping-list {
+                grid-template-columns: repeat(5, minmax(72px, 1fr));
+                overflow-x: auto;
+                padding-bottom: 0.25rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <main class="rotation-applet">
+    <main class="applet-shell">
         <header class="applet-header">
-            <h1>Rotations of roots of unity</h1>
-            <p>Rotate the regular n-gon and follow one chosen root.</p>
+            <div>
+                <p class="eyebrow">Interactive group lab</p>
+                <h1>Rigid symmetries of the pentagon</h1>
+                <p class="subtitle">Move the five labeled vertices through every element of the dihedral group, then compose two motions and see why order matters.</p>
+            </div>
+            <div class="relation-badge" aria-label="D ten has order ten">D₁₀ · order 10</div>
         </header>
 
-        <div class="workspace">
-            <section class="controls" aria-label="Rotation controls">
-                <div class="control">
-                    <div class="control-heading">
-                        <label for="degree">Number of roots n</label>
-                        <output class="control-value" id="degree-value" for="degree">5</output>
+        <div class="lab-grid">
+            <section class="panel controls-panel">
+                <div class="explore-group">
+                    <fieldset>
+                        <legend>Explore one symmetry</legend>
+                        <div class="symmetry-buttons" id="symmetry-buttons">
+                            <button class="symmetry-button" type="button" data-a="0" data-b="0" aria-label="identity">e</button>
+                            <button class="symmetry-button" type="button" data-a="1" data-b="0" aria-label="r">r</button>
+                            <button class="symmetry-button" type="button" data-a="2" data-b="0" aria-label="r squared">r²</button>
+                            <button class="symmetry-button" type="button" data-a="3" data-b="0" aria-label="r cubed">r³</button>
+                            <button class="symmetry-button" type="button" data-a="4" data-b="0" aria-label="r to the fourth">r⁴</button>
+                            <button class="symmetry-button" type="button" data-a="0" data-b="1" aria-label="s">s</button>
+                            <button class="symmetry-button" type="button" data-a="1" data-b="1" aria-label="r s">rs</button>
+                            <button class="symmetry-button" type="button" data-a="2" data-b="1" aria-label="r squared s">r²s</button>
+                            <button class="symmetry-button" type="button" data-a="3" data-b="1" aria-label="r cubed s">r³s</button>
+                            <button class="symmetry-button" type="button" data-a="4" data-b="1" aria-label="r to the fourth s">r⁴s</button>
+                        </div>
+                    </fieldset>
+
+                    <div class="selection-card" aria-live="polite">
+                        <p class="selection-name" id="selection-name"></p>
+                        <p class="selection-description" id="selection-description"></p>
+                        <p class="selection-formula" id="selection-formula"></p>
+                        <p class="cycle-text" id="cycle-text"></p>
                     </div>
-                    <input id="degree" type="range" min="3" max="20" value="5" step="1">
+
+                    <button class="action-button primary" id="replay-button" type="button">Replay this motion</button>
                 </div>
 
-                <div class="control">
-                    <div class="control-heading">
-                        <label for="rotation">Rotation steps r</label>
-                        <output class="control-value" id="rotation-value" for="rotation">1</output>
+                <hr class="section-divider">
+
+                <div class="compose-group">
+                    <h2>Compose two symmetries</h2>
+                    <div class="compose-fields">
+                        <div class="compose-field">
+                            <label for="left-symmetry">First symbol, g</label>
+                            <select id="left-symmetry"></select>
+                        </div>
+                        <div class="compose-field">
+                            <label for="right-symmetry">Second symbol, h</label>
+                            <select id="right-symmetry"></select>
+                        </div>
                     </div>
-                    <input id="rotation" type="range" min="0" max="4" value="1" step="1">
-                </div>
+                    <p class="order-note">For g ∘ h, the motion h acts first.</p>
 
-                <div class="control">
-                    <div class="control-heading">
-                        <label for="selected-root">Follow a root</label>
+                    <div class="composition-result" aria-live="polite">
+                        <p class="composition-equation" id="composition-equation"></p>
+                        <p class="composition-note" id="composition-note"></p>
                     </div>
-                    <select id="selected-root"></select>
-                </div>
 
-                <button class="replay-button" id="replay" type="button">Replay rotation</button>
-
-                <div class="result-block" aria-live="polite">
-                    <p class="mapping-equation" id="mapping-equation"></p>
-                    <p class="angle-label" id="angle-label"></p>
-                    <p class="structure-note" id="structure-note"></p>
+                    <div class="compose-actions">
+                        <button class="action-button primary" id="show-composition" type="button">Show g ∘ h</button>
+                        <button class="action-button" id="swap-order" type="button">Swap g and h</button>
+                    </div>
                 </div>
             </section>
 
-            <section class="diagram-panel" aria-label="Rotation diagram">
-                <svg class="rotation-svg" id="rotation-svg" viewBox="0 0 640 640" role="img" aria-labelledby="diagram-title diagram-description">
-                    <title id="diagram-title">Rotation of roots of unity</title>
-                    <desc id="diagram-description">A regular polygon on the unit circle rotating counterclockwise.</desc>
-                    <defs>
-                        <marker id="rotation-arrow" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto" markerUnits="strokeWidth">
-                            <path d="M 0 0 L 8 4 L 0 8 z" fill="var(--selected)"></path>
-                        </marker>
-                    </defs>
-                    <circle class="unit-circle" cx="320" cy="320" r="242"></circle>
-                    <line class="axis" x1="55" y1="320" x2="585" y2="320"></line>
-                    <line class="axis" x1="320" y1="55" x2="320" y2="585"></line>
-                    <g id="target-layer"></g>
-                    <g id="polygon-layer"></g>
-                    <g id="annotation-layer"></g>
-                    <text class="center-label" id="center-label" x="320" y="310"></text>
-                    <text class="center-subtitle" id="center-subtitle" x="320" y="340"></text>
+            <section class="panel diagram-panel" aria-label="Pentagon symmetry diagram">
+                <svg class="symmetry-svg" id="symmetry-svg" viewBox="0 0 640 640" role="img" aria-labelledby="diagram-title diagram-description">
+                    <title id="diagram-title">A rigid symmetry of the regular pentagon</title>
+                    <desc id="diagram-description">Five numbered vertex tokens move between the fifth roots of unity.</desc>
+                    <circle class="unit-circle" cx="320" cy="320" r="235"></circle>
+                    <line class="base-axis" x1="65" y1="320" x2="575" y2="320"></line>
+                    <g id="base-layer"></g>
+                    <g id="axis-layer"></g>
+                    <g id="motion-layer"></g>
+                    <text class="center-name" id="center-name" x="320" y="310"></text>
+                    <text class="center-kind" id="center-kind" x="320" y="340"></text>
                 </svg>
 
-                <div class="legend" aria-hidden="true">
-                    <span class="legend-item"><span class="legend-mark source"></span>Chosen root</span>
-                    <span class="legend-item"><span class="legend-mark target"></span>Its destination</span>
+                <div class="diagram-legend" aria-hidden="true">
+                    <span class="legend-item"><span class="legend-token"></span>Token number = starting exponent</span>
+                    <span class="legend-item"><span class="legend-target"></span>Target root</span>
                 </div>
-                <p class="cycles" id="cycles"></p>
+                <div class="mapping-list" id="mapping-list" aria-label="Images of the five roots"></div>
+                <p class="motion-note" id="motion-note"></p>
             </section>
         </div>
+
+        <section class="noncomm-card" aria-labelledby="noncomm-title">
+            <h2 id="noncomm-title">The first noncommutative calculation</h2>
+            <div class="noncomm-grid">
+                <div class="noncomm-example">
+                    <strong>r ∘ s = rs</strong>
+                    <span>Apply s first: (r ∘ s)(1) = ζ₅.</span>
+                </div>
+                <div class="noncomm-example">
+                    <strong>s ∘ r = r⁴s</strong>
+                    <span>Apply r first: (s ∘ r)(1) = ζ₅⁴.</span>
+                </div>
+            </div>
+            <p class="noncomm-conclusion">Therefore r ∘ s ≠ s ∘ r.</p>
+        </section>
     </main>
 
     <script>
         (() => {
             const SVG_NS = 'http://www.w3.org/2000/svg';
-            const degreeInput = document.getElementById('degree');
-            const rotationInput = document.getElementById('rotation');
-            const selectedRootInput = document.getElementById('selected-root');
-            const degreeValue = document.getElementById('degree-value');
-            const rotationValue = document.getElementById('rotation-value');
-            const replayButton = document.getElementById('replay');
-            const mappingEquation = document.getElementById('mapping-equation');
-            const angleLabel = document.getElementById('angle-label');
-            const structureNote = document.getElementById('structure-note');
-            const cycles = document.getElementById('cycles');
-            const targetLayer = document.getElementById('target-layer');
-            const polygonLayer = document.getElementById('polygon-layer');
-            const annotationLayer = document.getElementById('annotation-layer');
-            const centerLabel = document.getElementById('center-label');
-            const centerSubtitle = document.getElementById('center-subtitle');
+            const center = 320;
+            const vertexRadius = 218;
+            const labelRadius = 268;
+            const stepAngle = 2 * Math.PI / 5;
+            const superscriptDigits = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+            const tokenColors = ['#2563eb', '#7c3aed', '#db2777', '#c2410c', '#0f766e'];
+            const elements = [];
+
+            for (let b = 0; b <= 1; b += 1) {
+                for (let a = 0; a < 5; a += 1) {
+                    elements.push({ a, b });
+                }
+            }
+
+            const symmetryButtons = [...document.querySelectorAll('.symmetry-button')];
+            const replayButton = document.getElementById('replay-button');
+            const leftSymmetry = document.getElementById('left-symmetry');
+            const rightSymmetry = document.getElementById('right-symmetry');
+            const showComposition = document.getElementById('show-composition');
+            const swapOrder = document.getElementById('swap-order');
+            const selectionName = document.getElementById('selection-name');
+            const selectionDescription = document.getElementById('selection-description');
+            const selectionFormula = document.getElementById('selection-formula');
+            const cycleText = document.getElementById('cycle-text');
+            const compositionEquation = document.getElementById('composition-equation');
+            const compositionNote = document.getElementById('composition-note');
+            const mappingList = document.getElementById('mapping-list');
+            const motionNote = document.getElementById('motion-note');
+            const baseLayer = document.getElementById('base-layer');
+            const axisLayer = document.getElementById('axis-layer');
+            const motionLayer = document.getElementById('motion-layer');
+            const centerName = document.getElementById('center-name');
+            const centerKind = document.getElementById('center-kind');
             const diagramTitle = document.getElementById('diagram-title');
             const diagramDescription = document.getElementById('diagram-description');
 
-            const center = 320;
-            const rootRadius = 222;
-            const labelRadius = 270;
-            const angleRadius = 82;
-            const superscriptDigits = '⁰¹²³⁴⁵⁶⁷⁸⁹';
-            const subscriptDigits = '₀₁₂₃₄₅₆₇₈₉';
-            let rotationProgress = 1;
+            let current = { a: 0, b: 1 };
             let animationFrame = null;
 
-            function scriptNumber(value, digits) {
-                return String(value).split('').map((digit) => digits[Number(digit)]).join('');
+            function mod(value) {
+                return ((value % 5) + 5) % 5;
             }
 
-            function rootName(n, exponent) {
-                return `ζ${scriptNumber(n, subscriptDigits)}${scriptNumber(exponent, superscriptDigits)}`;
+            function superscript(value) {
+                return String(value).split('').map((digit) => superscriptDigits[Number(digit)]).join('');
+            }
+
+            function rootName(exponent) {
+                const reduced = mod(exponent);
+                if (reduced === 0) return '1';
+                if (reduced === 1) return 'ζ₅';
+                return `ζ₅${superscript(reduced)}`;
+            }
+
+            function elementName(element) {
+                const { a, b } = element;
+                if (b === 0) {
+                    if (a === 0) return 'e';
+                    if (a === 1) return 'r';
+                    return `r${superscript(a)}`;
+                }
+                if (a === 0) return 's';
+                if (a === 1) return 'rs';
+                return `r${superscript(a)}s`;
+            }
+
+            function spokenName(element) {
+                const { a, b } = element;
+                if (b === 0) {
+                    if (a === 0) return 'the identity';
+                    return a === 1 ? 'r' : `r to the ${a}`;
+                }
+                if (a === 0) return 's';
+                if (a === 1) return 'r s';
+                if (a === 2) return 'r squared s';
+                if (a === 3) return 'r cubed s';
+                return 'r to the fourth s';
+            }
+
+            function apply(element, exponent) {
+                return mod(element.a + (element.b === 1 ? -exponent : exponent));
+            }
+
+            function compose(left, right) {
+                return {
+                    a: mod(left.a + (left.b === 1 ? -right.a : right.a)),
+                    b: (left.b + right.b) % 2
+                };
+            }
+
+            function sameElement(first, second) {
+                return first.a === second.a && first.b === second.b;
+            }
+
+            function elementValue(element) {
+                return `${element.a},${element.b}`;
+            }
+
+            function parseElement(value) {
+                const [a, b] = value.split(',').map(Number);
+                return { a, b };
+            }
+
+            function elementKind(element) {
+                if (element.b === 1) return 'reflection · order 2';
+                if (element.a === 0) return 'identity · order 1';
+                return `rotation by ${element.a * 72}° · order 5`;
+            }
+
+            function exponentFormula(element) {
+                if (element.b === 0) {
+                    return element.a === 0 ? 'k ↦ k (mod 5)' : `k ↦ k + ${element.a} (mod 5)`;
+                }
+                if (element.a === 0) return 'k ↦ −k (mod 5)';
+                return `k ↦ ${element.a} − k (mod 5)`;
+            }
+
+            function cycleNotation(element) {
+                const seen = new Set();
+                const cycles = [];
+                for (let start = 0; start < 5; start += 1) {
+                    if (seen.has(start)) continue;
+                    const cycle = [];
+                    let value = start;
+                    while (!seen.has(value)) {
+                        seen.add(value);
+                        cycle.push(value);
+                        value = apply(element, value);
+                    }
+                    cycles.push(`(${cycle.join(' ')}${cycle.length === 1 ? '' : ''})`);
+                }
+                return cycles.join(' ');
+            }
+
+            function pointAtExponent(exponent) {
+                const angle = exponent * stepAngle;
+                return {
+                    x: center + vertexRadius * Math.cos(angle),
+                    y: center - vertexRadius * Math.sin(angle)
+                };
+            }
+
+            function pointAtRadius(exponent, radius) {
+                const angle = exponent * stepAngle;
+                return {
+                    x: center + radius * Math.cos(angle),
+                    y: center - radius * Math.sin(angle)
+                };
             }
 
             function svgElement(tag, attributes, parent, text) {
@@ -466,157 +803,133 @@
                 while (layer.firstChild) layer.removeChild(layer.firstChild);
             }
 
-            function pointAt(angle, radius) {
-                return {
-                    x: center + radius * Math.cos(angle),
-                    y: center - radius * Math.sin(angle)
-                };
-            }
-
-            function state() {
-                return {
-                    n: Number(degreeInput.value),
-                    r: Number(rotationInput.value),
-                    selected: Number(selectedRootInput.value)
-                };
-            }
-
-            function angleArcPath(angle) {
-                const start = pointAt(0, angleRadius);
-                const end = pointAt(angle, angleRadius);
-                const largeArc = angle > Math.PI ? 1 : 0;
-                return `M ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${angleRadius} ${angleRadius} 0 ${largeArc} 0 ${end.x.toFixed(2)} ${end.y.toFixed(2)}`;
-            }
-
-            function orbitCycles(n, r) {
-                const seen = new Set();
-                const result = [];
-
-                for (let start = 0; start < n; start += 1) {
-                    if (seen.has(start)) continue;
-                    const orbit = [];
-                    let current = start;
-                    while (!seen.has(current)) {
-                        seen.add(current);
-                        orbit.push(current);
-                        current = (current + r) % n;
-                    }
-                    result.push(`(${orbit.join(' ')})`);
+            function drawBase() {
+                clearLayer(baseLayer);
+                const points = [];
+                for (let exponent = 0; exponent < 5; exponent += 1) {
+                    const point = pointAtExponent(exponent);
+                    points.push(`${point.x.toFixed(2)},${point.y.toFixed(2)}`);
                 }
-                return result.join(' ');
-            }
+                svgElement('polygon', { class: 'target-polygon', points: points.join(' ') }, baseLayer);
 
-            function populateRootOptions(n) {
-                const previous = Math.min(Number(selectedRootInput.value || 0), n - 1);
-                selectedRootInput.replaceChildren();
-                for (let exponent = 0; exponent < n; exponent += 1) {
-                    const option = document.createElement('option');
-                    option.value = exponent;
-                    option.textContent = `${rootName(n, exponent)}  (j = ${exponent})`;
-                    selectedRootInput.appendChild(option);
-                }
-                selectedRootInput.value = previous;
-            }
-
-            function draw() {
-                const { n, r, selected } = state();
-                const stepAngle = 2 * Math.PI / n;
-                const currentAngle = r * stepAngle * rotationProgress;
-                const destination = (selected + r) % n;
-                const polygonPoints = [];
-
-                clearLayer(targetLayer);
-                clearLayer(polygonLayer);
-                clearLayer(annotationLayer);
-
-                for (let exponent = 0; exponent < n; exponent += 1) {
-                    const angle = exponent * stepAngle;
-                    const target = pointAt(angle, rootRadius);
-                    const label = pointAt(angle, labelRadius);
-                    const targetClasses = ['target-node'];
-                    if (exponent === destination) targetClasses.push('is-destination');
-
+                for (let exponent = 0; exponent < 5; exponent += 1) {
+                    const point = pointAtExponent(exponent);
+                    const label = pointAtRadius(exponent, labelRadius);
                     svgElement('circle', {
-                        class: targetClasses.join(' '),
-                        cx: target.x,
-                        cy: target.y,
-                        r: exponent === destination ? 18 : 11
-                    }, targetLayer);
-
+                        class: 'target-node',
+                        cx: point.x,
+                        cy: point.y,
+                        r: 16
+                    }, baseLayer);
                     svgElement('text', {
                         class: 'target-label',
                         x: label.x,
                         y: label.y
-                    }, targetLayer, rootName(n, exponent));
+                    }, baseLayer, rootName(exponent));
+                }
+            }
+
+            function interpolatedPoint(element, exponent, progress) {
+                if (element.b === 0) {
+                    const angle = (exponent + element.a * progress) * stepAngle;
+                    return {
+                        x: center + vertexRadius * Math.cos(angle),
+                        y: center - vertexRadius * Math.sin(angle)
+                    };
                 }
 
-                for (let exponent = 0; exponent < n; exponent += 1) {
-                    const angle = exponent * stepAngle + currentAngle;
-                    const point = pointAt(angle, rootRadius);
+                const start = pointAtExponent(exponent);
+                const destination = pointAtExponent(apply(element, exponent));
+                return {
+                    x: start.x + (destination.x - start.x) * progress,
+                    y: start.y + (destination.y - start.y) * progress
+                };
+            }
+
+            function drawReflectionAxis(element) {
+                clearLayer(axisLayer);
+                if (element.b !== 1) return;
+
+                const angle = element.a * Math.PI / 5;
+                const length = 252;
+                const dx = length * Math.cos(angle);
+                const dy = -length * Math.sin(angle);
+                svgElement('line', {
+                    class: 'reflection-axis',
+                    x1: center - dx,
+                    y1: center - dy,
+                    x2: center + dx,
+                    y2: center + dy
+                }, axisLayer);
+            }
+
+            function draw(element, progress = 1) {
+                clearLayer(motionLayer);
+                drawReflectionAxis(element);
+                const polygonPoints = [];
+
+                for (let exponent = 0; exponent < 5; exponent += 1) {
+                    const point = interpolatedPoint(element, exponent, progress);
                     polygonPoints.push(`${point.x.toFixed(2)},${point.y.toFixed(2)}`);
                 }
 
                 svgElement('polygon', {
                     class: 'moving-polygon',
                     points: polygonPoints.join(' ')
-                }, polygonLayer);
+                }, motionLayer);
 
-                for (let exponent = 0; exponent < n; exponent += 1) {
-                    const angle = exponent * stepAngle + currentAngle;
-                    const point = pointAt(angle, rootRadius);
-                    const classes = ['moving-node'];
-                    if (exponent === selected) classes.push('is-selected');
-                    const node = svgElement('circle', {
-                        class: classes.join(' '),
+                for (let exponent = 0; exponent < 5; exponent += 1) {
+                    const point = interpolatedPoint(element, exponent, progress);
+                    const token = svgElement('g', {}, motionLayer);
+                    const circle = svgElement('circle', {
+                        class: 'token',
                         cx: point.x,
                         cy: point.y,
-                        r: exponent === selected ? 13 : 9
-                    }, polygonLayer);
-                    svgElement('title', {}, node, `${rootName(n, exponent)} moves to ${rootName(n, (exponent + r) % n)}`);
+                        r: 20,
+                        fill: tokenColors[exponent]
+                    }, token);
+                    svgElement('title', {}, circle, `Vertex ${rootName(exponent)} moves to ${rootName(apply(element, exponent))}`);
+                    svgElement('text', {
+                        class: 'token-number',
+                        x: point.x,
+                        y: point.y
+                    }, token, String(exponent));
                 }
 
-                const selectedPoint = pointAt(selected * stepAngle + currentAngle, rootRadius);
-                svgElement('line', {
-                    class: 'selected-radius',
-                    x1: center,
-                    y1: center,
-                    x2: selectedPoint.x,
-                    y2: selectedPoint.y
-                }, annotationLayer);
+                centerName.textContent = elementName(element);
+                centerKind.textContent = element.b === 1 ? 'reflection' : element.a === 0 ? 'identity' : 'rotation';
+                diagramTitle.textContent = `${spokenName(element)} acting on the regular pentagon`;
+                diagramDescription.textContent = `The symmetry ${spokenName(element)} sends exponent k to ${exponentFormula(element)}. Its cycles are ${cycleNotation(element)}.`;
+            }
 
-                if (currentAngle > 0.001) {
-                    svgElement('path', {
-                        class: 'angle-arc',
-                        d: angleArcPath(currentAngle),
-                        'marker-end': 'url(#rotation-arrow)'
-                    }, annotationLayer);
+            function updateMapping(element) {
+                mappingList.replaceChildren();
+                for (let exponent = 0; exponent < 5; exponent += 1) {
+                    const item = document.createElement('span');
+                    item.className = 'mapping-item';
+                    item.textContent = `${rootName(exponent)} → ${rootName(apply(element, exponent))}`;
+                    mappingList.appendChild(item);
                 }
-
-                centerLabel.textContent = `R${scriptNumber(r, subscriptDigits)}`;
-                centerSubtitle.textContent = r === 0 ? 'identity' : `${r} ${r === 1 ? 'step' : 'steps'}`;
-                diagramTitle.textContent = `Rotation of the ${n}th roots by ${r} steps`;
-                diagramDescription.textContent = `${rootName(n, selected)} rotates counterclockwise to ${rootName(n, destination)} through an angle of ${r} times two pi over ${n}.`;
             }
 
-            function updateText() {
-                const { n, r, selected } = state();
-                const destination = (selected + r) % n;
-                const degrees = 360 * r / n;
+            function updateSelectionText(element) {
+                selectionName.textContent = `${elementName(element)} · ${elementKind(element)}`;
+                selectionDescription.textContent = element.b === 1
+                    ? `Reflection across the axis at ${element.a * 36}°.`
+                    : element.a === 0
+                        ? 'Every vertex remains fixed.'
+                        : `Counterclockwise rotation through ${element.a} × 72°.`;
+                selectionFormula.textContent = `On exponents: ${exponentFormula(element)}`;
+                cycleText.textContent = `Permutation cycles: ${cycleNotation(element)}`;
+                motionNote.textContent = element.b === 1
+                    ? 'For a reflection, the animation tracks corresponding vertices; only its endpoints are rigid plane motions.'
+                    : '';
+                updateMapping(element);
 
-                degreeValue.textContent = n;
-                rotationValue.textContent = r;
-                mappingEquation.textContent = `R${scriptNumber(r, subscriptDigits)}(${rootName(n, selected)}) = ${rootName(n, destination)}`;
-                angleLabel.textContent = `Counterclockwise angle: ${r} · 2π/${n} = ${Number(degrees.toFixed(2))}°`;
-                structureNote.textContent = r === 0
-                    ? 'The identity rotation preserves both the polygon and multiplication of roots.'
-                    : `This preserves the regular ${n}-gon, but not multiplication of roots: it moves 1 to ${rootName(n, r)}.`;
-                cycles.textContent = `Permutation cycles: ${orbitCycles(n, r)}`;
-                replayButton.disabled = r === 0 || animationFrame !== null;
-            }
-
-            function render() {
-                updateText();
-                draw();
+                symmetryButtons.forEach((button) => {
+                    const buttonElement = { a: Number(button.dataset.a), b: Number(button.dataset.b) };
+                    button.setAttribute('aria-pressed', String(sameElement(buttonElement, element)));
+                });
             }
 
             function stopAnimation() {
@@ -624,56 +937,82 @@
                     cancelAnimationFrame(animationFrame);
                     animationFrame = null;
                 }
-                replayButton.textContent = 'Replay rotation';
-                replayButton.disabled = Number(rotationInput.value) === 0;
+                replayButton.disabled = false;
+                replayButton.textContent = 'Replay this motion';
             }
 
-            function showFinalState() {
+            function showElement(element, animate = true) {
                 stopAnimation();
-                rotationProgress = 1;
-                render();
-            }
-
-            degreeInput.addEventListener('input', () => {
-                const n = Number(degreeInput.value);
-                rotationInput.max = n - 1;
-                rotationInput.value = Math.min(Number(rotationInput.value), n - 1);
-                populateRootOptions(n);
-                showFinalState();
-            });
-
-            rotationInput.addEventListener('input', showFinalState);
-            selectedRootInput.addEventListener('change', showFinalState);
-
-            replayButton.addEventListener('click', () => {
-                stopAnimation();
-                const { r } = state();
-                if (r === 0) return;
+                current = { a: element.a, b: element.b };
+                updateSelectionText(current);
 
                 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                if (reducedMotion) {
-                    rotationProgress = 1;
-                    render();
+                if (!animate || reducedMotion || (current.a === 0 && current.b === 0)) {
+                    draw(current, 1);
                     return;
                 }
 
                 const startedAt = performance.now();
-                const duration = 1200;
-                replayButton.textContent = 'Rotating…';
+                const duration = current.b === 1 ? 700 : 950;
+                replayButton.disabled = true;
+                replayButton.textContent = 'Moving…';
 
-                const animate = (now) => {
-                    rotationProgress = Math.min((now - startedAt) / duration, 1);
-                    draw();
-                    if (rotationProgress < 1) {
-                        animationFrame = requestAnimationFrame(animate);
+                const animateFrame = (now) => {
+                    const rawProgress = Math.min((now - startedAt) / duration, 1);
+                    const progress = 1 - Math.pow(1 - rawProgress, 3);
+                    draw(current, progress);
+
+                    if (rawProgress < 1) {
+                        animationFrame = requestAnimationFrame(animateFrame);
                     } else {
                         stopAnimation();
-                        render();
+                        draw(current, 1);
                     }
                 };
 
-                animationFrame = requestAnimationFrame(animate);
-                updateText();
+                animationFrame = requestAnimationFrame(animateFrame);
+            }
+
+            function populateCompositionMenus() {
+                for (const element of elements) {
+                    const leftOption = document.createElement('option');
+                    leftOption.value = elementValue(element);
+                    leftOption.textContent = elementName(element);
+                    leftSymmetry.appendChild(leftOption);
+                    rightSymmetry.appendChild(leftOption.cloneNode(true));
+                }
+                leftSymmetry.value = '1,0';
+                rightSymmetry.value = '0,1';
+            }
+
+            function updateComposition() {
+                const left = parseElement(leftSymmetry.value);
+                const right = parseElement(rightSymmetry.value);
+                const result = compose(left, right);
+                compositionEquation.textContent = `${elementName(left)} ∘ ${elementName(right)} = ${elementName(result)}`;
+                compositionNote.textContent = `Result on exponents: ${exponentFormula(result)}`;
+                return result;
+            }
+
+            symmetryButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    showElement({ a: Number(button.dataset.a), b: Number(button.dataset.b) });
+                });
+            });
+
+            replayButton.addEventListener('click', () => showElement(current));
+            leftSymmetry.addEventListener('change', updateComposition);
+            rightSymmetry.addEventListener('change', updateComposition);
+
+            showComposition.addEventListener('click', () => {
+                showElement(updateComposition());
+            });
+
+            swapOrder.addEventListener('click', () => {
+                const previousLeft = leftSymmetry.value;
+                leftSymmetry.value = rightSymmetry.value;
+                rightSymmetry.value = previousLeft;
+                updateComposition();
             });
 
             window.addEventListener('storage', (event) => {
@@ -681,8 +1020,10 @@
                 document.documentElement.classList.toggle('dark-mode', event.newValue === 'dark');
             });
 
-            populateRootOptions(Number(degreeInput.value));
-            render();
+            drawBase();
+            populateCompositionMenus();
+            updateComposition();
+            showElement(current, false);
         })();
     </script>
 </body>
