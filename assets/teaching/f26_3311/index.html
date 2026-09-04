@@ -16,7 +16,8 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .homework-table-container {
+        .homework-table-container,
+        .lecture-table-container {
             margin-top: 1.5rem;
             overflow-x: auto;
             border: 1px solid var(--border);
@@ -24,12 +25,14 @@
             background: var(--white);
         }
 
-        .homework-table {
+        .homework-table,
+        .lecture-table {
             min-width: 560px;
             margin-top: 0;
         }
 
-        .homework-table th {
+        .homework-table th,
+        .lecture-table th {
             padding: 0.85rem 1rem;
             background: var(--bg-light);
             color: var(--text-muted);
@@ -38,21 +41,46 @@
             text-transform: uppercase;
         }
 
-        .homework-table td {
+        .homework-table td,
+        .lecture-table td {
             padding: 1rem;
             vertical-align: middle;
         }
 
-        .homework-table tbody tr {
+        .homework-table tbody tr,
+        .lecture-table tbody tr {
             transition: background-color 0.2s ease;
         }
 
-        .homework-table tbody tr:hover {
+        .homework-table tbody tr:hover,
+        .lecture-table tbody tr:hover {
             background: var(--bg-light);
         }
 
-        .homework-table tbody tr:last-child td {
+        .homework-table tbody tr:last-child td,
+        .lecture-table tbody tr:last-child td {
             border-bottom: 0;
+        }
+
+        .lecture-table th:first-child {
+            width: 22%;
+        }
+
+        .lecture-table th:last-child,
+        .lecture-table td:last-child {
+            width: 20%;
+            white-space: nowrap;
+        }
+
+        .lecture-title {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .lecture-title:hover,
+        .lecture-title:focus-visible {
+            text-decoration: underline;
         }
 
         .homework-title {
@@ -104,21 +132,28 @@
             <h2>Lectures</h2>
             <p>Each lecture has its own page for notes, images, interactive applets, and other course material.</p>
 
-            <div class="links-grid">
-                <a class="link-card" href="lecture_1/">
-                    <span class="link-content">
-                        <strong>Lecture 1, Tue, Sep 1</strong>
-                        <span>Abel, Galois, and roots of unity</span>
-                    </span>
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-                </a>
-                <a class="link-card" href="lecture_2/">
-                    <span class="link-content">
-                        <strong>Lecture 2, Thu, Sep 3</strong>
-                        <span>Multiplicative and geometric symmetries</span>
-                    </span>
-                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-                </a>
+            <div class="lecture-table-container" id="lecture-list-3311">
+                <table class="schedule-table lecture-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Lecture</th>
+                            <th scope="col">Topic</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a class="lecture-title" href="lecture_2/">Lecture 2</a></td>
+                            <td>Multiplicative and geometric symmetries</td>
+                            <td><time datetime="2026-09-03">Thu, Sep 3</time></td>
+                        </tr>
+                        <tr>
+                            <td><a class="lecture-title" href="lecture_1/">Lecture 1</a></td>
+                            <td>Abel, Galois, and roots of unity</td>
+                            <td><time datetime="2026-09-01">Tue, Sep 1</time></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
         <section class="pub-card" id="homeworks">
