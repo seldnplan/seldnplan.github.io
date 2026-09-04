@@ -586,7 +586,7 @@
                             <select id="right-symmetry"></select>
                         </div>
                     </div>
-                    <p class="order-note">For g ∘ h, the motion h acts first.</p>
+                    <p class="order-note">For g ∘ h, the animation applies h first and then g.</p>
 
                     <div class="composition-result" aria-live="polite">
                         <p class="composition-equation" id="composition-equation"></p>
@@ -647,6 +647,7 @@
             const stepAngle = 2 * Math.PI / 5;
             const superscriptDigits = '⁰¹²³⁴⁵⁶⁷⁸⁹';
             const tokenColors = ['#2563eb', '#7c3aed', '#db2777', '#c2410c', '#0f766e'];
+            const identity = { a: 0, b: 0 };
             const elements = [];
 
             for (let b = 0; b <= 1; b += 1) {
@@ -679,6 +680,8 @@
 
             let current = { a: 0, b: 1 };
             let animationFrame = null;
+            let compositionAnimating = false;
+            let compositionStage = 0;
 
             function mod(value) {
                 return ((value % 5) + 5) % 5;
@@ -829,20 +832,29 @@
                 }
             }
 
-            function interpolatedPoint(element, exponent, progress) {
-                if (element.b === 0) {
-                    const angle = (exponent + element.a * progress) * stepAngle;
+            function interpolatedPoint(startElement, actionElement, exponent, progress) {
+                const startExponent = apply(startElement, exponent);
+
+                if (actionElement.b === 0) {
+                    const angle = (startExponent + actionElement.a * progress) * stepAngle;
                     return {
                         x: center + vertexRadius * Math.cos(angle),
                         y: center - vertexRadius * Math.sin(angle)
                     };
                 }
 
-                const start = pointAtExponent(exponent);
-                const destination = pointAtExponent(apply(element, exponent));
+                const start = pointAtExponent(startExponent);
+                const destination = pointAtExponent(apply(actionElement, startExponent));
+                const dx = destination.x - start.x;
+                const dy = destination.y - start.y;
+                const distance = Math.hypot(dx, dy);
+
+                if (distance < 0.01) return start;
+
+                const bend = 42 * Math.sin(Math.PI * progress);
                 return {
-                    x: start.x + (destination.x - start.x) * progress,
-                    y: start.y + (destination.y - start.y) * progress
+                    x: start.x + dx * progress - (dy / distance) * bend,
+                    y: start.y + dy * progress + (dx / distance) * bend
                 };
             }
 
@@ -863,23 +875,28 @@
                 }, axisLayer);
             }
 
-            function draw(element, progress = 1) {
+            function drawTransition(startElement, actionElement, progress, stage = null) {
                 clearLayer(motionLayer);
-                drawReflectionAxis(element);
+                drawReflectionAxis(actionElement);
+                const cumulativeElement = compose(actionElement, startElement);
                 const polygonPoints = [];
 
                 for (let exponent = 0; exponent < 5; exponent += 1) {
-                    const point = interpolatedPoint(element, exponent, progress);
+                    const point = interpolatedPoint(startElement, actionElement, exponent, progress);
                     polygonPoints.push(`${point.x.toFixed(2)},${point.y.toFixed(2)}`);
                 }
 
-                svgElement('polygon', {
-                    class: 'moving-polygon',
-                    points: polygonPoints.join(' ')
-                }, motionLayer);
+                if (actionElement.b === 0 || progress === 0 || progress === 1) {
+                    svgElement('polygon', {
+                        class: 'moving-polygon',
+                        points: polygonPoints.join(' ')
+                    }, motionLayer);
+                }
 
                 for (let exponent = 0; exponent < 5; exponent += 1) {
-                    const point = interpolatedPoint(element, exponent, progress);
+                    const point = interpolatedPoint(startElement, actionElement, exponent, progress);
+                    const startingExponent = apply(startElement, exponent);
+                    const destinationExponent = apply(cumulativeElement, exponent);
                     const token = svgElement('g', {}, motionLayer);
                     const circle = svgElement('circle', {
                         class: 'token',
@@ -888,7 +905,7 @@
                         r: 20,
                         fill: tokenColors[exponent]
                     }, token);
-                    svgElement('title', {}, circle, `Vertex ${rootName(exponent)} moves to ${rootName(apply(element, exponent))}`);
+                    svgElement('title', {}, circle, `Vertex ${rootName(exponent)} moves from ${rootName(startingExponent)} to ${rootName(destinationExponent)}`);
                     svgElement('text', {
                         class: 'token-number',
                         x: point.x,
@@ -896,10 +913,21 @@
                     }, token, String(exponent));
                 }
 
-                centerName.textContent = elementName(element);
-                centerKind.textContent = element.b === 1 ? 'reflection' : element.a === 0 ? 'identity' : 'rotation';
-                diagramTitle.textContent = `${spokenName(element)} acting on the regular pentagon`;
-                diagramDescription.textContent = `The symmetry ${spokenName(element)} sends exponent k to ${exponentFormula(element)}. Its cycles are ${cycleNotation(element)}.`;
+                if (stage) {
+                    centerName.textContent = stage.name;
+                    centerKind.textContent = stage.kind;
+                    diagramTitle.textContent = stage.title;
+                    diagramDescription.textContent = stage.description;
+                } else {
+                    centerName.textContent = elementName(cumulativeElement);
+                    centerKind.textContent = cumulativeElement.b === 1 ? 'reflection' : cumulativeElement.a === 0 ? 'identity' : 'rotation';
+                    diagramTitle.textContent = `${spokenName(cumulativeElement)} acting on the regular pentagon`;
+                    diagramDescription.textContent = `The symmetry ${spokenName(cumulativeElement)} sends exponent k to ${exponentFormula(cumulativeElement)}. Its cycles are ${cycleNotation(cumulativeElement)}.`;
+                }
+            }
+
+            function draw(element, progress = 1) {
+                drawTransition(identity, element, progress);
             }
 
             function updateMapping(element) {
@@ -937,8 +965,16 @@
                     cancelAnimationFrame(animationFrame);
                     animationFrame = null;
                 }
+                if (compositionAnimating) updateComposition();
+                compositionAnimating = false;
+                compositionStage = 0;
                 replayButton.disabled = false;
                 replayButton.textContent = 'Replay this motion';
+                showComposition.disabled = false;
+                showComposition.textContent = 'Show g ∘ h';
+                swapOrder.disabled = false;
+                leftSymmetry.disabled = false;
+                rightSymmetry.disabled = false;
             }
 
             function showElement(element, animate = true) {
@@ -994,6 +1030,117 @@
                 return result;
             }
 
+            function setCompositionStage(stage, left, right, result) {
+                if (compositionStage === stage) return;
+                compositionStage = stage;
+
+                if (stage === 1) {
+                    showComposition.textContent = 'Applying h…';
+                    compositionNote.textContent = `Step 1 of 2: apply h = ${elementName(right)}.`;
+                    motionNote.textContent = right.b === 1
+                        ? 'The reflection keeps the target pentagon fixed while paired vertices follow separate curved paths.'
+                        : `First apply the rotation h = ${elementName(right)}.`;
+                    updateMapping(right);
+                    return;
+                }
+
+                if (stage === 2) {
+                    showComposition.textContent = 'h complete';
+                    compositionNote.textContent = `After h = ${elementName(right)}, apply g = ${elementName(left)}.`;
+                    return;
+                }
+
+                showComposition.textContent = 'Applying g…';
+                compositionNote.textContent = `Step 2 of 2: apply g = ${elementName(left)} to the result of h.`;
+                motionNote.textContent = left.b === 1
+                    ? 'The reflection keeps the target pentagon fixed while paired vertices follow separate curved paths.'
+                    : `Now apply the rotation g = ${elementName(left)}.`;
+                updateMapping(result);
+            }
+
+            function showCompositionSequence() {
+                stopAnimation();
+
+                const left = parseElement(leftSymmetry.value);
+                const right = parseElement(rightSymmetry.value);
+                const result = updateComposition();
+                current = { a: result.a, b: result.b };
+                updateSelectionText(current);
+
+                const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (reducedMotion) {
+                    draw(current, 1);
+                    compositionNote.textContent = `Result shown without animation: ${exponentFormula(result)}.`;
+                    return;
+                }
+
+                compositionAnimating = true;
+                replayButton.disabled = true;
+                replayButton.textContent = 'Showing composition…';
+                showComposition.disabled = true;
+                swapOrder.disabled = true;
+                leftSymmetry.disabled = true;
+                rightSymmetry.disabled = true;
+
+                const firstDuration = right.a === 0 && right.b === 0 ? 450 : 900;
+                const secondDuration = left.a === 0 && left.b === 0 ? 450 : 900;
+                const pauseDuration = 400;
+                const startedAt = performance.now();
+
+                const animateComposition = (now) => {
+                    const elapsed = now - startedAt;
+
+                    if (elapsed < firstDuration) {
+                        setCompositionStage(1, left, right, result);
+                        const rawProgress = elapsed / firstDuration;
+                        const progress = 1 - Math.pow(1 - rawProgress, 3);
+                        drawTransition(identity, right, progress, {
+                            name: `h = ${elementName(right)}`,
+                            kind: 'step 1 of 2',
+                            title: `First apply h, ${spokenName(right)}`,
+                            description: `In the first step, h sends exponent k to ${exponentFormula(right)}.`
+                        });
+                    } else if (elapsed < firstDuration + pauseDuration) {
+                        setCompositionStage(2, left, right, result);
+                        drawTransition(identity, right, 1, {
+                            name: `h = ${elementName(right)}`,
+                            kind: 'step 1 complete',
+                            title: `The first step h is complete`,
+                            description: `The vertices are now in the positions produced by ${spokenName(right)}.`
+                        });
+                    } else if (elapsed < firstDuration + pauseDuration + secondDuration) {
+                        setCompositionStage(3, left, right, result);
+                        const rawProgress = (elapsed - firstDuration - pauseDuration) / secondDuration;
+                        const progress = 1 - Math.pow(1 - rawProgress, 3);
+                        drawTransition(right, left, progress, {
+                            name: `g = ${elementName(left)}`,
+                            kind: 'step 2 of 2',
+                            title: `Then apply g, ${spokenName(left)}`,
+                            description: `In the second step, g acts on the output of h, producing ${spokenName(result)}.`
+                        });
+                    } else {
+                        animationFrame = null;
+                        compositionAnimating = false;
+                        compositionStage = 0;
+                        replayButton.disabled = false;
+                        replayButton.textContent = 'Replay this motion';
+                        showComposition.disabled = false;
+                        showComposition.textContent = 'Show g ∘ h';
+                        swapOrder.disabled = false;
+                        leftSymmetry.disabled = false;
+                        rightSymmetry.disabled = false;
+                        updateSelectionText(current);
+                        draw(current, 1);
+                        compositionNote.textContent = `Complete: h = ${elementName(right)} acted first, then g = ${elementName(left)}. Result on exponents: ${exponentFormula(result)}`;
+                        return;
+                    }
+
+                    animationFrame = requestAnimationFrame(animateComposition);
+                };
+
+                animationFrame = requestAnimationFrame(animateComposition);
+            }
+
             symmetryButtons.forEach((button) => {
                 button.addEventListener('click', () => {
                     showElement({ a: Number(button.dataset.a), b: Number(button.dataset.b) });
@@ -1004,9 +1151,7 @@
             leftSymmetry.addEventListener('change', updateComposition);
             rightSymmetry.addEventListener('change', updateComposition);
 
-            showComposition.addEventListener('click', () => {
-                showElement(updateComposition());
-            });
+            showComposition.addEventListener('click', showCompositionSequence);
 
             swapOrder.addEventListener('click', () => {
                 const previousLeft = leftSymmetry.value;
