@@ -442,11 +442,19 @@
                 <ol>
                     <li><strong>Identity:</strong> $e*g=g=g*e$ for every $g\in G$.</li>
                     <li><strong>Associativity:</strong> $g_1*(g_2*g_3)=(g_1*g_2)*g_3$ for all $g_1,g_2,g_3\in G$.</li>
-                    <li><strong>Inverses:</strong> for every $g\in G$, there is an element $h\in G$ such that $h*g=e=g*h$.</li>
+                    <li><strong>Inverses:</strong> for every $g\in G$, there is an element $h\in G$ such that $h*g=e$.</li>
                 </ol>
             </div>
+            
+            
+            <div class="observation-block">
+                <span class="block-label">Motivation for associativity</span>
+                <p>For functions $f_1,f_2,f_3$ and every input $x$,</p>
+                <div class="equation-scroll">\[(f_1\circ(f_2\circ f_3))(x)=f_1(f_2(f_3(x)))=((f_1\circ f_2)\circ f_3)(x).\]</div>
+                <p>Thus composition automatically supplies the associativity required in the group definition. This is the <i>primary</i> motivation for the condition above: Most groups we encounter will be structure-preserving symmetries of <i>some</i> object with the operation being composition, so associativity is automatic in these cases.</p>
+            </div>
 
-            <p>The four multiplication-preserving symmetries form a commutative group isomorphic to $(\mathbb Z/5\mathbb Z)^\times$. The ten rigid symmetries form the noncommutative group $D_{10}$.</p>
+            <p>The four multiplication-preserving symmetries form a commutative group <i>isomorphic</i> to $(\mathbb Z/5\mathbb Z)^\times$, a notion we will consider next week. The ten rigid symmetries form the noncommutative group $D_{10}$, also knowns as the <i>dihedral group of order</i> 10.</p>
 
             <div class="proof-block">
                 <span class="block-label">Lemma: inverses are unique</span>
@@ -455,12 +463,6 @@
                 <p>We may therefore write the inverse unambiguously as $g^{-1}$.</p>
             </div>
 
-            <div class="observation-block">
-                <span class="block-label">Why composition is associative</span>
-                <p>For functions $f_1,f_2,f_3$ and every input $x$,</p>
-                <div class="equation-scroll">\[(f_1\circ(f_2\circ f_3))(x)=f_1(f_2(f_3(x)))=((f_1\circ f_2)\circ f_3)(x).\]</div>
-                <p>Thus composition automatically supplies the associativity required in the group definition.</p>
-            </div>
         </section>
     </main>
 
