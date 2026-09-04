@@ -79,6 +79,35 @@
             text-transform: uppercase;
         }
 
+        .block-permalink {
+            margin-left: 0.35rem;
+            color: var(--text-muted);
+            font-size: 0.9em;
+            letter-spacing: normal;
+            text-decoration: none;
+            text-transform: none;
+        }
+
+        .block-permalink:hover,
+        .block-permalink:focus-visible {
+            color: var(--primary);
+        }
+
+        .definition-block,
+        .observation-block,
+        .proof-block,
+        .question-block {
+            scroll-margin-top: 1.5rem;
+        }
+
+        .definition-block:target,
+        .observation-block:target,
+        .proof-block:target,
+        .question-block:target {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
         .definition-block p:last-child,
         .observation-block p:last-child,
         .proof-block p:last-child,
@@ -278,8 +307,8 @@
             <p class="lecture-intro">We return to the fifth roots of unity</p>
             <div class="equation-scroll">\[\mu_5=\{1,\zeta_5,\zeta_5^2,\zeta_5^3,\zeta_5^4\},\qquad \zeta_5=e^{2\pi i/5}.\]</div>
 
-            <div class="definition-block">
-                <span class="block-label">Guiding definition</span>
+            <div class="definition-block" id="definition-symmetry">
+                <span class="block-label">Guiding definition<a class="block-permalink" href="#definition-symmetry" aria-label="Link to the definition of symmetry">#</a></span>
                 <p>A <strong>symmetry</strong> is a structure-preserving transformation. The same set can therefore have different collections of symmetries, depending on which structure we choose to preserve.</p>
             </div>
 
@@ -289,8 +318,8 @@
             <p>Multiplication of roots is controlled entirely by their exponents:</p>
             <div class="equation-scroll">\[\zeta_5^i\zeta_5^j=\zeta_5^{i+j}.\]</div>
 
-            <div class="observation-block">
-                <span class="block-label">Observation</span>
+            <div class="observation-block" id="observation-exponents-mod-five">
+                <span class="block-label">Observation<a class="block-permalink" href="#observation-exponents-mod-five" aria-label="Link to the observation about exponents modulo five">#</a></span>
                 <p>Exponents are read modulo $5$: $\zeta_5^{i+5}=\zeta_5^i$. Thus we may regard the exponents as residue classes in $\mathbb Z/5\mathbb Z$.</p>
             </div>
         </section>
@@ -304,8 +333,8 @@
             <div class="equation-scroll">\[\sigma(\zeta_5^k)=\sigma(\zeta_5)^k.\]</div>
             <p>For example, $\sigma(\zeta_5^2)=\sigma(\zeta_5)^2$ and $\sigma(\zeta_5^3)=\sigma(\zeta_5)^3$. Consequently, the single value $\sigma(\zeta_5)$ determines every value of $\sigma$.</p>
 
-            <div class="proof-block">
-                <span class="block-label">Why there are four</span>
+            <div class="proof-block" id="proof-four-multiplicative-symmetries">
+                <span class="block-label">Why there are four<a class="block-permalink" href="#proof-four-multiplicative-symmetries" aria-label="Link to why there are four multiplicative symmetries">#</a></span>
                 <p>If $\sigma(\zeta_5)=1$, then $\sigma(\zeta_5^k)=1$ for every $k$, so $\sigma$ is not a bijection. Each of the other four choices is allowed. They give</p>
                 <div class="equation-scroll">\[\sigma_a(\zeta_5^k)=\zeta_5^{ak},\qquad a\in\{1,2,3,4\},\]</div>
                 <p>the identity, squaring, cubing, and fourth-power maps.</p>
@@ -356,8 +385,8 @@
             <h2>Rigid symmetries of the pentagon</h2>
             <p>Now forget multiplication and view $\mu_5$ as the vertices of a regular pentagon. A rigid symmetry is a transformation of the plane that carries this pentagon onto itself.</p>
 
-            <div class="question-block">
-                <span class="block-label">Generators</span>
+            <div class="question-block" id="notation-rigid-generators">
+                <span class="block-label">Generators<a class="block-permalink" href="#notation-rigid-generators" aria-label="Link to the notation for the rigid-symmetry generators">#</a></span>
                 <p>Let $r$ be counterclockwise rotation through $2\pi/5$, and let $s$ be reflection across the real axis. In the handwritten lecture notes these were denoted $\sigma$ and $\tau$, respectively.</p>
             </div>
 
@@ -418,8 +447,8 @@
             <div class="equation-scroll">\[(r\circ s)(1)=\zeta_5,\qquad (s\circ r)(1)=\zeta_5^4,\]</div>
             <p>so $r\circ s\ne s\circ r$. This is the first example of <strong>noncommutativity</strong>.</p>
 
-            <div class="observation-block">
-                <span class="block-label">All rigid symmetries</span>
+            <div class="observation-block" id="observation-all-rigid-symmetries">
+                <span class="block-label">All rigid symmetries<a class="block-permalink" href="#observation-all-rigid-symmetries" aria-label="Link to all rigid symmetries of the pentagon">#</a></span>
                 <p>The five rotations $e,r,r^2,r^3,r^4$ and the five reflections $s,rs,r^2s,r^3s,r^4s$ give every rigid symmetry of the pentagon. Together they form the dihedral group $D_{10}$ of order $10$, with relations</p>
                 <div class="equation-scroll">\[r^5=e,\qquad s^2=e,\qquad srs=r^{-1}.\]</div>
             </div>
@@ -436,8 +465,8 @@
             <h2>Abstracting the pattern: groups</h2>
             <p>Both collections of symmetries are closed under composition, contain a do-nothing symmetry, and allow every motion to be undone. This common pattern is the definition of a group.</p>
 
-            <div class="definition-block">
-                <span class="block-label">Definition</span>
+            <div class="definition-block" id="definition-group">
+                <span class="block-label">Definition<a class="block-permalink" href="#definition-group" aria-label="Link to the definition of a group">#</a></span>
                 <p>A <strong>group</strong> is a triple $(G,*,e)$ consisting of a set $G$, a binary operation $*:G\times G\to G$, and a distinguished element $e\in G$, such that:</p>
                 <ol>
                     <li><strong>Identity:</strong> $e*g=g=g*e$ for every $g\in G$.</li>
@@ -447,8 +476,8 @@
             </div>
             
             
-            <div class="observation-block">
-                <span class="block-label">Motivation for associativity</span>
+            <div class="observation-block" id="observation-composition-associative">
+                <span class="block-label">Motivation for associativity<a class="block-permalink" href="#observation-composition-associative" aria-label="Link to the motivation for associativity">#</a></span>
                 <p>For functions $f_1,f_2,f_3$ and every input $x$,</p>
                 <div class="equation-scroll">\[(f_1\circ(f_2\circ f_3))(x)=f_1(f_2(f_3(x)))=((f_1\circ f_2)\circ f_3)(x).\]</div>
                 <p>Thus composition automatically supplies the associativity required in the group definition. This is the <i>primary</i> motivation for the condition above: Most groups we encounter will be structure-preserving symmetries of <i>some</i> object with the operation being composition, so associativity is automatic in these cases.</p>
@@ -456,8 +485,8 @@
 
             <p>The four multiplication-preserving symmetries form a commutative group <i>isomorphic</i> to $(\mathbb Z/5\mathbb Z)^\times$, a notion we will consider next week. The ten rigid symmetries form the noncommutative group $D_{10}$, also knowns as the <i>dihedral group of order</i> 10.</p>
 
-            <div class="proof-block">
-                <span class="block-label">Lemma: inverses are unique</span>
+            <div class="proof-block" id="lemma-inverses-unique">
+                <span class="block-label">Lemma: inverses are unique<a class="block-permalink" href="#lemma-inverses-unique" aria-label="Link to the lemma that inverses are unique">#</a></span>
                 <p>If both $h$ and $h'$ are inverses of $g$, then associativity gives</p>
                 <div class="equation-scroll">\[h=h*e=h*(g*h')=(h*g)*h'=e*h'=h'.\]</div>
                 <p>We may therefore write the inverse unambiguously as $g^{-1}$.</p>
