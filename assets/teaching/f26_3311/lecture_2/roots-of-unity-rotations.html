@@ -680,6 +680,8 @@
 
             let current = { a: 0, b: 1 };
             let animationFrame = null;
+            let compositionTimer = null;
+            let compositionFailsafe = null;
             let compositionAnimating = false;
             let compositionStage = 0;
 
@@ -965,6 +967,14 @@
                     cancelAnimationFrame(animationFrame);
                     animationFrame = null;
                 }
+                if (compositionTimer !== null) {
+                    clearTimeout(compositionTimer);
+                    compositionTimer = null;
+                }
+                if (compositionFailsafe !== null) {
+                    clearTimeout(compositionFailsafe);
+                    compositionFailsafe = null;
+                }
                 if (compositionAnimating) updateComposition();
                 compositionAnimating = false;
                 compositionStage = 0;
@@ -1085,10 +1095,37 @@
                 const firstDuration = right.a === 0 && right.b === 0 ? 450 : 900;
                 const secondDuration = left.a === 0 && left.b === 0 ? 450 : 900;
                 const pauseDuration = 400;
+                const totalDuration = firstDuration + pauseDuration + secondDuration;
                 const startedAt = performance.now();
+                let finished = false;
 
-                const animateComposition = (now) => {
-                    const elapsed = now - startedAt;
+                const finishComposition = () => {
+                    if (finished) return;
+                    finished = true;
+                    if (compositionTimer !== null) {
+                        clearTimeout(compositionTimer);
+                        compositionTimer = null;
+                    }
+                    if (compositionFailsafe !== null) {
+                        clearTimeout(compositionFailsafe);
+                        compositionFailsafe = null;
+                    }
+                    compositionAnimating = false;
+                    compositionStage = 0;
+                    replayButton.disabled = false;
+                    replayButton.textContent = 'Replay this motion';
+                    showComposition.disabled = false;
+                    showComposition.textContent = 'Show g ∘ h';
+                    swapOrder.disabled = false;
+                    leftSymmetry.disabled = false;
+                    rightSymmetry.disabled = false;
+                    updateSelectionText(current);
+                    draw(current, 1);
+                    compositionNote.textContent = `Complete: h = ${elementName(right)} acted first, then g = ${elementName(left)}. Result on exponents: ${exponentFormula(result)}`;
+                };
+
+                const animateComposition = () => {
+                    const elapsed = performance.now() - startedAt;
 
                     if (elapsed < firstDuration) {
                         setCompositionStage(1, left, right, result);
@@ -1108,7 +1145,7 @@
                             title: `The first step h is complete`,
                             description: `The vertices are now in the positions produced by ${spokenName(right)}.`
                         });
-                    } else if (elapsed < firstDuration + pauseDuration + secondDuration) {
+                    } else if (elapsed < totalDuration) {
                         setCompositionStage(3, left, right, result);
                         const rawProgress = (elapsed - firstDuration - pauseDuration) / secondDuration;
                         const progress = 1 - Math.pow(1 - rawProgress, 3);
@@ -1119,26 +1156,15 @@
                             description: `In the second step, g acts on the output of h, producing ${spokenName(result)}.`
                         });
                     } else {
-                        animationFrame = null;
-                        compositionAnimating = false;
-                        compositionStage = 0;
-                        replayButton.disabled = false;
-                        replayButton.textContent = 'Replay this motion';
-                        showComposition.disabled = false;
-                        showComposition.textContent = 'Show g ∘ h';
-                        swapOrder.disabled = false;
-                        leftSymmetry.disabled = false;
-                        rightSymmetry.disabled = false;
-                        updateSelectionText(current);
-                        draw(current, 1);
-                        compositionNote.textContent = `Complete: h = ${elementName(right)} acted first, then g = ${elementName(left)}. Result on exponents: ${exponentFormula(result)}`;
+                        finishComposition();
                         return;
                     }
 
-                    animationFrame = requestAnimationFrame(animateComposition);
+                    compositionTimer = window.setTimeout(animateComposition, 50);
                 };
 
-                animationFrame = requestAnimationFrame(animateComposition);
+                compositionFailsafe = window.setTimeout(finishComposition, totalDuration + 1200);
+                animateComposition();
             }
 
             symmetryButtons.forEach((button) => {
