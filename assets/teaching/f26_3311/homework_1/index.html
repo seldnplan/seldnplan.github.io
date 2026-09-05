@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 1 | MATH 3311</title>
+    <link rel="icon" type="image/png" href="../../../../assets/favicon.png">
+    <link rel="stylesheet" href="../../../../style.css">
+    <script>
+        if (
+            localStorage.getItem('theme') === 'dark' ||
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark-mode');
+        }
+
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                macros: {
+                    Int: '\\mathbb{Z}'
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .homework-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .homework-section > h2 {
+            margin-top: 0;
+        }
+
+        .homework-section p,
+        .homework-section li,
+        .homework-section dd {
+            line-height: 1.7;
+        }
+
+        .homework-meta {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .problem-list {
+            margin: 1.5rem 0 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: homework-problem;
+        }
+
+        .problem {
+            margin: 1.5rem 0;
+            padding: 1.15rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--white);
+            counter-increment: homework-problem;
+            scroll-margin-top: 1.5rem;
+        }
+
+        .problem:target {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .problem-heading {
+            margin: 0 0 0.8rem;
+            color: var(--text-heading);
+            font-size: 1.08rem;
+        }
+
+        .problem-heading::before {
+            content: "Problem " counter(homework-problem);
+        }
+
+        .problem > p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .context-item {
+            margin: 2rem 0 1.5rem;
+            padding: 1rem 1.1rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            background: var(--bg-light);
+        }
+
+        .context-item p:first-child {
+            margin-top: 0;
+        }
+
+        .context-item p:last-child,
+        .context-item dl:last-child {
+            margin-bottom: 0;
+        }
+
+        .property-list dt {
+            float: left;
+            clear: left;
+            margin-right: 0.45rem;
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        .property-list dd {
+            margin-left: 0;
+        }
+
+        .subproblem-list {
+            margin-top: 0.75rem;
+        }
+
+        .equation-scroll {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        @media (max-width: 600px) {
+            .problem {
+                padding: 1rem;
+            }
+        }
+
+        @media print {
+            .homework-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="course-page">
+    <header class="course-header">
+        <div class="homework-nav">
+            <a href="../" class="action-btn journal">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Course home
+            </a>
+            <a href="../homeworks/homework1.pdf" class="action-btn pdf" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Homework PDF
+            </a>
+        </div>
+        <h1>MATH 3311: Homework 1</h1>
+        <p>Fall 2026</p>
+    </header>
+
+    <main>
+        <section class="pub-card homework-section" id="homework-1">
+            <span class="status-tag">Homework 1</span>
+            <h2>Problems</h2>
+            <p class="homework-meta">Due Wednesday, September 9, 2026</p>
+
+            <p>Much of the material in this homework is very classical and all over the interweb. So I urge you to resist the call of Google or ChatGPT, and work everything out for yourself. It'll be <em>much</em> more rewarding that way. Even if this resistance proves ultimately futile, keep in mind that the exams are in-class with no assistance, LLM-flavored or otherwise, so you should at least understand what you're writing down.</p>
+
+            <p>Now, to business: Long division (that is, the Euclidean algorithm) says that if $a,b\in \Int$, with $b&gt;0$, then we can find $q,r\in\Int$ with $|r|&lt;b$ such that</p>
+            <div class="equation-scroll">
+                \[
+                a=qb+r.
+                \]
+            </div>
+            <p>Consider the following process: Set $r_0=r$, and apply the Euclidean algorithm to the pair $b,r_0$ to get $q_1,r_1$ such that</p>
+            <div class="equation-scroll">
+                \[
+                b=q_1r_0+r_1.
+                \]
+            </div>
+            <p>Then apply the Euclidean algorithm again to the pair $r_0,r_1$:</p>
+            <div class="equation-scroll">
+                \[
+                r_0=q_2r_1+r_2,
+                \]
+            </div>
+            <p>and then to the pair $r_1,r_2$, and so on. At each stage, if you prefer, you can take $r_i$ to be the <em>positive</em> remainder.</p>
+
+            <ol class="problem-list">
+                <li class="problem" id="problem-1">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 1</span></h3>
+                    <p>Show that the process terminates; that is, for some natural number $n\geq 1$, we must get $r_n=0$. Show also that $r_{n-1}=\mathrm{gcd}(a,b)$, where $\mathrm{gcd}(a,b)$ denotes the unique nonnegative common divisor of $a$ and $b$ having maximal absolute value.</p>
+                </li>
+
+                <li class="problem" id="problem-2">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 2</span></h3>
+                    <p>Use the above process to conclude that we can find integers $s,t\in\Int$ such that</p>
+                    <div class="equation-scroll">
+                        \[
+                        \mathrm{gcd}(a,b)=sa+tb.
+                        \]
+                    </div>
+                </li>
+
+                <li class="problem" id="problem-3">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 3</span></h3>
+                    <p>If $b=p$ is a prime number and $p\nmid a$, show that we can find integers $s,t\in\Int$ such that</p>
+                    <div class="equation-scroll">
+                        \[
+                        1=sa+tp.
+                        \]
+                    </div>
+                </li>
+
+                <li class="context-item">
+                    <p>An <em>equivalence relation</em> on a set $X$ is a relation $x\sim y$ on pairs of elements $x,y\in X$ with the following properties:</p>
+                    <dl class="property-list">
+                        <dt>Reflexivity</dt>
+                        <dd>$x\sim x$ for all $x\in X$;</dd>
+                        <dt>Symmetry</dt>
+                        <dd>$x\sim y \Leftrightarrow y\sim x$;</dd>
+                        <dt>Transitivity</dt>
+                        <dd>$x\sim y$ and $y\sim z$ $\Rightarrow$ $x\sim z$.</dd>
+                    </dl>
+                    <p>If $\sim$ is an equivalence relation on $X$ and $x\in X$, the <em>equivalence class</em> of $x$ is the subset</p>
+                    <div class="equation-scroll">
+                        \[
+                        [x]=\{y\in X:y\sim x\}\subset X.
+                        \]
+                    </div>
+                    <p>An element $x$ of an equivalence class is called a <em>representative</em> for that class. A <em>full set of representatives</em> is a subset $P\subset X$ containing exactly one representative from each equivalence class. Thus $P$ is in bijection with the set of equivalence classes and can, with some care, be used as a stand-in for that set.</p>
+                </li>
+
+                <li class="problem" id="problem-4">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 4</span></h3>
+                    <p>Let $n$ be a positive integer. Show that the relation</p>
+                    <div class="equation-scroll">
+                        \[
+                        x\equiv y\pmod n
+                        \]
+                    </div>
+                    <p>defined by the condition $n\mid x-y$ is an equivalence relation on $\Int$, and show that the subset</p>
+                    <div class="equation-scroll">
+                        \[
+                        \{0,1,2,\ldots,n-1\}\subset\Int
+                        \]
+                    </div>
+                    <p>is a full set of representatives for this relation.</p>
+                </li>
+
+                <li class="problem" id="problem-5">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 5</span></h3>
+                    <p>Let $\Int/n\Int$ be the set of equivalence classes for the relation $x\equiv y\pmod n$. It is in bijection with the set $\{0,1,2,\ldots,n-1\}$ by the previous problem.</p>
+                    <p>We would like to define addition and multiplication by</p>
+                    <div class="equation-scroll">
+                        \[
+                        [a]+[b]=[a+b]
+                        \qquad\text{and}\qquad
+                        [a]\cdot[b]=[ab].
+                        \]
+                    </div>
+                    <p>First show that these definitions do not depend on the choice of representatives: If</p>
+                    <div class="equation-scroll">
+                        \[
+                        a\equiv a'\pmod n
+                        \qquad\text{and}\qquad
+                        b\equiv b'\pmod n,
+                        \]
+                    </div>
+                    <p>show that</p>
+                    <div class="equation-scroll">
+                        \[
+                        a+b\equiv a'+b'\pmod n
+                        \qquad\text{and}\qquad
+                        ab\equiv a'b'\pmod n.
+                        \]
+                    </div>
+                    <p>Thus addition and multiplication are well-defined operations on $\Int/n\Int$.</p>
+                    <p>For instance, in $\Int/n\Int$, the product $2\cdot(n-1)$ is represented by $n-2$, while the sum $2+(n-1)$ is represented by $1$.</p>
+                    <p>Now suppose that $n=p$ is prime. Show that, for any $a\in\Int/p\Int$ with $a\neq 0$, the equation</p>
+                    <div class="equation-scroll">
+                        \[
+                        ax=1
+                        \]
+                    </div>
+                    <p>admits a solution $x\in\Int/p\Int$.</p>
+                </li>
+
+                <li class="problem" id="problem-6">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 6</span></h3>
+                    <p>Let $p$ be prime and let $a\in\Int/p\Int$ be nonzero. Show that</p>
+                    <div class="equation-scroll">
+                        \[
+                        \{a,2a,3a,\ldots,(p-1)a\}
+                        =
+                        \{1,2,\ldots,p-1\}
+                        \]
+                    </div>
+                    <p>as subsets of $\Int/p\Int$.</p>
+                </li>
+
+                <li class="problem" id="problem-7">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 7</span></h3>
+                    <p>Conclude that</p>
+                    <div class="equation-scroll">
+                        \[
+                        a^{p-1}\cdot(p-1)!=(p-1)!
+                        \]
+                    </div>
+                    <p>in $\Int/p\Int$. Explain why $(p-1)!\neq 0$ in $\Int/p\Int$, and use the previous problems to justify cancelling $(p-1)!$ from both sides. Deduce Fermat's little theorem: For any integer $a\in\Int$ with $p\nmid a$,</p>
+                    <div class="equation-scroll">
+                        \[
+                        p\mid a^{p-1}-1.
+                        \]
+                    </div>
+                </li>
+
+                <li class="problem" id="problem-8">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 8</span></h3>
+                    <p>Suppose that you have a deck of $n$ cards, where $n$ is even. A <em>perfect riffle shuffle</em> (see: <a href="https://www.youtube.com/watch?v=adNeBLkP8ZM" target="_blank" rel="noopener noreferrer">video</a>) is obtained by cutting the deck into two equal halves and then interleaving the two halves in alternating fashion. There are two ways to do this, depending on which half contributes the first card: one leaves the original top card on top, while the other sends it to the second position.</p>
+                    <p>Can every permutation of the $n$ cards be realized by applying a sequence of perfect riffle shuffles of these two types? Experiment with some small values of $n$, formulate a conjecture, and prove your answer in at least one nontrivial case.</p>
+                </li>
+
+                <li class="context-item">
+                    <p>The next problem requires the notions of <em>group</em> and <em>group homomorphism</em>, which will be introduced in class on Wednesday.</p>
+                    <p>First, a definition: For any set $X$, write $\mathrm{Fun}(X)$ for the set of functions $f:X\to X$ from $X$ to itself. Within it, we have the subset $\mathrm{Bij}(X)$ of functions $f$ that are <em>bijective</em>.</p>
+                </li>
+
+                <li class="problem" id="problem-9">
+                    <h3 class="problem-heading"><span class="sr-only">Problem 9</span></h3>
+                    <p>Show that function composition defines an operation</p>
+                    <div class="equation-scroll">
+                        \[
+                        \circ:\mathrm{Fun}(X)\times\mathrm{Fun}(X)\longrightarrow\mathrm{Fun}(X)
+                        \]
+                    </div>
+                    <p>with the following properties:</p>
+                    <ul class="subproblem-list">
+                        <li>It is <em>associative</em>:
+                            <div class="equation-scroll">
+                                \[
+                                f\circ(g\circ h)=(f\circ g)\circ h.
+                                \]
+                            </div>
+                        </li>
+                        <li>If $\mathrm{Id}:X\to X$ is the identity function $\mathrm{Id}(x)=x$, then
+                            <div class="equation-scroll">
+                                \[
+                                \mathrm{Id}\circ f=f\circ\mathrm{Id}=f
+                                \]
+                            </div>
+                            for all $f\in\mathrm{Fun}(X)$.
+                        </li>
+                        <li>If $f\in\mathrm{Fun}(X)$ and there exists $\widetilde f\in\mathrm{Fun}(X)$ satisfying
+                            <div class="equation-scroll">
+                                \[
+                                f\circ\widetilde f=\mathrm{Id},
+                                \]
+                            </div>
+                            then $f$ is surjective and $\widetilde f$ is injective.
+                        </li>
+                        <li>Suppose that $f\in\mathrm{Bij}(X)$. For each $y\in X$, show that there exists a unique $x\in X$ such that $f(x)=y$. Use this to define a function
+                            <div class="equation-scroll">
+                                \[
+                                f^{-1}:X\to X.
+                                \]
+                            </div>
+                            Show that
+                            <div class="equation-scroll">
+                                \[
+                                f\circ f^{-1}=\mathrm{Id}
+                                \qquad\text{and}\qquad
+                                f^{-1}\circ f=\mathrm{Id}.
+                                \]
+                            </div>
+                            Finally, show that $f^{-1}$ is the unique function with these properties, and that $f^{-1}\in\mathrm{Bij}(X)$.
+                        </li>
+                    </ul>
+                    <p>Conclude that $\mathrm{Bij}(X)$, equipped with the composition operation, is naturally a group.</p>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <script src="../../../../script.js"></script>
+</body>
+</html>
